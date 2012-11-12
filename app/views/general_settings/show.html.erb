@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Default value for weekly production quota:</b>
+  <%= @general_setting.default_value_for_weekly_production_quota %>
+</p>
+
+<p>
+  <b>Customer service email address:</b>
+  <%= @general_setting.customer_service_email_address %>
+</p>
+
+<p>
+  <b>Customer service phone number:</b>
+  <%= @general_setting.customer_service_phone_number %>
+</p>
+
+<p>
+  <b>Aws bucket name:</b>
+  <%= @general_setting.aws_bucket_name %>
+</p>
+
+<p>
+  <b>Rbn number:</b>
+  <%= @general_setting.rbn_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_general_setting_path(@general_setting) %> |
+<%= link_to 'Back', general_settings_path %>

@@ -1,0 +1,45 @@
+<%= form_for(@pay_pal_transaction) do |f| %>
+  <% if @pay_pal_transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pay_pal_transaction.errors.count, "error") %> prohibited this pay_pal_transaction from being saved:</h2>
+
+      <ul>
+      <% @pay_pal_transaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :paypal_transaction_id %><br />
+    <%= f.text_field :paypal_transaction_id %>
+  </div>
+  <div class="field">
+    <%= f.label :shopping_cart_id %><br />
+    <%= f.number_field :shopping_cart_id %>
+  </div>
+  <div class="field">
+    <%= f.label :result_code %><br />
+    <%= f.number_field :result_code %>
+  </div>
+  <div class="field">
+    <%= f.label :currency_code %><br />
+    <%= f.text_field :currency_code %>
+  </div>
+  <div class="field">
+    <%= f.label :currency_id %><br />
+    <%= f.number_field :currency_id %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :rest_of_the_stuff_serialised %><br />
+    <%= f.text_area :rest_of_the_stuff_serialised %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

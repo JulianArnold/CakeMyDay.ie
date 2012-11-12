@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>File name:</b>
+  <%= @image.file_name %>
+</p>
+
+<p>
+  <b>Bucket name:</b>
+  <%= @image.bucket_name %>
+</p>
+
+<p>
+  <b>Content type:</b>
+  <%= @image.content_type %>
+</p>
+
+<p>
+  <b>File size:</b>
+  <%= @image.file_size %>
+</p>
+
+<p>
+  <b>Finished product:</b>
+  <%= @image.finished_product %>
+</p>
+
+<p>
+  <b>Base product:</b>
+  <%= @image.base_product %>
+</p>
+
+<p>
+  <b>Uploaded by:</b>
+  <%= @image.uploaded_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

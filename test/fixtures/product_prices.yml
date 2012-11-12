@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product_id: 1
+  start_at: 2012-11-12 10:20:58
+  finish_at: 2012-11-12 10:20:58
+  currency_id: 1
+  price: 9.99
+  created_by: 1
+  updated_by: 1
+
+two:
+  product_id: 1
+  start_at: 2012-11-12 10:20:58
+  finish_at: 2012-11-12 10:20:58
+  currency_id: 1
+  price: 9.99
+  created_by: 1
+  updated_by: 1

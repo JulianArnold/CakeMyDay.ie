@@ -1,0 +1,27 @@
+<h1>Listing special_occasions</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Running order</th>
+    <th>Visible to customers</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @special_occasions.each do |special_occasion| %>
+  <tr>
+    <td><%= special_occasion.name %></td>
+    <td><%= special_occasion.running_order %></td>
+    <td><%= special_occasion.visible_to_customers %></td>
+    <td><%= link_to 'Show', special_occasion %></td>
+    <td><%= link_to 'Edit', edit_special_occasion_path(special_occasion) %></td>
+    <td><%= link_to 'Destroy', special_occasion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Special occasion', new_special_occasion_path %>

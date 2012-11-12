@@ -1,4 +1,44 @@
 CakeMyDaySite::Application.routes.draw do
+  resources :weekly_quota
+
+  resources :general_settings
+
+  resources :production_quota
+
+  resources :static_pages
+
+  resources :pay_pal_statuses
+
+  resources :shopping_cart_statuses
+
+  resources :shopping_cart_items
+
+  resources :shopping_carts
+
+  resources :pay_pal_transactions
+
+  resources :customers
+
+  resources :user_groups
+
+  resources :special_occasions
+
+  resources :images
+
+  resources :product_prices
+
+  resources :product_components
+
+  resources :product_images
+
+  resources :options_lists
+
+  resources :product_categories
+
+  resources :currencies
+
+  resources :products
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +88,7 @@ CakeMyDaySite::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'products#index'
 
   # See how all your routes lay out with "rake routes"
 

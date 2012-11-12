@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_date: 2012-11-12
+  end_date: 2012-11-12
+  quota: 1
+  created_by: 1
+  updated_by: 1
+
+two:
+  start_date: 2012-11-12
+  end_date: 2012-11-12
+  quota: 1
+  created_by: 1
+  updated_by: 1

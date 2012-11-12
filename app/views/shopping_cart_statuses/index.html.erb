@@ -1,0 +1,35 @@
+<h1>Listing shopping_cart_statuses</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Active cart</th>
+    <th>Paid cart</th>
+    <th>Chargeback cart</th>
+    <th>Production started</th>
+    <th>Production complete</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shopping_cart_statuses.each do |shopping_cart_status| %>
+  <tr>
+    <td><%= shopping_cart_status.name %></td>
+    <td><%= shopping_cart_status.description %></td>
+    <td><%= shopping_cart_status.active_cart %></td>
+    <td><%= shopping_cart_status.paid_cart %></td>
+    <td><%= shopping_cart_status.chargeback_cart %></td>
+    <td><%= shopping_cart_status.production_started %></td>
+    <td><%= shopping_cart_status.production_complete %></td>
+    <td><%= link_to 'Show', shopping_cart_status %></td>
+    <td><%= link_to 'Edit', edit_shopping_cart_status_path(shopping_cart_status) %></td>
+    <td><%= link_to 'Destroy', shopping_cart_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shopping cart status', new_shopping_cart_status_path %>

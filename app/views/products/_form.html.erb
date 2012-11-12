@@ -1,0 +1,65 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :production_quota_value %><br />
+    <%= f.text_field :production_quota_value %>
+  </div>
+  <div class="field">
+    <%= f.label :product_category_id %><br />
+    <%= f.number_field :product_category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :options_list_id %><br />
+    <%= f.number_field :options_list_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pre_configured_product %><br />
+    <%= f.check_box :pre_configured_product %>
+  </div>
+  <div class="field">
+    <%= f.label :special_occasion_id %><br />
+    <%= f.number_field :special_occasion_id %>
+  </div>
+  <div class="field">
+    <%= f.label :allow_user_to_choose_quantity %><br />
+    <%= f.check_box :allow_user_to_choose_quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :allow_user_to_enter_description %><br />
+    <%= f.check_box :allow_user_to_enter_description %>
+  </div>
+  <div class="field">
+    <%= f.label :running_order %><br />
+    <%= f.number_field :running_order %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br />
+    <%= f.number_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_by %><br />
+    <%= f.number_field :updated_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

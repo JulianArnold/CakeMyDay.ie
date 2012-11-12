@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  main_heading: MyString
+  main_body: MyText
+  menu_label: MyString
+  show_in_main_menu: false
+  main_menu_running_order: 1
+  show_in_page_footer: false
+  footer_running_order: 1
+  window_title: MyString
+  page_description: MyString
+  search_terms: MyString
+
+two:
+  main_heading: MyString
+  main_body: MyText
+  menu_label: MyString
+  show_in_main_menu: false
+  main_menu_running_order: 1
+  show_in_page_footer: false
+  footer_running_order: 1
+  window_title: MyString
+  page_description: MyString
+  search_terms: MyString

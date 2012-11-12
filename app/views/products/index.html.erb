@@ -1,0 +1,45 @@
+<h1>Listing products</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Production quota value</th>
+    <th>Product category</th>
+    <th>Options list</th>
+    <th>Pre configured product</th>
+    <th>Special occasion</th>
+    <th>Allow user to choose quantity</th>
+    <th>Allow user to enter description</th>
+    <th>Running order</th>
+    <th>Created by</th>
+    <th>Updated by</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= product.description %></td>
+    <td><%= product.production_quota_value %></td>
+    <td><%= product.product_category_id %></td>
+    <td><%= product.options_list_id %></td>
+    <td><%= product.pre_configured_product %></td>
+    <td><%= product.special_occasion_id %></td>
+    <td><%= product.allow_user_to_choose_quantity %></td>
+    <td><%= product.allow_user_to_enter_description %></td>
+    <td><%= product.running_order %></td>
+    <td><%= product.created_by %></td>
+    <td><%= product.updated_by %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Product', new_product_path %>

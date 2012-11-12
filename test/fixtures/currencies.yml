@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  iso_code: MyString
+  currency_symbol: MyString
+  full_name: MyString
+  running_order: 1
+  active: false
+
+two:
+  iso_code: MyString
+  currency_symbol: MyString
+  full_name: MyString
+  running_order: 1
+  active: false

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @shopping_cart.customer_id %>
+</p>
+
+<p>
+  <b>Session:</b>
+  <%= @shopping_cart.session_id %>
+</p>
+
+<p>
+  <b>Cake required at:</b>
+  <%= @shopping_cart.cake_required_at %>
+</p>
+
+<p>
+  <b>Weekly quota:</b>
+  <%= @shopping_cart.weekly_quota_id %>
+</p>
+
+<p>
+  <b>Special occasion:</b>
+  <%= @shopping_cart.special_occasion %>
+</p>
+
+<p>
+  <b>Name to appear on cake:</b>
+  <%= @shopping_cart.name_to_appear_on_cake %>
+</p>
+
+<p>
+  <b>Shopping cart status:</b>
+  <%= @shopping_cart.shopping_cart_status_id %>
+</p>
+
+<p>
+  <b>Paypal status:</b>
+  <%= @shopping_cart.paypal_status_id %>
+</p>
+
+<p>
+  <b>General description from customer:</b>
+  <%= @shopping_cart.general_description_from_customer %>
+</p>
+
+
+<%= link_to 'Edit', edit_shopping_cart_path(@shopping_cart) %> |
+<%= link_to 'Back', shopping_carts_path %>

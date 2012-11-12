@@ -1,0 +1,29 @@
+<%= form_for(@production_quotum) do |f| %>
+  <% if @production_quotum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@production_quotum.errors.count, "error") %> prohibited this production_quotum from being saved:</h2>
+
+      <ul>
+      <% @production_quotum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :finish_date %><br />
+    <%= f.date_select :finish_date %>
+  </div>
+  <div class="field">
+    <%= f.label :maximum_cakes_allowed %><br />
+    <%= f.number_field :maximum_cakes_allowed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

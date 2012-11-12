@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  production_quota_value: 1.5
+  product_category_id: 1
+  options_list_id: 1
+  pre_configured_product: false
+  special_occasion_id: 1
+  allow_user_to_choose_quantity: false
+  allow_user_to_enter_description: false
+  running_order: 1
+  created_by: 1
+  updated_by: 1
+
+two:
+  name: MyString
+  description: MyText
+  production_quota_value: 1.5
+  product_category_id: 1
+  options_list_id: 1
+  pre_configured_product: false
+  special_occasion_id: 1
+  allow_user_to_choose_quantity: false
+  allow_user_to_enter_description: false
+  running_order: 1
+  created_by: 1
+  updated_by: 1

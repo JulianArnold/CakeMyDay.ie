@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_date: 2012-11-12
+  finish_date: 2012-11-12
+  maximum_cakes_allowed: 1
+
+two:
+  start_date: 2012-11-12
+  finish_date: 2012-11-12
+  maximum_cakes_allowed: 1

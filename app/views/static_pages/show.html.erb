@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Main heading:</b>
+  <%= @static_page.main_heading %>
+</p>
+
+<p>
+  <b>Main body:</b>
+  <%= @static_page.main_body %>
+</p>
+
+<p>
+  <b>Menu label:</b>
+  <%= @static_page.menu_label %>
+</p>
+
+<p>
+  <b>Show in main menu:</b>
+  <%= @static_page.show_in_main_menu %>
+</p>
+
+<p>
+  <b>Main menu running order:</b>
+  <%= @static_page.main_menu_running_order %>
+</p>
+
+<p>
+  <b>Show in page footer:</b>
+  <%= @static_page.show_in_page_footer %>
+</p>
+
+<p>
+  <b>Footer running order:</b>
+  <%= @static_page.footer_running_order %>
+</p>
+
+<p>
+  <b>Window title:</b>
+  <%= @static_page.window_title %>
+</p>
+
+<p>
+  <b>Page description:</b>
+  <%= @static_page.page_description %>
+</p>
+
+<p>
+  <b>Search terms:</b>
+  <%= @static_page.search_terms %>
+</p>
+
+
+<%= link_to 'Edit', edit_static_page_path(@static_page) %> |
+<%= link_to 'Back', static_pages_path %>

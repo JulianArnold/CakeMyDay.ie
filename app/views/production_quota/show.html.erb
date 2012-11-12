@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start date:</b>
+  <%= @production_quotum.start_date %>
+</p>
+
+<p>
+  <b>Finish date:</b>
+  <%= @production_quotum.finish_date %>
+</p>
+
+<p>
+  <b>Maximum cakes allowed:</b>
+  <%= @production_quotum.maximum_cakes_allowed %>
+</p>
+
+
+<%= link_to 'Edit', edit_production_quotum_path(@production_quotum) %> |
+<%= link_to 'Back', production_quota_path %>

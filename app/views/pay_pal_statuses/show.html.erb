@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @pay_pal_status.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @pay_pal_status.description %>
+</p>
+
+<p>
+  <b>Pending authorisation:</b>
+  <%= @pay_pal_status.pending_authorisation %>
+</p>
+
+<p>
+  <b>Paid sale:</b>
+  <%= @pay_pal_status.paid_sale %>
+</p>
+
+<p>
+  <b>Charged back:</b>
+  <%= @pay_pal_status.charged_back %>
+</p>
+
+
+<%= link_to 'Edit', edit_pay_pal_status_path(@pay_pal_status) %> |
+<%= link_to 'Back', pay_pal_statuses_path %>

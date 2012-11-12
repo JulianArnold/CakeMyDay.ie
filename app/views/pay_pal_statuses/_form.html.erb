@@ -1,0 +1,37 @@
+<%= form_for(@pay_pal_status) do |f| %>
+  <% if @pay_pal_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pay_pal_status.errors.count, "error") %> prohibited this pay_pal_status from being saved:</h2>
+
+      <ul>
+      <% @pay_pal_status.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :pending_authorisation %><br />
+    <%= f.check_box :pending_authorisation %>
+  </div>
+  <div class="field">
+    <%= f.label :paid_sale %><br />
+    <%= f.check_box :paid_sale %>
+  </div>
+  <div class="field">
+    <%= f.label :charged_back %><br />
+    <%= f.check_box :charged_back %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

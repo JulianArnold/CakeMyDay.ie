@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  default_value_for_weekly_production_quota: 1
+  customer_service_email_address: MyString
+  customer_service_phone_number: MyString
+  aws_bucket_name: MyString
+  rbn_number: MyString
+
+two:
+  default_value_for_weekly_production_quota: 1
+  customer_service_email_address: MyString
+  customer_service_phone_number: MyString
+  aws_bucket_name: MyString
+  rbn_number: MyString

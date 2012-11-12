@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Production quota value:</b>
+  <%= @product.production_quota_value %>
+</p>
+
+<p>
+  <b>Product category:</b>
+  <%= @product.product_category_id %>
+</p>
+
+<p>
+  <b>Options list:</b>
+  <%= @product.options_list_id %>
+</p>
+
+<p>
+  <b>Pre configured product:</b>
+  <%= @product.pre_configured_product %>
+</p>
+
+<p>
+  <b>Special occasion:</b>
+  <%= @product.special_occasion_id %>
+</p>
+
+<p>
+  <b>Allow user to choose quantity:</b>
+  <%= @product.allow_user_to_choose_quantity %>
+</p>
+
+<p>
+  <b>Allow user to enter description:</b>
+  <%= @product.allow_user_to_enter_description %>
+</p>
+
+<p>
+  <b>Running order:</b>
+  <%= @product.running_order %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%= @product.created_by %>
+</p>
+
+<p>
+  <b>Updated by:</b>
+  <%= @product.updated_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

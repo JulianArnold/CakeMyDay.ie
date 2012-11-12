@@ -1,0 +1,35 @@
+<h1>Listing pay_pal_transactions</h1>
+
+<table>
+  <tr>
+    <th>Paypal transaction</th>
+    <th>Shopping cart</th>
+    <th>Result code</th>
+    <th>Currency code</th>
+    <th>Currency</th>
+    <th>Amount</th>
+    <th>Rest of the stuff serialised</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pay_pal_transactions.each do |pay_pal_transaction| %>
+  <tr>
+    <td><%= pay_pal_transaction.paypal_transaction_id %></td>
+    <td><%= pay_pal_transaction.shopping_cart_id %></td>
+    <td><%= pay_pal_transaction.result_code %></td>
+    <td><%= pay_pal_transaction.currency_code %></td>
+    <td><%= pay_pal_transaction.currency_id %></td>
+    <td><%= pay_pal_transaction.amount %></td>
+    <td><%= pay_pal_transaction.rest_of_the_stuff_serialised %></td>
+    <td><%= link_to 'Show', pay_pal_transaction %></td>
+    <td><%= link_to 'Edit', edit_pay_pal_transaction_path(pay_pal_transaction) %></td>
+    <td><%= link_to 'Destroy', pay_pal_transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pay pal transaction', new_pay_pal_transaction_path %>

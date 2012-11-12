@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start date:</b>
+  <%= @weekly_quotum.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @weekly_quotum.end_date %>
+</p>
+
+<p>
+  <b>Quota:</b>
+  <%= @weekly_quotum.quota %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%= @weekly_quotum.created_by %>
+</p>
+
+<p>
+  <b>Updated by:</b>
+  <%= @weekly_quotum.updated_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_weekly_quotum_path(@weekly_quotum) %> |
+<%= link_to 'Back', weekly_quota_path %>

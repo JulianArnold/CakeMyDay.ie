@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shopping_cart_id: 1
+  product_id: 1
+  quantity: 1
+  product_price_id: 1
+  product_options_list_choice: MyString
+  global_options_list_choice: MyString
+  user_description: MyString
+
+two:
+  shopping_cart_id: 1
+  product_id: 1
+  quantity: 1
+  product_price_id: 1
+  product_options_list_choice: MyString
+  global_options_list_choice: MyString
+  user_description: MyString

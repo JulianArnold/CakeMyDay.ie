@@ -1,0 +1,39 @@
+<h1>Listing shopping_carts</h1>
+
+<table>
+  <tr>
+    <th>Customer</th>
+    <th>Session</th>
+    <th>Cake required at</th>
+    <th>Weekly quota</th>
+    <th>Special occasion</th>
+    <th>Name to appear on cake</th>
+    <th>Shopping cart status</th>
+    <th>Paypal status</th>
+    <th>General description from customer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shopping_carts.each do |shopping_cart| %>
+  <tr>
+    <td><%= shopping_cart.customer_id %></td>
+    <td><%= shopping_cart.session_id %></td>
+    <td><%= shopping_cart.cake_required_at %></td>
+    <td><%= shopping_cart.weekly_quota_id %></td>
+    <td><%= shopping_cart.special_occasion %></td>
+    <td><%= shopping_cart.name_to_appear_on_cake %></td>
+    <td><%= shopping_cart.shopping_cart_status_id %></td>
+    <td><%= shopping_cart.paypal_status_id %></td>
+    <td><%= shopping_cart.general_description_from_customer %></td>
+    <td><%= link_to 'Show', shopping_cart %></td>
+    <td><%= link_to 'Edit', edit_shopping_cart_path(shopping_cart) %></td>
+    <td><%= link_to 'Destroy', shopping_cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shopping cart', new_shopping_cart_path %>

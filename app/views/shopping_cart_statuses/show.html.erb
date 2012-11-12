@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @shopping_cart_status.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @shopping_cart_status.description %>
+</p>
+
+<p>
+  <b>Active cart:</b>
+  <%= @shopping_cart_status.active_cart %>
+</p>
+
+<p>
+  <b>Paid cart:</b>
+  <%= @shopping_cart_status.paid_cart %>
+</p>
+
+<p>
+  <b>Chargeback cart:</b>
+  <%= @shopping_cart_status.chargeback_cart %>
+</p>
+
+<p>
+  <b>Production started:</b>
+  <%= @shopping_cart_status.production_started %>
+</p>
+
+<p>
+  <b>Production complete:</b>
+  <%= @shopping_cart_status.production_complete %>
+</p>
+
+
+<%= link_to 'Edit', edit_shopping_cart_status_path(@shopping_cart_status) %> |
+<%= link_to 'Back', shopping_cart_statuses_path %>

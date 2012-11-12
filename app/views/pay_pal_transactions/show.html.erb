@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Paypal transaction:</b>
+  <%= @pay_pal_transaction.paypal_transaction_id %>
+</p>
+
+<p>
+  <b>Shopping cart:</b>
+  <%= @pay_pal_transaction.shopping_cart_id %>
+</p>
+
+<p>
+  <b>Result code:</b>
+  <%= @pay_pal_transaction.result_code %>
+</p>
+
+<p>
+  <b>Currency code:</b>
+  <%= @pay_pal_transaction.currency_code %>
+</p>
+
+<p>
+  <b>Currency:</b>
+  <%= @pay_pal_transaction.currency_id %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @pay_pal_transaction.amount %>
+</p>
+
+<p>
+  <b>Rest of the stuff serialised:</b>
+  <%= @pay_pal_transaction.rest_of_the_stuff_serialised %>
+</p>
+
+
+<%= link_to 'Edit', edit_pay_pal_transaction_path(@pay_pal_transaction) %> |
+<%= link_to 'Back', pay_pal_transactions_path %>

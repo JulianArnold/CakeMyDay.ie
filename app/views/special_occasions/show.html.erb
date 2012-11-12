@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @special_occasion.name %>
+</p>
+
+<p>
+  <b>Running order:</b>
+  <%= @special_occasion.running_order %>
+</p>
+
+<p>
+  <b>Visible to customers:</b>
+  <%= @special_occasion.visible_to_customers %>
+</p>
+
+
+<%= link_to 'Edit', edit_special_occasion_path(@special_occasion) %> |
+<%= link_to 'Back', special_occasions_path %>

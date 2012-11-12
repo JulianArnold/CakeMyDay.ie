@@ -1,0 +1,41 @@
+<h1>Listing static_pages</h1>
+
+<table>
+  <tr>
+    <th>Main heading</th>
+    <th>Main body</th>
+    <th>Menu label</th>
+    <th>Show in main menu</th>
+    <th>Main menu running order</th>
+    <th>Show in page footer</th>
+    <th>Footer running order</th>
+    <th>Window title</th>
+    <th>Page description</th>
+    <th>Search terms</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @static_pages.each do |static_page| %>
+  <tr>
+    <td><%= static_page.main_heading %></td>
+    <td><%= static_page.main_body %></td>
+    <td><%= static_page.menu_label %></td>
+    <td><%= static_page.show_in_main_menu %></td>
+    <td><%= static_page.main_menu_running_order %></td>
+    <td><%= static_page.show_in_page_footer %></td>
+    <td><%= static_page.footer_running_order %></td>
+    <td><%= static_page.window_title %></td>
+    <td><%= static_page.page_description %></td>
+    <td><%= static_page.search_terms %></td>
+    <td><%= link_to 'Show', static_page %></td>
+    <td><%= link_to 'Edit', edit_static_page_path(static_page) %></td>
+    <td><%= link_to 'Destroy', static_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Static page', new_static_page_path %>

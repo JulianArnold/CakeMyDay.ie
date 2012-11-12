@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @options_list.name %>
+</p>
+
+<p>
+  <b>Visible label:</b>
+  <%= @options_list.visible_label %>
+</p>
+
+<p>
+  <b>Options:</b>
+  <%= @options_list.options %>
+</p>
+
+
+<%= link_to 'Edit', edit_options_list_path(@options_list) %> |
+<%= link_to 'Back', options_lists_path %>

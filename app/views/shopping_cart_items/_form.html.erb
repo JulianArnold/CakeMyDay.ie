@@ -1,0 +1,45 @@
+<%= form_for(@shopping_cart_item) do |f| %>
+  <% if @shopping_cart_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shopping_cart_item.errors.count, "error") %> prohibited this shopping_cart_item from being saved:</h2>
+
+      <ul>
+      <% @shopping_cart_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :shopping_cart_id %><br />
+    <%= f.number_field :shopping_cart_id %>
+  </div>
+  <div class="field">
+    <%= f.label :product_id %><br />
+    <%= f.number_field :product_id %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :product_price_id %><br />
+    <%= f.number_field :product_price_id %>
+  </div>
+  <div class="field">
+    <%= f.label :product_options_list_choice %><br />
+    <%= f.text_field :product_options_list_choice %>
+  </div>
+  <div class="field">
+    <%= f.label :global_options_list_choice %><br />
+    <%= f.text_field :global_options_list_choice %>
+  </div>
+  <div class="field">
+    <%= f.label :user_description %><br />
+    <%= f.text_field :user_description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

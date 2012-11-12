@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Product:</b>
+  <%= @product_price.product_id %>
+</p>
+
+<p>
+  <b>Start at:</b>
+  <%= @product_price.start_at %>
+</p>
+
+<p>
+  <b>Finish at:</b>
+  <%= @product_price.finish_at %>
+</p>
+
+<p>
+  <b>Currency:</b>
+  <%= @product_price.currency_id %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @product_price.price %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%= @product_price.created_by %>
+</p>
+
+<p>
+  <b>Updated by:</b>
+  <%= @product_price.updated_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_price_path(@product_price) %> |
+<%= link_to 'Back', product_prices_path %>
