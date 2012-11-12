@@ -8,7 +8,7 @@ one:
   special_occasion: MyString
   name_to_appear_on_cake: MyString
   shopping_cart_status_id: 1
-  paypal_status_id: 1
+  pay_pal_status_id: 1
   general_description_from_customer: MyText
 
 two:
@@ -19,5 +19,5 @@ two:
   special_occasion: MyString
   name_to_appear_on_cake: MyString
   shopping_cart_status_id: 1
-  paypal_status_id: 1
+  pay_pal_status_id: 1
   general_description_from_customer: MyText

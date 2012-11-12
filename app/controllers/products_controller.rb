@@ -1,7 +1,16 @@
+# Copyright © 2012, Daniel Martin Laffan.  All rights reserved.
 class ProductsController < ApplicationController
-  # GET /products
-  # GET /products.json
+
+  before_filter
+
+  def search
+    # Julian's code goes here
+    render :search_results
+  end
+
   def index
+    # GET /products
+    # GET /products.json
     @products = Product.all
 
     respond_to do |format|
@@ -10,9 +19,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/1
-  # GET /products/1.json
   def show
+    # GET /products/1
+    # GET /products/1.json
     @product = Product.find(params[:id])
 
     respond_to do |format|
@@ -21,9 +30,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/new
-  # GET /products/new.json
   def new
+    # GET /products/new
+    # GET /products/new.json
     @product = Product.new
 
     respond_to do |format|
@@ -32,14 +41,14 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/1/edit
   def edit
+    # GET /products/1/edit
     @product = Product.find(params[:id])
   end
 
-  # POST /products
-  # POST /products.json
   def create
+    # POST /products
+    # POST /products.json
     @product = Product.new(params[:product])
 
     respond_to do |format|
@@ -53,9 +62,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PUT /products/1
-  # PUT /products/1.json
   def update
+    # PUT /products/1
+    # PUT /products/1.json
     @product = Product.find(params[:id])
 
     respond_to do |format|
@@ -69,9 +78,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
+    # DELETE /products/1
+    # DELETE /products/1.json
     @product = Product.find(params[:id])
     @product.destroy
 
@@ -80,4 +89,5 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

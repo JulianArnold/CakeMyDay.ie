@@ -1,43 +1,27 @@
 CakeMyDaySite::Application.routes.draw do
-  resources :weekly_quota
-
-  resources :general_settings
-
-  resources :production_quota
-
-  resources :static_pages
-
-  resources :pay_pal_statuses
-
-  resources :shopping_cart_statuses
-
-  resources :shopping_cart_items
-
-  resources :shopping_carts
-
-  resources :pay_pal_transactions
-
-  resources :customers
-
-  resources :user_groups
-
-  resources :special_occasions
-
-  resources :images
-
-  resources :product_prices
-
-  resources :product_components
-
-  resources :product_images
-
-  resources :options_lists
-
-  resources :product_categories
 
   resources :currencies
-
+  resources :customers
+  resources :general_settings
+  resources :images
+  resources :options_lists
+  resources :pay_pal_statuses
+  resources :pay_pal_transactions
   resources :products
+  resources :product_categories
+  resources :product_components
+  resources :product_images
+  resources :product_prices
+  resources :production_quota
+  resources :shopping_carts
+  resources :shopping_cart_items
+  resources :shopping_cart_statuses
+  resources :special_occasions
+  resources :static_pages
+  resources :user_groups
+  resources :weekly_quota
+
+  get "products/search"  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
