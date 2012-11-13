@@ -1,7 +1,8 @@
 # Copyright © 2012, Julian Arnold and Daniel Martin Laffan.  All rights reserved.
 class PayPalStatusesController < ApplicationController
 
-  before_filter
+  before_filter :logged_in_required
+  before_filter :manager_required
   
   def index
     # GET /pay_pal_statuses

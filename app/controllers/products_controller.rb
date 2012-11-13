@@ -1,7 +1,9 @@
 # Copyright © 2012, Julian Arnold and Daniel Martin Laffan.  All rights reserved.
 class ProductsController < ApplicationController
 
-  before_filter
+  before_filter :logged_in_required, :except => [:index, :show]
+  before_filter :manager_required, :except => [:index, :show]
+  before_filter :admin_required, :only => :destroy
 
   def search
     # Julian's code goes here

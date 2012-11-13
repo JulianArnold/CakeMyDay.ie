@@ -1,7 +1,8 @@
 # Copyright © 2012, Julian Arnold and Daniel Martin Laffan.  All rights reserved.
 class ShoppingCartStatusesController < ApplicationController
 
-  before_filter
+  before_filter :logged_in_required
+  before_filter :manager_required
   
   def index
     # GET /shopping_cart_statuses

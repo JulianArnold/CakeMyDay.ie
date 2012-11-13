@@ -1,8 +1,9 @@
 # Copyright © 2012, Julian Arnold and Daniel Martin Laffan.  All rights reserved.
 class UserGroupsController < ApplicationController
 
-  before_filter
-  
+  before_filter :logged_in_required
+  before_filter :manager_required
+  before_filter :admin_required, :except => [:index, :show]
   def index
     # GET /user_groups
     # GET /user_groups.json
