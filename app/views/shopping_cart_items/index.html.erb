@@ -1,35 +1,30 @@
-<h1>Listing shopping_cart_items</h1>
-
+<h1>Shopping Cart Items</h1>
 <table>
   <tr>
-    <th>Shopping cart</th>
-    <th>Product</th>
-    <th>Quantity</th>
-    <th>Product price</th>
-    <th>Product options list choice</th>
-    <th>Global options list choice</th>
-    <th>User description</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="width: 100px;">Shopping cart</th>
+    <th style="width: 100px;">Product</th>
+    <th style="width: 100px;">Quantity</th>
+    <th style="width: 100px;">Product price</th>
+    <th style="width: 100px;">Product options list choice</th>
+    <th style="width: 100px;">Global options list choice</th>
+    <th style="width: 100px;">User description</th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
   </tr>
+  <% @shopping_cart_items.each do |shopping_cart_item| %>
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+      <td><%= shopping_cart_item.shopping_cart_id %></td>
+      <td><%= shopping_cart_item.product.name %></td>
+      <td><%= shopping_cart_item.quantity %></td>
+      <td><%= shopping_cart_item.product_price_id %></td>
+      <td><%= shopping_cart_item.product_options_list_choice %></td>
+      <td><%= shopping_cart_item.global_options_list_choice %></td>
+      <td><%= shopping_cart_item.user_description %></td>
+      <td><%= link_to 'Show', shopping_cart_item %></td>
+      <td><%= link_to 'Edit', edit_shopping_cart_item_path(shopping_cart_item) %></td>
+    </td>
+  <% end %>
+</table><br/>
 
-<% @shopping_cart_items.each do |shopping_cart_item| %>
-  <tr>
-    <td><%= shopping_cart_item.shopping_cart_id %></td>
-    <td><%= shopping_cart_item.product_id %></td>
-    <td><%= shopping_cart_item.quantity %></td>
-    <td><%= shopping_cart_item.product_price_id %></td>
-    <td><%= shopping_cart_item.product_options_list_choice %></td>
-    <td><%= shopping_cart_item.global_options_list_choice %></td>
-    <td><%= shopping_cart_item.user_description %></td>
-    <td><%= link_to 'Show', shopping_cart_item %></td>
-    <td><%= link_to 'Edit', edit_shopping_cart_item_path(shopping_cart_item) %></td>
-    <td><%= link_to 'Destroy', shopping_cart_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Shopping cart item', new_shopping_cart_item_path %>
+<p>Shopping Cart Items can only be added through the online store</p>

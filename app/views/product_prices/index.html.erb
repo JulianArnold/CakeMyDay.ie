@@ -1,35 +1,32 @@
-<h1>Listing product_prices</h1>
-
+<h1>Product Prices</h1>
 <table>
   <tr>
-    <th>Product</th>
-    <th>Start at</th>
-    <th>Finish at</th>
-    <th>Currency</th>
-    <th>Price</th>
-    <th>Created by</th>
-    <th>Updated by</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="width: 100px;">Product</th>
+    <th style="width: 100px;">Start at</th>
+    <th style="width: 100px;">Finish at</th>
+    <th style="width: 100px;">Currency</th>
+    <th style="width: 100px;">Price</th>
+    <th style="width: 100px;">Created by</th>
+    <th style="width: 100px;">Updated by</th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
   </tr>
-
-<% @product_prices.each do |product_price| %>
-  <tr>
-    <td><%= product_price.product_id %></td>
-    <td><%= product_price.start_at %></td>
-    <td><%= product_price.finish_at %></td>
-    <td><%= product_price.currency_id %></td>
-    <td><%= product_price.price %></td>
-    <td><%= product_price.created_by %></td>
-    <td><%= product_price.updated_by %></td>
-    <td><%= link_to 'Show', product_price %></td>
-    <td><%= link_to 'Edit', edit_product_price_path(product_price) %></td>
-    <td><%= link_to 'Destroy', product_price, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Product price', new_product_price_path %>
+  <% @product_prices.each do |product_price| %>
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+      <td><%= product_price.product_id %></td>
+      <td><%= product_price.start_at %></td>
+      <td><%= product_price.finish_at %></td>
+      <td><%= product_price.currency_id %></td>
+      <td><%= product_price.price %></td>
+      <td><%= product_price.created_by %></td>
+      <td><%= product_price.updated_by %></td>
+      <td><%= link_to 'Show', product_price %></td>
+      <td><%= link_to 'Edit', edit_product_price_path(product_price) %></td>
+      <% if product_price.shopping_cart_items.count == 0 %>
+      <%= render :partial => '/layouts/delete_button', :locals => {:label => "Product Price", :item => product_price} -%>
+      <% end %>
+    </td>
+  <% end %>
+</table><br/>
+<%= link_to 'New', new_product_price_path %>

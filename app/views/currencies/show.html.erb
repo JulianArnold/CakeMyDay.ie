@@ -1,30 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Iso code:</b>
-  <%= @currency.iso_code %>
-</p>
-
-<p>
-  <b>Currency symbol:</b>
-  <%= @currency.currency_symbol %>
-</p>
-
-<p>
-  <b>Full name:</b>
-  <%= @currency.full_name %>
-</p>
-
-<p>
-  <b>Running order:</b>
-  <%= @currency.running_order %>
-</p>
-
-<p>
-  <b>Active:</b>
-  <%= @currency.active %>
-</p>
-
-
-<%= link_to 'Edit', edit_currency_path(@currency) %> |
-<%= link_to 'Back', currencies_path %>
+<h1>Currency #<%= params[:id] %></h1>
+<table>
+  <tr><td>Iso code:</td><td><%= @currency.iso_code %></td></tr>
+  <tr><td>Currency symbol:</td><td><%= @currency.currency_symbol %></td></tr>
+  <tr><td>Full name:</td><td><%= @currency.full_name %></td></tr>
+  <tr><td>Running order:</td><td><%= @currency.running_order %></td></tr>
+  <tr><td>Active:</td><td><%= @currency.active %></td></tr>
+</table><br/>
+<%= link_to 'Back', currencies_path %> | <%= link_to 'Edit', edit_currency_path(@currency) %>

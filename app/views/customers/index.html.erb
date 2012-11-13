@@ -1,27 +1,22 @@
-<h1>Listing customers</h1>
-
+<h1>Customers</h1>
 <table>
   <tr>
-    <th>User</th>
-    <th>Postal address</th>
-    <th>Contact phone number</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="width: 100px;">User</th>
+    <th style="width: 100px;">Postal address</th>
+    <th style="width: 100px;">Contact phone number</th>
+    <th style="width: 100px;"></th>
+    <th style="width: 100px;"></th>
+    <th style="width: 100px;"></th>
   </tr>
-
-<% @customers.each do |customer| %>
-  <tr>
-    <td><%= customer.user_id %></td>
-    <td><%= customer.postal_address %></td>
-    <td><%= customer.contact_phone_number %></td>
-    <td><%= link_to 'Show', customer %></td>
-    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-    <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Customer', new_customer_path %>
+  <% @customers.each do |customer| %>
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+      <td><%= customer.user.login %></td>
+      <td><%= customer.postal_address %></td>
+      <td><%= customer.contact_phone_number %></td>
+      <td><%= link_to 'Show', customer %></td>
+      <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+      <%= render :partial => '/layouts/delete_button', :locals => {:label => "customer", :item => customer} -%>
+    </td>
+  <% end %>
+</table><br/>
+<%= link_to 'New', new_customer_path %>
