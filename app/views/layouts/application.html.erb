@@ -13,40 +13,52 @@
     <div id="page-header">
       <div id="logo-area">
         <h1>Welcome to <%= link_to "Cake My Day", root_url %></h1>
-        <%= link_to "Products", products_url %>
       </div>
       <div id="search-box">
         <!-- search box goes here -->
       </div>
       <div id="user-access">
-        <!-- login/logout goes here -->
+        <% if current_user %>
+          Hi <%= link_to((h(current_user.first_name)).titleize, user_url(:id => current_user.id), :title => "click to view your profile") %> | <%= link_to("Log out", logout_url) %>
+        <% else %>
+          <%= link_to("sign in", sign_in_url)%> | <%= link_to("sign up", sign_up_url) %>
+        <% end %>
       </div>
     </div>
-    <div id="admin-menu">
-      ADMIN MENU:
-      <%= link_to "Currencies", currencies_url %> |
-      <%= link_to "Customers", customers_url %> |
-      <%= link_to "General Settings", general_settings_url %> |
-      <%= link_to "Images", images_url %> |
-      <%= link_to "Options Lists", options_lists_url %> |
-      <%= link_to "PayPal Statuses", pay_pal_statuses_url %> |
-      <%= link_to "PayPal Transactions", pay_pal_transactions_url %> |
-      <%= link_to "Product Categories", product_categories_url %> |
-      <%= link_to "Product Components", product_components_url %> |
-      <%= link_to "Product Images", product_images_url %> |
-      <%= link_to "Product Prices", product_prices_url %> |
-      <%= link_to "Production Quotas", production_quota_url %> |
-      <%= link_to "Products", products_url %> |
-      <%= link_to "Shopping Cart Items", shopping_cart_items_url %> |
-      <%= link_to "Shopping Cart Statuses", shopping_cart_statuses_url %> |
-      <%= link_to "Shopping Carts", shopping_carts_url %> |
-      <%= link_to "Special Occasions", special_occasions_url %> |
-      <%= link_to "Static Web Pages", static_pages_url %> |
-      <%= link_to "User Groups", user_groups_url %> |
-      <%= link_to "Users" %> |
-      <%= link_to "Weekly Quotas", weekly_quota_url %>
+    <div id="site-nav">
+      <%= link_to "Products", products_url %>
     </div>
-  <%= yield %>
+    <% if current_user and current_user.admin? %>
+      <div id="admin-menu">
+        ADMIN MENU:
+        <%= link_to "Currencies", currencies_url %> |
+        <%= link_to "Customers", customers_url %> |
+        <%= link_to "General Settings", general_settings_url %> |
+        <%= link_to "Images", images_url %> |
+        <%= link_to "Options Lists", options_lists_url %> |
+        <%= link_to "PayPal Statuses", pay_pal_statuses_url %> |
+        <%= link_to "PayPal Transactions", pay_pal_transactions_url %> |
+        <%= link_to "Product Categories", product_categories_url %> |
+        <%= link_to "Product Components", product_components_url %> |
+        <%= link_to "Product Images", product_images_url %> |
+        <%= link_to "Product Prices", product_prices_url %> |
+        <%= link_to "Production Quotas", production_quota_url %> |
+        <%= link_to "Products", products_url %> |
+        <%= link_to "Shopping Cart Items", shopping_cart_items_url %> |
+        <%= link_to "Shopping Cart Statuses", shopping_cart_statuses_url %> |
+        <%= link_to "Shopping Carts", shopping_carts_url %> |
+        <%= link_to "Special Occasions", special_occasions_url %> |
+        <%= link_to "Static Web Pages", static_pages_url %> |
+        <%= link_to "User Groups", user_groups_url %> |
+        <%= link_to "Users", users_url %> |
+        <%= link_to "Weekly Quotas", weekly_quota_url %>
+      </div>
+    <% end %>
+    <% if flash[:notice] and flash[:notice].size > 0 %>
+    <p id="notice"><%= flash[:notice] %></p>
+    <% end %>
+    
+    <%= yield %>
 
   </body>
 </html>

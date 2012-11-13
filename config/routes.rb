@@ -1,5 +1,17 @@
 CakeMyDaySite::Application.routes.draw do
 
+  match 'login' => "user_sessions#new",      :as => :login
+  match 'log_in' => "user_sessions#new",     :as => :log_in
+  match 'signin' => "user_sessions#new",     :as => :signin
+  match 'sign_in' => "user_sessions#new",    :as => :sign_in
+  match 'logout' => "user_sessions#destroy", :as => :logout
+  #get "user_sessions#new"
+  
+  resource :user, :as => 'account'  # a convenience route
+  match 'signup' => 'users#new',             :as => :signup
+  match 'sign_up' => 'users#new',            :as => :sign_up
+  match 'register' => 'users#new',           :as => :register
+
   resources :currencies
   resources :customers
   resources :general_settings
@@ -18,7 +30,9 @@ CakeMyDaySite::Application.routes.draw do
   resources :shopping_cart_statuses
   resources :special_occasions
   resources :static_pages
+  resources :users
   resources :user_groups
+  resources :user_sessions
   resources :weekly_quota
 
   get "products/search"  
