@@ -1,50 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Customer:</b>
-  <%= @shopping_cart.customer_id %>
-</p>
-
-<p>
-  <b>Session:</b>
-  <%= @shopping_cart.session_id %>
-</p>
-
-<p>
-  <b>Cake required at:</b>
-  <%= @shopping_cart.cake_required_at %>
-</p>
-
-<p>
-  <b>Weekly quota:</b>
-  <%= @shopping_cart.weekly_quota_id %>
-</p>
-
-<p>
-  <b>Special occasion:</b>
-  <%= @shopping_cart.special_occasion %>
-</p>
-
-<p>
-  <b>Name to appear on cake:</b>
-  <%= @shopping_cart.name_to_appear_on_cake %>
-</p>
-
-<p>
-  <b>Shopping cart status:</b>
-  <%= @shopping_cart.shopping_cart_status_id %>
-</p>
-
-<p>
-  <b>Paypal status:</b>
-  <%= @shopping_cart.pay_pal_status_id %>
-</p>
-
-<p>
-  <b>General description from customer:</b>
-  <%= @shopping_cart.general_description_from_customer %>
-</p>
-
-
-<%= link_to 'Edit', edit_shopping_cart_path(@shopping_cart) %> |
-<%= link_to 'Back', shopping_carts_path %>
+<h1>Shopping Cart #<%= params[:id] %></h1>
+<table>
+  <tr><td>Customer:</td><td><%= @shopping_cart.customer_id %></td></tr>
+  <tr><td>Session:</td><td><%= @shopping_cart.session_id %></td></tr>
+  <tr><td>Cake required at:</td><td><%= @shopping_cart.cake_required_at %></td></tr>
+  <tr><td>Weekly quota:</td><td><%= @shopping_cart.weekly_quota_id %></td></tr>
+  <tr><td>Special occasion:</td><td><%= @shopping_cart.special_occasion %></td></tr>
+  <tr><td>Name to appear on cake:</td><td><%= @shopping_cart.name_to_appear_on_cake %></td></tr>
+  <tr><td>Shopping cart status:</td><td><%= @shopping_cart.shopping_cart_status.name %></td></tr>
+  <tr><td>Paypal status:</td><td><%= @shopping_cart.pay_pal_status_id %></td></tr>
+  <tr><td>General description from customer:</td><td><%= @shopping_cart.general_description_from_customer %></td></tr>
+</table><br/>
+<%= link_to 'Back', shopping_carts_path %> | <%= link_to 'Edit', edit_shopping_cart_path(@shopping_cart) %>

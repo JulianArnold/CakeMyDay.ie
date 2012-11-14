@@ -1,0 +1,18 @@
+<h1>User #<%= params[:id] %></h1>
+<table>
+  <tr><td>Email:</td><td><%= @user.login %></td></tr>
+  <tr><td>First name:</td><td><%= @user.first_name %></td></tr>
+  <tr><td>Last name:</td><td><%= @user.last_name %></td></tr>
+  <% if current_user.admin? %>
+  <tr><td>Login count:</td><td><%= @user.login_count %></td></tr>
+  <tr><td>Failed login count:</td><td><%= @user.failed_login_count %></td></tr>
+  <tr><td>Last request at:</td><td><%= @user.last_request_at %></td></tr>
+  <tr><td>Current login at:</td><td><%= @user.current_login_at %></td></tr>
+  <tr><td>Last login at:</td><td><%= @user.last_login_at %></td></tr>
+  <tr><td>Current login IP:</td><td><%= @user.current_login_ip %></td></tr>
+  <tr><td>Last login IP:</td><td><%= @user.last_login_ip %></td></tr>
+  <tr><td>Active:</td><td><%= @user.active %></td></tr>
+  <tr><td>User group:</td><td><%= @user.user_group.name %></td></tr>
+  <% end %>
+</table><br/>
+<%= link_to 'Back', users_path %> | <%= link_to 'Edit', edit_user_path(@user) %>

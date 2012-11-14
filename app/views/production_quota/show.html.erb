@@ -1,20 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Start date:</b>
-  <%= @production_quotum.start_date %>
-</p>
-
-<p>
-  <b>Finish date:</b>
-  <%= @production_quotum.finish_date %>
-</p>
-
-<p>
-  <b>Maximum cakes allowed:</b>
-  <%= @production_quotum.maximum_cakes_allowed %>
-</p>
-
-
-<%= link_to 'Edit', edit_production_quotum_path(@production_quotum) %> |
-<%= link_to 'Back', production_quota_path %>
+<h1>Production Quota #<%= params[:id] %></h1>
+<table>
+  <tr><td>Start date:</td><td><%= @production_quotum.start_date %></td></tr>
+  <tr><td>Finish date:</td><td><%= @production_quotum.finish_date %></td></tr>
+  <tr><td>Maximum cakes allowed:</td><td><%= @production_quotum.maximum_cakes_allowed %></td></tr>
+</table><br/>
+<%= link_to 'Back', production_quota_path %> | <%= link_to 'Edit', edit_production_quotum_path(@production_quotum) %>

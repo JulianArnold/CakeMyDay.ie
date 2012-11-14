@@ -1,35 +1,30 @@
-<h1>Listing images</h1>
-
+<h1>Images</h1>
 <table>
   <tr>
-    <th>File name</th>
-    <th>Bucket name</th>
-    <th>Content type</th>
-    <th>File size</th>
-    <th>Finished product</th>
-    <th>Base product</th>
-    <th>Uploaded by</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="width: 100px;">File name</th>
+    <th style="width: 100px;">Bucket name</th>
+    <th style="width: 100px;">Content type</th>
+    <th style="width: 100px;">File size</th>
+    <th style="width: 100px;">Finished product</th>
+    <th style="width: 100px;">Base product</th>
+    <th style="width: 100px;">Uploaded by</th>
+    <th style="width: 100px;"></th>
+    <th style="width: 100px;"></th>
+    <th style="width: 100px;"></th>
   </tr>
-
-<% @images.each do |image| %>
-  <tr>
-    <td><%= image.file_name %></td>
-    <td><%= image.bucket_name %></td>
-    <td><%= image.content_type %></td>
-    <td><%= image.file_size %></td>
-    <td><%= image.finished_product %></td>
-    <td><%= image.base_product %></td>
-    <td><%= image.uploaded_by %></td>
-    <td><%= link_to 'Show', image %></td>
-    <td><%= link_to 'Edit', edit_image_path(image) %></td>
-    <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Image', new_image_path %>
+  <% @images.each do |image| %>
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+      <td><%= image.file_name %></td>
+      <td><%= image.bucket_name %></td>
+      <td><%= image.content_type %></td>
+      <td><%= image.file_size %></td>
+      <td><%= image.finished_product %></td>
+      <td><%= image.base_product %></td>
+      <td><%= image.uploaded_by %></td>
+      <td><%= link_to 'Show', image %></td>
+      <td><%= link_to 'Edit', edit_image_path(image) %></td>
+      <%= render :partial => '/layouts/delete_button', :locals => {:label => "image", :item => image} -%>
+    </td>
+  <% end %>
+</table><br/>
+<%= link_to 'New', new_image_path %>

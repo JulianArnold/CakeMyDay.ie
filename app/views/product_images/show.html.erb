@@ -1,20 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Product:</b>
-  <%= @product_image.product_id %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <%= @product_image.image_id %>
-</p>
-
-<p>
-  <b>Running order:</b>
-  <%= @product_image.running_order %>
-</p>
-
-
-<%= link_to 'Edit', edit_product_image_path(@product_image) %> |
-<%= link_to 'Back', product_images_path %>
+<h1>Product Image #<%= params[:id] %></h1>
+<table>
+  <tr><td>Product:</td><td><%= @product_image.product_id %></td></tr>
+  <tr><td>Image:</td><td><%= @product_image.image_id %></td></tr>
+  <tr><td>Running order:</td><td><%= @product_image.running_order %></td></tr>
+</table><br/>
+<%= link_to 'Back', product_images_path %> | <%= link_to 'Edit', edit_product_image_path(@product_image) %>

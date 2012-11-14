@@ -1,20 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>User:</b>
-  <%= @customer.user_id %>
-</p>
-
-<p>
-  <b>Postal address:</b>
-  <%= @customer.postal_address %>
-</p>
-
-<p>
-  <b>Contact phone number:</b>
-  <%= @customer.contact_phone_number %>
-</p>
-
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<h1>Customer #<%= params[:id] %></h1>
+<table>
+  <tr><td>User:</td><td><%= @customer.user.login %></td></tr>
+  <tr><td>Postal address:</td><td><%= @customer.postal_address %></td></tr>
+  <tr><td>Contact phone number:</td><td><%= @customer.contact_phone_number %></td></tr>
+</table><br/>
+<%= link_to 'Back', currencies_path %> | <%= link_to 'Edit', edit_customer_path(@customer) %>

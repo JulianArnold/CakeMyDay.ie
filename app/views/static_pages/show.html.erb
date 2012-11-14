@@ -1,55 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Main heading:</b>
-  <%= @static_page.main_heading %>
-</p>
-
-<p>
-  <b>Main body:</b>
-  <%= @static_page.main_body %>
-</p>
-
-<p>
-  <b>Menu label:</b>
-  <%= @static_page.menu_label %>
-</p>
-
-<p>
-  <b>Show in main menu:</b>
-  <%= @static_page.show_in_main_menu %>
-</p>
-
-<p>
-  <b>Main menu running order:</b>
-  <%= @static_page.main_menu_running_order %>
-</p>
-
-<p>
-  <b>Show in page footer:</b>
-  <%= @static_page.show_in_page_footer %>
-</p>
-
-<p>
-  <b>Footer running order:</b>
-  <%= @static_page.footer_running_order %>
-</p>
-
-<p>
-  <b>Window title:</b>
-  <%= @static_page.window_title %>
-</p>
-
-<p>
-  <b>Page description:</b>
-  <%= @static_page.page_description %>
-</p>
-
-<p>
-  <b>Search terms:</b>
-  <%= @static_page.search_terms %>
-</p>
-
-
-<%= link_to 'Edit', edit_static_page_path(@static_page) %> |
-<%= link_to 'Back', static_pages_path %>
+<h1>Static Page #<%= params[:id] %></h1>
+<table>
+  <tr><td>Main heading:</td><td><%= @static_page.main_heading %></td></tr>
+  <tr><td>Main body:</td><td><%= @static_page.main_body %></td></tr>
+  <tr><td>Menu label:</td><td><%= @static_page.menu_label %></td></tr>
+  <tr><td>Show in main menu:</td><td><%= @static_page.show_in_main_menu %></td></tr>
+  <tr><td>Main menu running order:</td><td><%= @static_page.main_menu_running_order %></td></tr>
+  <tr><td>Show in page footer:</td><td><%= @static_page.show_in_page_footer %></td></tr>
+  <tr><td>Footer running order:</td><td><%= @static_page.footer_running_order %></td></tr>
+  <tr><td>Window title:</td><td><%= @static_page.window_title %></td></tr>
+  <tr><td>Page description:</td><td><%= @static_page.page_description %></td></tr>
+  <tr><td>Search terms:</td><td><%= @static_page.search_terms %></td></tr>
+</table><br/>
+<%= link_to 'Back', static_pages_path %> | <%= link_to 'Edit', edit_static_page_path(@static_page) %> |

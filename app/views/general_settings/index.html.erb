@@ -1,31 +1,26 @@
-<h1>Listing general_settings</h1>
-
+<h1>General Settings</h1>
 <table>
   <tr>
-    <th>Default value for weekly production quota</th>
-    <th>Customer service email address</th>
-    <th>Customer service phone number</th>
-    <th>Aws bucket name</th>
-    <th>Rbn number</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="width: 100px;">Default value for weekly production quota</th>
+    <th style="width: 100px;">Customer service email address</th>
+    <th style="width: 100px;">Customer service phone number</th>
+    <th style="width: 100px;">AWS bucket name</th>
+    <th style="width: 100px;">RBN #</th>
+    <th style="width: 100px;"></th>
+    <th style="width: 100px;"></th>
+    <th style="width: 100px;"></th>
   </tr>
+  <% @general_settings.each do |general_setting| %>
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+      <td><%= general_setting.default_value_for_weekly_production_quota %></td>
+      <td><%= general_setting.customer_service_email_address %></td>
+      <td><%= general_setting.customer_service_phone_number %></td>
+      <td><%= general_setting.aws_bucket_name %></td>
+      <td><%= general_setting.rbn_number %></td>
+      <td><%= link_to 'Show', general_setting %></td>
+      <td><%= link_to 'Edit', edit_general_setting_path(general_setting) %></td>
+    </td>
+  <% end %>
+</table><br/>
 
-<% @general_settings.each do |general_setting| %>
-  <tr>
-    <td><%= general_setting.default_value_for_weekly_production_quota %></td>
-    <td><%= general_setting.customer_service_email_address %></td>
-    <td><%= general_setting.customer_service_phone_number %></td>
-    <td><%= general_setting.aws_bucket_name %></td>
-    <td><%= general_setting.rbn_number %></td>
-    <td><%= link_to 'Show', general_setting %></td>
-    <td><%= link_to 'Edit', edit_general_setting_path(general_setting) %></td>
-    <td><%= link_to 'Destroy', general_setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New General setting', new_general_setting_path %>
+<p>Only one record is permitted in this screen</p>

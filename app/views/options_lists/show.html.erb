@@ -1,20 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @options_list.name %>
-</p>
-
-<p>
-  <b>Visible label:</b>
-  <%= @options_list.visible_label %>
-</p>
-
-<p>
-  <b>Options:</b>
-  <%= @options_list.options %>
-</p>
-
-
-<%= link_to 'Edit', edit_options_list_path(@options_list) %> |
-<%= link_to 'Back', options_lists_path %>
+<h1>Options List #<%= params[:id] %></h1>
+<table>
+  <tr><td>Name:</td><td><%= @options_list.name %></td></tr>
+  <tr><td>Visible label:</td><td><%= @options_list.visible_label %></td></tr>
+  <tr><td>Options:</td><td><%= @options_list.options %></td></tr>
+  <tr><td colspan=2><h2>Products</h2></td></tr>
+  <tr><td>&nbsp;</td><td>
+    <% @options_list.products.each do |p| -%>
+      <%= link_to(p.name, product_url(:id => p.id), :title => "click to view product") %><br/>
+    <% end %>
+    </td>
+  </td>
+</table><br/>
+<%= link_to 'Back', options_lists_path %> | <%= link_to 'Edit', edit_options_list_path(@options_list) %>

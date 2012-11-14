@@ -1,35 +1,34 @@
-<h1>Listing shopping_cart_statuses</h1>
-
+<h1>Shopping Cart Statuses</h1>
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Active cart</th>
-    <th>Paid cart</th>
-    <th>Chargeback cart</th>
-    <th>Production started</th>
-    <th>Production complete</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="width: 100px;">Name</th>
+    <th style="width: 100px;">Description</th>
+    <th style="width: 100px;">Active cart</th>
+    <th style="width: 100px;">Paid cart</th>
+    <th style="width: 100px;">Chargeback cart</th>
+    <th style="width: 100px;">Production started</th>
+    <th style="width: 100px;">Production complete</th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
   </tr>
-
-<% @shopping_cart_statuses.each do |shopping_cart_status| %>
-  <tr>
-    <td><%= shopping_cart_status.name %></td>
-    <td><%= shopping_cart_status.description %></td>
-    <td><%= shopping_cart_status.active_cart %></td>
-    <td><%= shopping_cart_status.paid_cart %></td>
-    <td><%= shopping_cart_status.chargeback_cart %></td>
-    <td><%= shopping_cart_status.production_started %></td>
-    <td><%= shopping_cart_status.production_complete %></td>
-    <td><%= link_to 'Show', shopping_cart_status %></td>
-    <td><%= link_to 'Edit', edit_shopping_cart_status_path(shopping_cart_status) %></td>
-    <td><%= link_to 'Destroy', shopping_cart_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Shopping cart status', new_shopping_cart_status_path %>
+  <% @shopping_cart_statuses.each do |shopping_cart_status| %>
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+      <td><%= shopping_cart_status.name %></td>
+      <td><%= shopping_cart_status.description %></td>
+      <td><%= shopping_cart_status.active_cart %></td>
+      <td><%= shopping_cart_status.paid_cart %></td>
+      <td><%= shopping_cart_status.chargeback_cart %></td>
+      <td><%= shopping_cart_status.production_started %></td>
+      <td><%= shopping_cart_status.production_complete %></td>
+      <td><%= link_to 'Show', shopping_cart_status %></td>
+      <td><%= link_to 'Edit', edit_shopping_cart_status_path(shopping_cart_status) %></td>
+      <% if shopping_cart_status.shopping_carts.count == 0 %>
+      <%= render :partial => '/layouts/delete_button', :locals => {:label => "Shopping Cart Status", :item => shopping_cart_status} -%>
+      <% else %>
+      <td><%= shopping_cart_status.shopping_carts.count %> carts</td>
+      <% end %>
+    </td>
+  <% end %>
+</table><br/>
+<%= link_to 'New', new_shopping_cart_status_path %>

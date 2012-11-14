@@ -1,25 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @user_group.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @user_group.description %>
-</p>
-
-<p>
-  <b>Is a manager:</b>
-  <%= @user_group.is_a_manager %>
-</p>
-
-<p>
-  <b>Is an admin:</b>
-  <%= @user_group.is_an_admin %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_group_path(@user_group) %> |
-<%= link_to 'Back', user_groups_path %>
+<h1>User Group #<%= params[:id] %></h1>
+<table>
+  <tr><td>Name:</td><td><%= @user_group.name %></td></tr>
+  <tr><td>Description:</td><td><%= @user_group.description %></td></tr>
+  <tr><td>Is a manager:</td><td><%= @user_group.is_a_manager %></td></tr>
+  <tr><td>Is an admin:</td><td><%= @user_group.is_an_admin %></td></tr>
+  <tr><td colspan=2><h2>Users</h2></td></tr>
+  <tr><td>&nbsp;</td><td>
+    <% @user_group.users.each do |u| %>
+      <%= link_to(u.login, user_url(:id => u.id), :title => "click to view user") %><br/>
+    <% end %>
+    </td>
+  </tr>
+</table><br/>
+<%= link_to 'Back', user_groups_path %> | <%= link_to 'Edit', edit_user_group_path(@user_group) %> |

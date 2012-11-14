@@ -1,30 +1,10 @@
+<h1>Product Category #<%= params[:id] %></h1>
+<table>
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @product_category.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @product_category.description %>
-</p>
-
-<p>
-  <b>One choice only:</b>
-  <%= @product_category.one_choice_only %>
-</p>
-
-<p>
-  <b>Running order:</b>
-  <%= @product_category.running_order %>
-</p>
-
-<p>
-  <b>Options list:</b>
-  <%= @product_category.options_list_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_product_category_path(@product_category) %> |
-<%= link_to 'Back', product_categories_path %>
+  <tr><td>Name:</td><td><%= @product_category.name %></td></tr>
+  <tr><td>Description:</td><td><%= @product_category.description %></td></tr>
+  <tr><td>One choice only:</td><td><%= @product_category.one_choice_only %></td></tr>
+  <tr><td>Running order:</td><td><%= @product_category.running_order %></td></tr>
+  <tr><td>Options list:</td><td><%= @product_category.options_list_id %></td></tr>
+</table><br/>
+<%= link_to 'Back', product_categories_path %> | <%= link_to 'Edit', edit_product_category_path(@product_category) %>

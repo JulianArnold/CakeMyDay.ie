@@ -1,0 +1,34 @@
+<h1>Users</h1>
+<table>
+  <tr>
+    <th style="width: 100px;">Login</th>
+    <th style="width: 100px;">Name</th>
+    <th style="width: 100px;">Login count</th>
+    <th style="width: 100px;">Failed login count</th>
+    <th style="width: 100px;">Active</th>
+    <th style="width: 100px;">User group</th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
+  </tr>
+  <% tracker = 0 %>
+  <% @users.each do |user| %>
+    <% if tracker != user.user_group_id %>
+    <tr><td colspan=6><h2><%= user.user_group.name %></h2></td></tr><% tracker = user.user_group_id %>
+    <% end %>
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+      <td><%= user.login %></td>
+      <td><%= user.full_name %></td>
+      <td><%= user.login_count %></td>
+      <td><%= user.failed_login_count %></td>
+      <td><%= user.active %></td>
+      <td><%= user.user_group_id %></td>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <% if user.customer == nil %>
+      <%= render :partial => '/layouts/delete_button', :locals => {:label => "user", :item => user} -%>
+      <% end %>
+    </td>
+  <% end %>
+</table><br/>
+<p>Create customers with the sign-up screen.</p>

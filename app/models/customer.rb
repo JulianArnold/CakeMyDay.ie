@@ -4,7 +4,7 @@ class Customer < ActiveRecord::Base
   validates_presence_of :user_id
   validates_uniqueness_of :postal_address
   
-  # has_one :user
   has_many :shopping_carts
+  belongs_to :user
   
 end

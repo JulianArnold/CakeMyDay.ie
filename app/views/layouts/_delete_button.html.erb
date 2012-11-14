@@ -1,0 +1,8 @@
+<td style="width: 20px;border: White 0px solid;vertical-align:top;background-color: inherit;">
+   <%= link_to image_tag("x.png", 
+              :size => "19x18", 
+              :title => "click to delete this #{label}",
+              :alt => "delete button" ), item, 
+              :confirm => "Are you sure you want to delete #{label} ##{h(item.id.to_s)}?", 
+              :method => :delete -%>
+</td>

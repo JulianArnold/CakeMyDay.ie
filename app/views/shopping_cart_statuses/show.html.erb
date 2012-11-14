@@ -1,40 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @shopping_cart_status.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @shopping_cart_status.description %>
-</p>
-
-<p>
-  <b>Active cart:</b>
-  <%= @shopping_cart_status.active_cart %>
-</p>
-
-<p>
-  <b>Paid cart:</b>
-  <%= @shopping_cart_status.paid_cart %>
-</p>
-
-<p>
-  <b>Chargeback cart:</b>
-  <%= @shopping_cart_status.chargeback_cart %>
-</p>
-
-<p>
-  <b>Production started:</b>
-  <%= @shopping_cart_status.production_started %>
-</p>
-
-<p>
-  <b>Production complete:</b>
-  <%= @shopping_cart_status.production_complete %>
-</p>
-
-
-<%= link_to 'Edit', edit_shopping_cart_status_path(@shopping_cart_status) %> |
-<%= link_to 'Back', shopping_cart_statuses_path %>
+<h1>Shopping Cart Status #<%= params[:id] %></h1>
+<table>
+  <tr><td>Name:</td><td><%= @shopping_cart_status.name %></td></tr>
+  <tr><td>Description:</td><td><%= @shopping_cart_status.description %></td></tr>
+  <tr><td>Active cart:</td><td><%= @shopping_cart_status.active_cart %></td></tr>
+  <tr><td>Paid cart:</td><td><%= @shopping_cart_status.paid_cart %></td></tr>
+  <tr><td>Chargeback cart:</td><td><%= @shopping_cart_status.chargeback_cart %></td></tr>
+  <tr><td>Production started:</td><td><%= @shopping_cart_status.production_started %></td></tr>
+  <tr><td>Production complete:</td><td><%= @shopping_cart_status.production_complete %></td></tr>
+</table><br/>
+<%= link_to 'Back', shopping_cart_statuses_path %> | <%= link_to 'Edit', edit_shopping_cart_status_path(@shopping_cart_status) %>

@@ -1,3 +1,15 @@
+body {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 5px;
+  background-color: #dcc;
+  color: #333;
+  font-family: arial, sans-serif;
+}
+
+#admin-menu {
+  background-color: #f99;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

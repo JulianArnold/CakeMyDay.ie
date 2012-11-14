@@ -1,31 +1,30 @@
-<h1>Listing pay_pal_statuses</h1>
-
+<h1>PayPal Statuses</h1>
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Pending authorisation</th>
-    <th>Paid sale</th>
-    <th>Charged back</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="width: 100px;">Name</th>
+    <th style="width: 100px;">Description</th>
+    <th style="width: 100px;">Pending authorisation</th>
+    <th style="width: 100px;">Paid sale</th>
+    <th style="width: 100px;">Charged back</th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
   </tr>
-
-<% @pay_pal_statuses.each do |pay_pal_status| %>
-  <tr>
-    <td><%= pay_pal_status.name %></td>
-    <td><%= pay_pal_status.description %></td>
-    <td><%= pay_pal_status.pending_authorisation %></td>
-    <td><%= pay_pal_status.paid_sale %></td>
-    <td><%= pay_pal_status.charged_back %></td>
-    <td><%= link_to 'Show', pay_pal_status %></td>
-    <td><%= link_to 'Edit', edit_pay_pal_status_path(pay_pal_status) %></td>
-    <td><%= link_to 'Destroy', pay_pal_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Pay pal status', new_pay_pal_status_path %>
+  <% @pay_pal_statuses.each do |pay_pal_status| %>
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+      <td><%= pay_pal_status.name %></td>
+      <td><%= pay_pal_status.description %></td>
+      <td><%= pay_pal_status.pending_authorisation %></td>
+      <td><%= pay_pal_status.paid_sale %></td>
+      <td><%= pay_pal_status.charged_back %></td>
+      <td><%= link_to 'Show', pay_pal_status %></td>
+      <td><%= link_to 'Edit', edit_pay_pal_status_path(pay_pal_status) %></td>
+      <% if pay_pal_status.pay_pal_transactions.count == 0 %>
+      <%= render :partial => '/layouts/delete_button', :locals => {:label => "PayPal status", :item => pay_pal_status} -%>
+      <% else %>
+      <td><%= pay_pal_statuses.pay_pal_trasactions.count %> items</td>
+      <% end %>
+    </td>
+  <% end %>
+</table><br/>
+<%= link_to 'New', new_pay_pal_status_path %>
