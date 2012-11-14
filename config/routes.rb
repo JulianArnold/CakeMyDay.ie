@@ -1,5 +1,7 @@
 CakeMyDaySite::Application.routes.draw do
 
+  get "welcome/home"
+
   resources :currencies
   resources :customers
   resources :general_settings

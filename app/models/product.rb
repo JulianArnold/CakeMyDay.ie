@@ -1,5 +1,15 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :description, :allow_user_to_choose_quantity, :allow_user_to_enter_description, :options_list_id, :pre_configured_product, :product_category_id, :production_quota_value, :running_order, :special_occasion_id, :created_by, :updated_by
+	  attr_accessible :name, :description, :allow_user_to_choose_quantity, :allow_user_to_enter_description, :options_list_id, :pre_configured_product, :product_category_id, :production_quota_value, :running_order, :special_occasion_id, :created_by, :updated_by
+	
+	def self.search(search_query)
+		if search_query
+			find(:all, :conditions => ['name LIKE ?', "%#{search_query} %"])
+		else
+			find (:all)
+		end 
+	end
+	
+	
 
   belongs_to  :options_list
   belongs_to  :product_category

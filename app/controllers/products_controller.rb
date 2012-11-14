@@ -4,14 +4,14 @@ class ProductsController < ApplicationController
   before_filter
 
   def search
-    # Julian's code goes here
+    # Julian's code goes here?  Not line 14..?
     render :search_results
   end
 
   def index
     # GET /products
     # GET /products.json
-    @products = Product.all
+    @products = Product.search(params[:search_query])
 
     respond_to do |format|
       format.html # index.html.erb
