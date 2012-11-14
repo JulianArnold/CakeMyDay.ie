@@ -15,7 +15,12 @@
         <h1>Welcome to <%= link_to "Cake My Day", root_url %></h1>
       </div>
       <div id="search-box">
-        <!-- search box goes here -->
+        <%= form_tag products_path, :method => 'get' do %>
+        	<p>
+        		<%= text_field_tag :search_query, params[:search_query] %>
+        		<%= submit_tag "Search", :name => nil %>
+        	</p>
+        <% end %>
       </div>
       <div id="user-access">
         <% if current_user %>

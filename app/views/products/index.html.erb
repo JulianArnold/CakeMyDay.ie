@@ -15,39 +15,6 @@
     <th style="width:  40px;"></th>
     <th style="width:  40px;"></th>
   </tr>
-<<<<<<< HEAD
-
-<% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= product.description %></td>
-    <td><%= product.production_quota_value %></td>
-    <td><%= product.product_category_id %></td>
-    <td><%= product.options_list_id %></td>
-    <td><%= product.pre_configured_product %></td>
-    <td><%= product.special_occasion_id %></td>
-    <td><%= product.allow_user_to_choose_quantity %></td>
-    <td><%= product.allow_user_to_enter_description %></td>
-    <td><%= product.running_order %></td>
-    <td><%= product.created_by %></td>
-    <td><%= product.updated_by %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<%= form_tag products_path, :method => 'get' do %>
-	<p>
-		<%= text_field_tag :search_query, params[:search_query] %>
-		<%= submit_tag "Search", :name => nil %>
-	</p>
-<% end %>
-
-<br />
-
-=======
   <% @products.each do |product| %>
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
       <td><%= product.name %></td>
@@ -68,5 +35,5 @@
     </td>
   <% end %>
 </table><br/>
->>>>>>> 09add8e8b206173fa5c576e3ef3ea1e426b92a3b
+
 <%= link_to 'New Product', new_product_path %>

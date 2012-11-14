@@ -1,8 +1,5 @@
 CakeMyDaySite::Application.routes.draw do
 
-<<<<<<< HEAD
-  get "welcome/home"
-=======
   match 'login' => "user_sessions#new",      :as => :login
   match 'log_in' => "user_sessions#new",     :as => :log_in
   match 'signin' => "user_sessions#new",     :as => :signin
@@ -14,7 +11,6 @@ CakeMyDaySite::Application.routes.draw do
   match 'signup' => 'users#new',             :as => :signup
   match 'sign_up' => 'users#new',            :as => :sign_up
   match 'register' => 'users#new',           :as => :register
->>>>>>> 09add8e8b206173fa5c576e3ef3ea1e426b92a3b
 
   resources :currencies
   resources :customers

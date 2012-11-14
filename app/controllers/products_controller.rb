@@ -6,14 +6,14 @@ class ProductsController < ApplicationController
   before_filter :admin_required, :only => :destroy
 
   def search
-    # Julian's code goes here?  Not line 14..?
+    @products = Product.search(params[:search_query])
     render :search_results
   end
 
   def index
     # GET /products
     # GET /products.json
-    @products = Product.search(params[:search_query])
+    @products = Product.all
 
     respond_to do |format|
       format.html # index.html.erb
