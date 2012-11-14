@@ -24,6 +24,51 @@ u.save
 
 u = User.new
 u.first_name = "Julian"
-u.last_name "Arnold", login: "julian.arnold@hotmail.com", password: "123123", password_confirmation: "123123", user_group_id: UserGroup.find_by_name("Sys Admins").id, active: true)
-User.create(first_name: "Bob", last_name: "Testcustomerssen", login: "bob@example.com", password: "123123", password_confirmation: "123123", user_group_id: UserGroup.find_by_name("Customers").id, active: true)
-User.create(first_name: "Geraldine", last_name: "Arnold", login: "ger.arnold@gmail.com", password: "123123", password_confirmation: "123123", user_group_id: UserGroup.find_by_name("Managers").id, active: true)
+u.last_name = "Arnold"
+u.login = "julian.arnold@hotmail.com"
+u.password = "123123"
+u.password_confirmation = "123123"
+u.user_group_id = UserGroup.find_by_name("Sys Admins").id
+u.active = true
+u.save
+
+u = User.new
+u.first_name = "Bob"
+u.last_name = "Testcustomerssen"
+u.login = "bob@example.com"
+u.password = "123123"
+u.password_confirmation = "123123"
+u.user_group_id = UserGroup.find_by_name("Customers").id
+u.active = true
+u.save
+
+u = User.new
+u.first_name = "Geraldine"
+u.last_name = "Arnold"
+u.login = "ger.arnold@gmail.com"
+u.password = "123123"
+u.password_confirmation = "123123"
+u.user_group_id = UserGroup.find_by_name("Managers").id
+u.active = true
+u.save
+
+Currency.destroy_all
+c = Currency.new
+c.iso_code = "EUR"
+c.full_name = "Euro"
+c.active = true
+c.currency_symbol = "&euro;"
+c.running_order = 100
+c.save
+
+GeneralSetting.destroy_all
+g = GeneralSetting.new
+g.aws_bucket_name = "cakemyday_ie"
+g.customer_service_email_address = "info@cakemyday.ie"
+g.customer_service_phone_number = "+353(86)837 2795"
+g.default_value_for_weekly_production_quota = 5
+g.rbn_number = "406682"
+g.default_currency_id = Currency.find_by_iso_code("EUR").id
+g.save
+
+# That's it!

@@ -6,9 +6,9 @@
     <th style="width: 100px;">Customer service phone number</th>
     <th style="width: 100px;">AWS bucket name</th>
     <th style="width: 100px;">RBN #</th>
-    <th style="width: 100px;"></th>
-    <th style="width: 100px;"></th>
-    <th style="width: 100px;"></th>
+    <th style="width: 100px;">Default CCY</th>
+    <th style="width:  40px;"></th>
+    <th style="width:  40px;"></th>
   </tr>
   <% @general_settings.each do |general_setting| %>
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
@@ -17,6 +17,7 @@
       <td><%= general_setting.customer_service_phone_number %></td>
       <td><%= general_setting.aws_bucket_name %></td>
       <td><%= general_setting.rbn_number %></td>
+      <td><%= general_setting.currency.iso_code %></td>
       <td><%= link_to 'Show', general_setting %></td>
       <td><%= link_to 'Edit', edit_general_setting_path(general_setting) %></td>
     </td>

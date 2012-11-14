@@ -13,13 +13,12 @@
   <% @currencies.each do |currency| %>
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
       <td><%= currency.iso_code %></td>
-      <td><%= currency.currency_symbol %></td>
+      <td><%= sanitize currency.currency_symbol %></td>
       <td><%= currency.full_name %></td>
       <td><%= currency.running_order %></td>
       <td><%= currency.active %></td>
       <td><%= link_to 'Show', currency %></td>
       <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
-      <td><%= link_to 'Destroy', currency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "currency", :item => currency} -%>
     </td>
   <% end %>
