@@ -1,5 +1,6 @@
 CakeMyDaySite::Application.routes.draw do
 
+  # special routes for user authentication
   match 'login' => "user_sessions#new",      :as => :login
   match 'log_in' => "user_sessions#new",     :as => :log_in
   match 'signin' => "user_sessions#new",     :as => :signin
