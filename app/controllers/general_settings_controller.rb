@@ -69,7 +69,7 @@ class GeneralSettingsController < ApplicationController
     # PUT /general_settings/1
     # PUT /general_settings/1.json
     @general_setting = GeneralSetting.find(params[:id])
-
+    
     respond_to do |format|
       if @general_setting.update_attributes(params[:general_setting])
         format.html { redirect_to @general_setting, notice: 'General setting was successfully updated.' }

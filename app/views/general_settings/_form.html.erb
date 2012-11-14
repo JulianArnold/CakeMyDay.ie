@@ -24,12 +24,16 @@
     <%= f.text_field :customer_service_phone_number %>
   </div>
   <div class="field">
-    <%= f.label :aws_bucket_name %><br />
-    <%= f.text_field :aws_bucket_name %>
+    AWS bucket name (can't be edited)<br />
+    <%= @general_setting.aws_bucket_name %>
   </div>
   <div class="field">
     <%= f.label :rbn_number %><br />
     <%= f.text_field :rbn_number %>
+  </div>
+  <div class="field">
+    Default Currency (Can't be changed)<br />
+    <%= @general_setting.currency.iso_code %>
   </div>
   <div class="actions">
     <%= f.submit %>

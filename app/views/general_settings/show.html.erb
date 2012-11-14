@@ -5,5 +5,6 @@
   <tr><td>Customer service phone number:</td><td><%= @general_setting.customer_service_phone_number %></td></tr>
   <tr><td>AWS bucket name:</td><td><%= @general_setting.aws_bucket_name %></td></tr>
   <tr><td>RBN number:</td><td><%= @general_setting.rbn_number %></td></tr>
+  <tr><td>Default currency:</td><td><%= @general_setting.currency.iso_code %></td></tr>
 </table><br/>
 <%= link_to 'Back', general_settings_path %> | <%= link_to 'Edit', edit_general_setting_path(@general_setting) %>
