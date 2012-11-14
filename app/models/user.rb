@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :current_login_at, :current_login_ip, :failed_login_count, :first_name, :last_login_at, :last_login_ip, :last_name, :last_request_at, :login, :login_count
-  attr_accessible :password, :user_group_id, :active, :password_confirmation
+  #attr_accessible :password, :user_group_id, :active, :password_confirmation
  
   acts_as_authentic do |c|
     if Rails.env.production?

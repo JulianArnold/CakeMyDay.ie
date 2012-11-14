@@ -8,8 +8,6 @@ class Product < ActiveRecord::Base
 			find (:all)
 		end 
 	end
-	
-	
 
   belongs_to  :options_list
   belongs_to  :product_category

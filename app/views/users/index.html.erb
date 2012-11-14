@@ -3,10 +3,9 @@
   <tr>
     <th style="width: 100px;">Login</th>
     <th style="width: 100px;">Name</th>
-    <th style="width: 100px;">Login count</th>
-    <th style="width: 100px;">Failed login count</th>
+    <th style="width: 100px;">Logins</th>
+    <th style="width: 100px;">Failed<br/>logins</th>
     <th style="width: 100px;">Active</th>
-    <th style="width: 100px;">User group</th>
     <th style="width:  40px;"></th>
     <th style="width:  40px;"></th>
     <th style="width:  40px;"></th>
@@ -22,7 +21,6 @@
       <td><%= user.login_count %></td>
       <td><%= user.failed_login_count %></td>
       <td><%= user.active %></td>
-      <td><%= user.user_group_id %></td>
       <td><%= link_to 'Show', user %></td>
       <td><%= link_to 'Edit', edit_user_path(user) %></td>
       <% if user.customer == nil %>

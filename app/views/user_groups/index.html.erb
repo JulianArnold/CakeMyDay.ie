@@ -17,7 +17,7 @@
       <td><%= user_group.is_an_admin %></td>
       <td><%= link_to 'Show', user_group %></td>
       <td><%= link_to 'Edit', edit_user_group_path(user_group) %></td>
-      <% user_group.users.count == 0 %>
+      <% if user_group.users.count == 0 %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "User Group", :item => user_group} -%>
       <% else %>
       <td><%= user_group.users.count %> users</td>

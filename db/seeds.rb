@@ -12,7 +12,18 @@ UserGroup.create(name: "Managers", description: "Managers can do almost anything
 UserGroup.create(name: "Sys Admins", description: "Can do anything.", is_a_manager: true, is_an_admin: true)
 
 User.destroy_all
-User.create(first_name: "Dan", last_name: "Laffan", login: "dan.laffan@mac.com", password: "123123", password_confirmation: "123123", user_group_id: UserGroup.find_by_name("Sys Admins").id, active: true)
-User.create(first_name: "Julian", last_name: "Arnold", login: "julian.arnold@hotmail.com", password: "123123", password_confirmation: "123123", user_group_id: UserGroup.find_by_name("Sys Admins").id, active: true)
+u = User.new
+u.first_name = "Dan"
+u.last_name = "Laffan"
+u.login = "dan.laffan@mac.com"
+u.password = "123123"
+u.password_confirmation = "123123"
+u.user_group_id = UserGroup.find_by_name("Sys Admins").id
+u.active = true
+u.save
+
+u = User.new
+u.first_name = "Julian"
+u.last_name "Arnold", login: "julian.arnold@hotmail.com", password: "123123", password_confirmation: "123123", user_group_id: UserGroup.find_by_name("Sys Admins").id, active: true)
 User.create(first_name: "Bob", last_name: "Testcustomerssen", login: "bob@example.com", password: "123123", password_confirmation: "123123", user_group_id: UserGroup.find_by_name("Customers").id, active: true)
 User.create(first_name: "Geraldine", last_name: "Arnold", login: "ger.arnold@gmail.com", password: "123123", password_confirmation: "123123", user_group_id: UserGroup.find_by_name("Managers").id, active: true)
