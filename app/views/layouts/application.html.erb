@@ -26,7 +26,7 @@
         <% if current_user %>
           Hi <%= link_to((h(current_user.first_name)).titleize, user_url(:id => current_user.id), :title => "click to view your profile") %> | <%= link_to("Log out", logout_url) %>
         <% else %>
-          <%= link_to("sign in", sign_in_url)%> | <%= link_to("sign up", sign_up_url) %>
+          <%= link_to("sign in", sign_in_url) %>
         <% end %>
       </div>
     </div>
