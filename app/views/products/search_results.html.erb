@@ -1,4 +1,10 @@
 <h1>Search Results</h1>
-<p>Julian's search results HTML + embedded Ruby goes here.</p>
-
+<% if @products.count > 0 %>
+  <p>We found <%= @products.count %> items for you:</p>
+  <% @products.each do |p| %>
+    <p><%= p.name %></p>
+  <% end %>
+<% else %>
+  <p>Sorry, we couldn't find anything matching '<%= params[:search_query]%>'.</p>
+<% end %>
 <%= link_to "Return to home page", root_url %>

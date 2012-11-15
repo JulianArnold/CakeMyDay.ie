@@ -1,17 +1,17 @@
 CakeMyDaySite::Application.routes.draw do
 
   # special routes for user authentication
-  match 'login' => "user_sessions#new",      :as => :login
-  match 'log_in' => "user_sessions#new",     :as => :log_in
-  match 'signin' => "user_sessions#new",     :as => :signin
-  match 'sign_in' => "user_sessions#new",    :as => :sign_in
-  match 'logout' => "user_sessions#destroy", :as => :logout
-  #get "user_sessions#new"
-  
-  resource :user, :as => 'account'  # a convenience route
-  match 'signup' => 'users#new',             :as => :signup
-  match 'sign_up' => 'users#new',            :as => :sign_up
-  match 'register' => 'users#new',           :as => :register
+  match 'login'    => "user_sessions#new",     :as => :login
+  match 'log_in'   => "user_sessions#new",     :as => :log_in
+  match 'signin'   => "user_sessions#new",     :as => :signin
+  match 'sign_in'  => "user_sessions#new",     :as => :sign_in
+  match 'logout'   => "user_sessions#destroy", :as => :logout
+  match 'account'  => 'users#show',            :as => :account
+  match 'signup'   => 'users#new',             :as => :signup
+  match 'sign_up'  => 'users#new',             :as => :sign_up
+  match 'register' => 'users#new',             :as => :register
+
+  match 'search'   => 'products#search',       :as => :search, :method => :post
 
   resources :currencies
   resources :customers
@@ -20,7 +20,11 @@ CakeMyDaySite::Application.routes.draw do
   resources :options_lists
   resources :pay_pal_statuses
   resources :pay_pal_transactions
-  resources :products
+  resources :products #do
+#    member do
+#      get 'search'
+#    end
+#  end
   resources :product_categories
   resources :product_components
   resources :product_images
@@ -35,8 +39,6 @@ CakeMyDaySite::Application.routes.draw do
   resources :user_groups
   resources :user_sessions
   resources :weekly_quota
-
-  get "products/search"  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
