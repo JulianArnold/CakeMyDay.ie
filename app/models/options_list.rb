@@ -6,6 +6,5 @@ class OptionsList < ActiveRecord::Base
 
   validates_presence_of :name, :options, :visible_label
   validates_uniqueness_of :name
-  validates_uniqueness_of :visible_name
 
 end

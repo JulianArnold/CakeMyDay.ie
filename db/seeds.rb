@@ -5,70 +5,203 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+if Rails.env.development?
+  
+  UserGroup.destroy_all
+  UserGroup.create(name: "Customers", description: "Used for normal customers.", is_a_manager: false, is_an_admin: false)
+  UserGroup.create(name: "Managers", description: "Managers can do almost anything.", is_a_manager: true, is_an_admin: false)
+  UserGroup.create(name: "Sys Admins", description: "Can do anything.", is_a_manager: true, is_an_admin: true)
 
-UserGroup.destroy_all
-UserGroup.create(name: "Customers", description: "Used for normal customers.", is_a_manager: false, is_an_admin: false)
-UserGroup.create(name: "Managers", description: "Managers can do almost anything.", is_a_manager: true, is_an_admin: false)
-UserGroup.create(name: "Sys Admins", description: "Can do anything.", is_a_manager: true, is_an_admin: true)
+  User.destroy_all
+  u = User.new
+  u.first_name = "Dan"
+  u.last_name = "Laffan"
+  u.login = "dan.laffan@mac.com"
+  u.password = "123123"
+  u.password_confirmation = "123123"
+  u.user_group_id = UserGroup.find_by_name("Sys Admins").id
+  u.active = true
+  u.save
 
-User.destroy_all
-u = User.new
-u.first_name = "Dan"
-u.last_name = "Laffan"
-u.login = "dan.laffan@mac.com"
-u.password = "123123"
-u.password_confirmation = "123123"
-u.user_group_id = UserGroup.find_by_name("Sys Admins").id
-u.active = true
-u.save
+  u = User.new
+  u.first_name = "Julian"
+  u.last_name = "Arnold"
+  u.login = "julian.arnold@hotmail.com"
+  u.password = "123123"
+  u.password_confirmation = "123123"
+  u.user_group_id = UserGroup.find_by_name("Sys Admins").id
+  u.active = true
+  u.save
 
-u = User.new
-u.first_name = "Julian"
-u.last_name = "Arnold"
-u.login = "julian.arnold@hotmail.com"
-u.password = "123123"
-u.password_confirmation = "123123"
-u.user_group_id = UserGroup.find_by_name("Sys Admins").id
-u.active = true
-u.save
+  u = User.new
+  u.first_name = "Bob"
+  u.last_name = "Testcustomerssen"
+  u.login = "bob@example.com"
+  u.password = "123123"
+  u.password_confirmation = "123123"
+  u.user_group_id = UserGroup.find_by_name("Customers").id
+  u.active = true
+  u.save
 
-u = User.new
-u.first_name = "Bob"
-u.last_name = "Testcustomerssen"
-u.login = "bob@example.com"
-u.password = "123123"
-u.password_confirmation = "123123"
-u.user_group_id = UserGroup.find_by_name("Customers").id
-u.active = true
-u.save
+  u = User.new
+  u.first_name = "Geraldine"
+  u.last_name = "Arnold"
+  u.login = "ger.arnold@gmail.com"
+  u.password = "123123"
+  u.password_confirmation = "123123"
+  u.user_group_id = UserGroup.find_by_name("Managers").id
+  u.active = true
+  u.save
 
-u = User.new
-u.first_name = "Geraldine"
-u.last_name = "Arnold"
-u.login = "ger.arnold@gmail.com"
-u.password = "123123"
-u.password_confirmation = "123123"
-u.user_group_id = UserGroup.find_by_name("Managers").id
-u.active = true
-u.save
+  Currency.destroy_all
+  c = Currency.new
+  c.iso_code = "EUR"
+  c.full_name = "Euro"
+  c.active = true
+  c.currency_symbol = "&euro;"
+  c.running_order = 100
+  c.save
 
-Currency.destroy_all
-c = Currency.new
-c.iso_code = "EUR"
-c.full_name = "Euro"
-c.active = true
-c.currency_symbol = "&euro;"
-c.running_order = 100
-c.save
+  GeneralSetting.destroy_all
+  g = GeneralSetting.new
+  g.aws_bucket_name = "cakemyday_ie"
+  g.customer_service_email_address = "info@cakemyday.ie"
+  g.customer_service_phone_number = "+353(86)837 2795"
+  g.default_value_for_weekly_production_quota = 5
+  g.rbn_number = "406682"
+  g.default_currency_id = Currency.find_by_iso_code("EUR").id
+  g.save
 
-GeneralSetting.destroy_all
-g = GeneralSetting.new
-g.aws_bucket_name = "cakemyday_ie"
-g.customer_service_email_address = "info@cakemyday.ie"
-g.customer_service_phone_number = "+353(86)837 2795"
-g.default_value_for_weekly_production_quota = 5
-g.rbn_number = "406682"
-g.default_currency_id = Currency.find_by_iso_code("EUR").id
-g.save
 
-# That's it!
+  SpecialOccasion.destroy_all
+  SpecialOccasion.create({name: "Weddings", running_order: 100, visible_to_customers: true})
+
+
+  OptionsList.destroy_all
+  OptionsList.create(:name => 'sponge base flavours', :options => 'Vanilla, Lemon, Chocolate, Coffee, White chocolate and lime, Red velvet', :visible_label => 'Choose a flavour')
+  OptionsList.create(:name => 'filling choices', :options => 'Vanilla buttercream, Orange buttercream, Lemon buttercream, Chocolate buttercream, Chocolate ganache, Italian meringue buttercream', :visible_label => 'Choose a flavour')
+  OptionsList.create(:name => 'flower types', :options => 'Rose, Carnation, Daisy, Gerbera', :visible_label => 'Choose a type of flower')
+  OptionsList.create(:name => 'shaped cake cores', :options => 'Chocolate biscuit cake, Sponge - vanilla, Sponge - lemon, Sponge - chocolate, Sponge - coffee, Sponge - white chocolate and lime, Sponge - red velvet', :visible_label => 'Choose the cake type')
+  
+
+  ProductCategory.destroy_all
+  ProductCategory.create({name: "The Cake Shape", description: "Choose the basic size and shape of your cake", one_choice_only: true, running_order: 100})
+  ProductCategory.create({name: "The Cake Filling", one_choice_only: true, 
+          description: "Choose your favourite filling from one of the choices below", running_order: 200, 
+          options_list_id: nil})
+  ProductCategory.create({name: "The Covering", one_choice_only: true, 
+          description: "Choose the colour of the covering for your cake.", running_order: 300, 
+          options_list_id: OptionsList.find(:first, :conditions => [""])})
+  ProductCategory.create({name: "Side Decorations", 
+          description: "Choose how you would like the side of your cake to be decorated from the following:", 
+          one_choice_only: true, running_order: 400})
+  ProductCategory.create({name: "Over The Top", one_choice_only: false, 
+          description: "Time to go wild! Choose how you want the top of your cake to look.  Add people, animals, firniture, cars, musical instruments, whatever you can think of!", running_order: 500})
+
+  Product.destroy_all
+  Product.create(:name => 'Square 4" high, 8" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 100, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 9" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 10" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 300, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 12" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 400, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 8" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 500, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 9" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 600, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 10" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 700, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 12" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 800, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 8" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 900, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 9" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1000, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 10" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1100, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 12" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 8" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1300, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 9" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1400, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 10" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1500, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 12" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1600, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 8" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1700, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 9" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1800, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 10" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 1900, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 12" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2000, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 8" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2100, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 9" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 10" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2300, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 12" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2400, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 8" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2500, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 9" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2600, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 10" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2700, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 4" high, 12" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2800, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 8" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 2900, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 9" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3000, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 10" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3100, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 4" high, 12" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 8" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3300, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 9" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3400, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 10" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3500, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 12" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3600, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 8" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3700, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 9" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3800, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 10" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 3900, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 12" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4000, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 8" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4100, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 9" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 10" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4300, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 12" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4400, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 8" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4500, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 9" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4600, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 10" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4700, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 12" diameter, chocolate biscuit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4800, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 8" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 4900, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 9" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5000, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 10" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5100, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 12" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 8" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5300, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 9" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5400, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 10" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5500, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 12" diameter, sponge cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("sponge base flavours").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5600, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 8" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5700, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 9" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5800, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 10" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 5900, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Square 6" high, 12" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6000, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 8" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6100, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 9" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 10" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6300, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Circular 6" high, 12" diameter, carrot cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6400, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Guitar 18"x10" (large)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6500, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Guitar 12"x6" (small)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6600, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Bass Guitar 18"x10" (large)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6700, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Bass Guitar 12"x6" (small)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6800, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Drum 12" (large)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 6900, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Drum 12" (small)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 7000, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '1960s VW Beetle 10" length', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 7100, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'BMW Mini Cooper 10" length', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 7200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Lamborghini car 10" length', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 7300, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Aston Martin DB5 (Bond car) 10" length', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 7400, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Truck or bus 10" length', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :pre_configured_product => true, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 7500, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 1', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7600, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 2', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7700, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 3', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7800, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 4', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7900, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 5', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 8000, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 6', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 8100, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 7', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8200, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 8', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8300, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 9', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8400, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 10', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8500, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Wedding cake 11', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8600, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => 'Filling', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("filling choices").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Filling").id, :production_quota_value => 0, :running_order => 8700, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Covering - please choose a colour', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Covering").id, :production_quota_value => 0, :running_order => 8800, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Edible ribbon & bow - please choose a colour', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 8900, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '2D flowers - please choose a colour', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9000, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '3D flowers - 2" (each) - please choose a type', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("flower types").id, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9100, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '2D computer-printed edible image (cake sides)', :description => 'A computer-printed edible image for the entire circumference of the cake.  You can supply the image.', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '3D edible character / figure - 4" tall', :description => 'Please use the text box to describe the character you require.', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9300, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '3d inedible character / figure - 4" tall', :description => 'Please use the text box to describe your requirements.', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9400, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '3D person 4" tall - simple version', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 9500, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '3D person 4" tall - detailed version', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 9600, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '3D vehicle 4" long', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 9700, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '3D vehicle 8" long', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 9800, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '3D animal 4" tall', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 9900, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '3D animal 6" tall', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10000, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Bride & Groom topper', :description => 'Highly representative depiction of the happy couple on their special day.  Typical height 6\".', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 1, :running_order => 10100, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  Product.create(:name => '3D object - to your requirements', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '2D computer-printed image (cake top surface)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10300, :special_occasion_id => nil, :created_by => User.first.id)
+
+  # That's it!
+end

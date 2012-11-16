@@ -31,7 +31,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :name, :description, :product_category_id, :production_quota_value, :running_order, :created_by
   validates_uniqueness_of :name
   validates_numericality_of :product_category_id
-  validates_numericality_of :options_list_id
+  validates_numericality_of :options_list_id, :allow_nil => true
   validates_numericality_of :production_quota_value
   validates_numericality_of :running_order
   validates_numericality_of :special_occasion_id, :allow_nil => true

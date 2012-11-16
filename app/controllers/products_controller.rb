@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   def index
     # GET /products
     # GET /products.json
-    @products = Product.all
+    @products = Product.all(:include => :product_category, :order => "product_categories.running_order, products.running_order")
 
     respond_to do |format|
       format.html # index.html.erb
