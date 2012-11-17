@@ -17,3 +17,5 @@
 # stuff added by Dan
 /.idea
 /db/schema.rb
+.idea
+.idea/*
