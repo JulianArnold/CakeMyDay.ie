@@ -3,7 +3,7 @@
 <p id="notice"><%= notice %></p>
   <tr><td>Name:</td><td><%= @product_category.name %></td></tr>
   <tr><td>Description:</td><td><%= @product_category.description %></td></tr>
-  <tr><td>One choice only:</td><td><%= @product_category.one_choice_only %></td></tr>
+  <tr><td>One choice only:</td><td><%= sanitize tick_or_cross @product_category.one_choice_only %></td></tr>
   <tr><td>Running order:</td><td><%= @product_category.running_order %></td></tr>
   <tr><td>Options list:</td><td><%= @product_category.options_list_id %></td></tr>
 </table><br/>

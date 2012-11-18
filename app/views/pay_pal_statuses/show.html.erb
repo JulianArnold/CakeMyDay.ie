@@ -3,8 +3,8 @@
 <p id="notice"><%= notice %></p>
   <tr><td>Name:</td><td><%= @pay_pal_status.name %></td></tr>
   <tr><td>Description:</td><td><%= @pay_pal_status.description %></td></tr>
-  <tr><td>Pending authorisation:</td><td><%= @pay_pal_status.pending_authorisation %></td></tr>
-  <tr><td>Paid sale:</td><td><%= @pay_pal_status.paid_sale %></td></tr>
-  <tr><td>Charged back:</td><td><%= @pay_pal_status.charged_back %></td></tr>
+  <tr><td>Pending authorisation:</td><td><%= sanitize tick_or_cross @pay_pal_status.pending_authorisation %></td></tr>
+  <tr><td>Paid sale:</td><td><%= sanitize tick_or_cross @pay_pal_status.paid_sale %></td></tr>
+  <tr><td>Charged back:</td><td><%= sanitize tick_or_cross @pay_pal_status.charged_back %></td></tr>
 </table><br/>
 <%= link_to 'Back', pay_pal_statuses_path %> | <%= link_to 'Edit', edit_pay_pal_status_path(@pay_pal_status) %>

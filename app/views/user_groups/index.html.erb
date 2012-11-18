@@ -13,8 +13,8 @@
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
       <td><%= user_group.name %></td>
       <td><%= user_group.description %></td>
-      <td><%= user_group.is_a_manager %></td>
-      <td><%= user_group.is_an_admin %></td>
+      <td><%= sanitize tick_or_cross user_group.is_a_manager %></td>
+      <td><%= sanitize tick_or_cross user_group.is_an_admin %></td>
       <td><%= link_to 'Show', user_group %></td>
       <td><%= link_to 'Edit', edit_user_group_path(user_group) %></td>
       <% if user_group.users.count == 0 %>

@@ -12,7 +12,7 @@
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
       <td><%= special_occasion.name %></td>
       <td><%= special_occasion.running_order %></td>
-      <td><%= special_occasion.visible_to_customers %></td>
+      <td><%= sanitize tick_or_cross special_occasion.visible_to_customers %></td>
       <td><%= link_to 'Show', special_occasion %></td>
       <td><%= link_to 'Edit', edit_special_occasion_path(special_occasion) %></td>
       <% if special_occasion.products.count == 0 %>

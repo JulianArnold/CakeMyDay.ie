@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
-  def tick_or_cross(some_boolean_value)
+  def tick_or_cross(some_boolean_value) # you need to use 'sanitize' before this.
     if some_boolean_value == true
       return "&#10003;" # a tick character
     else

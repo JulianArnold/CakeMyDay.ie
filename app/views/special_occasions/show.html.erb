@@ -2,6 +2,6 @@
 <table>
   <tr><td>Name:</td><td><%= @special_occasion.name %></td></tr>
   <tr><td>Running order:</td><td><%= @special_occasion.running_order %></td></tr>
-  <tr><td>Visible to customers:</td><td><%= @special_occasion.visible_to_customers %></td></tr>
+  <tr><td>Visible to customers:</td><td><%= sanitize tick_or_cross @special_occasion.visible_to_customers %></td></tr>
 </table><br/>
 <%= link_to 'Back', special_occasions_path %> | <%= link_to 'Edit', edit_special_occasion_path(@special_occasion) %>

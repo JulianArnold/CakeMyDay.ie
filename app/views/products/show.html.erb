@@ -5,10 +5,10 @@
   <tr><td>Production quota value:</td><td><%= @product.production_quota_value %></td></tr>
   <tr><td>Product category:</td><td><%= @product.product_category.name %></td></tr>
   <tr><td>Options list:</td><td><%= @product.options_list_id %></td></tr>
-  <tr><td>Pre configured product:</td><td><%= @product.pre_configured_product %></td></tr>
+  <tr><td>Pre configured product:</td><td><%= sanitize tick_or_cross @product.pre_configured_product %></td></tr>
   <tr><td>Special occasion:</td><td><%= @product.special_occasion_id %></td></tr>
-  <tr><td>Allow user to choose quantity:</td><td><%= @product.allow_user_to_choose_quantity %></td></tr>
-  <tr><td>Allow user to enter description:</td><td><%= @product.allow_user_to_enter_description %></td></tr>
+  <tr><td>Allow user to choose quantity:</td><td><%= sanitize tick_or_cross @product.allow_user_to_choose_quantity %></td></tr>
+  <tr><td>Allow user to enter description:</td><td><%= sanitize tick_or_cross @product.allow_user_to_enter_description %></td></tr>
   <tr><td>Running order:</td><td><%= @product.running_order %></td></tr>
   <tr><td>Created by:</td><td><%= @product.creator.login %></td></tr>
   <% if @product.updated_by %>

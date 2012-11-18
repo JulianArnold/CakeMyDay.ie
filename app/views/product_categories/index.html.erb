@@ -14,7 +14,7 @@
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
       <td><%= product_category.name %></td>
       <td><%= product_category.description %></td>
-      <td><%= product_category.one_choice_only %></td>
+      <td><%= sanitize tick_or_cross product_category.one_choice_only %></td>
       <td><%= product_category.running_order %></td>
       <td><%= product_category.options_list_id %></td>
       <td><%= link_to 'Show', product_category %></td>

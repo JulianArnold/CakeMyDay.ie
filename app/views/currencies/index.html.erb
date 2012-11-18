@@ -16,7 +16,7 @@
       <td><%= sanitize currency.currency_symbol %></td>
       <td><%= currency.full_name %></td>
       <td><%= currency.running_order %></td>
-      <td><%= currency.active %></td>
+      <td><%= sanitize tick_or_cross currency.active %></td>
       <td><%= link_to 'Show', currency %></td>
       <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "currency", :item => currency} -%>
