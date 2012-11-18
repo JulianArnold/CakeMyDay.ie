@@ -13,6 +13,6 @@ class ShoppingCartStatus < ActiveRecord::Base
   
   validates_presence_of :name, :description, :running_order
   validates_uniqueness_of :name
-  validates_numericality_of :running_order, :allow_nil => true
+  validates_numericality_of :running_order
   
 end

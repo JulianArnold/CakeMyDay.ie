@@ -8,22 +8,18 @@
     <th style="width:  50px;">Production<br/>started</th>
     <th style="width:  50px;">Production<br/>complete</th>
     <th style="width:  50px;">Running<br/>order</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
   </tr>
   <% @shopping_cart_statuses.each do |shopping_cart_status| %>
     <tr style="background-color: <%= cycle("white","inherit") %>;">
       <td><%= shopping_cart_status.name %><br/>
           <%= shopping_cart_status.description %></td>
-      <td><%= shopping_cart_status.active_cart %></td>
-      <td><%= shopping_cart_status.paid_cart %></td>
-      <td><%= shopping_cart_status.chargeback_cart %></td>
-      <td><%= shopping_cart_status.production_started %></td>
-      <td><%= shopping_cart_status.production_complete %></td>
+      <td><%= sanitize tick_or_cross shopping_cart_status.active_cart %></td>
+      <td><%= sanitize tick_or_cross shopping_cart_status.paid_cart %></td>
+      <td><%= sanitize tick_or_cross shopping_cart_status.chargeback_cart %></td>
+      <td><%= sanitize tick_or_cross shopping_cart_status.production_started %></td>
+      <td><%= sanitize tick_or_cross shopping_cart_status.production_complete %></td>
       <td><%= shopping_cart_status.running_order %></td>
-      <td><%= link_to 'Show', shopping_cart_status %></td>
-      <td><%= link_to 'Edit', edit_shopping_cart_status_path(shopping_cart_status) %></td>
+      <td style="width:  40px;"><%= link_to 'Edit', edit_shopping_cart_status_path(shopping_cart_status) %></td>
       <% if shopping_cart_status.shopping_carts.count == 0 %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Shopping Cart Status", :item => shopping_cart_status} -%>
       <% else %>

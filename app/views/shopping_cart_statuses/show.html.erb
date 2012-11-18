@@ -2,10 +2,11 @@
 <table>
   <tr><td>Name:</td><td><%= @shopping_cart_status.name %></td></tr>
   <tr><td>Description:</td><td><%= @shopping_cart_status.description %></td></tr>
-  <tr><td>Active cart:</td><td><%= @shopping_cart_status.active_cart %></td></tr>
-  <tr><td>Paid cart:</td><td><%= @shopping_cart_status.paid_cart %></td></tr>
-  <tr><td>Chargeback cart:</td><td><%= @shopping_cart_status.chargeback_cart %></td></tr>
-  <tr><td>Production started:</td><td><%= @shopping_cart_status.production_started %></td></tr>
-  <tr><td>Production complete:</td><td><%= @shopping_cart_status.production_complete %></td></tr>
+  <tr><td>Active cart:</td><td><%= sanitize tick_or_cross @shopping_cart_status.active_cart %></td></tr>
+  <tr><td>Paid cart:</td><td><%= sanitize tick_or_cross @shopping_cart_status.paid_cart %></td></tr>
+  <tr><td>Chargeback cart:</td><td><%= sanitize tick_or_cross @shopping_cart_status.chargeback_cart %></td></tr>
+  <tr><td>Production started:</td><td><%= sanitize tick_or_cross @shopping_cart_status.production_started %></td></tr>
+  <tr><td>Production complete:</td><td><%= sanitize tick_or_cross @shopping_cart_status.production_complete %></td></tr>
+  <tr><td>Running order:</td><td><%= @shopping_cart_status.running_order %></td></tr>
 </table><br/>
 <%= link_to 'Back', shopping_cart_statuses_path %> | <%= link_to 'Edit', edit_shopping_cart_status_path(@shopping_cart_status) %>

@@ -14,7 +14,7 @@ class ShoppingCartStatusesController < ApplicationController
   def index
     # GET /shopping_cart_statuses
     # GET /shopping_cart_statuses.json
-    @shopping_cart_statuses = ShoppingCartStatus.all
+    @shopping_cart_statuses = ShoppingCartStatus.all(:order => "running_order")
 
     respond_to do |format|
       format.html # index.html.erb

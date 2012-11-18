@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in_required
   helper_method :logged_out_required
   helper_method :manager_required, :admin_required
-
+  helper_method :tick_or_cross
+  
   private
 
   # See note 1 above
@@ -84,4 +85,12 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
+  def tick_or_cross(some_boolean_value)
+    if some_boolean_value == true
+      return "&#10003;" # a tick character
+    else
+      return "&#10005;" # an X character
+    end
+  end
+  
 end

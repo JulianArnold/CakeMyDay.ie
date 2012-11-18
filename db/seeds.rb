@@ -208,7 +208,7 @@ if Rails.env.development?
   ShoppingCartStatus.create({name: "Paid", description: "Shopping cart that has been paid.", active_cart: false, paid_cart: true, chargeback_cart: false, production_started: false, production_complete: false, running_order: 200})
   ShoppingCartStatus.create({name: "Charged back!", description: "Payment has been bounced by PayPal.", active_cart: false, paid_cart: false, chargeback_cart: true, production_started: false, production_complete: false, running_order: 300})
   ShoppingCartStatus.create({name: "Production started", description: "Work on producing the shopping cart has started.", active_cart: false, paid_cart: false, chargeback_cart: false, production_started: true, production_complete: false, running_order: 400})
-  ShoppingCartStatus.create({name: "Production complete", description: "Production is complete.", active_cart: false, paid_cart: false, chargeback_cart: false, production_started: false, production_complete: true, running_order: 500})
+  ShoppingCartStatus.create({name: "Production complete", description: "Production is complete. The cake is ready.", active_cart: false, paid_cart: false, chargeback_cart: false, production_started: false, production_complete: true, running_order: 500})
 
 
   # That's it!
