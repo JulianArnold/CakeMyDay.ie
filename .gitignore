@@ -19,3 +19,4 @@
 .idea
 .idea/*
 /db/schema.rb
+.DS_store
