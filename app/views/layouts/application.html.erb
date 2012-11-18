@@ -32,7 +32,7 @@
     </div>
     <%= render '/layouts/site_nav'%>
     <% if current_user and current_user.admin? %>
-      <%= render '/layouts/_admin_menu' %>
+      <%= render '/layouts/admin_menu' %>
     <% end %>
     
     <% if flash[:notice] and flash[:notice].size > 0 %>

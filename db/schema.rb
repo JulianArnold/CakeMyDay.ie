@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114205132) do
+ActiveRecord::Schema.define(:version => 20121118183050) do
 
   create_table "currencies", :force => true do |t|
     t.string   "iso_code"
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(:version => 20121114205132) do
     t.boolean  "production_complete"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "running_order"
   end
 
   create_table "shopping_carts", :force => true do |t|

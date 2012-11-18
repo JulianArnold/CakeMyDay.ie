@@ -203,5 +203,13 @@ if Rails.env.development?
   Product.create(:name => '3D object - to your requirements', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10200, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => '2D computer-printed image (cake top surface)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10300, :special_occasion_id => nil, :created_by => User.first.id)
 
+  ShoppingCartStatus.destroy_all
+  ShoppingCartStatus.create({name: "Live cart", description: "Shopping cart that has not bee checked out as yet.", active_cart: true, paid_cart: false, chargeback_cart: false, production_started: false, production_complete: false, running_order: 100})
+  ShoppingCartStatus.create({name: "Paid", description: "Shopping cart that has been paid.", active_cart: false, paid_cart: true, chargeback_cart: false, production_started: false, production_complete: false, running_order: 200})
+  ShoppingCartStatus.create({name: "Charged back!", description: "Payment has been bounced by PayPal.", active_cart: false, paid_cart: false, chargeback_cart: true, production_started: false, production_complete: false, running_order: 300})
+  ShoppingCartStatus.create({name: "Production started", description: "Work on producing the shopping cart has started.", active_cart: false, paid_cart: false, chargeback_cart: false, production_started: true, production_complete: false, running_order: 400})
+  ShoppingCartStatus.create({name: "Production complete", description: "Production is complete.", active_cart: false, paid_cart: false, chargeback_cart: false, production_started: false, production_complete: true, running_order: 500})
+
+
   # That's it!
 end

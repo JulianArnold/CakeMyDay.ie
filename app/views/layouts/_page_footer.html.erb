@@ -2,7 +2,7 @@
   <p>Copyright &copy; 2012<%= ("-" + (Time.now.gmtime.year).to_s) if (Time.now.gmtime.year > 2012) %>, CakeMyDay.ie. 
     <% StaticPage.all(:conditions => ["show_in_page_footer = ?",true], :order => "footer_running_order" ).each_with_index do |p, index| %>
       <%= "| " unless index == 0 %>
-      <%= link_to(p.menu_label, p.public_link) %> 
+      <%= link_to(p.menu_label, "/" + p.public_link) %> 
     <% end %>
     <br/><% @general_setting = GeneralSetting.first %>
     Registered in Ireland, No. <%= @general_setting.rbn_number %>. 
