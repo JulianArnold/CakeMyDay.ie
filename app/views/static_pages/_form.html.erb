@@ -11,18 +11,21 @@
     </div>
   <% end %>
 
+  <p>* Denotes a required field</p>
+
   <div class="field">
-    <%= f.label :main_heading %><br />
-    <%= f.text_field :main_heading %>
+    <span class="form-label"><%= f.label :main_heading %>*</span>
+    <span class="form-field"><%= f.text_field :main_heading %></span>
   </div>
   <div class="field">
-    <%= f.label :main_body %><br />
-    <%= f.text_area :main_body %>
+    <span class="form-label"><%= f.label :main_body %>*</span>
+    <span class="form-field"><%= f.text_area :main_body, :size => "60x20" %></span>
   </div>
   <div class="field">
-    <%= f.label :menu_label %><br />
+    <%= f.label :menu_label %>*<br />
     <%= f.text_field :menu_label %>
   </div>
+  <h2>Main Menu</h2>
   <div class="field">
     <%= f.label :show_in_main_menu %><br />
     <%= f.check_box :show_in_main_menu %>
@@ -31,6 +34,7 @@
     <%= f.label :main_menu_running_order %><br />
     <%= f.number_field :main_menu_running_order %>
   </div>
+  <h2>Footer</h2>
   <div class="field">
     <%= f.label :show_in_page_footer %><br />
     <%= f.check_box :show_in_page_footer %>
@@ -39,16 +43,17 @@
     <%= f.label :footer_running_order %><br />
     <%= f.number_field :footer_running_order %>
   </div>
+  <h2>Search Engine Items</h2>
   <div class="field">
-    <%= f.label :window_title %><br />
+    <%= f.label :window_title %>*<br />
     <%= f.text_field :window_title %>
   </div>
   <div class="field">
-    <%= f.label :page_description %><br />
+    <%= f.label :page_description %>*<br />
     <%= f.text_field :page_description %>
   </div>
   <div class="field">
-    <%= f.label :search_terms %><br />
+    <%= f.label :search_terms %>*<br />
     <%= f.text_field :search_terms %>
   </div>
   <div class="actions">

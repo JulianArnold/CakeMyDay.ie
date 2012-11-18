@@ -17,6 +17,45 @@ th {
 #admin-menu {
   background-color: #f99;
 }
+
+#google-search-result {
+  background-color: white;
+  padding: 20px;
+  width: 60%;
+  margin-left: 20px;
+  margin-bottom: 40px;
+}
+
+#window-title {
+  color: blue;
+  text-decoration: underline;
+}
+
+#green-link {
+  color:green;
+}
+
+#search-text {
+  width:60%;
+}
+
+.form-label, .form-label label {
+  width: 150px;
+  vertical-align: top;
+}
+
+.actions {
+  padding: 20px 0;
+}
+
+#page-footer {
+  margin: 50px 0 15px 0;
+  padding: 15px 0;
+  border-top: 1px solid #666;
+  font-size: 80%;
+  
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

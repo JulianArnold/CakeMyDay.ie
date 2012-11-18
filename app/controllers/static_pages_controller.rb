@@ -14,8 +14,10 @@ class StaticPagesController < ApplicationController
   def index
     # GET /static_pages
     # GET /static_pages.json
-    @static_pages = StaticPage.all
-
+    @navbar_static_pages = StaticPage.all(:conditions => ["show_in_main_menu = ?", true], :order => "main_menu_running_order")
+    @footer_static_pages = StaticPage.all(:conditions => ["show_in_page_footer = ?", true], :order => "footer_running_order")
+    @hidden_static_pages = StaticPage.all(:conditions => ["show_in_main_menu <> ? and show_in_page_footer <> ?", true, true], :order => "menu_label")
+    
     respond_to do |format|
       format.html # index.html.erb
       #format.json { render json: @static_pages }

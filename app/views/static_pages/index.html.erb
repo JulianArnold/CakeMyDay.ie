@@ -15,8 +15,10 @@
     <th style="width:  40px;"></th>
     <th style="width:  40px;"></th>
   </tr>
-  <% @static_pages.each do |static_page| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+  
+  <tr><td colspan=5><h2>Shown in the Main Nav Bar</h2></td></tr>
+  <% @navbar_static_pages.each do |static_page| %>
+    <tr style="background-color: <%= cycle("white","inherit") %>;">
       <td><%= static_page.main_heading %></td>
       <td><%= static_page.main_body %></td>
       <td><%= static_page.menu_label %></td>
@@ -32,5 +34,12 @@
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Static Page", :item => static_page} -%>
     </td>
   <% end %>
+  
+  <tr><td colspan=5><h2>Shown in the Footer</h2></td></tr>
+
+
+  <tr><td colspan=5><h2>Hidden Pages</h2></td></tr>
+  
+  
 </table><br/>
 <%= link_to 'New', new_static_page_path %>
