@@ -8,8 +8,17 @@
 
 class StaticPagesController < ApplicationController
 
-  before_filter :logged_in_required
-  before_filter :manager_required
+  before_filter :logged_in_required, :except => 'display'
+  before_filter :manager_required, :except => 'display'
+  
+  def display
+    @page = StaticPage.first(:conditions => ["menu_label LIKE ?", "%" + params[:page].gsub('_',' ') + "%" ])
+    if @page
+      # nothing special here
+    else
+      redirect_to root_url, :notice => "Sorry, we couldn't find what you requested."
+    end
+  end
   
   def index
     # GET /static_pages

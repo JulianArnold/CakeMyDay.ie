@@ -1,0 +1,6 @@
+<div id="site-nav">
+  <%= link_to "Store" %>
+  <% StaticPage.all(:conditions => ["show_in_main_menu = ?", true], :order => "main_menu_running_order").each do |p| %>
+  | <%= link_to(p.menu_label, p.public_link) %>
+  <% end %>
+</div>

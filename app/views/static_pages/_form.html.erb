@@ -4,9 +4,9 @@
       <h2><%= pluralize(@static_page.errors.count, "error") %> prohibited this static_page from being saved:</h2>
 
       <ul>
-      <% @static_page.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @static_page.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>

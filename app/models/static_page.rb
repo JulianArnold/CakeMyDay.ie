@@ -13,4 +13,8 @@ class StaticPage < ActiveRecord::Base
   validates_numericality_of :footer_running_order, :allow_nil => true
   validates_numericality_of :main_menu_running_order, :allow_nil => true
   
+  def public_link
+    menu_label.gsub(" ","_").downcase
+  end
+  
 end
