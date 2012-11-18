@@ -16,4 +16,6 @@
 
 # stuff added by Dan
 /.idea
+.idea
+.idea/*
 /db/schema.rb
