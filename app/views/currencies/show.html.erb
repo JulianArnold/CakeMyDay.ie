@@ -4,6 +4,6 @@
   <tr><td>Currency symbol:</td><td><%= @currency.currency_symbol %></td></tr>
   <tr><td>Full name:</td><td><%= @currency.full_name %></td></tr>
   <tr><td>Running order:</td><td><%= @currency.running_order %></td></tr>
-  <tr><td>Active:</td><td><%= @currency.active %></td></tr>
+  <tr><td>Active:</td><td><%= sanitize tick_or_cross @currency.active %></td></tr>
 </table><br/>
 <%= link_to 'Back', currencies_path %> | <%= link_to 'Edit', edit_currency_path(@currency) %>

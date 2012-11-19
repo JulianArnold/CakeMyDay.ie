@@ -1,11 +1,22 @@
-<h1>Static Page #<%= params[:id] %></h1>
+<h1><%= @static_page.main_heading %></h1>
+<%= sanitize @static_page.main_body.gsub("\r","<br/>") %>
+<br/><br/><br/>
+<hr/>
+<h2>Search Results:</h2>
+<div id="google-search-result">
+  <span id="window-title"><%= truncate(@static_page.window_title, :length => 57) %></span><br/>
+  <span id="green-link">cakemyday.ie/<%= @static_page.menu_label.gsub(" ","_").downcase %></span><br/>
+  <span id="search-text"><%= @static_page.page_description %></span>
+</div>
+<hr/>
+<h2>Static Page #<%= params[:id] %></h2>
 <table>
-  <tr><td>Main heading:</td><td><%= @static_page.main_heading %></td></tr>
+  <tr><td style="width:200px;">Main heading:</td><td><%= @static_page.main_heading %></td></tr>
   <tr><td>Main body:</td><td><%= @static_page.main_body %></td></tr>
   <tr><td>Menu label:</td><td><%= @static_page.menu_label %></td></tr>
-  <tr><td>Show in main menu:</td><td><%= @static_page.show_in_main_menu %></td></tr>
+  <tr><td>Show in main menu:</td><td><%= sanitize tick_or_cross @static_page.show_in_main_menu %></td></tr>
   <tr><td>Main menu running order:</td><td><%= @static_page.main_menu_running_order %></td></tr>
-  <tr><td>Show in page footer:</td><td><%= @static_page.show_in_page_footer %></td></tr>
+  <tr><td>Show in page footer:</td><td><%= sanitize tick_or_cross @static_page.show_in_page_footer %></td></tr>
   <tr><td>Footer running order:</td><td><%= @static_page.footer_running_order %></td></tr>
   <tr><td>Window title:</td><td><%= @static_page.window_title %></td></tr>
   <tr><td>Page description:</td><td><%= @static_page.page_description %></td></tr>

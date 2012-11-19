@@ -14,9 +14,9 @@
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
       <td><%= pay_pal_status.name %></td>
       <td><%= pay_pal_status.description %></td>
-      <td><%= pay_pal_status.pending_authorisation %></td>
-      <td><%= pay_pal_status.paid_sale %></td>
-      <td><%= pay_pal_status.charged_back %></td>
+      <td><%= sanitize tick_or_cross pay_pal_status.pending_authorisation %></td>
+      <td><%= sanitize tick_or_cross pay_pal_status.paid_sale %></td>
+      <td><%= sanitize tick_or_cross pay_pal_status.charged_back %></td>
       <td><%= link_to 'Show', pay_pal_status %></td>
       <td><%= link_to 'Edit', edit_pay_pal_status_path(pay_pal_status) %></td>
       <% if pay_pal_status.pay_pal_transactions.count == 0 %>

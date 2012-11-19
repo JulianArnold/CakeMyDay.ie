@@ -4,9 +4,9 @@
       <h2><%= pluralize(@shopping_cart_status.errors.count, "error") %> prohibited this shopping_cart_status from being saved:</h2>
 
       <ul>
-      <% @shopping_cart_status.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @shopping_cart_status.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>

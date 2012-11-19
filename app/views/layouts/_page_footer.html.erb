@@ -1,0 +1,13 @@
+<div id="page-footer">
+  <p>Copyright &copy; 2012<%= ("-" + (Time.now.gmtime.year).to_s) if (Time.now.gmtime.year > 2012) %>, CakeMyDay.ie. 
+    <% StaticPage.all(:conditions => ["show_in_page_footer = ?",true], :order => "footer_running_order" ).each_with_index do |p, index| %>
+      <%= "| " unless index == 0 %>
+      <%= link_to(p.menu_label, "/" + p.public_link) %> 
+    <% end %>
+    <br/><% @general_setting = GeneralSetting.first %>
+    Registered in Ireland, No. <%= @general_setting.rbn_number %>. 
+    Contact us on <%= link_to(@general_setting.customer_service_email_address, "mailto:"+ @general_setting.customer_service_email_address) %>
+    or call us on <%= @general_setting.customer_service_phone_number %>.
+  </p>
+  <!-- page_url(p.menu_label.gsub(" ","_").downcase) -->
+</div>

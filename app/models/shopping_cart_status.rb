@@ -7,13 +7,12 @@
 # Rights in third party code acknowledged.
 
 class ShoppingCartStatus < ActiveRecord::Base
-  attr_accessible :name, :description, :active_cart, :chargeback_cart, :paid_cart, :production_complete, :production_started
+  attr_accessible :name, :description, :active_cart, :chargeback_cart, :paid_cart, :production_complete, :production_started, :running_order
   
   has_many :shopping_carts
   
-  validates_presence_of :name, :description
+  validates_presence_of :name, :description, :running_order
   validates_uniqueness_of :name
-  
-  # need a running_order
+  validates_numericality_of :running_order
   
 end

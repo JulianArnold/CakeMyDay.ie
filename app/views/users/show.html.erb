@@ -1,8 +1,7 @@
-<h1>User #<%= params[:id] %></h1>
+<h1>Your Profile</h1>
 <table>
   <tr><td>Email:</td><td><%= @user.login %></td></tr>
-  <tr><td>First name:</td><td><%= @user.first_name %></td></tr>
-  <tr><td>Last name:</td><td><%= @user.last_name %></td></tr>
+  <tr><td>Name:</td><td><%= @user.full_name %></td></tr>
   <% if current_user.admin? %>
   <tr><td>Login count:</td><td><%= @user.login_count %></td></tr>
   <tr><td>Failed login count:</td><td><%= @user.failed_login_count %></td></tr>
@@ -11,7 +10,7 @@
   <tr><td>Last login at:</td><td><%= @user.last_login_at %></td></tr>
   <tr><td>Current login IP:</td><td><%= @user.current_login_ip %></td></tr>
   <tr><td>Last login IP:</td><td><%= @user.last_login_ip %></td></tr>
-  <tr><td>Active:</td><td><%= @user.active %></td></tr>
+  <tr><td>Active:</td><td><%= sanitize tick_or_cross @user.active %></td></tr>
   <tr><td>User group:</td><td><%= @user.user_group.name %></td></tr>
   <% end %>
 </table><br/>
