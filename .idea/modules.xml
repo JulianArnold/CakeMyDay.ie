@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CakeMyDay.ie.iml" filepath="$PROJECT_DIR$/.idea/CakeMyDay.ie.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/cake_my_day_site.iml" filepath="$PROJECT_DIR$/.idea/cake_my_day_site.iml" />
     </modules>
   </component>
