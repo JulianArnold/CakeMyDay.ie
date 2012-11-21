@@ -22,39 +22,39 @@
     <span class="form-field"><%= f.text_area :main_body, :size => "60x20" %></span>
   </div>
   <div class="field">
-    <%= f.label :menu_label %>*<br />
-    <%= f.text_field :menu_label %>
+    <span class="form-label"><%= f.label :menu_label %>*</span>
+    <span class="form-field"><%= f.text_field :menu_label %></span>
   </div>
   <h2>Main Menu</h2>
   <div class="field">
-    <%= f.label :show_in_main_menu %><br />
-    <%= f.check_box :show_in_main_menu %>
+    <span class="form-label"><%= f.label :show_in_main_menu %></span>
+    <span class="form-field"><%= f.check_box :show_in_main_menu %></span>
   </div>
   <div class="field">
-    <%= f.label :main_menu_running_order %><br />
-    <%= f.number_field :main_menu_running_order %>
+    <span class="form-label"><%= f.label :main_menu_running_order %></span>
+    <span class="form-field"><%= f.number_field :main_menu_running_order %></span>
   </div>
   <h2>Footer</h2>
   <div class="field">
-    <%= f.label :show_in_page_footer %><br />
-    <%= f.check_box :show_in_page_footer %>
+    <span class="form-label"><%= f.label :show_in_page_footer %></span>
+    <span class="form-field"><%= f.check_box :show_in_page_footer %></span>
   </div>
   <div class="field">
-    <%= f.label :footer_running_order %><br />
-    <%= f.number_field :footer_running_order %>
+    <span class="form-label"><%= f.label :footer_running_order %></span>
+    <span class="form-field"><%= f.number_field :footer_running_order %></span>
   </div>
   <h2>Search Engine Items</h2>
   <div class="field">
-    <%= f.label :window_title %>*<br />
-    <%= f.text_field :window_title %>
+    <span class="form-label"><%= f.label :window_title %>*</span>
+    <span class="form-field"><%= f.text_field :window_title %></span>
   </div>
   <div class="field">
-    <%= f.label :page_description %>*<br />
-    <%= f.text_field :page_description %>
+    <span class="form-label"><%= f.label :page_description %>*</span>
+    <span class="form-field"><%= f.text_field :page_description %></span>
   </div>
   <div class="field">
-    <%= f.label :search_terms %>*<br />
-    <%= f.text_field :search_terms %>
+    <span class="form-label"><%= f.label :search_terms %>*</span>
+    <span class="form-field"><%= f.text_field :search_terms %></span>
   </div>
   <div class="actions">
     <%= f.submit %>
