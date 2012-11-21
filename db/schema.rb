@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(:version => 20121118183050) do
     t.integer  "customer_id"
     t.string   "session_id"
     t.datetime "cake_required_at"
-    t.integer  "weekly_quota_id"
+    t.integer  "production_quotum_id"
     t.string   "special_occasion"
     t.string   "name_to_appear_on_cake"
     t.integer  "shopping_cart_status_id"

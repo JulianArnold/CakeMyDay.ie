@@ -18,7 +18,7 @@ class ShoppingCartsControllerTest < ActionController::TestCase
 
   test "should create shopping_cart" do
     assert_difference('ShoppingCart.count') do
-      post :create, shopping_cart: { cake_required_at: @shopping_cart.cake_required_at, customer_id: @shopping_cart.customer_id, general_description_from_customer: @shopping_cart.general_description_from_customer, name_to_appear_on_cake: @shopping_cart.name_to_appear_on_cake, pay_pal_status_id: @shopping_cart.pay_pal_status_id, session_id: @shopping_cart.session_id, shopping_cart_status_id: @shopping_cart.shopping_cart_status_id, special_occasion: @shopping_cart.special_occasion, weekly_quota_id: @shopping_cart.weekly_quota_id }
+      post :create, shopping_cart: { cake_required_at: @shopping_cart.cake_required_at, customer_id: @shopping_cart.customer_id, general_description_from_customer: @shopping_cart.general_description_from_customer, name_to_appear_on_cake: @shopping_cart.name_to_appear_on_cake, pay_pal_status_id: @shopping_cart.pay_pal_status_id, session_id: @shopping_cart.session_id, shopping_cart_status_id: @shopping_cart.shopping_cart_status_id, special_occasion: @shopping_cart.special_occasion, production_quotum_id: @shopping_cart.production_quotum_id }
     end
 
     assert_redirected_to shopping_cart_path(assigns(:shopping_cart))
@@ -35,7 +35,7 @@ class ShoppingCartsControllerTest < ActionController::TestCase
   end
 
   test "should update shopping_cart" do
-    put :update, id: @shopping_cart, shopping_cart: { cake_required_at: @shopping_cart.cake_required_at, customer_id: @shopping_cart.customer_id, general_description_from_customer: @shopping_cart.general_description_from_customer, name_to_appear_on_cake: @shopping_cart.name_to_appear_on_cake, pay_pal_status_id: @shopping_cart.pay_pal_status_id, session_id: @shopping_cart.session_id, shopping_cart_status_id: @shopping_cart.shopping_cart_status_id, special_occasion: @shopping_cart.special_occasion, weekly_quota_id: @shopping_cart.weekly_quota_id }
+    put :update, id: @shopping_cart, shopping_cart: { cake_required_at: @shopping_cart.cake_required_at, customer_id: @shopping_cart.customer_id, general_description_from_customer: @shopping_cart.general_description_from_customer, name_to_appear_on_cake: @shopping_cart.name_to_appear_on_cake, pay_pal_status_id: @shopping_cart.pay_pal_status_id, session_id: @shopping_cart.session_id, shopping_cart_status_id: @shopping_cart.shopping_cart_status_id, special_occasion: @shopping_cart.special_occasion, production_quotum_id: @shopping_cart.production_quotum_id }
     assert_redirected_to shopping_cart_path(assigns(:shopping_cart))
   end
 

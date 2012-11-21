@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="849b5513-a5b6-4fa4-89bc-6ba038d6c4b2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/cake_my_day_site.iml" afterPath="$PROJECT_DIR$/.idea/cake_my_day_site.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static_pages/index.html.erb" afterPath="$PROJECT_DIR$/app/views/static_pages/index.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121120090009_rename_a_field_in_shopping_carts.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/production_quota_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/production_quota_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/production_quotum.rb" afterPath="$PROJECT_DIR$/app/models/production_quotum.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/shopping_cart.rb" afterPath="$PROJECT_DIR$/app/models/shopping_cart.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/production_quota/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/production_quota/edit.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/production_quota/index.html.erb" afterPath="$PROJECT_DIR$/app/views/production_quota/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shopping_carts/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/shopping_carts/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shopping_carts/index.html.erb" afterPath="$PROJECT_DIR$/app/views/shopping_carts/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shopping_carts/show.html.erb" afterPath="$PROJECT_DIR$/app/views/shopping_carts/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/shopping_carts.yml" afterPath="$PROJECT_DIR$/test/fixtures/shopping_carts.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/shopping_carts_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/shopping_carts_controller_test.rb" />
     </list>
     <ignored path="cake_my_day_site.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,7 +91,7 @@
       <file leaf-file-name="seeds.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/seeds.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
+            <state line="20" column="0" selection-start="842" selection-end="842" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -91,7 +100,7 @@
       <file leaf-file-name="schema.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="212" column="0" selection-start="7407" selection-end="7407" vertical-scroll-proportion="-0.697074">
+            <state line="189" column="0" selection-start="6595" selection-end="6595" vertical-scroll-proportion="-1.3700516">
               <folding />
             </state>
           </provider>
@@ -151,8 +160,8 @@
         <option value="$PROJECT_DIR$/app/models/static_page.rb" />
         <option value="$PROJECT_DIR$/app/controllers/static_pages_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/static_pages/index.html.erb" />
-        <option value="$PROJECT_DIR$/db/schema.rb" />
         <option value="$PROJECT_DIR$/app/views/static_pages/_form.html.erb" />
+        <option value="$PROJECT_DIR$/db/schema.rb" />
       </list>
     </option>
   </component>
@@ -538,14 +547,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
+        <state line="20" column="0" selection-start="842" selection-end="842" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="0" selection-start="7407" selection-end="7407" vertical-scroll-proportion="-0.697074">
+        <state line="189" column="0" selection-start="6595" selection-end="6595" vertical-scroll-proportion="-1.3700516">
           <folding />
         </state>
       </provider>

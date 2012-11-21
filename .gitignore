@@ -20,4 +20,8 @@
 .idea
 .idea/*
 /db/schema.rb
+db/schema.rb
 .DS_store
+/.DS_store
+.gitignore
+/.gitignore

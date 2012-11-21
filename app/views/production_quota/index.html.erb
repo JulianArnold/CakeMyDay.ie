@@ -1,21 +1,24 @@
-<h1>Production Quota</h1>
+<h1>Production Quotas</h1>
 <table>
   <tr>
-    <th style="width: 100px;">Start date</th>
-    <th style="width: 100px;">Finish date</th>
-    <th style="width: 100px;">Maximum cakes allowed</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
+    <th style="width: 100px;">From</th>
+    <th style="width: 100px;">To</th>
+    <th style="width:  60px;">Quota</th>
+    <th style="width:  50px;">Mon</th>
+    <th style="width:  50px;">Tue</th>
+    <th style="width:  50px;">Wed</th>
+    <th style="width:  50px;">Thu</th>
+    <th style="width:  50px;">Fri</th>
+    <th style="width:  50px;">Sat</th>
+    <th style="width:  50px;">Sun</th>
   </tr>
   <% @production_quota.each do |production_quotum| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("white","inherit") %>;">
       <td><%= production_quotum.start_date %></td>
       <td><%= production_quotum.finish_date %></td>
-      <td><%= production_quotum.maximum_cakes_allowed %></td>
-      <td><%= link_to 'Show', production_quotum %></td>
-      <td><%= link_to 'Edit', edit_production_quotum_path(production_quotum) %></td>
+      <td><%= link_to production_quotum.maximum_cakes_allowed, edit_production_quotum_path(production_quotum), :title => "Click to edit the quota for this week" %></td>
+      <td><%= production_quotum.monday_bookings.count %></td>
     </td>
   <% end %>
 </table><br/>
-<%= link_to 'New', new_production_quotum_path %>
+<p>Weeks are automatically created two years ahead of time in this calendar.</p>
