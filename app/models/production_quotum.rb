@@ -9,8 +9,62 @@
 class ProductionQuotum < ActiveRecord::Base
   attr_accessible :start_date, :finish_date, :maximum_cakes_allowed
   
+  has_many :shopping_carts
+  
   validates_presence_of :start_date, :finish_date, :maximum_cakes_allowed
   validates_numericality_of :maximum_cakes_allowed
   validates_uniqueness_of :start_date
+  has_many  :monday_bookings,
+            :class_name => "ShoppingCart",
+            :foreign_key => "production_quotum_id",
+            :include => "shopping_cart_status",
+            :conditions => ["shopping_carts.weekday = 1 and shopping_cart_statuses.paid_cart = ?", true]
+
+=begin
+  
+  has_many :tuesday_bookings
+  
+  has_many :wednesday_bookings
+  
+  has_many :thursday_bookings
+  
+  has_many :friday_bookings
+  
+  has_many :saturday_bookings
+  
+  has_many :sunday_bookings
+=end
+  def bookings
+    return carts = ShoppingCart.all(:conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_status.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
+  end
+  
+  def self.auto_generate # creates new quotas automatically, 2 years ahead
+    # auto-generates production quotas into the future
+    
+    now = Time.now.gmtime.to_date
+    one_years_time = Time.now.gmtime.to_date + 2.years + 1.day
+    
+    if ProductionQuotum.count > 0
+      latest_date = ProductionQuotum.last(order: "start_date").start_date + 7.days # next Monday
+    else
+      # .wday returns 0 for Sunday, 1 for Monday ... 6 for Saturday
+      latest_date = now - (now.wday).days + 1.day # last Monday
+    end
+    
+    latest_date = latest_date.to_date
+    
+    if latest_date < one_years_time
+      # get the default production quota for the week
+      default_value = GeneralSetting.first.default_value_for_weekly_production_quota
+      
+      tracking_date = latest_date
+      while tracking_date < one_years_time
+        ProductionQuotum.create({start_date: tracking_date, finish_date: (tracking_date + 6.days), maximum_cakes_allowed: default_value})
+        tracking_date += 7
+      end
+    end
+    
+    return latest_date
+  end
   
 end

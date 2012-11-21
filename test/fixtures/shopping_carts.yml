@@ -4,7 +4,7 @@ one:
   customer_id: 1
   session_id: MyString
   cake_required_at: 2012-11-12 10:22:53
-  weekly_quota_id: 1
+  production_quotum_id: 1
   special_occasion: MyString
   name_to_appear_on_cake: MyString
   shopping_cart_status_id: 1
@@ -15,7 +15,7 @@ two:
   customer_id: 1
   session_id: MyString
   cake_required_at: 2012-11-12 10:22:53
-  weekly_quota_id: 1
+  production_quotum_id: 1
   special_occasion: MyString
   name_to_appear_on_cake: MyString
   shopping_cart_status_id: 1

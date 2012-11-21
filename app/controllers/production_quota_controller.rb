@@ -10,6 +10,7 @@ class ProductionQuotaController < ApplicationController
 
   before_filter :logged_in_required
   before_filter :manager_required
+  before_filter :auto_generate_new_rows
   
   def index
     # GET /production_quota
@@ -56,7 +57,7 @@ class ProductionQuotaController < ApplicationController
 
     respond_to do |format|
       if @production_quotum.save
-        format.html { redirect_to @production_quotum, notice: 'Production quotum was successfully created.' }
+        format.html { redirect_to production_quota_url, notice: 'Production quotum was successfully created.' }
         #format.json { render json: @production_quotum, status: :created, location: @production_quotum }
       else
         format.html { render action: "new" }
@@ -72,7 +73,7 @@ class ProductionQuotaController < ApplicationController
 
     respond_to do |format|
       if @production_quotum.update_attributes(params[:production_quotum])
-        format.html { redirect_to @production_quotum, notice: 'Production quotum was successfully updated.' }
+        format.html { redirect_to production_quota_url, notice: 'Production quotum was successfully updated.' }
         #format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -91,6 +92,12 @@ class ProductionQuotaController < ApplicationController
       format.html { redirect_to production_quota_url }
       #format.json { head :no_content }
     end
+  end
+
+  private
+  
+  def auto_generate_new_rows
+    ProductionQuotum.auto_generate
   end
 
 end

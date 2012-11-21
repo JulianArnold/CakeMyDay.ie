@@ -7,10 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 if Rails.env.development?
   
+  
   UserGroup.destroy_all
   UserGroup.create(name: "Customers", description: "Used for normal customers.", is_a_manager: false, is_an_admin: false)
   UserGroup.create(name: "Managers", description: "Managers can do almost anything.", is_a_manager: true, is_an_admin: false)
   UserGroup.create(name: "Sys Admins", description: "Can do anything.", is_a_manager: true, is_an_admin: true)
+
 
   User.destroy_all
   u = User.new
@@ -97,6 +99,7 @@ if Rails.env.development?
           one_choice_only: true, running_order: 400})
   ProductCategory.create({name: "Over The Top", one_choice_only: false, 
           description: "Time to go wild! Choose how you want the top of your cake to look.  Add people, animals, firniture, cars, musical instruments, whatever you can think of!", running_order: 500})
+
 
   Product.destroy_all
   Product.create(:name => 'Square 4" high, 8" diameter, fruit cake', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 100, :special_occasion_id => nil, :created_by => User.first.id)
@@ -203,12 +206,18 @@ if Rails.env.development?
   Product.create(:name => '3D object - to your requirements', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10200, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => '2D computer-printed image (cake top surface)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :pre_configured_product => false, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10300, :special_occasion_id => nil, :created_by => User.first.id)
 
+
   ShoppingCartStatus.destroy_all
   ShoppingCartStatus.create({name: "Live cart", description: "Shopping cart that has not bee checked out as yet.", active_cart: true, paid_cart: false, chargeback_cart: false, production_started: false, production_complete: false, running_order: 100})
   ShoppingCartStatus.create({name: "Paid", description: "Shopping cart that has been paid.", active_cart: false, paid_cart: true, chargeback_cart: false, production_started: false, production_complete: false, running_order: 200})
   ShoppingCartStatus.create({name: "Charged back!", description: "Payment has been bounced by PayPal.", active_cart: false, paid_cart: false, chargeback_cart: true, production_started: false, production_complete: false, running_order: 300})
   ShoppingCartStatus.create({name: "Production started", description: "Work on producing the shopping cart has started.", active_cart: false, paid_cart: false, chargeback_cart: false, production_started: true, production_complete: false, running_order: 400})
   ShoppingCartStatus.create({name: "Production complete", description: "Production is complete. The cake is ready.", active_cart: false, paid_cart: false, chargeback_cart: false, production_started: false, production_complete: true, running_order: 500})
+
+
+  StaticPage.destroy_all
+  StaticPage.create({main_heading: "About CakeMyDay", main_body: "CakeMyDay was founded in 2009 by Geraldine Arnold in Celbridge, Co. Kildare.\r\n\r\nGeraldine is passionate about the creativity she infuses in her cake creations.  Each cake is individually crafted to the precise requirements of each customer.", menu_label: "About Us", show_in_main_menu: true, main_menu_running_order: 100, show_in_page_footer: true, footer_running_order: 100, window_title: "Hand made cakes in Dublin, Kildare, Louth, Wicklow and Meath", page_description: "Geraldine is passionate about the creativity she infuses in her cake creations.  Each cake is individually crafted to the precise requirements of each customer.", search_terms: "hand made cakes, handmade cakes, designer cakes, wedding cakes"})
+  StaticPage.create({main_heading: "Contact Us", main_body: "215 Glendale Meadows,\r\nLeixlip,\r\nCo. Kildare\r\n\r\n  +353-86-837 2795\r\n\r\ninfo@cakemyday.ie", menu_label: "Contact Us", show_in_main_menu: true, main_menu_running_order: 200, show_in_page_footer: true, footer_running_order: 50, window_title: "Get in touch", page_description: "Get in touch with us at CakeMyDay.ie", search_terms: "yummy cakes, super cakes, stuff"})
 
 
   # That's it!
