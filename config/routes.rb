@@ -7,6 +7,7 @@ CakeMyDaySite::Application.routes.draw do
   match 'sign_in'  => "user_sessions#new",     :as => :sign_in
   match 'logout'   => "user_sessions#destroy", :as => :logout
   match 'account'  => 'users#show',            :as => :account
+  match 'my_account'  => 'users#show',         :as => :my_account
   match 'signup'   => 'users#new',             :as => :signup
   match 'sign_up'  => 'users#new',             :as => :sign_up
   match 'register' => 'users#new',             :as => :register

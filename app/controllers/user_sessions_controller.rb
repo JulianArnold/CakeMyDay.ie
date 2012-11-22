@@ -28,7 +28,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Welcome back!"
-      redirect_back_or_default root_url
+      redirect_back_or_default my_account_url
     else
       render :action => :new
     end

@@ -12,8 +12,8 @@ class StaticPagesController < ApplicationController
   before_filter :manager_required, :except => 'display'
   
   def display
-    @page = StaticPage.first(:conditions => ["menu_label LIKE ?", "%" + params[:page].gsub('_',' ') + "%" ])
-    if @page
+    @static_page = StaticPage.first(:conditions => ["menu_label LIKE ?", "%" + params[:page].gsub('_',' ') + "%" ])
+    if @static_page
       # nothing special here
     else
       redirect_to root_url, :notice => "Sorry, we couldn't find what you requested."

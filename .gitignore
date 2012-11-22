@@ -25,3 +25,4 @@ db/schema.rb
 /.DS_store
 .gitignore
 /.gitignore
+Gemfile.lock

@@ -8,7 +8,7 @@
 
 class ShoppingCart < ActiveRecord::Base
   attr_accessible :cake_required_at, :customer_id, :general_description_from_customer, :name_to_appear_on_cake, :pay_pal_status_id, :session_id, :shopping_cart_status_id, :special_occasion, :production_quotum_id
-  
+=begin
   attr_reader :weekday
   
   scope :monday, where(:weekday => 1)
@@ -18,7 +18,7 @@ class ShoppingCart < ActiveRecord::Base
   scope :friday, where(:weekday => 5)
   scope :saturday, where(:weekday => 6)
   scope :sunday, where(:weekday => 0)
-  
+=end
   belongs_to  :customer
   belongs_to  :pay_pal_status
   has_many    :pay_pal_transactions, :order => :created_at

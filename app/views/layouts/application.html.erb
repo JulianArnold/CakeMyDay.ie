@@ -2,46 +2,70 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title>CakeMyDaySite</title>
+    <% if @static_page %>
+      <title><%= @static_page.window_title %> - CakeMyDay</title>
+    <% else %>
+      <title>CakeMyDaySite</title>
+    <% end %>
+    <%= favicon_link_tag "/favicon.ico" %>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= render '/layouts/google_analytics' -%>
   </head>
   <body>
-
-    <div id="page-header">
-      <div id="logo-area">
-        <h1>Welcome to <%= link_to "Cake My Day", root_url %></h1>
-      </div>
-      <div id="search-box">
+    <div id="header-dark-strip">
+      <div id="inner">
+        <%= link_to "Cake My Day", root_url, title: "Click to visit our home page" %>
+        
+        <%= render '/layouts/site_nav'%>
+        
         <%= form_tag (search_url), :method => 'post' do %>
-        	<p>
-        		<%= text_field_tag :search_query, params[:search_query] %>
-        		<%= submit_tag "Search", :name => nil %>
-        	</p>
+      		<%= text_field_tag :search_query, params[:search_query] %>
+      		<%= submit_tag "Search", :name => nil %>
         <% end %>
-      </div>
-      <div id="user-access">
-        <% if current_user %>
-          Hi <%= link_to((h(current_user.first_name)).titleize, user_url(:id => current_user.id), :title => "click to view your profile") %> | <%= link_to("Log out", logout_url) %>
-        <% else %>
-          <%= link_to("sign in", sign_in_url) %>
-        <% end %>
-      </div>
+
+        <span id="user-access">
+          <% if current_user %>
+            Hi <%= link_to((h(current_user.first_name)).titleize, user_url(:id => current_user.id), :title => "click to view your profile") %> | <%= link_to("Log out", logout_url) %>
+          <% elsif params[:controller] != "user_sessions" %>
+          <%= link_to "forgot password?" %>
+            <%= form_for UserSession.new, :as => :user_session, :url => { :controller => "user_sessions", :action => "create" } do |f| %>
+              <%= f.label :login, "Email" %> <%= f.text_field :login, :size => "20x1" %>
+              <%= f.label :password %> <%= f.password_field :password, :size => "10x1" %>
+              <%= f.submit "Sign in" %>
+            <% end %>
+          <% end %>
+        </span>
+        
+      </div>      
     </div>
-    <%= render '/layouts/site_nav'%>
-    <% if current_user and current_user.admin? %>
-      <%= render '/layouts/admin_menu' %>
-    <% end %>
+    <div id="main-block">
+      <div id="page-header">
+        <div id="logo-area">
+          <h1><%= link_to(image_tag("cmd-logo-75x75.png"), root_url) %></h1>
+        </div>
+      </div>
+      
+      <% if current_user and current_user.admin? %>
+        <%= render '/layouts/admin_menu' %>
+      <% end %>
     
-    <% if flash[:notice] and flash[:notice].size > 0 %>
-    <p id="flash-notice"><%= flash[:notice] %></p>
-    <% end %>
+      <% if flash[:notice] and flash[:notice].size > 0 %>
+        <p id="flash-notice"><%= flash[:notice] %></p>
+      <% end %>
     
-    <%= yield %>
+      <div id="your-cart">
+        <% if current_cart %>
+        <!-- your cart goes here -->
+        <% end %>
+      </div>
     
-    <%= render '/layouts/page_footer' %>
+      <%= yield %>
+    
+      <%= render '/layouts/page_footer' %>
+      
+    </div>
     
   </body>
 </html>

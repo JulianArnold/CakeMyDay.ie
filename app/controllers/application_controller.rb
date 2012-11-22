@@ -16,11 +16,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :manager_user, :admin_user
   helper_method :logged_in_required
   helper_method :logged_out_required
   helper_method :manager_required, :admin_required
   helper_method :tick_or_cross
+  helper_method :current_cart
   
   private
 
@@ -36,6 +37,30 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.user
   end
 
+  def admin_user
+    if current_user and current_user.admin?
+      return true
+    else
+      return false
+    end
+  end
+  
+  def manager_user
+    if current_user and current_user.manager?
+      return true
+    else
+      return false
+    end
+  end
+
+  def customer_user
+    if current_user and !current_user.admin? and !current_user.manager?
+      return true
+    else
+      return false
+    end
+  end
+  
   # See note 1 above
   def logged_in_required
     unless current_user
@@ -94,5 +119,8 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def current_cart
+    # stuff
+  end
   
 end

@@ -1,21 +1,83 @@
 body {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 5px;
-  background-color: #dcc;
+  padding: 0;
+  background-color: #d8d8d8;
   color: #333;
+}
+
+body, #page-footer {
   font-family: arial, sans-serif;
+}
+
+h1, h2, h3 {
+  color: #92278F;
+  text-shadow: 1px 1px 3px #f6a;
 }
 
 th {
   text-align: left;
-  background-color: #333;
-  color: #ccc;
+  background-color: #92278F;
+  color: #d8d8d8;
   padding: 5px;
 }
 
 td {
   vertical-align: top;
+}
+
+#main-block {
+  width: 85%;
+  margin: 0 auto;
+  padding: 0 15px;
+  background-color: #fdf4f7;
+  margin-top: 0px;
+  color: #333;
+  font-family: palatino, times, serif;
+}
+
+#header-dark-strip {
+  height: 40px;
+  width: 100%;
+  background-color: #92278F;
+  border-bottom: 2px solid #ec008c;
+  /*box-shadow:  0px 0px 5px #ec008c;*/
+	color: #fdf4f7;
+}
+
+#inner, #inner a {
+  width: 85%;
+  margin: 0 auto;
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fdf4f7;
+}
+
+#inner form, #inner form label, #inner form input, #user-access {
+  display: inline;
+  margin: 0px; padding: 0px;
+  vertical-align: middle;
+}
+
+#inner form { margin: 0 20px;}
+
+#site-nav, #site-nav a, #user-access, #user-access a {
+  font-weight: 100;
+  display; inline;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+#site-nav, #user-access { padding-left: 20px}
+
+#page-header {
+  padding: 0; margin: 0;
+}
+
+#logo-area {
+  padding: 0; padding-top: 1px; margin: 0;
 }
 
 #flash-notice {

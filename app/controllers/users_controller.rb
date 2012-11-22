@@ -35,10 +35,10 @@ class UsersController < ApplicationController
   def show
     # GET /users/1
     # GET /users/1.json
-    if current_user and current_user.admin? == false
-      @user = current_user
-    else
+    if admin_user and params[:id].to_i > 0
       @user = User.find(params[:id])
+    else
+      @user = current_user
     end
 
     respond_to do |format|
