@@ -1,2 +1,8 @@
-<h1>Store#index</h1>
-<p>Find me in app/views/store/index.html.erb</p>
+<h1>Unique hand-made cakes for your special occasion</h1>
+<% if @special_occasions %>
+  <ul id="special-occasions">
+    <% @special_occasions.each do |so| %>
+      <li><%= so.name %></li>
+    <% end %>
+  </ul>
+<% end %>

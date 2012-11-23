@@ -76,7 +76,12 @@ if Rails.env.development?
 
 
   SpecialOccasion.destroy_all
-  SpecialOccasion.create({name: "Weddings", running_order: 100, visible_to_customers: true})
+  SpecialOccasion.create({name: "Weddings", running_order: 400, visible_to_customers: true})
+  SpecialOccasion.create({name: "Birthdays", running_order: 200, visible_to_customers: true})
+  SpecialOccasion.create({name: "Baptisms", running_order: 100, visible_to_customers: true})
+  SpecialOccasion.create({name: "Retirements", running_order: 600, visible_to_customers: true})
+  SpecialOccasion.create({name: "Product Launches", running_order: 500, visible_to_customers: true})
+  SpecialOccasion.create({name: "First Communion", running_order: 300, visible_to_customers: true})
 
 
   OptionsList.destroy_all
