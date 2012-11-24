@@ -224,6 +224,20 @@ if Rails.env.development?
   StaticPage.create({main_heading: "About CakeMyDay", main_body: "CakeMyDay was founded in 2009 by Geraldine Arnold in Celbridge, Co. Kildare.\r\n\r\nGeraldine is passionate about the creativity she infuses in her cake creations.  Each cake is individually crafted to the precise requirements of each customer.", menu_label: "About Us", show_in_main_menu: true, main_menu_running_order: 100, show_in_page_footer: true, footer_running_order: 100, window_title: "Hand made cakes in Dublin, Kildare, Louth, Wicklow and Meath", page_description: "Geraldine is passionate about the creativity she infuses in her cake creations.  Each cake is individually crafted to the precise requirements of each customer.", search_terms: "hand made cakes, handmade cakes, designer cakes, wedding cakes"})
   StaticPage.create({main_heading: "Contact Us", main_body: "215 Glendale Meadows,\r\nLeixlip,\r\nCo. Kildare\r\n\r\n  +353-86-837 2795\r\n\r\ninfo@cakemyday.ie", menu_label: "Contact Us", show_in_main_menu: true, main_menu_running_order: 200, show_in_page_footer: true, footer_running_order: 50, window_title: "Get in touch", page_description: "Get in touch with us at CakeMyDay.ie", search_terms: "yummy cakes, super cakes, stuff"})
 
-
+  FinishedProduct.destroy_all
+  # create new Finished Products below this line
+  FinishedProduct.create({name: "Aston Martin DB5 Car Birthday Cake",
+    description: "The general theme of birthday cakes that I make for my husband will probably always be James Bond, as he’s a mega-fan!  This year, I decided to challenge myself and make an Aston Martin DB5.  For the backdrop, I followed a tutorial from “Emily Made A Wish” – I airbrushed the back board black and attached an edible print of a Goldfinger poster.  I carved the car from chocolate sponge and covered it in chocolate ganache.  I then covered it in sugarpaste and marked out the details like doors, windows, etc. by closely studying a little model of the car that we conveniently have in the house!  I sprayed the car with edible silver lustre spray to give it a more realistic look.\r\rHubby was thrilled with it, so objective achieved!!",
+    typical_price: 119.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 100,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-11-08 0:00:00"
+    })
+    
+  
+  
+  
   # That's it!
 end

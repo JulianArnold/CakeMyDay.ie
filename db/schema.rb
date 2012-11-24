@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120090009) do
+ActiveRecord::Schema.define(:version => 20121124235016) do
 
   create_table "currencies", :force => true do |t|
     t.string   "iso_code"
@@ -249,16 +249,6 @@ ActiveRecord::Schema.define(:version => 20121120090009) do
     t.integer  "user_group_id",                      :default => 1
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
-  end
-
-  create_table "weekly_quota", :force => true do |t|
-    t.date     "start_date"
-    t.date     "end_date"
-    t.integer  "quota"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end
