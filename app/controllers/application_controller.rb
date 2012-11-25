@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
   helper_method :tick_or_cross
   helper_method :current_cart
   
+  before_filter :general_setting
+  
   private
 
   # See note 1 above
@@ -121,6 +123,10 @@ class ApplicationController < ActionController::Base
   
   def current_cart
     # stuff
+  end
+  
+  def general_setting
+    @general_setting = GeneralSetting.first
   end
   
 end

@@ -12,7 +12,7 @@
 
 <p>
   <b>Typical price:</b>
-  <%= sanitize number_to_currency(@finished_product.typical_price, :unit => "&euro;", :precision => 2) %>
+  <%= sanitize number_to_currency(@finished_product.typical_price, :unit =>  @general_setting.ccy, :precision => 2) %>
 </p>
 
 <% if @finished_product.special_occasion_id.to_i > 0 %>

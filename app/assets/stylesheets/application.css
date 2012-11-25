@@ -118,6 +118,22 @@ td {
   width:60%;
 }
 
+#special-occasions #selected {
+  background-color: #ec008c;
+}
+
+#special-occasions a {
+  background-color: #92278F;
+  color: #fdf4f7;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+#special-occasions a:hover {
+  background-color: #ec008c;
+}
+
+
 .form-label, .form-label label {
   width: 150px;
   vertical-align: top;

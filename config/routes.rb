@@ -1,6 +1,6 @@
 CakeMyDaySite::Application.routes.draw do
 
-  get "store/index"
+  match "store"    => "store#index",           :as => :store
 
   # special routes for user authentication
   match 'login'    => "user_sessions#new",     :as => :login

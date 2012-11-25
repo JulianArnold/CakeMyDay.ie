@@ -27,7 +27,7 @@
             <%= image_tag("product_images/" + fpi.image.file_name, :size => "80x80") %>
           <% end %>
       </td>
-      <td style="text-align:right;"><%= sanitize number_to_currency(finished_product.typical_price, :unit => "&euro;", :precision => 2) %></td>
+      <td style="text-align:right;"><%= sanitize number_to_currency(finished_product.typical_price, :unit => @general_setting.ccy, :precision => 2) %></td>
       <td style="text-align:right;"><%= finished_product.running_order %></td>
       <td><%= sanitize tick_or_cross finished_product.available_for_purchase %></td>
       <td><%= sanitize tick_or_cross finished_product.visible %></td>

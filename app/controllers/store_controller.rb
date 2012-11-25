@@ -9,7 +9,18 @@
 class StoreController < ApplicationController
 
   def index
-    @special_occasions = SpecialOccasion.all(order: "running_order, name")
+    @special_occasions = SpecialOccasion.all(order: "running_order, name", conditions: ["visible_to_customers = ?", true])
+    
+    if @special_occasions
+      @special_occasion = SpecialOccasion.first(conditions: ["name = ? and visible_to_customers = ?", params[:show], true])
+    end
+    
+    if @special_occasion
+      @finished_products = @special_occasion.finished_products.all
+    else # params[:show] == "latest" or !params[:show] or params[:show] not known
+      @finished_products = FinishedProduct.all(order: "created_at DESC, running_order")
+      @finished_product = nil
+    end
   end
 
 end
