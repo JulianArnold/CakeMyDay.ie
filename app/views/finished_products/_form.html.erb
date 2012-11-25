@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :special_occasion_id %><br />
-    <%= f.number_field :special_occasion_id %>
+    <%= f.collection_select :special_occasion_id, @special_occasions, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :running_order %><br />

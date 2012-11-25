@@ -7,9 +7,10 @@
 # Rights in third party code acknowledged.
 
 class FinishedProduct < ActiveRecord::Base
-  attr_accessible :product_name, :description, :typical_price, :special_occasion_id, :running_order, :available_for_purchase, :visible
+  attr_accessible :product_name, :description, :typical_price, :special_occasion_id, :running_order, :available_for_purchase, :visible, :created_at
   
   belongs_to :special_occasion
+  has_many   :finished_product_images, :order => "running_order"
   
   validates_presence_of :product_name, :description, :typical_price, :running_order
   validates_uniqueness_of :product_name

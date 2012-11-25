@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<h1>Finished Product #<%= @finished_product.id %></h1>
 
 <p>
   <b>Product name:</b>
@@ -12,13 +12,15 @@
 
 <p>
   <b>Typical price:</b>
-  <%= @finished_product.typical_price %>
+  <%= sanitize number_to_currency(@finished_product.typical_price, :unit => "&euro;", :precision => 2) %>
 </p>
 
+<% if @finished_product.special_occasion_id.to_i > 0 %>
 <p>
   <b>Special occasion:</b>
-  <%= @finished_product.special_occasion_id %>
+  <%= @finished_product.special_occasion.name %>
 </p>
+<% end %>
 
 <p>
   <b>Running order:</b>
@@ -27,14 +29,13 @@
 
 <p>
   <b>Available for purchase:</b>
-  <%= @finished_product.available_for_purchase %>
+  <%= sanitize tick_or_cross @finished_product.available_for_purchase %>
 </p>
 
 <p>
   <b>Visible:</b>
-  <%= @finished_product.visible %>
+  <%= sanitize tick_or_cross @finished_product.visible %>
 </p>
 
-
-<%= link_to 'Edit', edit_finished_product_path(@finished_product) %> |
-<%= link_to 'Back', finished_products_path %>
+<%= link_to 'Back', finished_products_path %> | 
+<%= link_to 'Edit', edit_finished_product_path(@finished_product) %>
