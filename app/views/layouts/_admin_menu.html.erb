@@ -1,9 +1,8 @@
 <div id="admin-menu">
   ADMIN MENU:
-  <%= link_to "General Settings", general_settings_url %> |
-  <%= link_to "Images", images_url %> |
-  <%= link_to "Options Lists", options_lists_url %> |
-  <%= link_to "PayPal Statuses", pay_pal_statuses_url %> |
-  <%= link_to "User Groups", user_groups_url %> |
-  <%= link_to "Users", users_url %> |
+  <%= link_to sanitize("General&nbsp;Settings"), general_settings_url %> |
+  <%= link_to sanitize("PayPal&nbsp;Statuses"), pay_pal_statuses_url %> |
+  <%= link_to sanitize("Product&nbsp;Images"), product_images_url %> |
+  <%= link_to sanitize("User&nbsp;Groups"), user_groups_url %> |
+  <%= link_to "Users", users_url %>
 </div>

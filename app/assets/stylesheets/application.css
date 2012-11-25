@@ -1,3 +1,9 @@
+/* Standard colours:
+  #92278F - deeper purple
+  #ec008c - pink stripe
+  #fdf4f7 - background colour
+*/
+
 body {
   width: 100%;
   margin: 0 auto;
@@ -57,13 +63,11 @@ td {
 
 #inner form, #inner form label, #inner form input, #user-access {
   display: inline;
-  /*margin: 0px; padding: 0px;
-  vertical-align: middle;*/
 }
 
 #inner form { margin: 0 20px;}
 
-#site-nav, #site-nav a, #user-access, #user-access a {
+#site-nav, #site-nav a, #user-access, #user-access a, #user-access form {
   font-weight: 100;
   display; inline;
   font-size: 12px;
@@ -77,7 +81,7 @@ td {
 }
 
 #logo-area {
-  padding: 0; padding-top: 1px; margin: 0;
+  padding: 10px 0 ; margin: 0;
 }
 
 #flash-notice {
@@ -87,7 +91,10 @@ td {
 }
 
 #admin-menu {
-  background-color: #f99;
+  background-color: #f9d4e4;
+  color: #92278F;
+  padding: 10px;
+  line-height: 125%;
 }
 
 #google-search-result {
@@ -122,10 +129,11 @@ td {
 
 #page-footer {
   margin: 50px 0 15px 0;
-  padding: 10px 0;
-  border-top: 1px solid #666;
-  font-size: 80%;
-  
+  padding: 10px;
+  border-top: 1px solid #92278F;
+  font-size: 70%;
+  background-color:#f9d4e4;
+  color:#92278F;
 }
 
 /*

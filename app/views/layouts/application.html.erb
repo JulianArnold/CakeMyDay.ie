@@ -25,25 +25,19 @@
       		<%= submit_tag "Search", :name => nil %>
         <% end %>
 
-        <span id="user-access">
-          <% if current_user %>
-            Hi <%= link_to((h(current_user.first_name)).titleize, user_url(:id => current_user.id), :title => "click to view your profile") %> | <%= link_to("Log out", logout_url) %>
-          <% elsif params[:controller] != "user_sessions" %>
-          <%= link_to "forgot password?" %>
-            <%= form_for UserSession.new, :as => :user_session, :url => { :controller => "user_sessions", :action => "create" } do |f| %>
-              <%= f.label :login, "Email" %> <%= f.text_field :login, :size => "20x1" %>
-              <%= f.label :password %> <%= f.password_field :password, :size => "10x1" %>
-              <%= f.submit "Sign in" %>
-            <% end %>
-          <% end %>
-        </span>
+        <%= render '/layouts/user_access_panel' %>
         
       </div>      
     </div>
     <div id="main-block">
+      
       <div id="page-header">
         <div id="logo-area">
-          <h1><%= link_to(image_tag("cmd-logo-75x75.png"), root_url) %></h1>
+          <% if params[:controller] == 'store' %>
+            <%= link_to(image_tag("cmd-logo-150x150.png"), root_url) %>
+          <% else %>
+            <%= link_to(image_tag("cmd-logo-75x75.png"), root_url) %>
+          <% end %>
         </div>
       </div>
 
