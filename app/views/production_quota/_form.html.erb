@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :start_date %><br />
-    <%= f.date_select :start_date %>
+    From:
+    <%= @production_quotum.start_date.strftime("%d-%b-%Y") %>
   </div>
   <div class="field">
-    <%= f.label :finish_date %><br />
-    <%= f.date_select :finish_date %>
+    To:
+    <%= @production_quotum.finish_date.strftime("%d-%b-%Y") %>
   </div>
   <div class="field">
     <%= f.label :maximum_cakes_allowed %><br />

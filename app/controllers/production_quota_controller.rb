@@ -71,9 +71,23 @@ class ProductionQuotaController < ApplicationController
     # PUT /production_quota/1
     # PUT /production_quota/1.json
     @production_quotum = ProductionQuotum.find(params[:id])
-
+     
+    carts = @production_quotum.shopping_carts.all(:include => "shopping_cart_status", conditions: ["shopping_cart_statuses.paid_cart = ?", true])
+    current_workload = 0
+    carts.each do |cart|
+      cart.shopping_cart_items.each do |item|
+        current_workload += item.product.production_quota_value.to_i
+      end
+    end
+    
+    if current_workload > params[:production_quotum][:maximum_cakes_allowed].to_i
+      flash[:notice] = "Sorry, you can't reduce that week's limit. The current workload is already " + current_workload.to_i.to_s + "."
+    else
+      @production_quotum.maximum_cakes_allowed = params[:production_quotum][:maximum_cakes_allowed].to_i
+    end
+    
     respond_to do |format|
-      if @production_quotum.update_attributes(params[:production_quotum])
+      if @production_quotum.save
         format.html { redirect_to production_quota_url, notice: 'Production quotum was successfully updated.' }
         #format.json { head :no_content }
       else

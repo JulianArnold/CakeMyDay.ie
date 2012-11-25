@@ -10,6 +10,7 @@ class ShoppingCart < ActiveRecord::Base
   attr_accessible :cake_required_at, :customer_id, :general_description_from_customer, :name_to_appear_on_cake, :pay_pal_status_id, :session_id, :shopping_cart_status_id, :special_occasion, :production_quotum_id
 
   before_save :log_the_weekday
+  before_save :set_production_quantum_id
 
   belongs_to  :customer
   belongs_to  :pay_pal_status
@@ -29,8 +30,16 @@ class ShoppingCart < ActiveRecord::Base
   validates_numericality_of :pay_pal_status_id
   validates_numericality_of :production_quotum_id
   
+  def set_production_quantum_id
+    
+    pq = ProductionQuotum.first(:conditions => ["start_date <= ? and finish_date >= ?", cake_required_at.to_date, cake_required_at.to_date])
+    if pq
+      self.production_quotum_id = pq.id
+    end
+  end
+  
   def log_the_weekday
-    weekday = cake_required_at.wday
+    self.weekday = cake_required_at.wday
   end
 
 end

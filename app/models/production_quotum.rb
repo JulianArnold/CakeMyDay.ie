@@ -9,31 +9,49 @@
 class ProductionQuotum < ActiveRecord::Base
   attr_accessible :start_date, :finish_date, :maximum_cakes_allowed
   
-  has_many :shopping_carts
-  
   validates_presence_of :start_date, :finish_date, :maximum_cakes_allowed
   validates_numericality_of :maximum_cakes_allowed
   validates_uniqueness_of :start_date
+
+  has_many :shopping_carts
+
   has_many  :monday_bookings,
             :class_name => "ShoppingCart",
             :foreign_key => "production_quotum_id",
             :include => "shopping_cart_status",
             :conditions => ["shopping_carts.weekday = 1 and shopping_cart_statuses.paid_cart = ?", true]
+  has_many  :tuesday_bookings,
+            :class_name => "ShoppingCart",
+            :foreign_key => "production_quotum_id",
+            :include => "shopping_cart_status",
+            :conditions => ["shopping_carts.weekday = 2 and shopping_cart_statuses.paid_cart = ?", true]
+  has_many  :wednesday_bookings,
+            :class_name => "ShoppingCart",
+            :foreign_key => "production_quotum_id",
+            :include => "shopping_cart_status",
+            :conditions => ["shopping_carts.weekday = 3 and shopping_cart_statuses.paid_cart = ?", true]
+  has_many  :thursday_bookings,
+            :class_name => "ShoppingCart",
+            :foreign_key => "production_quotum_id",
+            :include => "shopping_cart_status",
+            :conditions => ["shopping_carts.weekday = 4 and shopping_cart_statuses.paid_cart = ?", true]
+  has_many  :friday_bookings,
+            :class_name => "ShoppingCart",
+            :foreign_key => "production_quotum_id",
+            :include => "shopping_cart_status",
+            :conditions => ["shopping_carts.weekday = 5 and shopping_cart_statuses.paid_cart = ?", true]
+  has_many  :saturday_bookings,
+            :class_name => "ShoppingCart",
+            :foreign_key => "production_quotum_id",
+            :include => "shopping_cart_status",
+            :conditions => ["shopping_carts.weekday = 6 and shopping_cart_statuses.paid_cart = ?", true]
+  has_many  :sunday_bookings,
+            :class_name => "ShoppingCart",
+            :foreign_key => "production_quotum_id",
+            :include => "shopping_cart_status",
+            :conditions => ["shopping_carts.weekday = 0 and shopping_cart_statuses.paid_cart = ?", true]
 
-=begin
-  
-  has_many :tuesday_bookings
-  
-  has_many :wednesday_bookings
-  
-  has_many :thursday_bookings
-  
-  has_many :friday_bookings
-  
-  has_many :saturday_bookings
-  
-  has_many :sunday_bookings
-=end
+
   def bookings
     return carts = ShoppingCart.all(:conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_status.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
   end
