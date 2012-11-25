@@ -8,17 +8,9 @@
 
 class ShoppingCart < ActiveRecord::Base
   attr_accessible :cake_required_at, :customer_id, :general_description_from_customer, :name_to_appear_on_cake, :pay_pal_status_id, :session_id, :shopping_cart_status_id, :special_occasion, :production_quotum_id
-=begin
-  attr_reader :weekday
-  
-  scope :monday, where(:weekday => 1)
-  scope :tuesday, where(:weekday => 2)
-  scope :wednesday, where(self.cake_required_at.to_date.wday.to_i == 3)
-  scope :thursday, where(:weekday => 4)
-  scope :friday, where(:weekday => 5)
-  scope :saturday, where(:weekday => 6)
-  scope :sunday, where(:weekday => 0)
-=end
+
+  before_save :log_the_weekday
+
   belongs_to  :customer
   belongs_to  :pay_pal_status
   has_many    :pay_pal_transactions, :order => :created_at
@@ -37,8 +29,8 @@ class ShoppingCart < ActiveRecord::Base
   validates_numericality_of :pay_pal_status_id
   validates_numericality_of :production_quotum_id
   
-  def weekday
-    return cake_required_at.to_date.wday.to_i
+  def log_the_weekday
+    weekday = cake_required_at.wday
   end
 
 end

@@ -10,12 +10,13 @@ class ProductionQuotaController < ApplicationController
 
   before_filter :logged_in_required
   before_filter :manager_required
+  before_filter :admin_required, :only => 'destroy'
   before_filter :auto_generate_new_rows
   
   def index
     # GET /production_quota
     # GET /production_quota.json
-    @production_quota = ProductionQuotum.all
+    @production_quota = ProductionQuotum.all(order: "start_date")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -86,8 +87,13 @@ class ProductionQuotaController < ApplicationController
     # DELETE /production_quota/1
     # DELETE /production_quota/1.json
     @production_quotum = ProductionQuotum.find(params[:id])
-    @production_quotum.destroy
-
+    if @production_quotum.shopping_carts.count == 0
+      @production_quotum.destroy
+      flash[:notice] = "Production Quota deleted."
+    else
+      flash[:notice] = "Production Quota could not be deleted."
+    end
+    
     respond_to do |format|
       format.html { redirect_to production_quota_url }
       #format.json { head :no_content }
