@@ -47,7 +47,10 @@
         </div>
       </div>
 
-      <% if current_user and current_user.admin? %>
+      <% if manager_user %>
+        <%= render '/layouts/manager_menu' %>
+      <% end %>
+      <% if admin_user %>
         <%= render '/layouts/admin_menu' %>
       <% end %>
     

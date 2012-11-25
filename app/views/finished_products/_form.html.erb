@@ -12,32 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :product_name %><br />
-    <%= f.text_field :product_name %>
+    <span class="form-label"><%= f.label :product_name %></span>
+    <span class="form-field"><%= f.text_field :product_name %></span>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <span class="form-label"><%= f.label :description %></span>
+    <span class="form-field"><%= f.text_field :description %></span>
   </div>
   <div class="field">
-    <%= f.label :typical_price %><br />
-    <%= f.text_field :typical_price %>
+    <span class="form-label"><%= f.label :typical_price %></span>
+    <span class="form-field"><%= f.text_field :typical_price %></span>
   </div>
   <div class="field">
-    <%= f.label :special_occasion_id %><br />
-    <%= f.collection_select :special_occasion_id, @special_occasions, :id, :name %>
+    <span class="form-label"><%= f.label :special_occasion_id %></span>
+    <span class="form-field"><%= f.collection_select :special_occasion_id, @special_occasions, :id, :name %></span>
   </div>
   <div class="field">
-    <%= f.label :running_order %><br />
-    <%= f.number_field :running_order %>
+    <span class="form-label"><%= f.label :running_order %></span>
+    <span class="form-field"><%= f.number_field :running_order %></span>
   </div>
   <div class="field">
-    <%= f.label :available_for_purchase %><br />
-    <%= f.check_box :available_for_purchase %>
+    <span class="form-label"><%= f.label :available_for_purchase %></span>
+    <span class="form-field"><%= f.check_box :available_for_purchase %></span>
   </div>
   <div class="field">
-    <%= f.label :visible %><br />
-    <%= f.check_box :visible %>
+    <span class="form-label"><%= f.label :visible %></span>
+    <span class="form-field"><%= f.check_box :visible %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

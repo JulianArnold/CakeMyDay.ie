@@ -10,6 +10,7 @@ class CurrenciesController < ApplicationController
 
   before_filter :logged_in_required
   before_filter :manager_required
+  before_filter :admin_required, :only => "destroy"
   
   def index
     # GET /currencies
@@ -56,7 +57,7 @@ class CurrenciesController < ApplicationController
 
     respond_to do |format|
       if @currency.save
-        format.html { redirect_to @currency, notice: 'Currency was successfully created.' }
+        format.html { redirect_to currencies_url, notice: 'Currency was successfully created.' }
         #format.json { render json: @currency, status: :created, location: @currency }
       else
         format.html { render action: "new" }
@@ -72,7 +73,7 @@ class CurrenciesController < ApplicationController
 
     respond_to do |format|
       if @currency.update_attributes(params[:currency])
-        format.html { redirect_to @currency, notice: 'Currency was successfully updated.' }
+        format.html { redirect_to currencies_url, notice: 'Currency was successfully updated.' }
         #format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -85,7 +86,14 @@ class CurrenciesController < ApplicationController
     # DELETE /currencies/1
     # DELETE /currencies/1.json
     @currency = Currency.find(params[:id])
-    @currency.destroy
+    if @currency.general_setting
+      flash[:notice] = "Sorry, you can't delete that currency - it is the default currency for the business."
+    elsif @currency.active
+      flash[:notice] = "Sorry, you can't delete that currency - it is 'active'."
+    else
+      @currency.destroy
+      flash[:notice] = "Currency deleted."
+    end
 
     respond_to do |format|
       format.html { redirect_to currencies_url }

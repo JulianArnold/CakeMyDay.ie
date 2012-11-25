@@ -1,14 +1,11 @@
 <h1>Currencies</h1>
 <table>
   <tr>
-    <th style="width: 100px;">Iso code</th>
-    <th style="width: 100px;">Currency symbol</th>
+    <th style="width: 100px;">ISO code</th>
+    <th style="width: 100px;">Symbol</th>
     <th style="width: 100px;">Full name</th>
     <th style="width: 100px;">Running order</th>
     <th style="width: 100px;">Active</th>
-    <th style="width: 100px;"></th>
-    <th style="width: 100px;"></th>
-    <th style="width: 100px;"></th>
   </tr>
   <% @currencies.each do |currency| %>
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
@@ -17,9 +14,10 @@
       <td><%= currency.full_name %></td>
       <td><%= currency.running_order %></td>
       <td><%= sanitize tick_or_cross currency.active %></td>
-      <td><%= link_to 'Show', currency %></td>
       <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
+      <% if admin_user %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "currency", :item => currency} -%>
+      <% end %>
     </td>
   <% end %>
 </table><br/>
