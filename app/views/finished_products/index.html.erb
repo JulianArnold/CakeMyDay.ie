@@ -1,0 +1,35 @@
+<h1>Listing finished_products</h1>
+
+<table>
+  <tr>
+    <th>Product name</th>
+    <th>Description</th>
+    <th>Typical price</th>
+    <th>Special occasion</th>
+    <th>Running order</th>
+    <th>Available for purchase</th>
+    <th>Visible</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @finished_products.each do |finished_product| %>
+  <tr>
+    <td><%= finished_product.product_name %></td>
+    <td><%= finished_product.description %></td>
+    <td><%= finished_product.typical_price %></td>
+    <td><%= finished_product.special_occasion_id %></td>
+    <td><%= finished_product.running_order %></td>
+    <td><%= finished_product.available_for_purchase %></td>
+    <td><%= finished_product.visible %></td>
+    <td><%= link_to 'Show', finished_product %></td>
+    <td><%= link_to 'Edit', edit_finished_product_path(finished_product) %></td>
+    <td><%= link_to 'Destroy', finished_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Finished product', new_finished_product_path %>

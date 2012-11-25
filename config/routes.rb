@@ -18,6 +18,7 @@ CakeMyDaySite::Application.routes.draw do
 
   resources :currencies
   resources :customers
+  resources :finished_products
   resources :general_settings
   resources :images
   resources :options_lists
@@ -41,7 +42,6 @@ CakeMyDaySite::Application.routes.draw do
   resources :users
   resources :user_groups
   resources :user_sessions
-  resources :weekly_quota
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

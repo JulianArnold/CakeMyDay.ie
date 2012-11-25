@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Product name:</b>
+  <%= @finished_product.product_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @finished_product.description %>
+</p>
+
+<p>
+  <b>Typical price:</b>
+  <%= @finished_product.typical_price %>
+</p>
+
+<p>
+  <b>Special occasion:</b>
+  <%= @finished_product.special_occasion_id %>
+</p>
+
+<p>
+  <b>Running order:</b>
+  <%= @finished_product.running_order %>
+</p>
+
+<p>
+  <b>Available for purchase:</b>
+  <%= @finished_product.available_for_purchase %>
+</p>
+
+<p>
+  <b>Visible:</b>
+  <%= @finished_product.visible %>
+</p>
+
+
+<%= link_to 'Edit', edit_finished_product_path(@finished_product) %> |
+<%= link_to 'Back', finished_products_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124235016) do
+ActiveRecord::Schema.define(:version => 20121125000917) do
 
   create_table "currencies", :force => true do |t|
     t.string   "iso_code"
@@ -29,6 +29,26 @@ ActiveRecord::Schema.define(:version => 20121124235016) do
     t.string   "contact_phone_number"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+  end
+
+  create_table "finished_product_images", :force => true do |t|
+    t.integer  "finished_product_id"
+    t.integer  "image_id"
+    t.integer  "running_order"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "finished_products", :force => true do |t|
+    t.string   "product_name"
+    t.string   "description"
+    t.decimal  "typical_price"
+    t.integer  "special_occasion_id"
+    t.integer  "running_order"
+    t.boolean  "available_for_purchase"
+    t.boolean  "visible"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   create_table "general_settings", :force => true do |t|

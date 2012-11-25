@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  finished_product_id: 1
+  image_id: 1
+  running_order: 1
+
+two:
+  finished_product_id: 1
+  image_id: 1
+  running_order: 1

@@ -14,5 +14,6 @@ class SpecialOccasion < ActiveRecord::Base
   validates_numericality_of :running_order
   
   has_many :products
+  has_many :finished_products
   
 end
