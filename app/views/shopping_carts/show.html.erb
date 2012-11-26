@@ -11,4 +11,27 @@
   <tr><td>PayPal status:</td><td><%= @shopping_cart.pay_pal_status.name %></td></tr>
   <tr><td>General description from customer:</td><td><%= @shopping_cart.general_description_from_customer %></td></tr>
 </table><br/>
+
+<h2>Items</h2>
+<table>
+  <tr>
+    <th>Product name</th>
+    <th>Customer description</th>
+    <th>Options</th>
+    <th style="text-align:right;">Unit Price</th>
+    <th style="text-align:right;">Quantity</th>
+    <th style="text-align:right;">Line Total</th>
+  </tr>
+  
+  <% @shopping_cart.shopping_cart_items.each do |item| %>
+    <tr>
+      <td><%= item.product.name %></td>
+      <td><%= item.user_description %></td>
+      <td><%= item.product_options_list_choice %></td>
+      <td style="text-align:right;"><%= sanitize(number_to_currency(item.unit_price, :unit => @general_setting.ccy, :precision => 2)) %></td>
+      <td style="text-align:right;"><%= item.quantity %></td>
+      <td style="text-align:right;"><%= sanitize(number_to_currency(item.line_total, :unit => @general_setting.ccy, :precision => 2)) %></td>
+    </tr>
+  <% end %>
+</table><br/>
 <%= link_to 'Back', shopping_carts_path %> | <%= link_to 'Edit', edit_shopping_cart_path(@shopping_cart) %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125172659) do
+ActiveRecord::Schema.define(:version => 20121126001104) do
 
   create_table "currencies", :force => true do |t|
     t.string   "iso_code"
@@ -188,6 +188,8 @@ ActiveRecord::Schema.define(:version => 20121125172659) do
     t.string   "user_description"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+    t.decimal  "unit_price"
+    t.decimal  "line_total"
   end
 
   create_table "shopping_cart_statuses", :force => true do |t|

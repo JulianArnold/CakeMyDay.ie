@@ -16,5 +16,21 @@ class ShoppingCartItem < ActiveRecord::Base
   validates_presence_of :shopping_cart_id, :product_id, :product_price_id, :quantity
   validates_numericality_of :quantity, :allow_nil => true
   validates_numericality_of :shopping_cart_id, :product_id, :product_price_id
-
+  validates_numericality_of :unit_price, :line_total, :allow_nil => true
+  
+  before_save :update_prices
+  
+  private
+  
+  def update_prices
+    # look up the unit price for this product
+    self.product_price.reload
+    the_price = self.product_price.price.to_f
+    # store the unit price in the unit_price field
+    self.unit_price = the_price
+    # store the unit_price * quantity in the line_total field
+    self.line_total = the_price * self.quantity
+    return true
+  end
+  
 end

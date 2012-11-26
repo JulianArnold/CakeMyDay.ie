@@ -1,8 +1,10 @@
-/* Standard colours:
-  #92278F - deeper purple
-  #ec008c - pink stripe
-  #fdf4f7 - background colour
-  #f9d4e4 - footer background pink
+/* 
+  Standard colours:
+    #92278F - deeper purple
+    #ec008c - pink stripe
+    #fdf4f7 - background colour
+    #f9d4e4 - footer background pink
+
 */
 
 body {
@@ -98,6 +100,11 @@ td {
   line-height: 125%;
 }
 
+#page-content {
+  min-height: 600px;
+  
+}
+
 #google-search-result {
   background-color: white;
   padding: 20px;
@@ -145,8 +152,8 @@ td {
 }
 
 #page-footer {
-  margin: 50px 0 15px 0;
-  padding: 10px;
+  margin: 50px 0 0px 0;
+  padding: 15px 25px;
   border-top: 1px solid #92278F;
   font-size: 70%;
   background-color:#f9d4e4;
