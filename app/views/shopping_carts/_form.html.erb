@@ -12,14 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :customer_id %><br />
-    <%= f.number_field :customer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :session_id %><br />
-    <%= f.text_field :session_id %>
-  </div>
-  <div class="field">
     <%= f.label :cake_required_at %><br />
     <%= f.datetime_select :cake_required_at %>
   </div>
@@ -41,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :general_description_from_customer %><br />
-    <%= f.text_area :general_description_from_customer %>
+    <%= f.text_area :general_description_from_customer, :size => "40x8" %>
   </div>
   <div class="actions">
     <%= f.submit %>

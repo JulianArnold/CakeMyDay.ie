@@ -10,11 +10,12 @@ class CustomersController < ApplicationController
 
   before_filter :logged_in_required
   before_filter :manager_required
+  before_filter :admin_required, :only => "destroy"
   
   def index
     # GET /customers
     # GET /customers.json
-    @customers = Customer.all
+    @customers = Customer.all(:include => "user", order: "users.last_name, users.first_name")
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,6 +1,6 @@
 <h1>Shopping Cart #<%= params[:id] %></h1>
 <table>
-  <tr><td>Customer:</td><td><%= @shopping_cart.customer.user.full_name %><br/>
+  <tr><td>Customer:</td><td><%= link_to(@shopping_cart.customer.user.full_name, customer_url(@shopping_cart.customer_id), :title => "click to view the customer's details") %><br/>
     <%= link_to(sanitize(@shopping_cart.customer.user.login), "mailto:" + @shopping_cart.customer.user.login) %></td></tr>
   <tr><td>Cake required at:</td><td><%= @shopping_cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td></tr>
   <tr><td>Production quota:</td><td><%= @shopping_cart.production_quotum.start_date.strftime("%d-%b-%Y") %> - <%= @shopping_cart.production_quotum.finish_date.strftime("%d-%b-%Y") %></td></tr>
