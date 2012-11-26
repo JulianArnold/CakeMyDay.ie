@@ -270,6 +270,12 @@ if Rails.env.development?
         updated_by: nil
         })
 
+  PayPalStatus.destroy_all
+  PayPalStatus.create({name: "Paid", description: "The transaction has been confirmed as paid.", pending_authorisation: false, paid_sale: true, charged_back: false})
+  PayPalStatus.create({name: "Chargeback", description: "The transaction has been charged back.  This usually means fraud.", pending_authorisation: false, paid_sale: false, charged_back: true})
+  PayPalStatus.create({name: "Pending", description: "The transaction has been marked as pending by PayPal.", pending_authorisation: true, paid_sale: false, charged_back: false})
+
+
   ShoppingCart.destroy_all
   ShoppingCart.create({
         cake_required_at: "2013-04-23 15:00:00",
