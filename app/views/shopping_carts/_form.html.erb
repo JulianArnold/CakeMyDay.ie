@@ -12,20 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :customer_id %><br />
-    <%= f.number_field :customer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :session_id %><br />
-    <%= f.text_field :session_id %>
-  </div>
-  <div class="field">
     <%= f.label :cake_required_at %><br />
     <%= f.datetime_select :cake_required_at %>
-  </div>
-  <div class="field">
-    <%= f.label :production_quotum_id %><br />
-    <%= f.number_field :production_quotum_id %>
   </div>
   <div class="field">
     <%= f.label :special_occasion %><br />
@@ -37,15 +25,15 @@
   </div>
   <div class="field">
     <%= f.label :shopping_cart_status_id %><br />
-    <%= f.number_field :shopping_cart_status_id %>
+    <%= f.collection_select :shopping_cart_status_id, @shopping_cart_statuses, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :pay_pal_status_id %><br />
-    <%= f.number_field :pay_pal_status_id %>
+    <%= f.collection_select :pay_pal_status_id, @pay_pal_statuses, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :general_description_from_customer %><br />
-    <%= f.text_area :general_description_from_customer %>
+    <%= f.text_area :general_description_from_customer, :size => "40x8" %>
   </div>
   <div class="actions">
     <%= f.submit %>

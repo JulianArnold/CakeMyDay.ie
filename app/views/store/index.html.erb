@@ -1,8 +1,34 @@
-<h1>Unique hand-made cakes for your special occasion</h1>
+<h1>Unique hand-made cakes for your <br/>special occasion</h1>
+
 <% if @special_occasions %>
-  <ul id="special-occasions">
-    <% @special_occasions.each do |so| %>
-      <li><%= so.name %></li>
+  <div id="special-occasions">
+    <% if @special_occasion == nil %>
+      <%= link_to("Latest Creations", store_url(:show => "latest"), {:id => "selected"}) %>
+    <% else %>
+      <%= link_to("Latest Creations", store_url(:show => "latest")) %>
     <% end %>
-  </ul>
+    <% @special_occasions.each do |so| %>
+      <% if @special_occasion and @special_occasion.name == so.name %>
+        <%= link_to(so.name, store_url(:show => so.name), :id => "selected") %>
+      <% else %>
+        <%= link_to(so.name, store_url(:show => so.name)) %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% @finished_products.each do |fp| %>
+  <div class="finished-product">
+    <h3><%= fp.product_name %></h3>
+    <div class="fp-photo-1">
+      <%= image_tag("product_images/" + fp.finished_product_images.first.image.file_name, :height => "200") %>
+    </div>
+    <div class="fp-description"><%= fp.description %></div>
+    <% if fp.available_for_purchase %>
+    <div class="fp-price">Typical price: <%= sanitize number_to_currency(fp.typical_price, :unit => @general_setting.ccy, :precision => 2) %></div>
+    <div class="add-to-cart"><%= link_to "Add to Cart" %></div>
+    <% end %>
+<% end %>
+<% if @finished_products.count == 0 %>
+  <p>Sorry, we have no creations on show in our this category right now.</p>
 <% end %>

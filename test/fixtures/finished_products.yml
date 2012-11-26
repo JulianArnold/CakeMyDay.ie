@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product_name: MyString
+  description: MyString
+  typical_price: 9.99
+  special_occasion_id: 1
+  running_order: 1
+  available_for_purchase: false
+  visible: false
+
+two:
+  product_name: MyString
+  description: MyString
+  typical_price: 9.99
+  special_occasion_id: 1
+  running_order: 1
+  available_for_purchase: false
+  visible: false

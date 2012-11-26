@@ -1,21 +1,22 @@
 <h1>Customers</h1>
 <table>
   <tr>
-    <th style="width: 100px;">User</th>
-    <th style="width: 100px;">Postal address</th>
-    <th style="width: 100px;">Contact phone number</th>
-    <th style="width: 100px;"></th>
-    <th style="width: 100px;"></th>
-    <th style="width: 100px;"></th>
+    <th style="width: 200px;">Name</th>
+    <th style="width: 200px;">Email</th>
+    <th style="width: 150px;">Postal address</th>
+    <th style="width: 100px;">Phone number</th>
   </tr>
   <% @customers.each do |customer| %>
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
-      <td><%= customer.user.login %></td>
-      <td><%= customer.postal_address %></td>
+      <td><%= customer.user.full_name %></td>
+      <td><%= link_to(customer.user.login, "mailto: " + customer.user.login, :title => "click to create an email") %></td>
+      <td><%= sanitize customer.postal_address.gsub("\r","<br/>") %></td>
       <td><%= customer.contact_phone_number %></td>
-      <td><%= link_to 'Show', customer %></td>
-      <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+      <td><%= link_to 'Show', customer %> 
+          <%= link_to 'Edit', edit_customer_path(customer) %></td>
+      <% if admin_user %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "customer", :item => customer} -%>
+      <% end %>
     </td>
   <% end %>
 </table><br/>

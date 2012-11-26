@@ -1,7 +1,109 @@
-<h1>Production Quota #<%= params[:id] %></h1>
-<table>
-  <tr><td>Start date:</td><td><%= @production_quotum.start_date %></td></tr>
-  <tr><td>Finish date:</td><td><%= @production_quotum.finish_date %></td></tr>
-  <tr><td>Maximum cakes allowed:</td><td><%= @production_quotum.maximum_cakes_allowed %></td></tr>
-</table><br/>
+<h1>Production Quota <%= @production_quotum.start_date.strftime("%d-%b-%Y") %> - <%= @production_quotum.finish_date.strftime("%d-%b-%Y") %></h1>
+
+<p>Maximum cakes allowed: <%= @production_quotum.maximum_cakes_allowed %>
+
+<% if @production_quotum.shopping_carts.count > 0%>
+  <table>
+    <tr>
+      <th>Required at</th>
+      <th>Customer</th>
+      <th>Occasion</th>
+      <th>Description</th>
+      <th>Name on cake</th>
+      <th>Cart Status</th>
+      <th>PayPal Status</th>
+    </tr>
+    <% @production_quotum.monday_bookings.each do |cart| %>
+      <tr>
+        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
+        <td><%= cart.customer_id %></td>
+        <td><%= cart.special_occasion %></td>
+        <td><%= cart.general_description_from_customer %></td>
+        <td><%= cart.name_to_appear_on_cake %></td>
+        <td><%= cart.shopping_cart_status.name %></td>
+        <td><%= cart.pay_pal_status.name %></td>
+        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
+      </tr>
+    <% end %>
+    <% @production_quotum.tuesday_bookings.each do |cart| %>
+      <tr>
+        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
+        <td><%= cart.customer_id %></td>
+        <td><%= cart.special_occasion %></td>
+        <td><%= cart.general_description_from_customer %></td>
+        <td><%= cart.name_to_appear_on_cake %></td>
+        <td><%= cart.shopping_cart_status.name %></td>
+        <td><%= cart.pay_pal_status.name %></td>
+        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
+      </tr>
+    <% end %>
+    
+    <% @production_quotum.wednesday_bookings.each do |cart| %>
+      <tr>
+        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
+        <td><%= cart.customer_id %></td>
+        <td><%= cart.special_occasion %></td>
+        <td><%= cart.general_description_from_customer %></td>
+        <td><%= cart.name_to_appear_on_cake %></td>
+        <td><%= cart.shopping_cart_status.name %></td>
+        <td><%= cart.pay_pal_status.name %></td>
+        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
+      </tr>
+    <% end %>
+    
+    <% @production_quotum.thursday_bookings.each do |cart| %>
+      <tr>
+        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
+        <td><%= cart.customer_id %></td>
+        <td><%= cart.special_occasion %></td>
+        <td><%= cart.general_description_from_customer %></td>
+        <td><%= cart.name_to_appear_on_cake %></td>
+        <td><%= cart.shopping_cart_status.name %></td>
+        <td><%= cart.pay_pal_status.name %></td>
+        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
+      </tr>
+    <% end %>
+    
+    <% @production_quotum.friday_bookings.each do |cart| %>
+      <tr>
+        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
+        <td><%= cart.customer_id %></td>
+        <td><%= cart.special_occasion %></td>
+        <td><%= cart.general_description_from_customer %></td>
+        <td><%= cart.name_to_appear_on_cake %></td>
+        <td><%= cart.shopping_cart_status.name %></td>
+        <td><%= cart.pay_pal_status.name %></td>
+        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
+      </tr>
+    <% end %>
+    
+    <% @production_quotum.saturday_bookings.each do |cart| %>
+      <tr>
+        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
+        <td><%= cart.customer_id %></td>
+        <td><%= cart.special_occasion %></td>
+        <td><%= cart.general_description_from_customer %></td>
+        <td><%= cart.name_to_appear_on_cake %></td>
+        <td><%= cart.shopping_cart_status.name %></td>
+        <td><%= cart.pay_pal_status.name %></td>
+        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
+      </tr>
+    <% end %>
+    
+    <% @production_quotum.sunday_bookings.each do |cart| %>
+      <tr>
+        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
+        <td><%= cart.customer_id %></td>
+        <td><%= cart.special_occasion %></td>
+        <td><%= cart.general_description_from_customer %></td>
+        <td><%= cart.name_to_appear_on_cake %></td>
+        <td><%= cart.shopping_cart_status.name %></td>
+        <td><%= cart.pay_pal_status.name %></td>
+        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
+      </tr>
+    <% end %>
+    
+  </table><br/>
+<% end %>
+
 <%= link_to 'Back', production_quota_path %> | <%= link_to 'Edit', edit_production_quotum_path(@production_quotum) %>

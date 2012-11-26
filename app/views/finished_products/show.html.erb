@@ -1,0 +1,41 @@
+<h1>Finished Product #<%= @finished_product.id %></h1>
+
+<p>
+  <b>Product name:</b>
+  <%= @finished_product.product_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @finished_product.description %>
+</p>
+
+<p>
+  <b>Typical price:</b>
+  <%= sanitize number_to_currency(@finished_product.typical_price, :unit =>  @general_setting.ccy, :precision => 2) %>
+</p>
+
+<% if @finished_product.special_occasion_id.to_i > 0 %>
+<p>
+  <b>Special occasion:</b>
+  <%= @finished_product.special_occasion.name %>
+</p>
+<% end %>
+
+<p>
+  <b>Running order:</b>
+  <%= @finished_product.running_order %>
+</p>
+
+<p>
+  <b>Available for purchase:</b>
+  <%= sanitize tick_or_cross @finished_product.available_for_purchase %>
+</p>
+
+<p>
+  <b>Visible:</b>
+  <%= sanitize tick_or_cross @finished_product.visible %>
+</p>
+
+<%= link_to 'Back', finished_products_path %> | 
+<%= link_to 'Edit', edit_finished_product_path(@finished_product) %>

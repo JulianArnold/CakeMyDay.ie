@@ -1,25 +1,9 @@
 <div id="admin-menu">
   ADMIN MENU:
-  <%= link_to "Products", products_url %>
-  <%= link_to "Currencies", currencies_url %> |
-  <%= link_to "Customers", customers_url %> |
-  <%= link_to "General Settings", general_settings_url %> |
-  <%= link_to "Images", images_url %> |
-  <%= link_to "Options Lists", options_lists_url %> |
-  <%= link_to "PayPal Statuses", pay_pal_statuses_url %> |
-  <%= link_to "PayPal Transactions", pay_pal_transactions_url %> |
-  <%= link_to "Product Categories", product_categories_url %> |
-  <%= link_to "Product Components", product_components_url %> |
-  <%= link_to "Product Images", product_images_url %> |
-  <%= link_to "Product Prices", product_prices_url %> |
-  <%= link_to "Production Quotas", production_quota_url %> |
-  <%= link_to "Products", products_url %> |
-  <%= link_to "Shopping Cart Items", shopping_cart_items_url %> |
-  <%= link_to "Shopping Cart Statuses", shopping_cart_statuses_url %> |
-  <%= link_to "Shopping Carts", shopping_carts_url %> |
-  <%= link_to "Special Occasions", special_occasions_url %> |
-  <%= link_to "Static Web Pages", static_pages_url %> |
-  <%= link_to "User Groups", user_groups_url %> |
-  <%= link_to "Users", users_url %> |
-  <%= link_to "Weekly Quotas", weekly_quota_url %>
+  <%= link_to sanitize("General&nbsp;Settings"), general_settings_url %> |
+  <%= link_to sanitize("PayPal&nbsp;Statuses"), pay_pal_statuses_url %> |
+  <%= link_to sanitize("Shopping&nbsp;Cart&nbsp;Items"), shopping_cart_items_url %> |
+  <%= link_to sanitize("Product&nbsp;Images"), product_images_url %> |
+  <%= link_to sanitize("User&nbsp;Groups"), user_groups_url %> |
+  <%= link_to "Users", users_url %>
 </div>

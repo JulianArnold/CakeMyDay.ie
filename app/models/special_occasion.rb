@@ -13,6 +13,7 @@ class SpecialOccasion < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_numericality_of :running_order
   
-  has_many :products
+  has_many :products, order: "running_order, created_at DESC"
+  has_many :finished_products, conditions: ["visible = ?", true], order: "running_order, created_at DESC"
   
 end

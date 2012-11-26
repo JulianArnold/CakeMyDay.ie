@@ -18,5 +18,6 @@ class Currency < ActiveRecord::Base
   validates_presence_of :currency_symbol, :full_name, :iso_code, :running_order
   validates_uniqueness_of :iso_code
   validates_uniqueness_of :full_name
+  validates_numericality_of :running_order
 
 end

@@ -10,6 +10,7 @@ class ShoppingCartsController < ApplicationController
 
   before_filter :logged_in_required
   before_filter :manager_required
+  before_filter :get_variables
   
   def index
     # GET /shopping_carts
@@ -91,6 +92,13 @@ class ShoppingCartsController < ApplicationController
       format.html { redirect_to shopping_carts_url }
       #format.json { head :no_content }
     end
+  end
+
+  private
+  
+  def get_variables
+    @shopping_cart_statuses = ShoppingCartStatus.all(:order => "running_order")
+    @pay_pal_statuses = PayPalStatus.all
   end
 
 end

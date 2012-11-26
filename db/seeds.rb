@@ -216,8 +216,8 @@ if Rails.env.development?
   ShoppingCartStatus.create({name: "Live cart", description: "Shopping cart that has not bee checked out as yet.", active_cart: true, paid_cart: false, chargeback_cart: false, production_started: false, production_complete: false, running_order: 100})
   ShoppingCartStatus.create({name: "Paid", description: "Shopping cart that has been paid.", active_cart: false, paid_cart: true, chargeback_cart: false, production_started: false, production_complete: false, running_order: 200})
   ShoppingCartStatus.create({name: "Charged back!", description: "Payment has been bounced by PayPal.", active_cart: false, paid_cart: false, chargeback_cart: true, production_started: false, production_complete: false, running_order: 300})
-  ShoppingCartStatus.create({name: "Production started", description: "Work on producing the shopping cart has started.", active_cart: false, paid_cart: false, chargeback_cart: false, production_started: true, production_complete: false, running_order: 400})
-  ShoppingCartStatus.create({name: "Production complete", description: "Production is complete. The cake is ready.", active_cart: false, paid_cart: false, chargeback_cart: false, production_started: false, production_complete: true, running_order: 500})
+  ShoppingCartStatus.create({name: "Production started", description: "Work on producing the shopping cart has started.", active_cart: false, paid_cart: true, chargeback_cart: false, production_started: true, production_complete: false, running_order: 400})
+  ShoppingCartStatus.create({name: "Production complete", description: "Production is complete. The cake is ready.", active_cart: false, paid_cart: true, chargeback_cart: false, production_started: false, production_complete: true, running_order: 500})
 
 
   StaticPage.destroy_all
@@ -225,5 +225,76 @@ if Rails.env.development?
   StaticPage.create({main_heading: "Contact Us", main_body: "215 Glendale Meadows,\r\nLeixlip,\r\nCo. Kildare\r\n\r\n  +353-86-837 2795\r\n\r\ninfo@cakemyday.ie", menu_label: "Contact Us", show_in_main_menu: true, main_menu_running_order: 200, show_in_page_footer: true, footer_running_order: 50, window_title: "Get in touch", page_description: "Get in touch with us at CakeMyDay.ie", search_terms: "yummy cakes, super cakes, stuff"})
 
 
-  # That's it!
+  FinishedProduct.destroy_all
+  # create new Finished Products below this line
+  FinishedProduct.create({product_name: "Aston Martin DB5 Car Birthday Cake",
+    description: "The general theme of birthday cakes that I make for my husband will probably always be James Bond, as he's a mega-fan! This year, I decided to challenge myself and make an Aston Martin DB5.  For the backdrop, I followed a tutorial from 'Emily Made A Wish' - I airbrushed the back board black and attached an edible print of a Goldfinger poster.  I carved the car from chocolate sponge and covered it in chocolate ganache.  I then covered it in sugarpaste and marked out the details like doors, windows, etc. by closely studying a little model of the car that we conveniently have in the house!  I sprayed the car with edible silver lustre spray to give it a more realistic look.\r\rHubby was thrilled with it, so objective achieved!!",
+    typical_price: 119.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 100,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-11-08 0:00:00"
+    })
+    
+  
+  Image.destroy_all
+  # add new images below
+  Image.create({file_name: "320x240_aston_martin_db5_car_birthday_cake.jpg", 
+        uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+
+
+  FinishedProductImage.destroy_all
+  # add new FInishedProductImages below
+  FinishedProductImage.create({
+        finished_product_id: FinishedProduct.find_by_product_name("Aston Martin DB5 Car Birthday Cake").id,
+        image_id: Image.find_by_file_name("320x240_aston_martin_db5_car_birthday_cake.jpg").id,
+        running_order: 100})
+  
+  
+  Customer.destroy_all
+  Customer.create({user_id: User.find_by_login("bob@example.com").id, 
+        postal_address: "123 Main Street,\r\nBallymun,\r\n Dublin 11",
+        contact_phone_number: "087 1234567"
+        })
+
+  
+  ProductPrice.destroy_all
+  ProductPrice.create({
+        start_at: "2012-11-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.first.id,
+        currency_id: GeneralSetting.first.default_currency_id,
+        price: 69.99,
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+
+  ShoppingCart.destroy_all
+  ShoppingCart.create({
+        cake_required_at: "2013-04-23 15:00:00",
+        customer_id: Customer.first.id,
+        general_description_from_customer: "A birthday cake for Dan",
+        name_to_appear_on_cake: "Dan",
+        pay_pal_status_id: PayPalStatus.find_by_name("Paid").id,
+        session_id: "abcdefg",
+        shopping_cart_status_id: ShoppingCartStatus.find_by_name("Paid").id,
+        special_occasion: "Birthday", 
+        production_quotum_id: ProductionQuotum.first(conditions: ["start_date <= ? and finish_date >= ?", "2013-04-23".to_date, "2013-04-23".to_date]).id
+        })
+  
+  ShoppingCartItem.destroy_all
+  s = ShoppingCartItem.new({
+        shopping_cart_id: ShoppingCart.first.id,
+        product_id: Product.first.id,
+        product_options_list_choice: "",
+        product_price_id: ProductPrice.first.id,
+        quantity: 1, global_options_list_choice: "Purple",
+        user_description: ""
+        })
+      s.save
+  
+  
+  # That's it so far!
+  
 end

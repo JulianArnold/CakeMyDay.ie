@@ -10,7 +10,7 @@
     <th style="width:  50px;">Running<br/>order</th>
   </tr>
   <% @shopping_cart_statuses.each do |shopping_cart_status| %>
-    <tr style="background-color: <%= cycle("white","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
       <td><%= shopping_cart_status.name %><br/>
           <%= shopping_cart_status.description %></td>
       <td><%= sanitize tick_or_cross shopping_cart_status.active_cart %></td>

@@ -15,4 +15,8 @@ class GeneralSetting < ActiveRecord::Base
               :class_name => "Currency",
               :foreign_key => "default_currency_id"
   
+  def ccy
+    currency.currency_symbol
+  end
+  
 end
