@@ -229,28 +229,137 @@ if Rails.env.development?
   # create new Finished Products below this line
   FinishedProduct.create({product_name: "Aston Martin DB5 Car Birthday Cake",
     description: "The general theme of birthday cakes that I make for my husband will probably always be James Bond, as he's a mega-fan! This year, I decided to challenge myself and make an Aston Martin DB5.  For the backdrop, I followed a tutorial from 'Emily Made A Wish' - I airbrushed the back board black and attached an edible print of a Goldfinger poster.  I carved the car from chocolate sponge and covered it in chocolate ganache.  I then covered it in sugarpaste and marked out the details like doors, windows, etc. by closely studying a little model of the car that we conveniently have in the house!  I sprayed the car with edible silver lustre spray to give it a more realistic look.\r\rHubby was thrilled with it, so objective achieved!!",
-    typical_price: 119.00,
+    typical_price: 150.00,
     special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
     running_order: 100,
     available_for_purchase: true,
     visible: true,
     created_at: "2012-11-08 0:00:00"
     })
+
+  FinishedProduct.create({product_name: "Shoe and a Box Birthday Cake",
+    description: "I made this cake for my friend Louise for her 30th birthday.  She\’s very glamorous and loves shopping, shoes, handbags and all things girlie!  I handmade a purple stiletto shoe from flower paste and made a flower with some edible bling as decoration for the front of it.  The shoebox behind is a 12″ chocolate sponge which was halved and stacked into the shape of a shoebox, filled with chocolate buttercream and covered with chocolate ganache and sugarpaste.\r\rLouise loved the cake, and as I was at the party I got to see her reaction to it first-hand… even though I couldn’t watch as it was being cut!!",
+    typical_price: 150.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 200,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-11-24 0:00:00"
+    })
     
-  
+	FinishedProduct.create({product_name: "Clutch Handbag Birthday Cake",
+    description: "I LOVE how this cake turned out… it is a replica of a Lucy Nagle clutch handbag, made from chocolate biscuit cake.  The actual handbag is tiny, so this is a scaled-up version, measuring approximately 12 inches long and 7 inches high.  I covered the cake with a thin coat of pink sugarpaste to start with and then cut out hundreds of hot pink tiny squares and placed them on the cake.  I then airbrushed it to give it a stronger pink colour, and lustred every second square to give a woven ribbon effect.  I also made the knot clasp from flower paste and painted it with edible paint to look like the real thing.\r\rThe best bit about this cake is that it was a birthday cake for the handbag designer herself!  No pressure there then!",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 300,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-11-08 0:00:00"
+    })
+
+FinishedProduct.create({product_name: "Dr. Who Tardis Birthday Cake",
+    description: "My friend Gráinne asked me to make this cake for her niece, Ella.  It was Ella’s 13th birthday and she is a HUGE Dr. Who fan… she even went to a Dr. Who convention in London recently!  Knowing she’d notice all the little details, I spent a long time researching pictures and working out dimensions for the Tardis.\r\rI made a 12″ square chocolate biscuit cake, and cut it in half and stood it on end, sandwiched together with chocolate ganache.  Then I covered the cake with navy sugarpaste, and started filling in all the details.  The Police Box sign and notice on the door are edible images.  I made a cobblestone design on the cake board to make it look more realistic.\r\rElla was totally delighted with the cake, and was able to tell me that it was a version of the Tardis from Series 5!!!  Phew, I must have done a good job in that case!",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 400,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-09-24 0:00:00"
+    })
+    
+FinishedProduct.create({product_name: "New MINI Car Birthday Cake",
+    description: "There’s a sweet story attached to this cake… Ella had ordered a cake from me a few months ago for her boyfriend’s 21st birthday.  She was living in Limerick but he was working up in Dublin and the party was in Dublin so she collected the cake from me on the way there.  Last week it was Ella’s 21st birthday so David figured out where she had got his cake from, and ordered a cake for her from me again… this cake had to make the reverse trip down to Limerick this time!\r\rElla has just got a new Mini One car, so that was what he wanted her cake to look like.  I got photos of her exact car, so that I could copy the colours exactly.  I carved the car out of vanilla sponge and filled it with vanilla buttercream.  I then covered it in white chocolate ganache and a thin layer of white sugarpaste before putting on the final coat of navy sugarpaste.  I also gave it a light airbrush of violet colour as her car is a purple-y shade of blue.  Then I added all the little details… wipers, lights, badges, wing mirrors.  Ta da!",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 500,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-08-21 0:00:00"
+    })
+    
+FinishedProduct.create({product_name: "Lamborghini Car Birthday Cake",
+    description: "Paula from Celbridge ordered this cake for her husband John’s 50th birthday.  He loves cars and is a big fan of the BBC car show \"Top Gear\", so she thought a Lamborghini car cake would be ideal.  I made a little model of The Stig from Top Gear standing beside the car in his trademark pose.\r\rThe cake was a vanilla sponge with vanilla buttercream, carved into the car shape, covered in white chocolate ganache, and then in sugarpaste.  I had blueprints and photos of Lamborghinis beside me while I added all the details, just to be sure I got it right!",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 600,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-08-20 0:00:00"
+    })
+    
+FinishedProduct.create({product_name: "Navy and White Birdcage Wedding Cake",
+    description: "I made this birdcage wedding cake for Siobhan and Darren last weekend.  They live in England but got married in Leixlip.  They loved the pale blue wedding cake that I had made for the Dublin Sugarcraft show but wanted it in a darker shade of blue, so it would look like the night sky.  I think the navy icing actually looks pretty dramatic with the white details over it.\r\rThe bottom tier is a 10″ chocolate biscuit cake, covered in navy sugarpaste and white sugarveil icing.  The top tier is three 7″ white chocolate and lime cakes stacked and carved into the birdcage shape.  I piped the bars and scroll designs with royal icing, and handmade the hydrangea blossoms and roses from flower paste.!",
+    typical_price: 300.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Weddings").id,
+    running_order: 700,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-08-12 0:00:00"
+    })    
+    
+
   Image.destroy_all
   # add new images below
   Image.create({file_name: "320x240_aston_martin_db5_car_birthday_cake.jpg", 
         uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+        
+  Image.create({file_name: "1357x1016_shoe_and_a_box_birthday_cake.jpg",
+        uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+        
+  Image.create({file_name: "clutch_handbag_1278x959.jpg",
+        uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+        
+  Image.create({file_name: "tardis_901x1204.jpg", 
+        uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+        
+  Image.create({file_name: "mini_car_960x1536.jpg", 
+		uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+		
+  Image.create({file_name: "lamborghini_1280x800.jpg", 
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+    	
+  Image.create({file_name: "navy_birdcage_763x1022.jpg", 
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+   
 
 
   FinishedProductImage.destroy_all
-  # add new FInishedProductImages below
+  # add new FinishedProductImages below
   FinishedProductImage.create({
         finished_product_id: FinishedProduct.find_by_product_name("Aston Martin DB5 Car Birthday Cake").id,
         image_id: Image.find_by_file_name("320x240_aston_martin_db5_car_birthday_cake.jpg").id,
         running_order: 100})
-  
+        
+  FinishedProductImage.create({
+        finished_product_id: FinishedProduct.find_by_product_name("Shoe and a Box Birthday Cake").id,
+        image_id: Image.find_by_file_name("1357x1016_shoe_and_a_box_birthday_cake.jpg").id,
+        running_order: 200})
+        
+  FinishedProductImage.create({
+        finished_product_id: FinishedProduct.find_by_product_name("Clutch Handbag Birthday Cake").id,
+        image_id: Image.find_by_file_name("clutch_handbag_1278x959.jpg").id,
+        running_order: 300})
+
+  FinishedProductImage.create({
+        finished_product_id: FinishedProduct.find_by_product_name("Dr. Who Tardis Birthday Cake").id,
+        image_id: Image.find_by_file_name("tardis_901x1204.jpg").id,
+        running_order: 400})
+        
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("New MINI Car Birthday Cake").id,
+    	image_id: Image.find_by_file_name("mini_car_960x1536.jpg").id,
+    	running_order: 500})
+    	
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Lamborghini Car Birthday Cake").id,
+    	image_id: Image.find_by_file_name("lamborghini_1280x800.jpg").id,
+    	running_order: 600}) 
+    	
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Navy and White Birdcage Wedding Cake").id,
+    	image_id: Image.find_by_file_name("navy_birdcage_763x1022.jpg").id,
+    	running_order: 700})    	       
+        
   
   Customer.destroy_all
   Customer.create({user_id: User.find_by_login("bob@example.com").id, 
