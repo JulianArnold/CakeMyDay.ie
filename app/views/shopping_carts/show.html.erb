@@ -25,7 +25,7 @@
   
   <% @shopping_cart.shopping_cart_items.each do |item| %>
     <tr>
-      <td><%= item.product.name %></td>
+      <td><%= link_to(item.product.name, product_url(item.product_id), :title => "click to view product") %></td>
       <td><%= item.user_description %></td>
       <td><%= item.product_options_list_choice %></td>
       <td style="text-align:right;"><%= sanitize(number_to_currency(item.unit_price, :unit => @general_setting.ccy, :precision => 2)) %></td>

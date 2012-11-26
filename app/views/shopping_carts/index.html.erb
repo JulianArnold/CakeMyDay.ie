@@ -1,14 +1,14 @@
 <h1>Shopping Carts</h1>
 <table>
   <tr>
-    <th style="width:  50px;">ID</th>
+    <th style="width:  30px;">ID</th>
     <th style="width: 200px;">Customer</th>
     <th style="width: 100px;">Cake required at</th>
     <th style="width: 100px;">Occasion</th>
     <th style="width: 100px;">Name on cake</th>
     <th style="width: 100px;">Shopping cart status</th>
-    <th style="width: 100px;">PayPal status</th>
-    <th style="width: 100px;">Customer description</th>
+    <th style="width: 70px;">PayPal</th>
+    <th style="width: 200px;">Customer description</th>
   </tr>
   <% @shopping_carts.each do |shopping_cart| %>
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
@@ -18,10 +18,10 @@
       <td><%= shopping_cart.special_occasion %></td>
       <td><%= shopping_cart.name_to_appear_on_cake %></td>
       <td><%= shopping_cart.shopping_cart_status.name %></td>
-      <td><%= shopping_cart.pay_pal_status_id %></td>
+      <td><%= shopping_cart.pay_pal_status.name %></td>
       <td><%= shopping_cart.general_description_from_customer %></td>
-      <td><%= link_to 'Show', shopping_cart %></td>
-      <td><%= link_to 'Edit', edit_shopping_cart_path(shopping_cart) %></td>
+      <td><%= link_to 'Show', shopping_cart %>
+          <%= link_to 'Edit', edit_shopping_cart_path(shopping_cart) %></td>
     </td>
   <% end %>
 </table><br/>
