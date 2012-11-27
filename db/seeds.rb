@@ -456,6 +456,9 @@ FinishedProduct.create({product_name: "90th Birthday Cake - Tea and a Crossword 
   PayPalStatus.create({name: "Pending", description: "The transaction has been marked as pending by PayPal.", pending_authorisation: true, paid_sale: false, charged_back: false})
 
 
+  ProductionQuotum.auto_generate
+
+
   ShoppingCart.destroy_all
   ShoppingCart.create({
         cake_required_at: "2013-04-23 15:00:00",
