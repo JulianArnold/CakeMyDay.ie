@@ -296,7 +296,16 @@ FinishedProduct.create({product_name: "Navy and White Birdcage Wedding Cake",
     visible: true,
     created_at: "2012-08-12 0:00:00"
     })    
-    
+
+FinishedProduct.create({product_name: "Drum Birthday Cake",
+    description: "My friend Dan asked me to make this cake.  It was his friend Stuart's 40th birthday so he thought a custom-made cake would be an ideal present!  Stuart is a musician and plays a few instruments, including drums, so he wanted a replica drum cake.  I kept a few photos of Phidrums drums beside me while I worked in order to get the details exactly right.\r\rThe cake itself is a 12\" chocolate fudge cake, filled with chocolate buttercream and covered in sugarpaste.  Stuart loved the cake, and it was a great hit at the party!",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 800,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-08-11 0:00:00"
+    })    
 
   Image.destroy_all
   # add new images below
@@ -320,6 +329,9 @@ FinishedProduct.create({product_name: "Navy and White Birdcage Wedding Cake",
     	
   Image.create({file_name: "navy_birdcage_763x1022.jpg", 
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+    	
+  Image.create({file_name: "drum_cake_1066x799.jpg", 
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
    
 
 
@@ -358,7 +370,12 @@ FinishedProduct.create({product_name: "Navy and White Birdcage Wedding Cake",
   FinishedProductImage.create({
     	finished_product_id: FinishedProduct.find_by_product_name("Navy and White Birdcage Wedding Cake").id,
     	image_id: Image.find_by_file_name("navy_birdcage_763x1022.jpg").id,
-    	running_order: 700})    	       
+    	running_order: 700})   
+    	
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Drum Birthday Cake").id,
+    	image_id: Image.find_by_file_name("drum_cake_1066x799.jpg").id,
+    	running_order: 800})      	 	       
         
   
   Customer.destroy_all
