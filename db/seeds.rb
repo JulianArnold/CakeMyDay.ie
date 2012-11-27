@@ -328,7 +328,7 @@ FinishedProduct.create({product_name: "Senan\'s Zoo Animals Birthday Cake",
     })
 
 FinishedProduct.create({product_name: "90th Birthday Cake - Tea and a Crossword Puzzle",
-    description: "Eimear ordered this cake for her Dad's 90th birthday.  They were having a family party for him and wanted something fun for his cake.  He loves crosswords and always has a cup of tea by his side.  So I handmade a little model of him from modelling paste, along with a crossword in the newspaper and a cup of tea in his hand.  I made his little glasses from wire, so they’re obviously not edible!  I also made a silver \"90\" and a spray of stars bursting out of the cake behind him.  Apparently the model ended up looking just like him!\r\rThe cake itself was a 9\" vanilla sponge with vanilla buttercream.",
+    description: "Eimear ordered this cake for her Dad's 90th birthday.  They were having a family party for him and wanted something fun for his cake.  He loves crosswords and always has a cup of tea by his side.  So I handmade a little model of him from modelling paste, along with a crossword in the newspaper and a cup of tea in his hand.  I made his little glasses from wire, so they're obviously not edible!  I also made a silver \"90\" and a spray of stars bursting out of the cake behind him.  Apparently the model ended up looking just like him!\r\rThe cake itself was a 9\" vanilla sponge with vanilla buttercream.",
     typical_price: 190.00,
     special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
     running_order: 1100,
