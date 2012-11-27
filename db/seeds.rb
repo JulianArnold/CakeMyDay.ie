@@ -307,6 +307,37 @@ FinishedProduct.create({product_name: "Drum Birthday Cake",
     created_at: "2012-08-11 0:00:00"
     })    
 
+FinishedProduct.create({product_name: "Peppa Pig Castle Birthday Cake",
+    description: "I made this castle cake for my beautiful little niece Mia for her second birthday.  She loves watching Peppa Pig cartoons on tv, and loves anything to do with Peppa... so I really knew my audience with this one!\r\rI made a 9\" round chocolate fudge cake, filled with chocolate buttercream, and there is a small 4\" cake on top.  The towers are made from ice cream cones covered in sugarpaste.  I handmade little models of Peppa, George, Mummy Pig and Daddy Pig.\r\rMia adored the cake and spent ages lifting off the towers and putting them back on and moving the little models around before we were allowed to eat it... it turned out to be a very interactive cake!",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 900,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-08-05 0:00:00"
+    })
+
+FinishedProduct.create({product_name: "Senan\'s Zoo Animals Birthday Cake",
+    description: "I've made a couple of versions of this cake before, and it\'s always fun to do!  I love the baby giraffe looking up at its mother who is peeking out over the leaves.  Orla ordered this cake for her son Senan\'s second birthday.  He loves animals, and adores white owls... so I handmade giraffes, a white owl, a monkey and a sleeping lion for the top of the cake.  I put elephants, crocodiles and rhinos around the sides of the cake.\r\rThe cake itself was a 10-inch lemon sponge with lemon buttercream filling, covered in sugarpaste.\r\rI got this lovely email from Orla the day after the party, along with some photos, which I have put up on my facebook page - \"Thank you so so much for you wonderful cake, it was a complete hit!  Senan was squealing with excitement! It really looked amazing & with much reluctancy we did cut it & it tasted fantastic too, so light & fluffy, even the icing was polished off which is usually left behind!\r\rThanks again & we\'ll definitely be back\"",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 1000,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-08-04 0:00:00"
+    })
+
+FinishedProduct.create({product_name: "90th Birthday Cake - Tea and a Crossword Puzzle",
+    description: "Eimear ordered this cake for her Dad's 90th birthday.  They were having a family party for him and wanted something fun for his cake.  He loves crosswords and always has a cup of tea by his side.  So I handmade a little model of him from modelling paste, along with a crossword in the newspaper and a cup of tea in his hand.  I made his little glasses from wire, so they’re obviously not edible!  I also made a silver \"90\" and a spray of stars bursting out of the cake behind him.  Apparently the model ended up looking just like him!\r\rThe cake itself was a 9\" vanilla sponge with vanilla buttercream.",
+    typical_price: 190.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Birthdays").id,
+    running_order: 1100,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-07-29 0:00:00"
+    })
+
+
   Image.destroy_all
   # add new images below
   Image.create({file_name: "320x240_aston_martin_db5_car_birthday_cake.jpg", 
@@ -333,6 +364,11 @@ FinishedProduct.create({product_name: "Drum Birthday Cake",
   Image.create({file_name: "drum_cake_1066x799.jpg", 
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
    
+  Image.create({file_name: "peppa_pig_castle_922x690.jpg", 
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+
+  Image.create({file_name: "90th_birthday_cake.jpg", 
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
 
 
   FinishedProductImage.destroy_all
@@ -376,7 +412,22 @@ FinishedProduct.create({product_name: "Drum Birthday Cake",
     	finished_product_id: FinishedProduct.find_by_product_name("Drum Birthday Cake").id,
     	image_id: Image.find_by_file_name("drum_cake_1066x799.jpg").id,
     	running_order: 800})      	 	       
+
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Peppa Pig Castle Birthday Cake").id,
+    	image_id: Image.find_by_file_name("peppa_pig_castle_922x690.jpg").id,
+    	running_order: 900})      	 	       
         
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Senan\'s Zoo Animals Birthday Cake").id,
+    	image_id: Image.find_by_file_name("Zoo_animals_birthday_cake.jpg").id,
+    	running_order: 1000})
+    	
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("90th Birthday Cake - Tea and a Crossword Puzzle").id,
+    	image_id: Image.find_by_file_name("90th_birthday_cake.jpg").id,
+    	running_order: 1100})
+    	
   
   Customer.destroy_all
   Customer.create({user_id: User.find_by_login("bob@example.com").id, 
