@@ -11,7 +11,7 @@ class Image < ActiveRecord::Base
   
   validates_presence_of :file_name, :uploaded_by
   
-  belongs_to  :creator,
+  belongs_to  :uploader,
               :class_name => "User",
               :foreign_key => "uploaded_by"
   has_many    :product_images, :order => "running_order"

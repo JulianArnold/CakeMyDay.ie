@@ -2,19 +2,18 @@
 <table>
   <tr>
     <th style="width: 100px;">Name</th>
-    <th style="width: 100px;">Visible label</th>
-    <th style="width: 100px;">Options</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
+    <th style="width: 200px;">Visible label</th>
+    <th style="width: 200px;">Options</th>
+    <td style="width:  80px;"></td>
+    <td style="width:  80px;"></td>
   </tr>
   <% @options_lists.each do |options_list| %>
     <tr style="background-color: <%= cycle("inherit","white") %>;">
       <td><%= options_list.name %></td>
       <td><%= options_list.visible_label %></td>
       <td><%= sanitize options_list.options.gsub(", ","<br/>") %></td>
-      <td><%= link_to 'Show', options_list %></td>
-      <td><%= link_to 'Edit', edit_options_list_path(options_list) %></td>
+      <td><%= link_to 'Show', options_list %> | 
+          <%= link_to 'Edit', edit_options_list_path(options_list) %></td>
       <%- if options_list.products.count == 0 %>
         <%= render :partial => '/layouts/delete_button', :locals => {:label => "options list", :item => options_list} -%>
       <%- else -%>

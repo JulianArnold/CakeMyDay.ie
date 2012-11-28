@@ -2,7 +2,7 @@
 <table>
   <tr><td>Name:</td><td><%= @options_list.name %></td></tr>
   <tr><td>Visible label:</td><td><%= @options_list.visible_label %></td></tr>
-  <tr><td>Options:</td><td><%= @options_list.options %></td></tr>
+  <tr><td>Options:</td><td><%= sanitize @options_list.options.gsub(", ","<br/>") %></td></tr>
   <tr><td colspan=2><h2>Products</h2></td></tr>
   <tr><td>&nbsp;</td><td>
     <% @options_list.products.each do |p| -%>
