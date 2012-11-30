@@ -358,6 +358,27 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     created_at: "2012-07-31 0:00:00"
     })
     
+    FinishedProduct.create({product_name: "Ray Foley - \"Take Me Out\" 30th Birthday Cake",
+    description: "This cake was ordered for the radio DJ and TV presenter Ray Foley by Sideline Productions.  They are producing a new TV show called Take Me Out, which Ray will be presenting.  As it was Ray's 30th birthday, they asked me to make him with a cake with the Take Me Out logo, the Sideline logo, and a little figurine of Ray dressed up as Cupid.  This is my first \"famous\" cake as it was featured on the Today FM website here: http://www.todayfm.com/Shows/Weekdays/Ray-Foley/Birthday.aspx and in various Irish newspapers on the day!\r\rThe cake itself is an 8\" chocolate biscuit cake, covered with chocolate ganache and sugarpaste.",
+    typical_price: 150.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Product Launches").id,
+    running_order: 1400,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2010-09-21 0:00:00"
+    })
+    
+    FinishedProduct.create({product_name: "LimeTree Caf\é Launch Cake",
+    description: "Friends of ours, Frank and Gerardette, had just opened a new café in Kilmainham.  Check it out at http://www.limetreecafe.net.  I made this cake for their launch party.  I piped the caf\é logo on to the cake, and it was a huge hit at the party.\r\rThe cake itself is an 8\" lime-flavoured sponge filled with lime buttercream, and covered with lime buttercream and sugarpaste.",
+    typical_price: 120.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Product Launches").id,
+    running_order: 1500,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2011-02-12 0:00:00"
+    })
+
+
 
   Image.destroy_all
   # add new images below
@@ -398,6 +419,12 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
 
   Image.create({file_name: "lucy_2_tier_christening_cake_soothers_1280x800.jpg", 
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+
+  Image.create({file_name: "ray_foley_take_me_out_birthday_cake.jpg", 
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+
+  Image.create({file_name: "limetree_cafe_launch_cake.jpg", 
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
 
 
@@ -468,6 +495,16 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	image_id: Image.find_by_file_name("lucy_2_tier_christening_cake_soothers_1280x800.jpg").id,
     	running_order: 1300})
     	
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Ray Foley - \"Take Me Out\" 30th Birthday Cake").id,
+    	image_id: Image.find_by_file_name("ray_foley_take_me_out_birthday_cake.jpg").id,
+    	running_order: 1400})
+ 
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("LimeTree Caf\é Launch Cake").id,
+    	image_id: Image.find_by_file_name("limetree_cafe_launch_cake.jpg").id,
+    	running_order: 1500})
+   	
   
   Customer.destroy_all
   Customer.create({user_id: User.find_by_login("bob@example.com").id, 
