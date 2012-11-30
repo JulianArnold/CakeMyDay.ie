@@ -338,6 +338,26 @@ FinishedProduct.create({product_name: "90th Birthday Cake - Tea and a Crossword 
     created_at: "2012-07-29 0:00:00"
     })
 
+FinishedProduct.create({product_name: "Tatty Teddy Christening Cake",
+    description: "Lianne from Maynooth ordered this cake for her daughter Aoife's Christening.  She left the design completely up to me, and just asked for a girlie design that wasn't only pink and white.  As I had recently learned how to make a little tatty teddy model from Carol McHugh at the Dublin Sugarcraft Guild,  I thought it would look really cute on top of this Christening cake.  The cake itself was an 8\" chocolate biscuit cake, which I covered in white sugarpaste and then put on pale pink and green sugarpaste stripes.  I also made some bunting spelling out Aoife's name on the board.",
+    typical_price: 190.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Christenings").id,
+    running_order: 1200,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-11-02 0:00:00"
+    })
+    
+FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
+    description: "Owen in Tallaght ordered this cake for his daughter Lucy's Christening.  I made little models of the mum, dad, baby and dog from modelling paste, so they are completely edible.  Mum is looking lovingly in at the baby in a moses basket.  Dad is busy shushing their beagle dog.   I also made little soothers / pacifiers from modelling paste and put Lucy's name on them.\r\rThe top tier is a 6\" chocolate sponge with chocolate buttercream, and the bottom tier is an 8\" vanilla sponge with vanilla buttercream.",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Christenings").id,
+    running_order: 1300,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-07-31 0:00:00"
+    })
+    
 
   Image.destroy_all
   # add new images below
@@ -372,6 +392,12 @@ FinishedProduct.create({product_name: "90th Birthday Cake - Tea and a Crossword 
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
 
   Image.create({file_name: "90th_birthday_cake.jpg", 
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+
+  Image.create({file_name: "tatty_teddy_1145x1524.jpg", 
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+
+  Image.create({file_name: "lucy_2_tier_christening_cake_soothers_1280x800.jpg", 
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
 
 
@@ -431,6 +457,16 @@ FinishedProduct.create({product_name: "90th Birthday Cake - Tea and a Crossword 
     	finished_product_id: FinishedProduct.find_by_product_name("90th Birthday Cake - Tea and a Crossword Puzzle").id,
     	image_id: Image.find_by_file_name("90th_birthday_cake.jpg").id,
     	running_order: 1100})
+
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Tatty Teddy Christening Cake").id,
+    	image_id: Image.find_by_file_name("tatty_teddy_1145x1524.jpg").id,
+    	running_order: 1200})
+
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Lucy\'s Christening Cake (Family Scene)").id,
+    	image_id: Image.find_by_file_name("lucy_2_tier_christening_cake_soothers_1280x800.jpg").id,
+    	running_order: 1300})
     	
   
   Customer.destroy_all
