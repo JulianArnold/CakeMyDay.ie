@@ -368,8 +368,8 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     created_at: "2010-09-21 0:00:00"
     })
     
-    FinishedProduct.create({product_name: "LimeTree Caf\é Launch Cake",
-    description: "Friends of ours, Frank and Gerardette, had just opened a new café in Kilmainham.  Check it out at http://www.limetreecafe.net.  I made this cake for their launch party.  I piped the caf\é logo on to the cake, and it was a huge hit at the party.\r\rThe cake itself is an 8\" lime-flavoured sponge filled with lime buttercream, and covered with lime buttercream and sugarpaste.",
+    FinishedProduct.create({product_name: "LimeTree Cafe Launch Cake",
+    description: "Friends of ours, Frank and Gerardette, had just opened a new cafe in Kilmainham.  Check it out at http://www.limetreecafe.net.  I made this cake for their launch party.  I piped the cafe logo on to the cake, and it was a huge hit at the party.\r\rThe cake itself is an 8\" lime-flavoured sponge filled with lime buttercream, and covered with lime buttercream and sugarpaste.",
     typical_price: 120.00,
     special_occasion_id: SpecialOccasion.find_by_name("Product Launches").id,
     running_order: 1500,
