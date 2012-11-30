@@ -468,7 +468,7 @@ FinishedProduct.create({product_name: "90th Birthday Cake - Tea and a Crossword 
   ShoppingCartItem.destroy_all
   ShoppingCartItem.create({shopping_cart_id: ShoppingCart.first.id, product_id: Product.first.id, product_options_list_choice: "", product_price_id: ProductPrice.first.id, quantity: 1, global_options_list_choice: "Purple", user_description: ""})
   
-  
+  puts "Completed OK"
   # That's it so far!
   
 end
