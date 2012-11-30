@@ -501,7 +501,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	running_order: 1400})
  
   FinishedProductImage.create({
-    	finished_product_id: FinishedProduct.find_by_product_name("LimeTree Caf\é Launch Cake").id,
+    	finished_product_id: FinishedProduct.find_by_product_name("LimeTree Cafe Launch Cake").id,
     	image_id: Image.find_by_file_name("limetree_cafe_launch_cake.jpg").id,
     	running_order: 1500})
    	
