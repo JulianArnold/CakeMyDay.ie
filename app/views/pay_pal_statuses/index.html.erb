@@ -17,7 +17,7 @@
       <td><%= sanitize tick_or_cross pay_pal_status.pending_authorisation %></td>
       <td><%= sanitize tick_or_cross pay_pal_status.paid_sale %></td>
       <td><%= sanitize tick_or_cross pay_pal_status.charged_back %></td>
-      <td><%= link_to 'Show', pay_pal_status %></td>
+      <td><%= link_to 'View', pay_pal_status %></td>
       <td><%= link_to 'Edit', edit_pay_pal_status_path(pay_pal_status) %></td>
       <% if pay_pal_status.pay_pal_transactions.count == 0 %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "PayPal status", :item => pay_pal_status} -%>

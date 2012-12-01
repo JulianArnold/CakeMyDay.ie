@@ -14,7 +14,7 @@
       <td><%= image.file_size %></td>
       <td><%= image.finished_product %></td>
       <td><%= image.base_product %></td>
-      <td><%= link_to 'Show', image %> | 
+      <td><%= link_to 'View', image %> | 
           <%= link_to 'Edit', edit_image_path(image) %></td>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "image", :item => image} -%>
     </td>

@@ -12,7 +12,7 @@
       <td><%= link_to(customer.user.login, "mailto: " + customer.user.login, :title => "click to create an email") %></td>
       <td><%= sanitize customer.postal_address.gsub("\r","<br/>") %></td>
       <td><%= customer.contact_phone_number %></td>
-      <td><%= link_to 'Show', customer %> 
+      <td><%= link_to 'View', customer %> 
           <%= link_to 'Edit', edit_customer_path(customer) %></td>
       <% if admin_user %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "customer", :item => customer} -%>

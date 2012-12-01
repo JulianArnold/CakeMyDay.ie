@@ -15,7 +15,7 @@
       <td><%= product_component.component_product_id %></td>
       <td><%= product_component.quantity %></td>
       <td><%= product_component.running_order %></td>
-      <td><%= link_to 'Show', product_component %></td>
+      <td><%= link_to 'View', product_component %></td>
       <td><%= link_to 'Edit', edit_product_component_path(product_component) %></td>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Product Component", :item => product_component} -%>
     </td>

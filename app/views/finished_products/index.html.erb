@@ -31,7 +31,7 @@
       <td style="text-align:right;"><%= finished_product.running_order %></td>
       <td><%= sanitize tick_or_cross finished_product.available_for_purchase %></td>
       <td><%= sanitize tick_or_cross finished_product.visible %></td>
-      <td><%= link_to 'Show', finished_product %> | <%= link_to 'Edit', edit_finished_product_path(finished_product) %></td>
+      <td><%= link_to 'View', finished_product %> | <%= link_to 'Edit', edit_finished_product_path(finished_product) %></td>
       <% if admin_user %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Finished Product", :item => finished_product} -%>
       <% end %>

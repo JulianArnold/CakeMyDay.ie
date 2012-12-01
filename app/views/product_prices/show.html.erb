@@ -1,13 +1,13 @@
 <h1>Product Price #<%= params[:id] %></h1>
 <table>
-  <tr><td>Product:</td><td><%= @product_price.product.name %></td></tr>
-  <tr><td>Start at:</td><td><%= @product_price.start_at %></td></tr>
-  <tr><td>Finish at:</td><td><%= @product_price.finish_at %></td></tr>
-  <tr><td>Currency:</td><td><%= @product_price.currency.iso_code %></td></tr>
-  <tr><td>Price:</td><td><%= @product_price.price %></td></tr>
+  <tr><td style="width: 150px;">Product:</td><td><%= @product_price.product.name %></td></tr>
+  <tr><td>Start at:</td><td><%= @product_price.start_at.strftime("%d-%b-%Y %H:%M") %></td></tr>
+  <tr><td>Finish at:</td><td><%= @product_price.finish_at.strftime("%d-%b-%Y %H:%M") %></td></tr>
+  <tr><td>Price:</td><td><%= sanitize number_to_currency(@product_price.price, unit: @product_price.currency.currency_symbol, precision: 2) %></td></tr>
   <tr><td>Created by:</td><td><%= @product_price.creator.login %></td></tr>
   <% if @product_price.updated_by %>
   <tr><td>Updated by:</td><td><%= @product_price.updater.login %></td></tr>
   <% end %>
+  <tr><td>No. of sales:</td><td><%= @product_price.shopping_cart_items.count %></td></tr>
 </table><br/>
 <%= link_to 'Back', product_prices_path %> | <%= link_to 'Edit', edit_product_price_path(@product_price) %>

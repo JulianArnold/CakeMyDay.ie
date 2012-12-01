@@ -20,7 +20,7 @@
           <%= product_category.options_list.name %>
         <% end %>
       </td>
-      <td><%= link_to 'Show', product_category %> | 
+      <td><%= link_to 'View', product_category %> | 
           <%= link_to 'Edit', edit_product_category_path(product_category) %></td>
       <% if product_category.products.count == 0 %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Product Category", :item => product_category} -%>

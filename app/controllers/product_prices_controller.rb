@@ -10,11 +10,12 @@ class ProductPricesController < ApplicationController
 
   before_filter :logged_in_required
   before_filter :manager_required
+  before_filter :get_variables
   
   def index
     # GET /product_prices
     # GET /product_prices.json
-    @product_prices = ProductPrice.all
+    @product_prices = ProductPrice.all(:include => "product", :order => "products.name, start_at")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -37,7 +38,9 @@ class ProductPricesController < ApplicationController
     # GET /product_prices/new
     # GET /product_prices/new.json
     @product_price = ProductPrice.new
-
+    @product_price.start_at = Time.now.gmtime
+    @product_price.finish_at = "2020-12-31 0:00:00"
+    
     respond_to do |format|
       format.html # new.html.erb
       #format.json { render json: @product_price }
@@ -53,7 +56,8 @@ class ProductPricesController < ApplicationController
     # POST /product_prices
     # POST /product_prices.json
     @product_price = ProductPrice.new(params[:product_price])
-
+    @product_price.created_by = current_user.id
+    
     respond_to do |format|
       if @product_price.save
         format.html { redirect_to @product_price, notice: 'Product price was successfully created.' }
@@ -69,7 +73,8 @@ class ProductPricesController < ApplicationController
     # PUT /product_prices/1
     # PUT /product_prices/1.json
     @product_price = ProductPrice.find(params[:id])
-
+    params[:product_price][:updated_by] = current_user.id
+    
     respond_to do |format|
       if @product_price.update_attributes(params[:product_price])
         format.html { redirect_to @product_price, notice: 'Product price was successfully updated.' }
@@ -85,12 +90,24 @@ class ProductPricesController < ApplicationController
     # DELETE /product_prices/1
     # DELETE /product_prices/1.json
     @product_price = ProductPrice.find(params[:id])
-    @product_price.destroy
+    if @product_price.shopping_cart_items.count == 0
+      @product_price.destroy
+      flash[:notice] = "ProductPrie has been deleted"
+    else
+      flash[:notice] = "ProductPrie could not be deleted as it has been used for a sale."
+    end
 
     respond_to do |format|
       format.html { redirect_to product_prices_url }
       #format.json { head :no_content }
     end
+  end
+
+  private
+
+  def get_variables
+    @products   = Product.all(:include => "product_category", order: "product_categories.running_order, products.running_order, products.name")
+    @currencies = Currency.all(order: "running_order")
   end
 
 end

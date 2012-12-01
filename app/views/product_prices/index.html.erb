@@ -1,28 +1,20 @@
 <h1>Product Prices</h1>
 <table>
   <tr>
-    <th style="width: 100px;">Product</th>
-    <th style="width: 100px;">Start at</th>
-    <th style="width: 100px;">Finish at</th>
-    <th style="width: 100px;">Currency</th>
-    <th style="width: 100px;">Price</th>
-    <th style="width: 100px;">Created by</th>
-    <th style="width: 100px;">Updated by</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
+    <th style="width: 300px;">Product</th>
+    <th style="width: 130px;">Start at</th>
+    <th style="width: 130px;">Finish at</th>
+    <th style="width:  80px;">Price</th>
+    <td style="width:  90px;"></td>
   </tr>
   <% @product_prices.each do |product_price| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
-      <td><%= product_price.product_id %></td>
-      <td><%= product_price.start_at %></td>
-      <td><%= product_price.finish_at %></td>
-      <td><%= product_price.currency_id %></td>
-      <td><%= product_price.price %></td>
-      <td><%= product_price.created_by %></td>
-      <td><%= product_price.updated_by %></td>
-      <td><%= link_to 'Show', product_price %></td>
-      <td><%= link_to 'Edit', edit_product_price_path(product_price) %></td>
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+      <td><%= product_price.product.name %></td>
+      <td><%= product_price.start_at.strftime("%d-%b-%Y %H:%M") %></td>
+      <td><%= product_price.finish_at.strftime("%d-%b-%Y %H:%M") %></td>
+      <td><%= sanitize number_to_currency(product_price.price, :unit => product_price.currency.currency_symbol, :precision => 2) %></td>
+      <td><%= link_to 'View', product_price %> |
+          <%= link_to 'Edit', edit_product_price_path(product_price) %></td>
       <% if product_price.shopping_cart_items.count == 0 %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Product Price", :item => product_price} -%>
       <% end %>

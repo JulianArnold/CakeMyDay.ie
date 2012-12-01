@@ -12,32 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :product_id %><br />
-    <%= f.number_field :product_id %>
+    <span class="form-label"><%= f.label :product_id %></span>
+    <span class="form-field"><%= f.collection_select :product_id, @products, :id, :name %></span>
   </div>
   <div class="field">
-    <%= f.label :start_at %><br />
-    <%= f.datetime_select :start_at %>
+    <span class="form-label"><%= f.label :start_at %></span>
+    <span class="form-field"><%= f.datetime_select :start_at, :order => [:day, :month, :year] %></span>
   </div>
   <div class="field">
-    <%= f.label :finish_at %><br />
-    <%= f.datetime_select :finish_at %>
+    <span class="form-label"><%= f.label :finish_at %></span>
+    <span class="form-field"><%= f.datetime_select :finish_at, :order => [:day, :month, :year] %></span>
   </div>
   <div class="field">
-    <%= f.label :currency_id %><br />
-    <%= f.number_field :currency_id %>
+    <span class="form-label"><%= f.label :currency_id %></span>
+    <span class="form-field"><%= f.collection_select :currency_id, @currencies, :id, :iso_code %></span>
   </div>
   <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :created_by %><br />
-    <%= f.number_field :created_by %>
-  </div>
-  <div class="field">
-    <%= f.label :updated_by %><br />
-    <%= f.number_field :updated_by %>
+    <span class="form-label"><%= f.label :price %></span>
+    <span class="form-field"><%= f.text_field :price %></span>
   </div>
   <div class="actions">
     <%= f.submit %>
