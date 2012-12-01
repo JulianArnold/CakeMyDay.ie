@@ -18,7 +18,7 @@
       <% if product_price.shopping_cart_items.count == 0 %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Product Price", :item => product_price} -%>
       <% end %>
-    </td>
+    </tr>
   <% end %>
 </table><br/>
 <%= link_to 'New', new_product_price_path %>

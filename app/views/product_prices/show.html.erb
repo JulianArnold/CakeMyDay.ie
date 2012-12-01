@@ -10,4 +10,4 @@
   <% end %>
   <tr><td>No. of sales:</td><td><%= @product_price.shopping_cart_items.count %></td></tr>
 </table><br/>
-<%= link_to 'Back', product_prices_path %> | <%= link_to 'Edit', edit_product_price_path(@product_price) %>
+<%= link_to 'Back', product_prices_path %> | <%= link_to 'Edit', edit_product_price_path(@product_price) %> | <%= link_to "View Product", @product_price.product %>

@@ -105,6 +105,7 @@ class ProductsController < ApplicationController
     @product_categories = ProductCategory.all(order: "running_order, name")
     @options_lists = OptionsList.all(order: "name")
     @special_occasions = SpecialOccasion.all(order: "running_order, name")
+    @currencies = Currency.all(conditions: ["active = ?", true], order: "running_order")
   end
 
 end

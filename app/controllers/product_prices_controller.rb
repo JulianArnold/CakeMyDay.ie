@@ -107,7 +107,7 @@ class ProductPricesController < ApplicationController
 
   def get_variables
     @products   = Product.all(:include => "product_category", order: "product_categories.running_order, products.running_order, products.name")
-    @currencies = Currency.all(order: "running_order")
+    @currencies = Currency.all(conditions: ["active = ?", true], order: "running_order")
   end
 
 end

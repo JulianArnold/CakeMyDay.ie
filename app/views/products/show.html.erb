@@ -1,7 +1,7 @@
 <h1>Product #<%= params[:id] %></h1>
 <table>
-  <tr><td>Name:</td><td><%= @product.name %></td></tr>
-  <tr><td>Description:</td><td><%= @product.description %></td></tr>
+  <tr><td style="width: 250px;">Name:</td><td><%= @product.name %></td></tr>
+  <tr><td>Description:</td><td><%= sanitize @product.description %></td></tr>
   <tr><td>Production quota value:</td><td><%= @product.production_quota_value %></td></tr>
   <tr><td>Product category:</td><td><%= @product.product_category.name %></td></tr>
   <tr><td>Options list:</td><td><%= @product.options %></td></tr>
@@ -15,3 +15,31 @@
   <% end %>
 </table><br/>
 <%= link_to 'Back', products_path %> | <%= link_to 'Edit', edit_product_path(@product) %>
+
+<h2>Pricing</h2>
+<table>
+  <tr>
+    <th style="width: 300px;">Start at</th>
+    <th style="width: 300px;">Finish at</th>
+    <th style="width: 140px;">Price</th>
+    <td style="width:  40px;"></td>
+  </tr>
+  <% @product.product_prices.each do |product_price| %>
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+      <td><%= product_price.start_at.strftime("%d-%b-%Y %H:%M") %></td>
+      <td><%= product_price.finish_at.strftime("%d-%b-%Y %H:%M") %></td>
+      <td><%= sanitize number_to_currency(product_price.price, :unit => product_price.currency.currency_symbol, :precision => 2) %></td>
+      <td><%= link_to 'Edit', edit_product_price_path(product_price) %></td>
+    </tr>
+  <% end %>
+  <%= form_for(@product.product_prices.new) do |f| %>
+    <tr style="background-color: #f9d4e4;">
+      <td><%= f.hidden_field :product_id, :value => @product.id %><%= f.datetime_select :start_at, :time_separator => '',  :use_month_numbers => true, :order => [:day, :month, :year] %></td>
+      <td><%= f.datetime_select :finish_at, :default => "31-12-2015 0:00:00".to_time, :time_separator => '', :use_month_numbers => true, :order => [:day, :month, :year] %></td>
+      <td><%= f.collection_select :currency_id, @currencies, :id, :iso_code %>
+          <%= f.text_field :price, :size => "10x1" %></td>
+    </tr>
+    <tr><td style="background-color: #f9d4e4;" colspan=3><%= f.label :id, "Click" %> <%= f.submit "Create" %> <%= f.label :id, "to add a new price for this product" %></td></tr>
+  <% end %>
+  
+</table>
