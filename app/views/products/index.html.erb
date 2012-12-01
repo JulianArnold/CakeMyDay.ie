@@ -1,18 +1,11 @@
 <h1>Products</h1>
 <table>
   <tr>
-    <th style="width: 100px;">Name</th>
-    <th style="width: 100px;">Description</th>
-    <th style="width: 100px;">Production quota value</th>
-    <th style="width: 100px;">Options list</th>
-    <th style="width: 100px;">Pre configured product</th>
+    <th style="width: 300px;">Name</th>
+    <th style="width:  90px;">Production quota value</th>
     <th style="width: 100px;">Special occasion</th>
-    <th style="width: 100px;">Allow customer to choose quantity</th>
-    <th style="width: 100px;">Allow customer to enter description</th>
-    <th style="width: 100px;">Running order</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
+    <th style="width:  60px;">Running order</th>
+    <td style="width:  90px;"></td>
   </tr>
   <% tracker = 0 %>
   <% @products.each do |product| %>
@@ -20,17 +13,13 @@
     <tr><td colspan=6><h2><%= product.product_category.name %></h2></td></tr>
     <% end %>
     <tr style="background-color: <%= cycle("inherit","inherit") %>;">
-      <td><%= product.name %></td>
-      <td><%= product.description %></td>
+      <td><b><%= product.name %></b><br/>
+          <%= product.description %></td>
       <td><%= product.production_quota_value %></td>
-      <td><%= product.options_list_id %></td>
-      <td><%= sanitize tick_or_cross product.pre_configured_product %></td>
-      <td><%= product.special_occasion_id %></td>
-      <td><%= sanitize tick_or_cross product.allow_user_to_choose_quantity %></td>
-      <td><%= sanitize tick_or_cross product.allow_user_to_enter_description %></td>
+      <td><%= product.occasion %></td>
       <td><%= product.running_order %></td>
-      <td><%= link_to 'Show', product %></td>
-      <td><%= link_to 'Edit', edit_product_path(product) %></td>
+      <td><%= link_to 'View', product %> |
+          <%= link_to 'Edit', edit_product_path(product) %></td>
       <% if product.shopping_cart_items.count == 0 and product.product_components.count == 0 and product.product_images.count == 0 and product.product_prices.count == 0 %>
         <%= render :partial => '/layouts/delete_button', :locals => {:label => "Product", :item => product} -%>
       <% end %>

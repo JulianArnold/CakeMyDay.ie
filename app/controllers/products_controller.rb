@@ -12,15 +12,11 @@
 
 class ProductsController < ApplicationController
 
-  before_filter :logged_in_required, :except => [:index, :show, :search]
-  before_filter :manager_required, :except => [:index, :show, :search]
+  before_filter :logged_in_required, :except => [:index, :show]
+  before_filter :manager_required, :except => [:index, :show]
   before_filter :admin_required, :only => :destroy
-
-  def search
-    @products = Product.search(params[:search_query])
-    render :search_results
-  end
-
+  before_filter :get_variables
+  
   def index
     # GET /products
     # GET /products.json
@@ -63,7 +59,8 @@ class ProductsController < ApplicationController
     # POST /products
     # POST /products.json
     @product = Product.new(params[:product])
-
+    @product.created_by = current_user.id
+    
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -79,7 +76,8 @@ class ProductsController < ApplicationController
     # PUT /products/1
     # PUT /products/1.json
     @product = Product.find(params[:id])
-
+    params[:product][:updated_by] = current_user.id
+    
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -101,6 +99,12 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url }
       #format.json { head :no_content }
     end
+  end
+  
+  def get_variables
+    @product_categories = ProductCategory.all(order: "running_order, name")
+    @options_lists = OptionsList.all(order: "name")
+    @special_occasions = SpecialOccasion.all(order: "running_order, name")
   end
 
 end

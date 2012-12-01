@@ -14,7 +14,7 @@ CakeMyDaySite::Application.routes.draw do
   match 'sign_up'  => 'users#new',             :as => :sign_up
   match 'register' => 'users#new',             :as => :register
 
-  match 'search'   => 'products#search',       :as => :search, :method => :post
+  match 'search'   => 'store#search',          :as => :search, :method => :post
 
   resources :currencies
   resources :customers

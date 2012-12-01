@@ -12,52 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <span class="form-label"><%= f.label :name %></span>
+    <span class="form-field"><%= f.text_field :name %></span>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <span class="form-label"><%= f.label :description %></span>
+    <span class="form-field"><%= f.text_area :description %></span>
   </div>
   <div class="field">
-    <%= f.label :production_quota_value %><br />
-    <%= f.text_field :production_quota_value %>
+    <span class="form-label"><%= f.label :production_quota_value %></span>
+    <span class="form-field"><%= f.text_field :production_quota_value %></span>
   </div>
   <div class="field">
-    <%= f.label :product_category_id %><br />
-    <%= f.number_field :product_category_id %>
+    <span class="form-label"><%= f.label :product_category_id %></span>
+    <span class="form-field"><%= f.collection_select :product_category_id, @product_categories, :id, :name %></span>
   </div>
   <div class="field">
-    <%= f.label :options_list_id %><br />
-    <%= f.number_field :options_list_id %>
+    <span class="form-label"><%= f.label :options_list_id %></span>
+    <span class="form-field"><%= f.collection_select :options_list_id, @options_lists, :id, :name, :prompt => "Select (optional)..." %></span>
   </div>
   <div class="field">
-    <%= f.label :pre_configured_product %><br />
-    <%= f.check_box :pre_configured_product %>
+    <span class="form-label"><%= f.label :special_occasion_id %></span>
+    <span class="form-field"><%= f.collection_select :special_occasion_id, @special_occasions, :id, :name, :prompt => "Select (optional)..." %></span>
   </div>
   <div class="field">
-    <%= f.label :special_occasion_id %><br />
-    <%= f.number_field :special_occasion_id %>
+    <span class="form-label"><%= f.label :allow_user_to_choose_quantity %></span>
+    <span class="form-field"><%= f.check_box :allow_user_to_choose_quantity %></span>
   </div>
   <div class="field">
-    <%= f.label :allow_user_to_choose_quantity %><br />
-    <%= f.check_box :allow_user_to_choose_quantity %>
+    <span class="form-label"><%= f.label :allow_user_to_enter_description %></span>
+    <span class="form-field"><%= f.check_box :allow_user_to_enter_description %></span>
   </div>
   <div class="field">
-    <%= f.label :allow_user_to_enter_description %><br />
-    <%= f.check_box :allow_user_to_enter_description %>
-  </div>
-  <div class="field">
-    <%= f.label :running_order %><br />
-    <%= f.number_field :running_order %>
-  </div>
-  <div class="field">
-    <%= f.label :created_by %><br />
-    <%= f.number_field :created_by %>
-  </div>
-  <div class="field">
-    <%= f.label :updated_by %><br />
-    <%= f.number_field :updated_by %>
+    <span class="form-label"><%= f.label :running_order %></span>
+    <span class="form-field"><%= f.number_field :running_order %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

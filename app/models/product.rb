@@ -11,12 +11,12 @@
 # Rights in third party code acknowledged.
 
 class Product < ActiveRecord::Base
-	  attr_accessible :name, :description, :allow_user_to_choose_quantity, :allow_user_to_enter_description, :options_list_id, :pre_configured_product, :product_category_id, :production_quota_value, :running_order, :special_occasion_id, :created_by, :updated_by
+	  attr_accessible :name, :description, :allow_user_to_choose_quantity, :allow_user_to_enter_description, :options_list_id, :product_category_id, :production_quota_value, :running_order, :special_occasion_id, :created_by, :updated_by
 	
 	# See note 1 above
 	def self.search(search_query)
 		if search_query
-			find(:all, :conditions => ['name LIKE ?', "%" + search_query + "%"])
+			find(:all, :conditions => ['name LIKE ? or description LIKE ?', "%" + search_query + "%", "%" + search_query + "%"])
 		else
 			find (:all)
 		end 
@@ -48,5 +48,21 @@ class Product < ActiveRecord::Base
   validates_numericality_of :production_quota_value
   validates_numericality_of :running_order
   validates_numericality_of :special_occasion_id, :allow_nil => true
+  
+  def occasion
+    if special_occasion_id.to_i > 0
+      special_occasion.name
+    else
+      ""
+    end
+  end
+  
+  def options
+    if options_list_id.to_i > 0
+      options_list.name
+    else
+      ""
+    end
+  end
   
 end
