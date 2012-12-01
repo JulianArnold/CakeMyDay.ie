@@ -63,6 +63,14 @@ if Rails.env.development?
   c.currency_symbol = "&euro;"
   c.running_order = 100
   c.save
+  
+  c = Currency.new
+  c.iso_code = "GBP"
+  c.full_name = "Pounds Sterling"
+  c.active = false
+  c.currency_symbol = "&#163;"
+  c.running_order = 200
+  c.save
 
   GeneralSetting.destroy_all
   g = GeneralSetting.new

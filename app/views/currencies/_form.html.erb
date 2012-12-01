@@ -12,24 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :iso_code %><br />
-    <%= f.text_field :iso_code %>
+    <span class="form-label"><%= f.label :iso_code, "ISO Code" %></span>
+    <span class="form-field"><%= f.text_field :iso_code %></span>
   </div>
   <div class="field">
-    <%= f.label :currency_symbol %><br />
-    <%= f.text_field :currency_symbol %>
+    <span class="form-label"><%= f.label :currency_symbol %></span>
+    <span class="form-field"><%= f.text_field :currency_symbol %></span>
   </div>
   <div class="field">
-    <%= f.label :full_name %><br />
-    <%= f.text_field :full_name %>
+    <span class="form-label"><%= f.label :full_name %></span>
+    <span class="form-field"><%= f.text_field :full_name %></span>
   </div>
   <div class="field">
-    <%= f.label :running_order %><br />
-    <%= f.number_field :running_order %>
+    <span class="form-label"><%= f.label :running_order %></span>
+    <span class="form-field"><%= f.number_field :running_order %></span>
   </div>
   <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
+    <span class="form-label"><%= f.label :active %></span>
+    <span class="form-field"><%= f.check_box :active %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -15,7 +15,7 @@ class CurrenciesController < ApplicationController
   def index
     # GET /currencies
     # GET /currencies.json
-    @currencies = Currency.all
+    @currencies = Currency.all(order: "active DESC, running_order")
 
     respond_to do |format|
       format.html # index.html.erb
