@@ -391,49 +391,64 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
   Image.destroy_all
   # add new images below
   Image.create({file_name: "320x240_aston_martin_db5_car_birthday_cake.jpg", 
+        finished_product: true, base_product: false,
         uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
-        
+
   Image.create({file_name: "1357x1016_shoe_and_a_box_birthday_cake.jpg",
+        finished_product: true, base_product: false,
         uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
-        
+
   Image.create({file_name: "clutch_handbag_1278x959.jpg",
+        finished_product: true, base_product: false,
         uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
-        
+
   Image.create({file_name: "tardis_901x1204.jpg", 
+        finished_product: true, base_product: false,
         uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
-        
+
   Image.create({file_name: "mini_car_960x1536.jpg", 
-		uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
-		
+      finished_product: true, base_product: false,
+		  uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+
   Image.create({file_name: "lamborghini_1280x800.jpg", 
+      finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
-    	
+
   Image.create({file_name: "navy_birdcage_763x1022.jpg", 
+      finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
-    	
+
   Image.create({file_name: "drum_cake_1066x799.jpg", 
-    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
-   
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
+
   Image.create({file_name: "peppa_pig_castle_922x690.jpg", 
-    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
   Image.create({file_name: "zoo_animals_birthday_cake.jpg", 
-    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
   Image.create({file_name: "90th_birthday_cake.jpg", 
-    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
   Image.create({file_name: "tatty_teddy_1145x1524.jpg", 
-    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
   Image.create({file_name: "lucy_2_tier_christening_cake_soothers_1280x800.jpg", 
-    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
   Image.create({file_name: "ray_foley_take_me_out_birthday_cake.jpg", 
-    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
   Image.create({file_name: "limetree_cafe_launch_cake.jpg", 
-    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})      	
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
 
   FinishedProductImage.destroy_all
