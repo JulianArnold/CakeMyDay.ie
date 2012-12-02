@@ -1,21 +1,6 @@
 <h1>Unique hand-made cakes for <br/>your special occasion</h1>
 
-<% if @special_occasions %>
-  <div id="special-occasions">
-    <% if @special_occasion == nil %>
-      <%= link_to("Latest Creations", store_url(:show => "latest"), {:id => "selected"}) %>
-    <% else %>
-      <%= link_to("Latest Creations", store_url(:show => "latest")) %>
-    <% end %>
-    <% @special_occasions.each do |so| %>
-      <% if @special_occasion and @special_occasion.name == so.name %>
-        <%= link_to(so.name, store_url(:show => so.name), :id => "selected") %>
-      <% else %>
-        <%= link_to(so.name, store_url(:show => so.name)) %>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
+<%= render 'special_occasions_navbar' %>
 
 <div id="breadcrumbs">You are here: <%= link_to "home", root_url %>
   <% if @special_occasion %>

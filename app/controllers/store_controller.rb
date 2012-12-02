@@ -11,8 +11,9 @@
 
 class StoreController < ApplicationController
 
+  before_filter :get_variables, :except => 'search'
+
   def index
-    @special_occasions = SpecialOccasion.all(order: "running_order, name", conditions: ["visible_to_customers = ?", true])
     
     if @special_occasions
       @special_occasion = SpecialOccasion.first(conditions: ["name = ? and visible_to_customers = ?", params[:show], true])
@@ -30,6 +31,7 @@ class StoreController < ApplicationController
     @finished_product = FinishedProduct.find_by_product_name(params[:product_name].gsub("_"," "))
     if @finished_product
       # go to the usual show.html.erb
+      @special_occasion = @finished_product.special_occasion
     else
       redirect_to root_url, :notice => "Sorry, we couldn't find that product."
     end
@@ -39,6 +41,12 @@ class StoreController < ApplicationController
     @finished_products = FinishedProduct.search(params[:search_query])
     @products = Product.search(params[:search_query])
     render :search_results
+  end
+
+  private
+  
+  def get_variables
+    @special_occasions = SpecialOccasion.all(order: "running_order, name", conditions: ["visible_to_customers = ?", true])
   end
 
 end
