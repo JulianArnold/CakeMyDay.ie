@@ -7,13 +7,17 @@
 # Note 1  Search attribute based on code demonstrated by Wesley Gorman
 #         in NCI lecture, and subsequently modified by Dan Laffan.
 #
+# Note 2:  This was based on a solution from Stack Overflow:
+#          http://stackoverflow.com/questions/13481673/activerecord-find-by-number-of-associated-records
+#          Accessed on 1-Dec-2012.
+#
 # Copyright © 2012, Julian Arnold and Daniel M. Laffan.  All rights reserved.
 # Rights in third party code acknowledged.
 
 class ProductsController < ApplicationController
 
-  before_filter :logged_in_required, :except => [:index, :show]
-  before_filter :manager_required, :except => [:index, :show]
+  before_filter :logged_in_required
+  before_filter :manager_required
   before_filter :admin_required, :only => :destroy
   before_filter :get_variables
   
@@ -93,7 +97,12 @@ class ProductsController < ApplicationController
     # DELETE /products/1
     # DELETE /products/1.json
     @product = Product.find(params[:id])
-    @product.destroy
+    if @product.product_prices.count == 0 and @product.product_images.count == 0 and @product.shopping_cart_items.count == 0
+      @product.destroy
+      flash[:notice] = "Product has been deleted successfully."
+    else
+      flash[:notice] = "Product could not be deleted."
+    end
 
     respond_to do |format|
       format.html { redirect_to products_url }
@@ -101,11 +110,37 @@ class ProductsController < ApplicationController
     end
   end
   
+  def link_image
+    #Parameters: {"product_id"=>"456", "image_id"=>"123", "commit"=>"Add"}
+    @product = Product.find(params[:product_id].to_i)
+    image = Image.find(params[:image_id].to_i)
+    if image and @product
+      last_pi = ProductImage.find(:first, :conditions => ["product_id = ?", @product.id], :order => "running_order DESC")
+      pi = ProductImage.new
+      pi.image_id = image.id
+      pi.product_id = @product.id
+      if last_pi
+        pi.running_order = last_pi.running_order + 100
+      else
+        pi.running_order = 100
+      end
+      if pi.save
+        flash[:notice] = "Image has been successfully linked to this product"
+      else
+        flash[:notice] = "Image was NOT linked to this product - something went wrong."
+      end
+      redirect_to @product
+    end
+  end
+  
+  private
+  
   def get_variables
     @product_categories = ProductCategory.all(order: "running_order, name")
     @options_lists = OptionsList.all(order: "name")
     @special_occasions = SpecialOccasion.all(order: "running_order, name")
     @currencies = Currency.all(conditions: ["active = ?", true], order: "running_order")
+    @unallocated_images = Image.all(:include => 'product_images', :conditions => ["base_product = ? and product_images.id IS NULL", true]) # see Note 2 above.
   end
 
 end

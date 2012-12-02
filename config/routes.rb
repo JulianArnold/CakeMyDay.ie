@@ -19,6 +19,7 @@ CakeMyDaySite::Application.routes.draw do
 
   # special routes for miscellaneous purposes
   match 'link_finished_product_image' => 'finished_products#link_image', :as => :link_finished_product_image
+  match 'link_product_image' => 'products#link_image', :as => :link_product_image
   
   resources :currencies
   resources :customers

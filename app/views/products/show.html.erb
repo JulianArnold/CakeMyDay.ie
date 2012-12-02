@@ -13,6 +13,11 @@
   <% if @product.updated_by %>
   <tr><td>Updated by:</td><td><%= @product.updater.login %></td></tr>
   <% end %>
+  <tr><td>Images:</td><td>
+    <% @product.product_images.each do |i| %>
+      <%= image_tag(i.image.full_file_path, :height => 100) %>
+    <% end %>
+  </td></tr>
 </table><br/>
 <%= link_to 'Back', products_path %> | <%= link_to 'Edit', edit_product_path(@product) %>
 
@@ -43,3 +48,28 @@
   <% end %>
   
 </table>
+
+<h2>Images</h2>
+<p>These are the images of products that are not yet assigned to a product. <br/><%= link_to("Click here", images_url) %> to create new images.</p>
+<% if @unallocated_images.count > 0 %>
+  <p>To add one of the images below to this product, click the "add" button beside the image:</p>
+  <table>
+    <tr>
+      <th style="width: 110px;">Image</th>
+      <th style="width: 250px;">File name</th>
+      <td style="width: 50px;"></td>
+    </tr>
+    <% @unallocated_images.each do |i| %>
+      <%= form_tag(link_product_image_url) do %>
+        <tr style="background-color: <%= cycle("#f9d4e4","white") %>;">
+          <td><%= image_tag(i.full_file_path, :width => 100) %></td>
+          <td><%= i.file_name %></td>
+          <td><%= hidden_field_tag :product_id, @product.id %>
+            <%= hidden_field_tag :image_id, i.id %>
+            <%= submit_tag "Add" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+<% end %>

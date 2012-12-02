@@ -5,6 +5,7 @@
 #
 # Note 1:  This was based on a solution from Stack Overflow:
 #          http://stackoverflow.com/questions/13481673/activerecord-find-by-number-of-associated-records
+#          Accessed on 1-Dec-2012.
 #
 # Copyright © 2012, Julian Arnold and Daniel M. Laffan.  All rights reserved.
 # Rights in third party code acknowledged.
