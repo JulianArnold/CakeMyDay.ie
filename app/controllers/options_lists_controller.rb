@@ -14,7 +14,7 @@ class OptionsListsController < ApplicationController
   def index
     # GET /options_lists
     # GET /options_lists.json
-    @options_lists = OptionsList.all
+    @options_lists = OptionsList.all(order: 'name')
 
     respond_to do |format|
       format.html # index.html.erb

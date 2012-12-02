@@ -14,7 +14,7 @@ class SpecialOccasionsController < ApplicationController
   def index
     # GET /special_occasions
     # GET /special_occasions.json
-    @special_occasions = SpecialOccasion.all
+    @special_occasions = SpecialOccasion.all(order: 'running_order')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,8 +85,13 @@ class SpecialOccasionsController < ApplicationController
     # DELETE /special_occasions/1
     # DELETE /special_occasions/1.json
     @special_occasion = SpecialOccasion.find(params[:id])
-    @special_occasion.destroy
-
+    if @special_occasion.products.count == 0 and @special_occasion.finished_products.count == 0
+      @special_occasion.destroy
+      flash[:notice] = "Special Occasion deleted."
+    else
+      flash[:notice] = "Special Occasion couldn't be deleted."
+    end
+    
     respond_to do |format|
       format.html { redirect_to special_occasions_url }
       #format.json { head :no_content }

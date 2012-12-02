@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <span class="form-label"><%= f.label :name %></span>
+    <span class="form-field"><%= f.text_field :name %></span>
   </div>
   <div class="field">
-    <%= f.label :running_order %><br />
-    <%= f.number_field :running_order %>
+    <span class="form-label"><%= f.label :running_order %></span>
+    <span class="form-field"><%= f.number_field :running_order %></span>
   </div>
   <div class="field">
-    <%= f.label :visible_to_customers %><br />
-    <%= f.check_box :visible_to_customers %>
+    <span class="form-label"><%= f.label :visible_to_customers %></span>
+    <span class="form-field"><%= f.check_box :visible_to_customers %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

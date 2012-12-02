@@ -1,7 +1,9 @@
 <h1>Special Occasion #<%= params[:id] %></h1>
 <table>
-  <tr><td>Name:</td><td><%= @special_occasion.name %></td></tr>
+  <tr><td style="width: 150px;">Name:</td><td><%= @special_occasion.name %></td></tr>
   <tr><td>Running order:</td><td><%= @special_occasion.running_order %></td></tr>
   <tr><td>Visible to customers:</td><td><%= sanitize tick_or_cross @special_occasion.visible_to_customers %></td></tr>
+  <tr><td>Finished Products:</td><td><%= @special_occasion.finished_products.count %></td></tr>
+  <tr><td>Products:</td><td><%= @special_occasion.products.count %></td></tr>
 </table><br/>
 <%= link_to 'Back', special_occasions_path %> | <%= link_to 'Edit', edit_special_occasion_path(@special_occasion) %>

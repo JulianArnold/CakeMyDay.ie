@@ -1,21 +1,20 @@
 <h1>Special Occasions</h1>
 <table>
   <tr>
-    <th style="width: 100px;">Name</th>
+    <th style="width: 250px;">Name</th>
     <th style="width: 100px;">Running order</th>
     <th style="width: 100px;">Visible to customers</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
+    <td style="width:  90px;"></td>
+    <td style="width:  40px;"></td>
   </tr>
   <% @special_occasions.each do |special_occasion| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
       <td><%= special_occasion.name %></td>
       <td><%= special_occasion.running_order %></td>
       <td><%= sanitize tick_or_cross special_occasion.visible_to_customers %></td>
-      <td><%= link_to 'View', special_occasion %></td>
-      <td><%= link_to 'Edit', edit_special_occasion_path(special_occasion) %></td>
-      <% if special_occasion.products.count == 0 %>
+      <td><%= link_to 'View', special_occasion %> |
+          <%= link_to 'Edit', edit_special_occasion_path(special_occasion) %></td>
+      <% if special_occasion.products.count == 0 and special_occasion.finished_products.count == 0 %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Special Occasion", :item => special_occasion} -%>
       <% end %>
     </td>
