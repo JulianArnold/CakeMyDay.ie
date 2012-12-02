@@ -12,16 +12,14 @@
   <% end %>
 
   <div class="field">
-    From:
-    <%= @production_quotum.start_date.strftime("%d-%b-%Y") %>
+    From: <%= @production_quotum.start_date.strftime("%d-%b-%Y") %>
   </div>
   <div class="field">
-    To:
-    <%= @production_quotum.finish_date.strftime("%d-%b-%Y") %>
+    To: <%= @production_quotum.finish_date.strftime("%d-%b-%Y") %>
   </div>
   <div class="field">
-    <%= f.label :maximum_cakes_allowed %><br />
-    <%= f.number_field :maximum_cakes_allowed %>
+    <span class="form-label"><%= f.label :maximum_cakes_allowed %></span>
+    <span class="form-field"><%= f.number_field :maximum_cakes_allowed %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

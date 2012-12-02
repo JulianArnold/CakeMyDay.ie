@@ -15,7 +15,7 @@ class FinishedProductsController < ApplicationController
   def index
     # GET /finished_products
     # GET /finished_products.json
-    @finished_products = FinishedProduct.all(order: "special_occasion_id, running_order")
+    @finished_products = FinishedProduct.all(:include => "special_occasion", order: "special_occasions.running_order, finished_products.running_order")
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,22 +1,24 @@
 <h1>Finished Products</h1>
 <table>
   <tr>
-    <th style="width: 600px;">Product details</th>
+    <th style="width: 100px;">Product details</th>
     <th style="width:  70px;text-align:right;">Typical<br />price</th>
     <th style="width:  70px;text-align:right;">Running order</th>
     <th style="width:  80px;">For sale?</th>
     <th style="width:  80px;">Visible?</th>
+    <td style="width:  90px;"></td>
   </tr>
-  <% tracker = -1 -%>
+  <% tracker = nil -%>
   <% @finished_products.each do |finished_product| %>
     <% if tracker != finished_product.special_occasion_id.to_i %>
-      <td colspan=5><h2>
-        <% if finished_product.special_occasion_id%>
+      <tr><td colspan=6><h2>
+        <% if finished_product.special_occasion_id %>
           <%= finished_product.special_occasion.name %>
         <% else %>
           Other
         <% end %>
-      </h2></td>
+      </h2></td></tr>
+      <% tracker = finished_product.special_occasion_id.to_i %>
     <% end %>
     
     <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
@@ -24,14 +26,14 @@
           <h3><%= finished_product.product_name %></h3>
           <%= truncate finished_product.description, :length => 230 %><br/>
           <% finished_product.finished_product_images.each do |fpi| %>
-            <%= image_tag("product_images/" + fpi.image.file_name, :size => "80x80") %>
+            <%= image_tag("product_images/" + fpi.image.file_name, :height => "80") %>
           <% end %>
       </td>
       <td style="text-align:right;"><%= sanitize number_to_currency(finished_product.typical_price, :unit => @general_setting.ccy, :precision => 2) %></td>
       <td style="text-align:right;"><%= finished_product.running_order %></td>
       <td><%= sanitize tick_or_cross finished_product.available_for_purchase %></td>
       <td><%= sanitize tick_or_cross finished_product.visible %></td>
-      <td><%= link_to 'View', finished_product %> | <%= link_to 'Edit', edit_finished_product_path(finished_product) %></td>
+      <td><%= link_to 'Show', finished_product %> | <%= link_to 'Edit', edit_finished_product_path(finished_product) %></td>
       <% if admin_user %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Finished Product", :item => finished_product} -%>
       <% end %>

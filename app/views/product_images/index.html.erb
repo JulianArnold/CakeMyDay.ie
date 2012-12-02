@@ -4,17 +4,15 @@
     <th style="width: 100px;">Product</th>
     <th style="width: 100px;">Image</th>
     <th style="width: 100px;">Running order</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
+    <td style="width:  90px;"></td>
   </tr>
   <% @product_images.each do |product_image| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
-      <td><%= product_image.product_id %></td>
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+      <td><%= product_image.product.name %></td>
       <td><%= product_image.image_id %></td>
       <td><%= product_image.running_order %></td>
-      <td><%= link_to 'View', product_image %></td>
-      <td><%= link_to 'Edit', edit_product_image_path(product_image) %></td>
+      <td><%= link_to 'View', product_image %><br/> |
+          <%= link_to 'Edit', edit_product_image_path(product_image) %></td>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "Product Image", :item => product_image} -%>
     </td>
   <% end %>

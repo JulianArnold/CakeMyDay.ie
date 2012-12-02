@@ -5,14 +5,14 @@
     <th style="width:  90px;">Production quota value</th>
     <th style="width: 100px;">Special occasion</th>
     <th style="width:  60px;">Running order</th>
-    <td style="width:  90px;"></td>
+    <td style="width:  80px;"></td>
   </tr>
   <% tracker = 0 %>
   <% @products.each do |product| %>
     <% if tracker != product.product_category_id %><% tracker = product.product_category.id %>
     <tr><td colspan=6><h2><%= product.product_category.name %></h2></td></tr>
     <% end %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
       <td><b><%= product.name %></b><br/>
           <%= product.description %></td>
       <td><%= product.production_quota_value %></td>
