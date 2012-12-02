@@ -12,24 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <span class="form-label"><%= f.label :name %></span>
+    <span class="form-field"><%= f.text_field :name %></span>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <span class="form-label"><%= f.label :description %></span>
+    <span class="form-field"><%= f.text_area :description %></span>
   </div>
   <div class="field">
-    <%= f.label :one_choice_only %><br />
-    <%= f.check_box :one_choice_only %>
+    <span class="form-label"><%= f.label :one_choice_only %></span>
+    <span class="form-field"><%= f.check_box :one_choice_only %></span>
   </div>
   <div class="field">
-    <%= f.label :running_order %><br />
-    <%= f.number_field :running_order %>
+    <span class="form-label"><%= f.label :running_order %></span>
+    <span class="form-field"><%= f.number_field :running_order %></span>
   </div>
   <div class="field">
-    <%= f.label :options_list_id %><br />
-    <%= f.number_field :options_list_id %>
+    <span class="form-label"><%= f.label :options_list_id %></span>
+    <span class="form-field"><%= f.collection_select :options_list_id, @options_lists, :id, :name, :prompt => "Select (optional)..." %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

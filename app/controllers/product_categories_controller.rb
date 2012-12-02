@@ -10,6 +10,7 @@ class ProductCategoriesController < ApplicationController
 
   before_filter :logged_in_required
   before_filter :manager_required
+  before_filter :get_variables
   
   def index
     # GET /product_categories
@@ -85,12 +86,21 @@ class ProductCategoriesController < ApplicationController
     # DELETE /product_categories/1
     # DELETE /product_categories/1.json
     @product_category = ProductCategory.find(params[:id])
-    @product_category.destroy
+    if @product_category.products == 0
+      @product_category.destroy
+      flash[:notice] = "ProductCategory has been deleted."
+    else
+      flash[:notice] = "ProductCategory could not be deleted."
+    end
 
     respond_to do |format|
       format.html { redirect_to product_categories_url }
       #format.json { head :no_content }
     end
+  end
+
+  def get_variables
+    @options_lists = OptionsList.all(:order => "name")
   end
 
 end

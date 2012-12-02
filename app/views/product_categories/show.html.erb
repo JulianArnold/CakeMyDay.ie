@@ -1,12 +1,12 @@
 <h1>Product Category #<%= params[:id] %></h1>
 <table>
-<p id="notice"><%= notice %></p>
-  <tr><td>Name:</td><td><%= @product_category.name %></td></tr>
+  <tr><td style="width: 150px;">Name:</td><td><%= @product_category.name %></td></tr>
   <tr><td>Description:</td><td><%= @product_category.description %></td></tr>
   <tr><td>One choice only:</td><td><%= sanitize tick_or_cross @product_category.one_choice_only %></td></tr>
   <tr><td>Running order:</td><td><%= @product_category.running_order %></td></tr>
   <% if @product_category.options_list %>
     <tr><td>Options list:</td><td><%= @product_category.options_list.name %></td></tr>
   <% end %>
+  <tr><td>Products:</td><td><%= @product_category.products.count %></td></tr>
 </table><br/>
 <%= link_to 'Back', product_categories_path %> | <%= link_to 'Edit', edit_product_category_path(@product_category) %>
