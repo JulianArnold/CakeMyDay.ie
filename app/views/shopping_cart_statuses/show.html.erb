@@ -8,5 +8,6 @@
   <tr><td>Production started:</td><td><%= sanitize tick_or_cross @shopping_cart_status.production_started %></td></tr>
   <tr><td>Production complete:</td><td><%= sanitize tick_or_cross @shopping_cart_status.production_complete %></td></tr>
   <tr><td>Running order:</td><td><%= @shopping_cart_status.running_order %></td></tr>
+  <tr><td>Shopping Carts:</td><td><%= @shopping_cart_status.shopping_carts.count %></td></tr>
 </table><br/>
 <%= link_to 'Back', shopping_cart_statuses_path %> | <%= link_to 'Edit', edit_shopping_cart_status_path(@shopping_cart_status) %>
