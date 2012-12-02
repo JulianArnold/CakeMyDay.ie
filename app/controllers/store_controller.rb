@@ -24,6 +24,7 @@ class StoreController < ApplicationController
   end
 
   def search
+    @finished_products = FinishedProduct.search(params[:search_query])
     @products = Product.search(params[:search_query])
     render :search_results
   end

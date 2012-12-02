@@ -15,11 +15,7 @@ class Product < ActiveRecord::Base
 	
 	# See note 1 above
 	def self.search(search_query)
-		if search_query
-			find(:all, :conditions => ['name LIKE ? or description LIKE ?', "%" + search_query + "%", "%" + search_query + "%"])
-		else
-			find (:all)
-		end 
+		find(:all, :conditions => ['name LIKE ? or description LIKE ?', "%" + search_query + "%", "%" + search_query + "%"])
 	end
 
   belongs_to  :options_list

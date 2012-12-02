@@ -18,16 +18,7 @@
 <% end %>
 
 <% @finished_products.each do |fp| %>
-  <div class="finished-product">
-    <h3><%= fp.product_name %></h3>
-    <div class="fp-photo-1">
-      <%= image_tag("product_images/" + fp.finished_product_images.first.image.file_name, :height => "200") %>
-    </div>
-    <div class="fp-description"><%= sanitize fp.description.gsub("\r","<br/>") %></div>
-    <% if fp.available_for_purchase %>
-    <div class="fp-price"><br/>Typical price: <%= sanitize number_to_currency(fp.typical_price, :unit => @general_setting.ccy, :precision => 2) %></div>
-    <div class="add-to-cart"><br/><%= link_to "Add to Cart" %></div>
-    <% end %>
+  <%= render :partial => "show_product_strip", :locals => {:fp => fp} %>
 <% end %>
 <% if @finished_products.count == 0 %>
   <p>Sorry, we have no creations on show in our this category right now.</p>
