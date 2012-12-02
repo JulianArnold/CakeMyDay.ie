@@ -6,7 +6,7 @@
   <div class="fp-description"><%= sanitize fp.description.gsub("\r","<br/>") %></div>
   <% if fp.available_for_purchase %>
     <div class="fp-price"><br/>Typical price: <%= sanitize number_to_currency(fp.typical_price, :unit => @general_setting.ccy, :precision => 2) %></div>
-    <div class="add-to-cart"><br/><%= link_to "Add to Cart" %></div>
+    <%= render "add_to_cart", :locals => {:fp => fp} %>
   <% end %>
   <%= link_to("View details...", store_product_url(product_name: fp.product_name.gsub(" ","_")) ) %>
   

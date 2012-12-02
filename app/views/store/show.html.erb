@@ -9,7 +9,15 @@
   <div class="fp-description"><%= sanitize @finished_product.description.gsub("\r","<br/>") %></div>
   <% if @finished_product.available_for_purchase %>
     <div class="fp-price"><br/>Typical price: <%= sanitize number_to_currency(@finished_product.typical_price, :unit => @general_setting.ccy, :precision => 2) %></div>
-    <div class="add-to-cart"><br/><%= link_to "Add to Cart" %></div>
+    <%= render "add_to_cart", :locals => {:fp => @finished_product} %>
   <% end %>
   <%= link_to "Return to the home page", root_url(:show => @finished_product.special_occasion.name) %>
+  
 </div>
+<% if @finished_product.finished_product_images.count > 1 %>
+  <h2>More Pics...</h2>
+  <% @finished_product.finished_product_images.each do |i| %>
+    <div class="fp-photo-1"><%= image_tag(i.image.full_file_path, :width => "600") %></div>
+  <% end %>
+<% end %>
+<%= link_to "Return to the home page", root_url(:show => @finished_product.special_occasion.name) %>
