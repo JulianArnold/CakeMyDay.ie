@@ -23,6 +23,10 @@ class StoreController < ApplicationController
     end
   end
 
+  def show
+    @finished_product = FinishedProduct.find_by_product_name(params[:product_name])
+  end
+
   def search
     @finished_products = FinishedProduct.search(params[:search_query])
     @products = Product.search(params[:search_query])

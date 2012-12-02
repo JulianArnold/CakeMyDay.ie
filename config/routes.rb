@@ -1,7 +1,10 @@
 CakeMyDaySite::Application.routes.draw do
 
+  # special routes for the online store
   match "store"    => "store#index",           :as => :store
-
+  match "store/:product_name" => "store#show", :as => :store_product
+  match 'search'   => 'store#search',          :as => :search, :method => :post
+  
   # special routes for user authentication
   match 'login'    => "user_sessions#new",     :as => :login
   match 'log_in'   => "user_sessions#new",     :as => :log_in
@@ -14,8 +17,9 @@ CakeMyDaySite::Application.routes.draw do
   match 'sign_up'  => 'users#new',             :as => :sign_up
   match 'register' => 'users#new',             :as => :register
 
-  match 'search'   => 'store#search',          :as => :search, :method => :post
-
+  # special routes for miscellaneous purposes
+  match 'link_finished_product_image' => 'finished_products#link_image', :as => :link_finished_product_image
+  
   resources :currencies
   resources :customers
   resources :finished_products

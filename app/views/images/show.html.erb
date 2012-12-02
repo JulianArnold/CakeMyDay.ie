@@ -5,7 +5,14 @@
   <tr><td>Content type:</td><td><%= @image.content_type %></td></tr>
   <tr><td>File size:</td><td><%= @image.file_size %></td></tr>
   <tr><td>Finished product:</td><td><%= sanitize tick_or_cross @image.finished_product %></td></tr>
+  <% @image.finished_product_images.each do |fpi| %>
+    <tr><td></td><td><%= link_to(fpi.finished_product.product_name, fpi.finished_product, :title => "click to view the product") %></td></tr>
+  <% end %>
   <tr><td>Base product:</td><td><%= sanitize tick_or_cross @image.base_product %></td></tr>
+  <% @image.product_images.each do |pi| %>
+    <tr><td></td><td><%= link_to(pi.product.name, pi.product, :title => "click to view the product") %></td></tr>
+  <% end %>
   <tr><td>Uploaded by:</td><td><%= @image.uploader.full_name %></td></tr>
+  <tr><td>Image:</td><td><%= image_tag(@image.full_file_path) %></td></tr>
 </table><br/>
 <%= link_to 'Back', images_path %> | <%= link_to 'Edit', edit_image_path(@image) %>

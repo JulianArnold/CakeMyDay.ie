@@ -21,9 +21,8 @@ class Image < ActiveRecord::Base
     # use this until AWS::S3 is implemented
     return "product_images/" + file_name
     
-    # needs some more work - to include the root URL
+    # needs some more work - to include the root URL - when we have AWS:S3 working
     # return bucket_name + "/" + file_name
-    
   end
   
 end

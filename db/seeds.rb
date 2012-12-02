@@ -450,6 +450,10 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
+  Image.create({file_name: "start.png", 
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("dan.laffan@mac.com").id})
+
 
   FinishedProductImage.destroy_all
   # add new FinishedProductImages below

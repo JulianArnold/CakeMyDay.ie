@@ -53,7 +53,8 @@ class ImagesController < ApplicationController
     # POST /images
     # POST /images.json
     @image = Image.new(params[:image])
-
+    @image.uploaded_by = current_user.id
+    
     respond_to do |format|
       if @image.save
         format.html { redirect_to @image, notice: 'Image was successfully created.' }
@@ -85,7 +86,12 @@ class ImagesController < ApplicationController
     # DELETE /images/1
     # DELETE /images/1.json
     @image = Image.find(params[:id])
-    @image.destroy
+    if image.finished_product_images.count == 0 and image.product_images.count == 0
+      @image.destroy
+      flash[:notice] = "Image has been deleted."
+    else
+      flash[:notice] = "Image could not be deleted."
+    end
 
     respond_to do |format|
       format.html { redirect_to images_url }

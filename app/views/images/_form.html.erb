@@ -12,32 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :file_name %><br />
-    <%= f.text_field :file_name %>
+    <span class="form-label"><%= f.label :file_name %></span>
+    <span class="form-field"><%= f.text_field :file_name %></span>
   </div>
   <div class="field">
-    <%= f.label :bucket_name %><br />
-    <%= f.text_field :bucket_name %>
+    <span class="form-label"><%= f.label :bucket_name %></span>
+    <span class="form-field"><%= f.text_field :bucket_name %></span>
   </div>
   <div class="field">
-    <%= f.label :content_type %><br />
-    <%= f.text_field :content_type %>
+    <span class="form-label"><%= f.label :content_type %></span>
+    <span class="form-field"><%= f.text_field :content_type %></span>
   </div>
   <div class="field">
-    <%= f.label :file_size %><br />
-    <%= f.number_field :file_size %>
+    <span class="form-label"><%= f.label :file_size %></span>
+    <span class="form-field"><%= f.number_field :file_size %></span>
   </div>
   <div class="field">
-    <%= f.label :finished_product %><br />
-    <%= f.check_box :finished_product %>
+    <span class="form-label"><%= f.label :finished_product %></span>
+    <span class="form-field"><%= f.check_box :finished_product %></span>
   </div>
   <div class="field">
-    <%= f.label :base_product %><br />
-    <%= f.check_box :base_product %>
-  </div>
-  <div class="field">
-    <%= f.label :uploaded_by %><br />
-    <%= f.number_field :uploaded_by %>
+    <span class="form-label"><%= f.label :base_product %></span>
+    <span class="form-field"><%= f.check_box :base_product %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

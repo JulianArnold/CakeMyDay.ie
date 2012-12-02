@@ -1,41 +1,45 @@
 <h1>Finished Product #<%= @finished_product.id %></h1>
-
-<p>
-  <b>Product name:</b>
-  <%= @finished_product.product_name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @finished_product.description %>
-</p>
-
-<p>
-  <b>Typical price:</b>
-  <%= sanitize number_to_currency(@finished_product.typical_price, :unit =>  @general_setting.ccy, :precision => 2) %>
-</p>
-
+<table>
+  <tr><td style="width: 150px;">Product name:</td><td><%= @finished_product.product_name %></td></tr>
+  <tr><td>Description:</td><td><%= sanitize @finished_product.description.gsub("\r","<br/>") %></td></tr>
+  <tr><td>Typical price:</td><td><%= sanitize number_to_currency(@finished_product.typical_price, :unit =>  @general_setting.ccy, :precision => 2) %></td></tr>
 <% if @finished_product.special_occasion_id.to_i > 0 %>
-<p>
-  <b>Special occasion:</b>
-  <%= @finished_product.special_occasion.name %>
-</p>
+  <tr><td>Special occasion:</td><td><%= @finished_product.special_occasion.name %></td></tr>
 <% end %>
+  <tr><td>Running order:</td><td><%= @finished_product.running_order %></td></tr>
+  <tr><td>Available for purchase:</td><td><%= sanitize tick_or_cross @finished_product.available_for_purchase %></td></tr>
+  <tr><td>Visible:</td><td><%= sanitize tick_or_cross @finished_product.visible %></td></tr>
+  <tr><td>Images:</td>
+    <td>
+      <% @finished_product.finished_product_images.each do |fpi| %>
+        <%= image_tag(fpi.image.full_file_path, :height => "100")%>
+      <% end %>
+    </td>
+  </tr>
+</table><br/>
+<p><%= link_to 'Back', finished_products_path %> | <%= link_to 'Edit', edit_finished_product_path(@finished_product) %></p>
 
-<p>
-  <b>Running order:</b>
-  <%= @finished_product.running_order %>
-</p>
-
-<p>
-  <b>Available for purchase:</b>
-  <%= sanitize tick_or_cross @finished_product.available_for_purchase %>
-</p>
-
-<p>
-  <b>Visible:</b>
-  <%= sanitize tick_or_cross @finished_product.visible %>
-</p>
-
-<%= link_to 'Back', finished_products_path %> | 
-<%= link_to 'Edit', edit_finished_product_path(@finished_product) %>
+<h2>Images</h2>
+<p>These are the images of finished products that are not yet assigned to a product. <br/><%= link_to("Click here", images_url) %> to create new images.</p>
+<% if @unallocated_images.count > 0 %>
+  <p>To add one of the images below to this product, click the "add" button beside the image:</p>
+  <table>
+    <tr>
+      <th style="width: 110px;">Image</th>
+      <th style="width: 250px;">File name</th>
+      <td style="width: 50px;"></td>
+    </tr>
+    <% @unallocated_images.each do |i| %>
+      <%= form_tag(link_finished_product_image_url) do %>
+        <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+          <td><%= image_tag(i.full_file_path, :width => 100) %></td>
+          <td><%= i.file_name %></td>
+          <td><%= hidden_field_tag :finished_product_id, @finished_product.id %>
+            <%= hidden_field_tag :image_id, i.id %>
+            <%= submit_tag "Add" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+<% end %>
