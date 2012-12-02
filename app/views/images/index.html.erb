@@ -1,22 +1,26 @@
 <h1>Images</h1>
 <table>
   <tr>
-    <th style="width: 100px;">File name</th>
+    <th style="width: 70px;">Image</th>
+    <th style="width: 300px;">File name</th>
     <th style="width: 100px;">File size</th>
-    <th style="width: 100px;">Finished product</th>
-    <th style="width: 100px;">Base product</th>
+    <th style="width:  80px;">Finished product</th>
+    <th style="width:  80px;">Base product</th>
     <td style="width:  90px;"></td>
     <td style="width:  80px;"></td>
   </tr>
   <% @images.each do |image| %>
     <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+      <td><%= image_tag(image.full_file_path, width: "60") %></td>
       <td><%= image.file_name %></td>
       <td><%= image.file_size %></td>
-      <td><%= image.finished_product %></td>
-      <td><%= image.base_product %></td>
+      <td><%= sanitize tick_or_cross image.finished_product %></td>
+      <td><%= sanitize tick_or_cross image.base_product %></td>
       <td><%= link_to 'View', image %> | 
           <%= link_to 'Edit', edit_image_path(image) %></td>
+      <% if image.product_images.count == 0 and image.finished_product_images.count == 0 %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "image", :item => image} -%>
+      <% end %>
     </td>
   <% end %>
 </table><br/>

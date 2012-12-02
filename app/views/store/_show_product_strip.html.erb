@@ -1,7 +1,7 @@
 <div class="finished-product">
   <h3><%= fp.product_name %></h3>
   <div class="fp-photo-1">
-    <%= image_tag("product_images/" + fp.finished_product_images.first.image.file_name, :height => "200") %>
+    <%= image_tag(fp.finished_product_images.first.image.full_file_path, :height => "200") %>
   </div>
   <div class="fp-description"><%= sanitize fp.description.gsub("\r","<br/>") %></div>
   <% if fp.available_for_purchase %>

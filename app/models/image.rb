@@ -18,8 +18,12 @@ class Image < ActiveRecord::Base
   has_many    :finished_product_images, :order => "running_order"
   
   def full_file_path
+    # use this until AWS::S3 is implemented
+    return "product_images/" + file_name
+    
     # needs some more work - to include the root URL
-    return bucket_name + "/" + file_name
+    # return bucket_name + "/" + file_name
+    
   end
   
 end

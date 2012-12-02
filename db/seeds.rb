@@ -426,7 +426,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
-  Image.create({file_name: "zoo_animals_birthday_cake.jpg", 
+  Image.create({file_name: "Zoo_animals_birthday_cake.jpg", 
       finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian.arnold@hotmail.com").id})
 
@@ -500,7 +500,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         
   FinishedProductImage.create({
     	finished_product_id: FinishedProduct.find_by_product_name("Senan\'s Zoo Animals Birthday Cake").id,
-    	image_id: Image.find_by_file_name("zoo_animals_birthday_cake.jpg").id,
+    	image_id: Image.find_by_file_name("Zoo_animals_birthday_cake.jpg").id,
     	running_order: 1000})
     	
   FinishedProductImage.create({
