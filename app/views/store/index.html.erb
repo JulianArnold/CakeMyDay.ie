@@ -17,6 +17,12 @@
   </div>
 <% end %>
 
+<div id="breadcrumbs">You are here: <%= link_to "home", root_url %>
+  <% if @special_occasion %>
+    &rarr; <%= @special_occasion.name %> 
+  <% end %>
+</div>
+
 <% @finished_products.each do |fp| %>
   <%= render :partial => "show_product_strip", :locals => {:fp => fp} %>
 <% end %>

@@ -1,0 +1,15 @@
+<div id="breadcrumbs">You are here: <%= link_to "home", root_url %> &rarr; <%= link_to @finished_product.special_occasion.name, root_url(:show => @finished_product.special_occasion.name) %> &rarr; <%= @finished_product.product_name %></div>
+
+<h1><%= @finished_product.product_name %></h1>
+  
+<div class="finished-product">
+  <div class="fp-photo-1">
+    <%= image_tag(@finished_product.finished_product_images.first.image.full_file_path, :height => "400") %>
+  </div>
+  <div class="fp-description"><%= sanitize @finished_product.description.gsub("\r","<br/>") %></div>
+  <% if @finished_product.available_for_purchase %>
+    <div class="fp-price"><br/>Typical price: <%= sanitize number_to_currency(@finished_product.typical_price, :unit => @general_setting.ccy, :precision => 2) %></div>
+    <div class="add-to-cart"><br/><%= link_to "Add to Cart" %></div>
+  <% end %>
+  <%= link_to "Return to the home page", root_url(:show => @finished_product.special_occasion.name) %>
+</div>

@@ -19,15 +19,20 @@ class StoreController < ApplicationController
     end
     
     if @special_occasion
-      @finished_products = @special_occasion.finished_products.all
+      @finished_products = @special_occasion.finished_products.all(order: "running_order, created_at DESC")
     else # params[:show] == "latest" or !params[:show] or params[:show] not known
-      @finished_products = FinishedProduct.all(order: "created_at DESC, running_order")
+      @finished_products = FinishedProduct.all(order: "running_order, created_at DESC")
       @finished_product = nil
     end
   end
 
   def show
-    @finished_product = FinishedProduct.find_by_product_name(params[:product_name])
+    @finished_product = FinishedProduct.find_by_product_name(params[:product_name].gsub("_"," "))
+    if @finished_product
+      # go to the usual show.html.erb
+    else
+      redirect_to root_url, :notice => "Sorry, we couldn't find that product."
+    end
   end
 
   def search
