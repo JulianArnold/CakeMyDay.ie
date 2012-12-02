@@ -104,9 +104,8 @@ class FinishedProductsController < ApplicationController
     image = Image.find(params[:image_id].to_i)
     if image and @finished_product
       last_fpi = FinishedProductImage.find(:first, :conditions => ["finished_product_id = ?", @finished_product.id], :order => "running_order DESC")
-      fpi = FinishedProductImage.new
+      fpi = @finished_product.finished_product_images.new
       fpi.image_id = image.id
-      fpi.finished_product_id = @finished_product.id
       if last_fpi
         fpi.running_order = last_fpi.running_order + 100
       else

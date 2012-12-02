@@ -4,10 +4,7 @@
 # Modified by Dan Laffan (12111619) starting 5th November 2012.
 # Modified by Julian Arnold (12111333) starting 12th November 2012.
 #
-# Note 1  Search attribute based on code demonstrated by Wesley Gorman
-#         in NCI lecture, and subsequently modified by Dan Laffan.
-#
-# Note 2:  This was based on a solution from Stack Overflow:
+# Note 1:  This was based on a solution from Stack Overflow:
 #          http://stackoverflow.com/questions/13481673/activerecord-find-by-number-of-associated-records
 #          Accessed on 1-Dec-2012.
 #
@@ -116,9 +113,8 @@ class ProductsController < ApplicationController
     image = Image.find(params[:image_id].to_i)
     if image and @product
       last_pi = ProductImage.find(:first, :conditions => ["product_id = ?", @product.id], :order => "running_order DESC")
-      pi = ProductImage.new
+      pi = @product.product_images.new
       pi.image_id = image.id
-      pi.product_id = @product.id
       if last_pi
         pi.running_order = last_pi.running_order + 100
       else
@@ -140,7 +136,7 @@ class ProductsController < ApplicationController
     @options_lists = OptionsList.all(order: "name")
     @special_occasions = SpecialOccasion.all(order: "running_order, name")
     @currencies = Currency.all(conditions: ["active = ?", true], order: "running_order")
-    @unallocated_images = Image.all(:include => 'product_images', :conditions => ["base_product = ? and product_images.id IS NULL", true]) # see Note 2 above.
+    @unallocated_images = Image.all(:include => 'product_images', :conditions => ["base_product = ? and product_images.id IS NULL", true]) # see Note 1 above.
   end
 
 end
