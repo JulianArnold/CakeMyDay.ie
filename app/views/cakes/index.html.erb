@@ -1,0 +1,39 @@
+<h1>Listing cakes</h1>
+
+<table>
+  <tr>
+    <th>Shopping cart</th>
+    <th>Cake required at</th>
+    <th>Production quotum</th>
+    <th>Special occasion</th>
+    <th>Name to appear on cake</th>
+    <th>General description from customer</th>
+    <th>Confectioners notes</th>
+    <th>Weekday</th>
+    <th>Based on finished product</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cakes.each do |cake| %>
+  <tr>
+    <td><%= cake.shopping_cart_id %></td>
+    <td><%= cake.cake_required_at %></td>
+    <td><%= cake.production_quotum_id %></td>
+    <td><%= cake.special_occasion %></td>
+    <td><%= cake.name_to_appear_on_cake %></td>
+    <td><%= cake.general_description_from_customer %></td>
+    <td><%= cake.confectioners_notes %></td>
+    <td><%= cake.weekday %></td>
+    <td><%= cake.based_on_finished_product_id %></td>
+    <td><%= link_to 'Show', cake %></td>
+    <td><%= link_to 'Edit', edit_cake_path(cake) %></td>
+    <td><%= link_to 'Destroy', cake, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cake', new_cake_path %>

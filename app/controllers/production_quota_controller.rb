@@ -101,7 +101,7 @@ class ProductionQuotaController < ApplicationController
     # DELETE /production_quota/1
     # DELETE /production_quota/1.json
     @production_quotum = ProductionQuotum.find(params[:id])
-    if @production_quotum.shopping_carts.count == 0
+    if @production_quotum.cakes.count == 0
       @production_quotum.destroy
       flash[:notice] = "Production Quota deleted."
     else

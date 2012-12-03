@@ -1,0 +1,16 @@
+<% if @special_occasions %>
+  <div id="special-occasions">
+    <% if @special_occasion == nil %>
+      <%= link_to("Latest Creations", store_url(:show => "latest"), {:id => "selected"}) %>
+    <% else %>
+      <%= link_to("Latest Creations", store_url(:show => "latest")) %>
+    <% end %>
+    <% @special_occasions.each do |so| %>
+      <% if @special_occasion and @special_occasion.name == so.name %>
+        <%= link_to(so.name, store_url(:show => so.name), :id => "selected") %>
+      <% else %>
+        <%= link_to(so.name, store_url(:show => so.name)) %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

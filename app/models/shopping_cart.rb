@@ -7,17 +7,13 @@
 # Rights in third party code acknowledged.
 
 class ShoppingCart < ActiveRecord::Base
-  attr_accessible :cake_required_at, :customer_id, :general_description_from_customer, :name_to_appear_on_cake, :pay_pal_status_id, :session_id, :shopping_cart_status_id, :special_occasion, :production_quotum_id
-
-  before_save :log_the_weekday
-  before_save :set_production_quantum_id
+  attr_accessible :customer_id, :pay_pal_status_id, :session_id, :shopping_cart_status_id
 
   belongs_to  :customer
   belongs_to  :pay_pal_status
   has_many    :pay_pal_transactions, :order => :created_at
-  has_many    :shopping_cart_items, :order => :id
+  has_many    :cakes, :order => :created_at
   belongs_to  :shopping_cart_status
-  belongs_to  :production_quotum
   belongs_to  :creator,
               :class_name => "User",
               :foreign_key => "created_by"
@@ -28,18 +24,5 @@ class ShoppingCart < ActiveRecord::Base
   validates_numericality_of :shopping_cart_status_id
   validates_numericality_of :customer_id
   validates_numericality_of :pay_pal_status_id
-  validates_numericality_of :production_quotum_id
   
-  def set_production_quantum_id
-    
-    pq = ProductionQuotum.first(:conditions => ["start_date <= ? and finish_date >= ?", cake_required_at.to_date, cake_required_at.to_date])
-    if pq
-      self.production_quotum_id = pq.id
-    end
-  end
-  
-  def log_the_weekday
-    self.weekday = cake_required_at.wday
-  end
-
 end

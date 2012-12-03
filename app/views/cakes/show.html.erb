@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Shopping cart:</b>
+  <%= @cake.shopping_cart_id %>
+</p>
+
+<p>
+  <b>Cake required at:</b>
+  <%= @cake.cake_required_at %>
+</p>
+
+<p>
+  <b>Production quotum:</b>
+  <%= @cake.production_quotum_id %>
+</p>
+
+<p>
+  <b>Special occasion:</b>
+  <%= @cake.special_occasion %>
+</p>
+
+<p>
+  <b>Name to appear on cake:</b>
+  <%= @cake.name_to_appear_on_cake %>
+</p>
+
+<p>
+  <b>General description from customer:</b>
+  <%= @cake.general_description_from_customer %>
+</p>
+
+<p>
+  <b>Confectioners notes:</b>
+  <%= @cake.confectioners_notes %>
+</p>
+
+<p>
+  <b>Weekday:</b>
+  <%= @cake.weekday %>
+</p>
+
+<p>
+  <b>Based on finished product:</b>
+  <%= @cake.based_on_finished_product_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_cake_path(@cake) %> |
+<%= link_to 'Back', cakes_path %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shopping_cart_id: 1
+  cake_required_at: 2012-12-03 00:52:37
+  production_quotum_id: 1
+  special_occasion: MyString
+  name_to_appear_on_cake: MyString
+  general_description_from_customer: MyText
+  confectioners_notes: MyText
+  weekday: 1
+  based_on_finished_product_id: 1
+
+two:
+  shopping_cart_id: 1
+  cake_required_at: 2012-12-03 00:52:37
+  production_quotum_id: 1
+  special_occasion: MyString
+  name_to_appear_on_cake: MyString
+  general_description_from_customer: MyText
+  confectioners_notes: MyText
+  weekday: 1
+  based_on_finished_product_id: 1

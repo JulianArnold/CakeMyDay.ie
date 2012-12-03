@@ -1,0 +1,53 @@
+<%= form_for(@cake) do |f| %>
+  <% if @cake.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cake.errors.count, "error") %> prohibited this cake from being saved:</h2>
+
+      <ul>
+      <% @cake.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :shopping_cart_id %><br />
+    <%= f.number_field :shopping_cart_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cake_required_at %><br />
+    <%= f.datetime_select :cake_required_at %>
+  </div>
+  <div class="field">
+    <%= f.label :production_quotum_id %><br />
+    <%= f.number_field :production_quotum_id %>
+  </div>
+  <div class="field">
+    <%= f.label :special_occasion %><br />
+    <%= f.text_field :special_occasion %>
+  </div>
+  <div class="field">
+    <%= f.label :name_to_appear_on_cake %><br />
+    <%= f.text_field :name_to_appear_on_cake %>
+  </div>
+  <div class="field">
+    <%= f.label :general_description_from_customer %><br />
+    <%= f.text_area :general_description_from_customer %>
+  </div>
+  <div class="field">
+    <%= f.label :confectioners_notes %><br />
+    <%= f.text_area :confectioners_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :weekday %><br />
+    <%= f.number_field :weekday %>
+  </div>
+  <div class="field">
+    <%= f.label :based_on_finished_product_id %><br />
+    <%= f.number_field :based_on_finished_product_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -13,47 +13,48 @@ class ProductionQuotum < ActiveRecord::Base
   validates_numericality_of :maximum_cakes_allowed
   validates_uniqueness_of :start_date
 
-  has_many :shopping_carts
+  #has_many  :cakes
 
   has_many  :monday_bookings,
-            :class_name => "ShoppingCart",
+            :class_name => "Cake",
             :foreign_key => "production_quotum_id",
-            :include => "shopping_cart_status",
-            :conditions => ["shopping_carts.weekday = 1 and shopping_cart_statuses.paid_cart = ?", true]
+            :include => ["shopping_cart", ["shopping_cart","shopping_cart_status"]],
+            :conditions => ["weekday = 1 and shopping_cart_statuses.paid_cart = ?", true]
+            
   has_many  :tuesday_bookings,
-            :class_name => "ShoppingCart",
+            :class_name => "Cake",
             :foreign_key => "production_quotum_id",
-            :include => "shopping_cart_status",
-            :conditions => ["shopping_carts.weekday = 2 and shopping_cart_statuses.paid_cart = ?", true]
+            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
+            :conditions => ["weekday = 2 and shopping_cart_statuses.paid_cart = ?", true]
   has_many  :wednesday_bookings,
-            :class_name => "ShoppingCart",
+            :class_name => "Cake",
             :foreign_key => "production_quotum_id",
-            :include => "shopping_cart_status",
-            :conditions => ["shopping_carts.weekday = 3 and shopping_cart_statuses.paid_cart = ?", true]
+            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
+            :conditions => ["weekday = 3 and shopping_cart_statuses.paid_cart = ?", true]
   has_many  :thursday_bookings,
-            :class_name => "ShoppingCart",
+            :class_name => "Cake",
             :foreign_key => "production_quotum_id",
-            :include => "shopping_cart_status",
-            :conditions => ["shopping_carts.weekday = 4 and shopping_cart_statuses.paid_cart = ?", true]
+            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
+            :conditions => ["weekday = 4 and shopping_cart_statuses.paid_cart = ?", true]
   has_many  :friday_bookings,
-            :class_name => "ShoppingCart",
+            :class_name => "Cake",
             :foreign_key => "production_quotum_id",
-            :include => "shopping_cart_status",
-            :conditions => ["shopping_carts.weekday = 5 and shopping_cart_statuses.paid_cart = ?", true]
+            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
+            :conditions => ["weekday = 5 and shopping_cart_statuses.paid_cart = ?", true]
   has_many  :saturday_bookings,
-            :class_name => "ShoppingCart",
+            :class_name => "Cake",
             :foreign_key => "production_quotum_id",
-            :include => "shopping_cart_status",
-            :conditions => ["shopping_carts.weekday = 6 and shopping_cart_statuses.paid_cart = ?", true]
+            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
+            :conditions => ["weekday = 6 and shopping_cart_statuses.paid_cart = ?", true]
   has_many  :sunday_bookings,
-            :class_name => "ShoppingCart",
+            :class_name => "Cake",
             :foreign_key => "production_quotum_id",
-            :include => "shopping_cart_status",
-            :conditions => ["shopping_carts.weekday = 0 and shopping_cart_statuses.paid_cart = ?", true]
+            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
+            :conditions => ["weekday = 0 and shopping_cart_statuses.paid_cart = ?", true]
 
 
   def bookings
-    return carts = ShoppingCart.all(:conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_status.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
+    return cakes = Cake.all(:include => ["shopping_cart", ["shopping_cart", "shopping_cart_status"]], :conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_status.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
   end
   
   def self.auto_generate # creates new quotas automatically, 2 years ahead

@@ -1,28 +1,26 @@
 <h1>Shopping Cart Items</h1>
 <table>
   <tr>
-    <th style="width: 100px;">Shopping cart</th>
-    <th style="width: 100px;">Product</th>
-    <th style="width: 100px;">Quantity</th>
-    <th style="width: 100px;">Product price</th>
+    <th style="width: 100px;">Cake ID</th>
+    <th style="width: 300px;">Product</th>
+    <th style="width:  60px;">Quantity</th>
+    <th style="width:  60px;">Product price</th>
     <th style="width: 100px;">Product options list choice</th>
     <th style="width: 100px;">Global options list choice</th>
     <th style="width: 100px;">User description</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
+    <td style="width:  90px;"></td>
   </tr>
   <% @shopping_cart_items.each do |shopping_cart_item| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
-      <td><%= shopping_cart_item.shopping_cart_id %></td>
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+      <td><%= shopping_cart_item.cake_id %></td>
       <td><%= shopping_cart_item.product.name %></td>
       <td><%= shopping_cart_item.quantity %></td>
       <td><%= shopping_cart_item.product_price_id %></td>
       <td><%= shopping_cart_item.product_options_list_choice %></td>
       <td><%= shopping_cart_item.global_options_list_choice %></td>
       <td><%= shopping_cart_item.user_description %></td>
-      <td><%= link_to 'View', shopping_cart_item %></td>
-      <td><%= link_to 'Edit', edit_shopping_cart_item_path(shopping_cart_item) %></td>
+      <td><%= link_to 'View', shopping_cart_item %> |
+          <%= link_to 'Edit', edit_shopping_cart_item_path(shopping_cart_item) %></td>
     </td>
   <% end %>
 </table><br/>

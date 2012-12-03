@@ -1,5 +1,7 @@
 CakeMyDaySite::Application.routes.draw do
 
+  resources :cakes
+
   # special routes for the online store
   match "store"    => "store#index",           :as => :store
   match "store/:product_name" => "store#show", :as => :store_product

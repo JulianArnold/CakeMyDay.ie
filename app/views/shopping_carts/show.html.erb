@@ -2,14 +2,8 @@
 <table>
   <tr><td>Customer:</td><td><%= link_to(@shopping_cart.customer.user.full_name, customer_url(@shopping_cart.customer_id), :title => "click to view the customer's details") %><br/>
     <%= link_to(sanitize(@shopping_cart.customer.user.login), "mailto:" + @shopping_cart.customer.user.login) %></td></tr>
-  <tr><td>Cake required at:</td><td><%= @shopping_cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td></tr>
-  <tr><td>Production quota:</td><td><%= @shopping_cart.production_quotum.start_date.strftime("%d-%b-%Y") %> - <%= @shopping_cart.production_quotum.finish_date.strftime("%d-%b-%Y") %></td></tr>
-  <tr><td>Weekday</td><td><%= @shopping_cart.weekday %></td></tr>
-  <tr><td>Special occasion:</td><td><%= @shopping_cart.special_occasion %></td></tr>
-  <tr><td>Name to appear on cake:</td><td><%= @shopping_cart.name_to_appear_on_cake %></td></tr>
   <tr><td>Shopping cart status:</td><td><%= @shopping_cart.shopping_cart_status.name %></td></tr>
   <tr><td>PayPal status:</td><td><%= @shopping_cart.pay_pal_status.name %></td></tr>
-  <tr><td>General description from customer:</td><td><%= @shopping_cart.general_description_from_customer %></td></tr>
 </table><br/>
 
 <h2>Items</h2>
@@ -23,15 +17,19 @@
     <th style="text-align:right;">Line Total</th>
   </tr>
   
-  <% @shopping_cart.shopping_cart_items.each do |item| %>
-    <tr>
-      <td><%= link_to(item.product.name, product_url(item.product_id), :title => "click to view product") %></td>
-      <td><%= item.user_description %></td>
-      <td><%= item.product_options_list_choice %></td>
-      <td style="text-align:right;"><%= sanitize(number_to_currency(item.unit_price, :unit => @general_setting.ccy, :precision => 2)) %></td>
-      <td style="text-align:right;"><%= item.quantity %></td>
-      <td style="text-align:right;"><%= sanitize(number_to_currency(item.line_total, :unit => @general_setting.ccy, :precision => 2)) %></td>
-    </tr>
+  <% @shopping_cart.cakes.each do |cake| %>
+    <tr><td colspan=4><h2>Cake #<%= cake.id %></h2></td></tr>
+    <tr><td colspan=4>Cake info goes here</td></tr>
+    <% cake.shopping_cart_items.each do |item| %>
+      <tr>
+        <td><%= link_to(item.product.name, product_url(item.product_id), :title => "click to view product") %></td>
+        <td><%= item.user_description %></td>
+        <td><%= item.product_options_list_choice %></td>
+        <td style="text-align:right;"><%= sanitize(number_to_currency(item.unit_price, :unit => @general_setting.ccy, :precision => 2)) %></td>
+        <td style="text-align:right;"><%= item.quantity %></td>
+        <td style="text-align:right;"><%= sanitize(number_to_currency(item.line_total, :unit => @general_setting.ccy, :precision => 2)) %></td>
+      </tr>
+    <% end %>
   <% end %>
 </table><br/>
 <%= link_to 'Back', shopping_carts_path %> | <%= link_to 'Edit', edit_shopping_cart_path(@shopping_cart) %>

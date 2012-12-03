@@ -7,15 +7,15 @@
 # Rights in third party code acknowledged.
 
 class ShoppingCartItem < ActiveRecord::Base
-  attr_accessible :shopping_cart_id, :product_id, :product_options_list_choice, :product_price_id, :quantity, :global_options_list_choice, :user_description
+  attr_accessible :cake_id, :product_id, :product_options_list_choice, :product_price_id, :quantity, :global_options_list_choice, :user_description
   
   belongs_to  :product
   belongs_to  :product_price
-  belongs_to  :shopping_cart
+  belongs_to  :cake
   
-  validates_presence_of :shopping_cart_id, :product_id, :product_price_id, :quantity
+  validates_presence_of :cake_id, :product_id, :product_price_id, :quantity
   validates_numericality_of :quantity, :allow_nil => true
-  validates_numericality_of :shopping_cart_id, :product_id, :product_price_id
+  validates_numericality_of :cake_id, :product_id, :product_price_id
   validates_numericality_of :unit_price, :line_total, :allow_nil => true
   
   before_save :update_prices

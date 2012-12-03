@@ -561,12 +561,14 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
 
 
   ShoppingCart.destroy_all
-  ShoppingCart.create({cake_required_at: "2013-04-23 15:00:00", customer_id: Customer.first.id, general_description_from_customer: "A birthday cake for Dan", name_to_appear_on_cake: "Dan", pay_pal_status_id: PayPalStatus.find_by_name("Paid").id, session_id: "abcdefg", shopping_cart_status_id: ShoppingCartStatus.find_by_name("Paid").id, special_occasion: "Birthday", production_quotum_id: ProductionQuotum.first(conditions: ["start_date <= ? and finish_date >= ?", "2013-04-23".to_date, "2013-04-23".to_date]).id
-})
+  ShoppingCart.create({customer_id: Customer.first.id,  pay_pal_status_id: PayPalStatus.find_by_name("Paid").id, session_id: "abcdefg", shopping_cart_status_id: ShoppingCartStatus.find_by_name("Paid").id})
   
+  Cake.destroy_all
+  Cake.create({shopping_cart_id: ShoppingCart.first.id, cake_required_at: "2013-04-23 15:00:00", production_quotum_id: ProductionQuotum.first(conditions: ["start_date <= ? and finish_date >= ?", "2013-04-23".to_date, "2013-04-23".to_date]).id, special_occasion: "Birthday", name_to_appear_on_cake: "Dan", general_description_from_customer: "A birthday cake for Dan", confectioners_notes: "", based_on_finished_product_id: nil})
+
   
   ShoppingCartItem.destroy_all
-  ShoppingCartItem.create({shopping_cart_id: ShoppingCart.first.id, product_id: Product.first.id, product_options_list_choice: "", product_price_id: ProductPrice.first.id, quantity: 1, global_options_list_choice: "Purple", user_description: ""})
+  ShoppingCartItem.create({cake_id: Cake.first.id, product_id: Product.first.id, product_options_list_choice: "", product_price_id: ProductPrice.first.id, quantity: 1, global_options_list_choice: "Purple", user_description: ""})
   
   puts "Completed OK"
   # That's it so far!
