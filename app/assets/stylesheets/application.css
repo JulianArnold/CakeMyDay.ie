@@ -177,6 +177,7 @@ td {
 
 
 .form-label, .form-label label {
+  display: inline-block;
   width: 150px;
   vertical-align: top;
 }

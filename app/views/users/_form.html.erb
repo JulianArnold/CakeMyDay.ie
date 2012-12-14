@@ -12,34 +12,34 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :login, "Email" %><br />
-    <%= f.text_field :login %>
+    <span class="form-label"><%= f.label :login, "Email" %></span>
+    <span class="form-field"><%= f.text_field :login %></span>
   </div>
   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <span class="form-label"><%= f.label :first_name %></span>
+    <span class="form-field"><%= f.text_field :first_name %></span>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <span class="form-label"><%= f.label :last_name %></span>
+    <span class="form-field"><%= f.text_field :last_name %></span>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <span class="form-label"><%= f.label :password %></span>
+    <span class="form-field"><%= f.password_field :password %></span>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <span class="form-label"><%= f.label :password_confirmation %></span>
+    <span class="form-field"><%= f.password_field :password_confirmation %></span>
   </div>
   <% if current_user and current_user.admin? %>
     <h2>Admin Stuff</h2>
     <div class="field">
-      <%= f.label :active %><br />
-      <%= f.check_box :active %>
+      <span class="form-label"><%= f.label :active %></span>
+      <span class="form-field"><%= f.check_box :active %></span>
     </div>
     <div class="field">
-      <%= f.label :user_group_id %><br />
-      <%= f.number_field :user_group_id %>
+      <span class="form-label"><%= f.label :user_group_id %></span>
+      <span class="form-field"><%= f.collection_select :user_group_id, @user_groups, :id, :name, :prompt => "Select..." %></span>
     </div>
   <% end %>
   <div class="actions">

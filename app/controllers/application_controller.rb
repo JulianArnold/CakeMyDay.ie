@@ -117,8 +117,9 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     else
       destination = default
-      redirect_to(destination)
+      session[:return_to] = nil
     end
+    redirect_to(destination)
   end
 
   # Miscellaneous stuff

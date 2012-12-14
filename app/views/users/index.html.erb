@@ -6,9 +6,6 @@
     <th style="width: 100px;">Logins</th>
     <th style="width: 100px;">Failed<br/>logins</th>
     <th style="width: 100px;">Active</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
   </tr>
   <% tracker = 0 %>
   <% @users.each do |user| %>
@@ -21,12 +18,11 @@
       <td><%= user.login_count %></td>
       <td><%= user.failed_login_count %></td>
       <td><%= sanitize tick_or_cross user.active %></td>
-      <td><%= link_to 'View', user %></td>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <% if user.customer == nil %>
+      <td><%= link_to 'View', user %> | <%= link_to 'Edit', edit_user_path(user) %></td>
+      <% if admin_user and user.customer == nil %>
       <%= render :partial => '/layouts/delete_button', :locals => {:label => "user", :item => user} -%>
       <% end %>
     </td>
   <% end %>
 </table><br/>
-<p>Create customers with the sign-up screen.</p>
+<p>Create users/customers with the sign-up screen.</p>
