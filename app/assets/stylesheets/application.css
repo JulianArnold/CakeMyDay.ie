@@ -109,7 +109,30 @@ td {
 
 #page-content {
   min-height: 600px;
-  
+}
+
+.fp-photo-1 {
+  width: 300px;
+  padding-right: 10px;
+}
+
+.finished-product {
+  vertical-align: top;
+  margin: 0; padding: 0;
+  margin-bottom: 10px;
+}
+
+.finished-product h2 {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.fp-photo-2 {
+  padding: 20px;
+  border: 1px solid #ec008c;
+  background-color: #f9d4e4;
+  margin-bottom: 20px;
+  height: 400px;
 }
 
 #google-search-result {
@@ -146,6 +169,10 @@ td {
 
 #special-occasions a:hover {
   background-color: #ec008c;
+}
+
+#special-occasions #menu-design-your-own {
+  background-color: #fc0044;
 }
 
 

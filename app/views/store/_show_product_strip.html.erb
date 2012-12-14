@@ -1,12 +1,15 @@
 <div class="finished-product">
-  <h3><%= link_to(fp.product_name, store_product_url(product_name: fp.product_name.gsub(" ","_").gsub(".","%2E")) ) %></h3>
-  <div class="fp-photo-1">
-    <%= link_to(image_tag(fp.finished_product_images.first.image.full_file_path, :height => "200"), store_product_url(product_name: fp.product_name.gsub(" ","_").gsub(".","%2E")) ) %>
-  </div>
-  <div class="fp-description"><%= sanitize fp.description.gsub("\r","<br/>") %></div>
-  <% if fp.available_for_purchase %>
-    <div class="fp-price"><br/>Typical price: <%= sanitize number_to_currency(fp.typical_price, :unit => @general_setting.ccy, :precision => 2) %></div>
-    <%= render "add_to_cart", :locals => {:fp => fp} %>
-  <% end %>
-  <%= link_to("View details...", store_product_url(product_name: fp.product_name.gsub(" ","_").gsub(".","%2E")) ) %>
+  <table>
+    <tr><td><%= link_to(image_tag(fp.finished_product_images.first.image.full_file_path, :class => "fp-photo-1"), store_product_url(product_name: fp.product_name.gsub(" ","_").gsub(".","%2E"))) %></td>
+    <td>  
+      <h2><%= link_to(fp.product_name, store_product_url(product_name: fp.product_name.gsub(" ","_").gsub(".","%2E")) ) %></h2>
+      <span class="fp-description"><%= sanitize fp.description.gsub("\r","<br/>") %></span>
+      <p><%= link_to("View details...", store_product_url(product_name: fp.product_name.gsub(" ","_").gsub(".","%2E")) ) %>
+      <% if fp.available_for_purchase %>
+        <span class="fp-price">Typical price: <%= sanitize number_to_currency(fp.typical_price, :unit => @general_setting.ccy, :precision => 2) %></span>
+        <%= render "add_to_cart", :locals => {:fp => fp} %>
+      <% end %>
+      </p>
+    </td></tr>
+  </table>
 </div>

@@ -17,20 +17,19 @@
     <div id="header-dark-strip">
       <div id="inner">
         <%= link_to "Cake My Day", root_url, title: "Click to visit our home page" %>
-        
         <%= render '/layouts/site_nav'%>
-        
+
         <%= form_tag (search_url), :method => 'post' do %>
-      		<%= text_field_tag :search_query, params[:search_query] %>
-      		<%= submit_tag "Search", :name => nil %>
+          <%= text_field_tag :search_query, params[:search_query] %>
+          <%= submit_tag "Search", :name => nil %>
         <% end %>
 
         <%= render '/layouts/user_access_panel' %>
-        
-      </div>      
+
+      </div>
     </div>
+
     <div id="main-block">
-      
       <div id="page-header">
         <div id="logo-area">
           <% if params[:controller] == 'store' %>
@@ -47,24 +46,24 @@
       <% if admin_user %>
         <%= render '/layouts/admin_menu' %>
       <% end %>
-    
+
       <% if flash[:notice] and flash[:notice].size > 0 %>
         <p id="flash-notice"><%= flash[:notice] %></p>
       <% end %>
-    
+
       <div id="your-cart">
         <% if current_cart %>
         <!-- your cart goes here -->
         <% end %>
       </div>
-      
+
       <div id="page-content">
       <%= yield %>
       </div>
-    
+
       <%= render '/layouts/page_footer' %>
-      
+
     </div>
-    
+
   </body>
 </html>
