@@ -13,7 +13,7 @@ class ProductionQuotum < ActiveRecord::Base
   validates_numericality_of :maximum_cakes_allowed
   validates_uniqueness_of :start_date
 
-  #has_many  :cakes
+  has_many  :cakes
 
   has_many  :monday_bookings,
             :class_name => "Cake",

@@ -11,6 +11,7 @@ class CakesController < ApplicationController
   before_filter :logged_in_required
   before_filter :manager_required
   before_filter :admin_required, :only => "destroy"
+  before_filter :get_variables
   
   def index
     # GET /cakes
@@ -86,7 +87,11 @@ class CakesController < ApplicationController
     # DELETE /cakes/1
     # DELETE /cakes/1.json
     @cake = Cake.find(params[:id])
-    @cake.destroy
+    if @cake.shopping_cart_items.count == 0
+      @cake.destroy
+    else
+      flash[:notice] = "Sorry, couldn't delete that Cake."
+    end
 
     respond_to do |format|
       format.html { redirect_to cakes_url }
@@ -94,4 +99,9 @@ class CakesController < ApplicationController
     end
   end
 
+  private
+  
+  def get_variables
+    @finished_products = FinishedProduct.all(conditions: ["available_for_purchase = ?", true], order: "running_order")
+  end
 end

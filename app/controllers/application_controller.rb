@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
     unless current_user
       store_location
       flash[:notice] = "You must be logged in to access this page"
-      redirect_to new_user_session_url
+      redirect_to login_url
       return false
     end
   end
@@ -107,9 +107,18 @@ class ApplicationController < ActionController::Base
   end
 
   # See note 1 above
+  #def redirect_back_or_default(default)
+  #  redirect_to(session[:return_to] || default)
+  #  session[:return_to] = nil
+  #end
   def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
+    if session[:return_to]
+      destination = session[:return_to]
+      session[:return_to] = nil
+    else
+      destination = default
+      redirect_to(destination)
+    end
   end
 
   # Miscellaneous stuff

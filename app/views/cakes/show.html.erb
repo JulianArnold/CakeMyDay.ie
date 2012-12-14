@@ -1,50 +1,40 @@
+<h1>Cake <%= params[:id] %></h1>
+<table>
 <p id="notice"><%= notice %></p>
+  <tr><td style="width: 200px;">Shopping cart:</td><td><%= link_to(@cake.shopping_cart_id, @cake.shopping_cart, :title => "click to view shopping cart") %></td></tr>
+  <tr><td>Cake required at:</td><td><%= @cake.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td></tr>
+  <tr><td>Weekday:</td><td><%= @cake.weekday %></td></tr>
+  <tr><td>Production quota:</td><td><%= link_to(@cake.production_quotum.start_date.strftime("%d-%b-%Y"), @cake.production_quotum, :title => "click to view production quota") %> - <%= link_to(@cake.production_quotum.finish_date.strftime("%d-%b-%Y"), @cake.production_quotum, :title => "click to view production quota") %></td></tr>
+  <tr><td>Special occasion:</td><td><%= @cake.special_occasion %></td></tr>
+  <tr><td>Name to appear on cake:</td><td><%= @cake.name_to_appear_on_cake %></td></tr>
+  <tr><td>Customer's description:</td><td><%= @cake.general_description_from_customer %></td></tr>
+  <tr><td>Confectioners notes:</td><td><%= @cake.confectioners_notes %></td></tr>
+  <% if @cake.based_on_finished_product_id %>
+  <tr><td>Based on finished product:</td><td><%= @cake.based_on_finished_product_id %></td></tr>
+  <% end %>
+</table><br/>
+<%= link_to 'Back', cakes_path %> | <%= link_to 'Edit', edit_cake_path(@cake) %>
 
-<p>
-  <b>Shopping cart:</b>
-  <%= @cake.shopping_cart_id %>
-</p>
-
-<p>
-  <b>Cake required at:</b>
-  <%= @cake.cake_required_at %>
-</p>
-
-<p>
-  <b>Production quotum:</b>
-  <%= @cake.production_quotum_id %>
-</p>
-
-<p>
-  <b>Special occasion:</b>
-  <%= @cake.special_occasion %>
-</p>
-
-<p>
-  <b>Name to appear on cake:</b>
-  <%= @cake.name_to_appear_on_cake %>
-</p>
-
-<p>
-  <b>General description from customer:</b>
-  <%= @cake.general_description_from_customer %>
-</p>
-
-<p>
-  <b>Confectioners notes:</b>
-  <%= @cake.confectioners_notes %>
-</p>
-
-<p>
-  <b>Weekday:</b>
-  <%= @cake.weekday %>
-</p>
-
-<p>
-  <b>Based on finished product:</b>
-  <%= @cake.based_on_finished_product_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_cake_path(@cake) %> |
-<%= link_to 'Back', cakes_path %>
+<% if @cake.shopping_cart_items.count > 0 %>
+  <h2>Wish List</h2>
+  <table>
+    <tr>
+      <th style="width: 300px;">Product</th>
+      <th style="width:  60px;">Quantity</th>
+      <th style="width:  60px;">Product price</th>
+      <th style="width: 150px;">Product options choice</th>
+      <th style="width: 150px;">Global options choice</th>
+      <th style="width: 300px;">User description</th>
+    </tr>
+    <% @cake.shopping_cart_items.each do |shopping_cart_item| %>
+      <tr>
+        <td><%= shopping_cart_item.product.name %></td>
+        <td><%= shopping_cart_item.quantity %></td>
+        <td><%= shopping_cart_item.product_price_id %></td>
+        <td><%= shopping_cart_item.product_options_list_choice %></td>
+        <td><%= shopping_cart_item.global_options_list_choice %></td>
+        <td><%= shopping_cart_item.user_description %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

@@ -21,9 +21,9 @@ class Cake < ActiveRecord::Base
   before_save :log_the_weekday
   before_save :set_production_quantum_id
 
+  private
 
   def set_production_quantum_id
-
     pq = ProductionQuotum.first(:conditions => ["start_date <= ? and finish_date >= ?", cake_required_at.to_date, cake_required_at.to_date])
     if pq
       self.production_quotum_id = pq.id

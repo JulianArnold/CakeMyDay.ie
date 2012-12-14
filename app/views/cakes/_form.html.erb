@@ -12,40 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :shopping_cart_id %><br />
-    <%= f.number_field :shopping_cart_id %>
+    <span class="form-label"><%= f.label :shopping_cart_id %></span>
+    <span class="form-field"><%= f.number_field :shopping_cart_id %></span>
   </div>
   <div class="field">
-    <%= f.label :cake_required_at %><br />
-    <%= f.datetime_select :cake_required_at %>
+    <span class="form-label"><%= f.label :cake_required_at %></span>
+    <span class="form-field"><%= f.datetime_select :cake_required_at, :order => [:day, :month, :year] %></span>
   </div>
   <div class="field">
-    <%= f.label :production_quotum_id %><br />
-    <%= f.number_field :production_quotum_id %>
+    <span class="form-label"><%= f.label :special_occasion %></span>
+    <span class="form-field"><%= f.text_field :special_occasion %></span>
   </div>
   <div class="field">
-    <%= f.label :special_occasion %><br />
-    <%= f.text_field :special_occasion %>
+    <span class="form-label"><%= f.label :name_to_appear_on_cake %></span>
+    <span class="form-field"><%= f.text_field :name_to_appear_on_cake %></span>
   </div>
   <div class="field">
-    <%= f.label :name_to_appear_on_cake %><br />
-    <%= f.text_field :name_to_appear_on_cake %>
+    <span class="form-label"><%= f.label :general_description_from_customer %></span>
+    <span class="form-field"><%= f.text_area :general_description_from_customer, :size => "40x4" %></span>
   </div>
   <div class="field">
-    <%= f.label :general_description_from_customer %><br />
-    <%= f.text_area :general_description_from_customer %>
+    <span class="form-label"><%= f.label :confectioners_notes %></span>
+    <span class="form-field"><%= f.text_area :confectioners_notes, :size => "40x4" %></span>
   </div>
   <div class="field">
-    <%= f.label :confectioners_notes %><br />
-    <%= f.text_area :confectioners_notes %>
-  </div>
-  <div class="field">
-    <%= f.label :weekday %><br />
-    <%= f.number_field :weekday %>
-  </div>
-  <div class="field">
-    <%= f.label :based_on_finished_product_id %><br />
-    <%= f.number_field :based_on_finished_product_id %>
+    <span class="form-label"><%= f.label :based_on_finished_product_id %></span>
+    <span class="form-field"><%= f.collection_select :based_on_finished_product_id, @finished_products, :id, :product_name, :prompt => "Select..." %></span>
   </div>
   <div class="actions">
     <%= f.submit %>
