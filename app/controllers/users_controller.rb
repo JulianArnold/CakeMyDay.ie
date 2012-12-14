@@ -83,22 +83,46 @@ class UsersController < ApplicationController
   def update
     # PUT /users/1
     # PUT /users/1.json
+    
     if current_user and current_user.admin? == false
       @user = current_user
-      params[:user_group][:user_group_id] = current_user.user_group_id
+      params[:user][:user_group_id] = current_user.user_group_id
     else
       @user = User.find(params[:id])
     end
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        #format.json { head :no_content }
+    # First, handle the password change
+    if params[:user][:current_password]
+      @user.reset_password(params[:user][:current_password], params[:user][:password], params[:user][:password_confirmation])
+      if @user.errors.count == 0
+        respond_to do |format|
+          format.html { redirect_to @user, notice: 'Your password was successfully updated.' }
+        end
       else
-        format.html { render action: "edit" }
-        #format.json { render json: @user.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          format.html { render action: "change_password" }
+        end
+      end
+    else
+      # dump the password parameters
+      params[:user].delete(:current_password)
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+
+      respond_to do |format|
+        if @user.update_attributes(params[:user])
+          format.html { redirect_to @user, notice: 'User was successfully updated.' }
+          #format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          #format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
+  end
+
+  def change_password
+    @user = current_user
   end
 
   def destroy

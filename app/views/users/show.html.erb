@@ -14,4 +14,9 @@
   <tr><td>User group:</td><td><%= @user.user_group.name %></td></tr>
   <% end %>
 </table><br/>
-<%= link_to 'Back', users_path %> | <%= link_to 'Edit', edit_user_path(@user) %>
+<% if admin_user %>
+<%= link_to 'Back', users_path %>
+<% else %>
+<%= link_to "Back", root_url %>
+<% end %>
+ | <%= link_to "Change your password", change_password_url %> | <%= link_to 'Edit', edit_user_path(@user) %>

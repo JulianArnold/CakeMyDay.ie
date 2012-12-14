@@ -175,6 +175,17 @@ td {
   background-color: #fc0044;
 }
 
+#page-footer {
+  margin: 50px 0 0px 0;
+  padding: 15px 25px;
+  border-top: 1px solid #92278F;
+  font-size: 70%;
+  background-color: #f9d4e4;
+  color: #92278F;
+}
+
+
+/******** Formatting of HTML Forms ********/
 
 .form-label, .form-label label {
   display: inline-block;
@@ -182,18 +193,50 @@ td {
   vertical-align: top;
 }
 
-.actions {
+.form-field {
+  width: 250px;
+  padding: 2px;
+}
+
+.actions { /* Submit buttons */
   padding: 20px 0;
 }
 
-#page-footer {
-  margin: 50px 0 0px 0;
-  padding: 15px 25px;
-  border-top: 1px solid #92278F;
-  font-size: 70%;
-  background-color:#f9d4e4;
-  color:#92278F;
+
+/***** Error Message Handling ******/
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: inline-block;
+  color: white;
 }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 14px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: red;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

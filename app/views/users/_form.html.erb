@@ -23,14 +23,16 @@
     <span class="form-label"><%= f.label :last_name %></span>
     <span class="form-field"><%= f.text_field :last_name %></span>
   </div>
+<% if params[:action] == 'new' or params[:action] == 'create' %>
   <div class="field">
-    <span class="form-label"><%= f.label :password %></span>
+    <span class="form-label"><%= f.label :password, "new password" %></span>
     <span class="form-field"><%= f.password_field :password %></span>
   </div>
   <div class="field">
     <span class="form-label"><%= f.label :password_confirmation %></span>
     <span class="form-field"><%= f.password_field :password_confirmation %></span>
   </div>
+<% end %>
   <% if current_user and current_user.admin? %>
     <h2>Admin Stuff</h2>
     <div class="field">
@@ -43,6 +45,6 @@
     </div>
   <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit %> or <%= link_to "Change your password", change_password_url %>
   </div>
 <% end %>
