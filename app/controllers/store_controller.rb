@@ -43,6 +43,18 @@ class StoreController < ApplicationController
     render :search_results
   end
 
+  def add_to_cart
+    
+  end
+
+  def design_cake
+    
+  end
+
+  def view_cart
+    @cart = current_cart
+  end
+
   private
   
   def get_variables

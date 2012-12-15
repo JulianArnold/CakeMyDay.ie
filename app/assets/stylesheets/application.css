@@ -9,7 +9,7 @@
 
 body {
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   background-color: #ddd;
   color: #333;
@@ -38,7 +38,8 @@ td {
 
 #main-block {
   width: 85%;
-  margin: 0 auto 0 auto;
+  min-width: 1150px;
+  margin: 0 auto;
   padding: 0 15px;
   background-color: #fdf4f7;
   color: #333;
@@ -48,13 +49,14 @@ td {
 #header-dark-strip {
   height: 40px;
   width: 100%;
+  min-width: 1150px;
   background-color: #92278F;
   border-bottom: 2px solid #ec008c;
 	color: #fdf4f7;
 }
 
 #inner, #inner a {
-  width: 85%;
+  width: 90%;
   margin: 0 auto;
   padding: 10px 0px;
   font-size: 20px;
@@ -69,7 +71,7 @@ td {
   display: inline;
 }
 
-#inner form { margin: 0 20px;}
+#inner form { margin: 0 20px 0 0;}
 
 #site-nav, #site-nav a, #user-access, #user-access a, #user-access form {
   font-weight: 100;
@@ -86,6 +88,14 @@ td {
 
 #logo-area {
   padding: 10px 0 ; margin: 0;
+  display: inline-block;
+}
+
+#your-cart {
+  float: right;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #00a; color: white;
 }
 
 #flash-notice {

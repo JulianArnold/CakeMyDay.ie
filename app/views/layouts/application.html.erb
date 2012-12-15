@@ -24,7 +24,9 @@
           <%= submit_tag "Search", :name => nil %>
         <% end %>
 
-        <%= render '/layouts/user_access_panel' %>
+        <span style="float:right;">
+          <%= render '/layouts/user_access_panel' %>
+        </span>
 
       </div>
     </div>
@@ -38,7 +40,16 @@
             <%= link_to(image_tag("cmd-logo-75x75.png"), root_url) %>
           <% end %>
         </div>
+      
+        <div id="your-cart">
+          <% if current_cart %>
+            <%= link_to("You have #{current_cart.cakes.count.to_s} cakes in your shopping cart", "#") %>
+          <% else %>
+            Your cart is empty.
+          <% end %>
+        </div>
       </div>
+
 
       <% if manager_user %>
         <%= render '/layouts/manager_menu' %>
@@ -50,12 +61,6 @@
       <% if flash[:notice] and flash[:notice].size > 0 %>
         <p id="flash-notice"><%= flash[:notice] %></p>
       <% end %>
-
-      <div id="your-cart">
-        <% if current_cart %>
-        <!-- your cart goes here -->
-        <% end %>
-      </div>
 
       <div id="page-content">
       <%= yield %>

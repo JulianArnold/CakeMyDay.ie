@@ -15,4 +15,13 @@ class Customer < ActiveRecord::Base
   has_many :shopping_carts
   belongs_to :user
   
+  def open_cart
+    cart = shopping_carts.first(:include => "shopping_cart_status", :conditions => ["shopping_cart_statuses.active_cart = ?", true], :order => "shopping_carts.created_at ASC")
+    if cart != nil
+      return cart
+    else
+      return nil
+    end
+  end
+  
 end

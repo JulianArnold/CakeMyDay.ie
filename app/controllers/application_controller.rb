@@ -107,11 +107,13 @@ class ApplicationController < ActionController::Base
   end
 
   # See note 1 above
-  #def redirect_back_or_default(default)
-  #  redirect_to(session[:return_to] || default)
-  #  session[:return_to] = nil
-  #end
   def redirect_back_or_default(default)
+    # Original code
+    # def redirect_back_or_default(default)
+    #   redirect_to(session[:return_to] || default)
+    #   session[:return_to] = nil
+    # end
+    
     if session[:return_to]
       destination = session[:return_to]
       session[:return_to] = nil
@@ -132,9 +134,14 @@ class ApplicationController < ActionController::Base
   end
   
   def current_cart
-    # stuff
+    cart = ShoppingCart.find(:first, :include => "shopping_cart_status", :conditions => ["session_id = ? and shopping_cart_statuses.active_cart = ?", session[:session_id], true])
+    if !cart and current_user and current_user.customer
+      return cart = current_user.customer.open_cart
+    else
+      return nil
+    end
   end
-  
+
   def general_setting
     @general_setting = GeneralSetting.first
   end

@@ -35,7 +35,15 @@ class User < ActiveRecord::Base
   validates_length_of       :password, :minimum => 5, :message => "is too short!", :on => :update, :allow_nil => true, :allow_blank => true
   validates_length_of       :first_name, :within => 2..30
   validates_length_of       :last_name, :within => 2..40
-  
+
+  def open_cart
+    if customer
+      return customer.open_cart
+    else
+      nil
+    end
+  end
+
   def admin?
     if user_group.is_an_admin == true
       return true
@@ -43,7 +51,7 @@ class User < ActiveRecord::Base
       return false
     end
   end
-  
+
   def manager?
     if user_group.is_a_manager == true
       return true
@@ -51,11 +59,11 @@ class User < ActiveRecord::Base
       return false
     end
   end
-  
+
   def full_name
     return first_name.titleize + " " + last_name.gsub("O\'","O\' ").titleize.gsub("O\' ","O\'")
   end
-  
+
   def reset_password(old_password, new_password, new_password_confirmation)
     if valid_password?(old_password)
       if new_password == new_password_confirmation
@@ -67,5 +75,5 @@ class User < ActiveRecord::Base
       self.errors.add :current_password, " is wrong."
     end
   end
-  
+
 end
