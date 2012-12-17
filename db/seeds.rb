@@ -435,6 +435,17 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     visible: true,
     created_at: "2012-11-18 0:00:00"
     })
+    
+    FinishedProduct.create({product_name: "Colm and Lisanne\'s Wedding Cake",
+    description: "I made this 3 tier wedding cake for my friends, Colm and Lisanne.  Lisanne had very definite ideas of what she wanted the cake to look like, and I think it turned out very well! (If I say so myself!).  She sent me pictures of cakes she liked, and we took ideas from a few of them and merged them together.  The shape of the cake was unusual, a round bottom tier, square middle tier, and round top tier.  I handmade the figurines on the top of the cake from modelling clay, so that they could keep them after the wedding.  Lisanne’s little dog Molly made it on to the cake too!\r\rI sprayed the whole cake with a pearl shimmery spray, and the top and bottom tiers were simply decorated with piped white dots.  The middle tier was more intricately decorated with dark purple icing piped on to it.  I sourced a beautiful lacy ribbon that matched the bridesmaids's dresses and wrapped it around it each tier to finish it off.\r\rThe cake itself was a 12\" round chocolate biscuit bottom tier, 8\" square lemon sponge with lemon buttercream, and 6\" round fruit cake.\r\rCloseup of the bride, groom and little doggy in the second photo.",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Weddings").id,
+    running_order: 2100,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-11-18 0:00:00"
+    })
+    
 
 
   Image.destroy_all
@@ -475,7 +486,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
 
-  Image.create({file_name: "Zoo_animals_birthday_cake.jpg", 
+  Image.create({file_name: "zoo_animals_birthday_cake.jpg", 
       finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
 
@@ -527,6 +538,13 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
 
+  Image.create({file_name: "colm_and_lisannes_wedding_cake.jpg", 
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
+
+  Image.create({file_name: "colm_and_lisannes_wedding_cake_2.jpg", 
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
 
 
   FinishedProductImage.destroy_all
@@ -578,7 +596,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         
   FinishedProductImage.create({
     	finished_product_id: FinishedProduct.find_by_product_name("Senan\'s Zoo Animals Birthday Cake").id,
-    	image_id: Image.find_by_file_name("Zoo_animals_birthday_cake.jpg").id,
+    	image_id: Image.find_by_file_name("zoo_animals_birthday_cake.jpg").id,
     	running_order: 1000})
     	
   FinishedProductImage.create({
@@ -635,6 +653,16 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	finished_product_id: FinishedProduct.find_by_product_name("Retirement Cake for my Mother").id,
     	image_id: Image.find_by_file_name("mairead_retirement_1142x1520.jpg").id,
     	running_order: 2000})
+    	
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Colm and Lisanne\'s Wedding Cake").id,
+    	image_id: Image.find_by_file_name("colm_and_lisannes_wedding_cake.jpg").id,
+    	running_order: 2100})
+
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Colm and Lisanne\'s Wedding Cake").id,
+    	image_id: Image.find_by_file_name("colm_and_lisannes_wedding_cake_2.jpg").id,
+    	running_order: 2100})
 
    	
   
