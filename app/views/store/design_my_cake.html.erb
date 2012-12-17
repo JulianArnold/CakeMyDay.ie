@@ -1,0 +1,20 @@
+<h1>Design My Cake</h1>
+<p>Okay, now it's time to get creative!</p>
+
+<%= form_for(@current_cart, :url => add_this_to_the_cart_url) do |c| %>
+
+  <h2>Tell us about the cake you want to create</h2>
+  <p>
+
+  <% @product_categories.each do |category| %>
+    <h2><%= category.name %></h2>
+    <p><%= category.description %></p>
+    <div style="max-height: 200px; overflow:auto; background-color: white;">
+    <% category.products.each do |product| %>
+      <%= product.name %><br/>
+    <% end %>
+    </div>
+  <% end %>
+  
+  <%= c.submit "Add to Cart" %>
+<% end %>

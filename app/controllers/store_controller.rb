@@ -43,12 +43,36 @@ class StoreController < ApplicationController
     render :search_results
   end
 
-  def add_to_cart
+  def design_my_cake # Gives users the HTML form to customise a new cake
+    # get or create the current shopping cart
+    @current_cart = current_cart
+    if !@current_cart # If there is no cart in existence already...
+      # create a new cart
+      @current_cart = ShoppingCart.new
+      if current_user and current_user.customer
+        @current_cart.customer_id = current_user.customer.id
+      end
+      @current_cart.session_id = session[:session_id]
+      @current_cart.shopping_cart_status_id = ShoppingCartStatus.first(:conditions => ["active_cart = ?", true]).id
+      @current_cart.pay_pal_status_id = 0
+      @current_cart.save
+    end
     
+    # builds an empty @cake
+    @cake = @current_cart.cakes.new
+    @product_categories = ProductCategory.all(order: "running_order")
   end
 
-  def design_cake
+  def add_this_to_the_cart
+    cart = current_cart # By the time Ruby gets here, we have a cart.
     
+    item = cart.cakes.new
+    # now, populate the item with data
+    # item.shopping_cart_id gets set by the cart.cakes.new line.
+    # :based_on_finished_product_id, :cake_required_at, :confectioners_notes, :general_description_from_customer, :name_to_appear_on_cake, :production_quotum_id, :special_occasion, :weekday
+
+
+
   end
 
   def view_cart

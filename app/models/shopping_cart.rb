@@ -9,6 +9,7 @@
 class ShoppingCart < ActiveRecord::Base
   attr_accessible :customer_id, :pay_pal_status_id, :session_id, :shopping_cart_status_id
 
+  has_many    :cakes
   belongs_to  :customer
   belongs_to  :pay_pal_status
   has_many    :pay_pal_transactions, :order => :created_at
