@@ -456,6 +456,27 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     created_at: "2010-12-29 0:00:00"
     })
 
+    FinishedProduct.create({product_name: "Georgia\'s Christening Cake",
+    description: "Carmel ordered this Christening cake for baby Georgia.  The cake was a 10 inch vanilla sponge with vanilla buttercream, covered in white sugarpaste.  I handmade the pink Converse booties from modelling paste.  They can be removed from the cake and kept as keepsakes afterwards.  I also made some pretty bunting for around the cake, pinned up by little flowers, I think this cake is pretty cute!",
+    typical_price: 120.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Christenings").id,
+    running_order: 2300,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-05-06 0:00:00"
+    })
+
+    FinishedProduct.create({product_name: "Jake and Alex Christening Cake",
+    description: "I love love love this cake!  Siobh&#225;n and Derek from Lucan ordered it for their twins\' Christening.  I carved a bowl shaped cake and a round cake into the shape of the bottom half of the boat and a smaller square cake into the cabin part for the top.  All the little pairs of animals are handmade from modelling paste and completely edible.  There are paper lollipop sticks helping to support their heads in some cases though.  As the babies are a boy and a girl, I used nice soft pastel colours in pink, blue and lemon for the boat.  The original design is by the amazing Debbie Brown.\r\rThe cake itself was a lemon sponge bottom tier, with a chocolate sponge top tier.  This cake would be lovely for many different occasions and can be personalised; Christenings, birthdays, baby showers, maybe even engagements...!",
+    typical_price: 240.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Christenings").id,
+    running_order: 2400,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-05-06 0:00:00"
+    })
+
+
 
   Image.destroy_all
   # add new images below
@@ -556,6 +577,18 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
 
   Image.create({file_name: "robert_and_aines_wedding_cake.jpg", 
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
+
+  Image.create({file_name: "georgias_christening_cake.jpg", 
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
+    	
+  Image.create({file_name: "jake_and_alex_christening_cake.jpg", 
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
+    	
+  Image.create({file_name: "jake_and_alex_christening_cake_2.jpg", 
       finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
 
@@ -681,6 +714,21 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	finished_product_id: FinishedProduct.find_by_product_name("Robert and Aine\'s Wedding Cake").id,
     	image_id: Image.find_by_file_name("robert_and_aines_wedding_cake.jpg").id,
     	running_order: 2200})
+    	
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Georgia\'s Christening Cake").id,
+    	image_id: Image.find_by_file_name("georgias_christening_cake.jpg").id,
+    	running_order: 2300})
+
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Jake and Alex Christening Cake").id,
+    	image_id: Image.find_by_file_name("jake_and_alex_christening_cake.jpg").id,
+    	running_order: 2400})
+
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Jake and Alex Christening Cake").id,
+    	image_id: Image.find_by_file_name("jake_and_alex_christening_cake_2.jpg").id,
+    	running_order: 2400})
    	
   
   Customer.destroy_all
