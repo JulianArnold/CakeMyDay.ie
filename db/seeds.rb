@@ -590,12 +590,12 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	
   FinishedProductImage.create({
     	finished_product_id: FinishedProduct.find_by_product_name("Damien and Sinead\'s Wedding Cake").id,
-    	image_id: Image.find_by_file_name("carl_and_elaines_wedding_cake.jpg").id,
+    	image_id: Image.find_by_file_name("damien_and_sineads_wedding_cake.jpg").id,
     	running_order: 1800})
     	
   FinishedProductImage.create({
     	finished_product_id: FinishedProduct.find_by_product_name("Damien and Sinead\'s Wedding Cake").id,
-    	image_id: Image.find_by_file_name("carl_and_elaines_wedding_cake_2.jpg").id,
+    	image_id: Image.find_by_file_name("damien_and_sineads_wedding_cake_2.jpg").id,
     	running_order: 1800})
 
    	
