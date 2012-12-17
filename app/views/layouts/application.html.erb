@@ -33,8 +33,12 @@
           <%= submit_tag "Search", :name => nil %>
         <% end %>
 
-        <span style="padding-left:20px;">
-          <%= link_to("View Cart" + (if current_cart; current_cart.cakes.count.to_i.to_s + " cakes"; else; " (empty)"; end),"#", :onclick => "toggle_thing('your-cart');") %>
+        <span style="padding-left:30px;">
+          <% if current_cart %>
+          <%= link_to("View Cart - " + pluralize(current_cart.cakes.count.to_i, "cake"), "#", :onclick => "toggle_thing('your-cart');") %>
+          <% else %>
+          <%= link_to("Your cart is empty", "#", :onclick => "toggle_thing('your-cart');") %>
+          <% end %>
         </span>
 
         <span style="float:right;">
@@ -55,13 +59,17 @@
       
         <div id="your-cart">
           <% if current_cart %>
-            You have <%= current_cart.cakes.count.to_s %> cakes in your shopping cart.<br/>
+            You have <%= pluralize(current_cart.cakes.count, "cake") %> in your shopping cart.<br/>
           <% else %>
             Your cart is empty.
           <% end %>
           <%= link_to("Hide", "#", :onclick => "toggle_thing('your-cart');")%>
           <div id="your-cart-2">
-            Stuff would go in here.
+            <% if current_cart %>
+              Cart exists
+            <% else %>
+              Cart doesn't exist or can't be found
+            <% end %>
           </div>
         </div>
       </div>

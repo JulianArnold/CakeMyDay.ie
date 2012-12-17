@@ -134,10 +134,22 @@ class ApplicationController < ActionController::Base
   end
   
   def current_cart
-    cart = ShoppingCart.find(:first, :include => "shopping_cart_status", :conditions => ["session_id = ? and shopping_cart_statuses.active_cart = ?", session[:session_id], true])
+    # First, look for the shopping_cart_id in the session
+    if session[:shopping_cart_id].to_i > 0 # does it exist at all?
+      cart = ShoppingCart.find(:first, :include => "shopping_cart_status", :conditions => ["shopping_carts.id = ? and shopping_cart_statuses.active_cart = ?", session[:shopping_cart_id].to_i, true])
+    end
+    # if you haven't found it yet, look for one for the current customer/user
     if !cart and current_user and current_user.customer
-      return cart = current_user.customer.open_cart
+      cart = current_user.customer.open_cart
+    end
+    # if you have found it by now...
+    if cart
+      # store the cart's ID in the session
+      session[:shopping_cart_id] = cart.id
+      # and then return the cart
+      return cart
     else
+      # plead ignorance
       return nil
     end
   end

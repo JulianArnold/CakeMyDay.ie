@@ -1,20 +1,69 @@
 <h1>Design My Cake</h1>
-<p>Okay, now it's time to get creative!</p>
+<p>Okay, now it's time to get creative! <span class="required-field">*</span>s are required.</p>
 
-<%= form_for(@current_cart, :url => add_this_to_the_cart_url) do |c| %>
+<%= form_for(@cake, :url => add_this_to_the_cart_url) do |c| %>
 
-  <h2>Tell us about the cake you want to create</h2>
-  <p>
-
-  <% @product_categories.each do |category| %>
-    <h2><%= category.name %></h2>
-    <p><%= category.description %></p>
-    <div style="max-height: 200px; overflow:auto; background-color: white;">
-    <% category.products.each do |product| %>
-      <%= product.name %><br/>
-    <% end %>
-    </div>
-  <% end %>
+  <h2>Tell us about the cake you wish to create</h2>
   
-  <%= c.submit "Add to Cart" %>
+  <fieldset>
+    <% if @cake.based_on_finished_product_id.to_i > 0 %>
+      <p><span class="form-label-wide">You have chosen to base your cake on:</span>
+        <%= @cake.finished_product.product_name %>
+      </p>
+    <% end %>
+    
+    <p>
+      <span class="form-label-wide"><%= c.label :cake_required_at, "When is the cake required for?" %></span>
+      <span class="required-field">*</span>
+      <%= c.datetime_select :cake_required_at, :order => [:day, :month, :year] %><br/>
+      <span class="form-label-wide">&nbsp;</span>For example, the birthday party is starting at 8:00pm on <%= (Time.now.gmtime + 1.month).strftime("%d %B, %Y") %>.</p>
+    <p>
+      <span class="form-label-wide"><%= c.label :special_occasion, "What is the special occasion?" %></span>
+      <span class="required-field">*</span>
+      <%= c.text_field :special_occasion %><br/>
+      <span class="form-label-wide">&nbsp;</span>For example, '21st Birthday', 'Christening', etc.</p>
+    <p>
+      <span class="form-label-wide"><%= c.label :name_to_appear_on_cake, "What should be written on the cake?" %></span>
+      <span class="required-field">*</span>
+      <%= c.text_field :name_to_appear_on_cake %><br/>
+      <span class="form-label-wide">&nbsp;</span>For example, 'Happy 40th Birthday Katie', etc.</p>
+    <p>
+      <%= c.label :general_description_from_customer, "Give us a general description of what you would like to create:" %><span class="required-field">*</span><br/>
+      <%= c.text_area :general_description_from_customer, :size => "60x6" %><br/>
+      Be as descriptive as you like.  The more precise you are, the closer we can get to your vision.</p>
+  </fieldset>
+
+  <% product_counter = 0 %>
+  <% @product_categories.each do |category| %>
+    <h3><%= category.name %></h3>
+    <fieldset>
+      <p><%= category.description %></p>
+      <div style="max-height: 200px; overflow:auto; background-color: white;">
+        <% if category.one_choice_only == true %>
+          <% category.products.each do |product| %>
+            <%= radio_button_tag ("product_" + product_counter.to_s).to_sym, product.id %> 
+            <%= label_tag ("product_" + product_counter.to_s + "_" + product.id.to_s).to_sym, product.name + " (" + product.current_price.price + ")" %><br/>
+          <% end %>
+          <% product_counter += 1 %>
+        <% else %>
+          <% category.products.each do |product| %>
+            <%= check_box_tag ("product_" + product_counter.to_s).to_sym, product.id %>
+            <%= label_tag ("product_" + product_counter.to_s).to_sym, product.name %><br/>
+            <% product_counter += 1 %>
+          <% end %>
+        <% end %>
+      </div>
+      <% if category.options_list_id.to_i > 0 %>
+        <p>
+          <span class="form-label-wide">
+            <%= label_tag ("category_" + category.id.to_s).to_sym, category.options_list.visible_label %>
+          </span>
+          <span class="required-field">*</span><% temp_list = "<option>" + category.options_list.options.split(", ").join("</option><option>") + "</option>" %>
+          <%= select_tag ("category_" + category.id.to_s).to_sym, temp_list.html_safe %>
+      <% end %>
+      
+    </fieldset>
+  <% end %>
+  <%= hidden_field_tag :product_counter, product_counter %>
+  <%= c.submit "Add to Cart" %> or <%= link_to "Go Back", root_url %>
 <% end %>

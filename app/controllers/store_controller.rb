@@ -52,25 +52,41 @@ class StoreController < ApplicationController
       if current_user and current_user.customer
         @current_cart.customer_id = current_user.customer.id
       end
-      @current_cart.session_id = session[:session_id]
       @current_cart.shopping_cart_status_id = ShoppingCartStatus.first(:conditions => ["active_cart = ?", true]).id
       @current_cart.pay_pal_status_id = 0
       @current_cart.save
+      session[:shopping_cart_id] = @current_cart.id
     end
     
     # builds an empty @cake
     @cake = @current_cart.cakes.new
+    @cake.cake_required_at = Time.now.gmtime.to_date + 2.weeks + 20.hours
+    @cake.based_on_finished_product_id = FinishedProduct.first.id
     @product_categories = ProductCategory.all(order: "running_order")
   end
 
+
+  #Parameters: {"cake"=>{"product_0"=>"4539", "product_1"=>"4540", "product_2"=>"4541", "product_3"=>"4542", "product_4"=>"4543", "product_5"=>"4544", "product_6"=>"4545", "product_7"=>"4546", "product_8"=>"4547", "commit"=>"Add to Cart", "method"=>:post}
+
+
   def add_this_to_the_cart
     cart = current_cart # By the time Ruby gets here, we have a cart.
-    
-    item = cart.cakes.new
+    @cake = cart.cakes.new
     # now, populate the item with data
     # item.shopping_cart_id gets set by the cart.cakes.new line.
     # :based_on_finished_product_id, :cake_required_at, :confectioners_notes, :general_description_from_customer, :name_to_appear_on_cake, :production_quotum_id, :special_occasion, :weekday
-
+=begin    
+    @cake stuff:
+    t.integer  "shopping_cart_id"
+    t.datetime "cake_required_at"
+    t.integer  "production_quotum_id"
+    t.string   "special_occasion"
+    t.string   "name_to_appear_on_cake"
+    t.text     "general_description_from_customer"
+    t.text     "confectioners_notes"
+    t.integer  "weekday"
+    t.integer  "based_on_finished_product_id"
+=end
 
 
   end

@@ -11,11 +11,13 @@
 # Rights in third party code acknowledged.
 
 class Product < ActiveRecord::Base
+
 	  attr_accessible :name, :description, :allow_user_to_choose_quantity, :allow_user_to_enter_description, :options_list_id, :product_category_id, :production_quota_value, :running_order, :special_occasion_id, :created_by, :updated_by
 	
 	# See note 1 above
 	def self.search(search_query)
-		find(:all, :conditions => ['name LIKE ? or description LIKE ?', "%" + search_query + "%", "%" + search_query + "%"])
+	  search_for_this = "%" + search_query + "%"
+		find(:all, :conditions => ['name LIKE :input or description LIKE :input', {input: search_for_this}])
 	end
 
   belongs_to  :options_list

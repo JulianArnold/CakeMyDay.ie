@@ -11,7 +11,10 @@ class Cake < ActiveRecord::Base
 
   belongs_to  :production_quotum
   belongs_to  :shopping_cart
-  belongs_to  :finished_product
+  belongs_to  :finished_product,
+                :class_name => "FinishedProduct",
+                :foreign_key => "based_on_finished_product_id"
+                
   has_many    :shopping_cart_items
   
   validates_numericality_of :production_quotum_id, :shopping_cart_id
