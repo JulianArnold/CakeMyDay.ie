@@ -416,6 +416,26 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     created_at: "2011-02-12 0:00:00"
     })
 
+    FinishedProduct.create({product_name: "Miriam\'s First Communion Cake",
+    description: "Mark ordered this cake to celebrate his daughter Miriam\'s First Holy Communion day.  He sent me pictures of Miriam and her Communion dress so that I could make a little figurine to look like her.  I made her using modelling paste, and a tiny bit of sugarveil icing for her veil.  I even managed to get her hair to look similar to her beautiful red hair.  The cake itself was a 9\" vanilla sponge with vanilla buttercream filling.  I covered it with white sugarpaste and added a gold chalice and inscription.\r\rMiriam was thrilled.",
+    typical_price: 180.00,
+    special_occasion_id: SpecialOccasion.find_by_name("First Communion").id,
+    running_order: 1900,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-05-01 0:00:00"
+    })
+
+    FinishedProduct.create({product_name: "Retirement Cake for my Mother",
+    description: "I made this cake for my mother\'s retirement from the Civil Service.  The cake was a big surprise as I was away in Birmingham at a cake show on the day she actually retired, so there was a lot of subterfuge involving my husband delivering the cake in secret to one of her work buddies.\r\rI made a 9\" chocolate sponge, filled with chocolate buttercream and covered with chocolate ganache and white sugarpaste.  Since my two brothers have two small children each, who all adore their granny, I made a little scene of them all for the top of the cake.  I put the models on a cake drum so that it could be lifted off the cake before cutting, and kept afterwards.  I handmade all the little figurines from modelling paste, as well as an armchair for my mother to sit in while the kids pile on top of her!  She\'ll be kept very very busy in her retirement!!.",
+    typical_price: 200.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Retirements").id,
+    running_order: 2000,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2012-11-18 0:00:00"
+    })
+
 
   Image.destroy_all
   # add new images below
@@ -498,6 +518,14 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
   Image.create({file_name: "damien_and_sineads_wedding_cake_2.jpg", 
       finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})    	
+
+  Image.create({file_name: "miriams_first_communion_cake.jpg", 
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
+
+  Image.create({file_name: "mairead_retirement_1142x1520.jpg", 
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
 
 
 
@@ -597,6 +625,16 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	finished_product_id: FinishedProduct.find_by_product_name("Damien and Sinead\'s Wedding Cake").id,
     	image_id: Image.find_by_file_name("damien_and_sineads_wedding_cake_2.jpg").id,
     	running_order: 1800})
+
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Miriam\'s First Communion Cake").id,
+    	image_id: Image.find_by_file_name("miriams_first_communion_cake.jpg").id,
+    	running_order: 1900})
+
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Retirement Cake for my Mother").id,
+    	image_id: Image.find_by_file_name("mairead_retirement_1142x1520.jpg").id,
+    	running_order: 2000})
 
    	
   
