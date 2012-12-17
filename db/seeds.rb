@@ -438,7 +438,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     
     FinishedProduct.create({product_name: "Colm and Lisanne\'s Wedding Cake",
     description: "I made this 3 tier wedding cake for my friends, Colm and Lisanne.  Lisanne had very definite ideas of what she wanted the cake to look like, and I think it turned out very well! (If I say so myself!).  She sent me pictures of cakes she liked, and we took ideas from a few of them and merged them together.  The shape of the cake was unusual, a round bottom tier, square middle tier, and round top tier.  I handmade the figurines on the top of the cake from modelling clay, so that they could keep them after the wedding.  Lisanne's little dog Molly made it on to the cake too!\r\rI sprayed the whole cake with a pearl shimmery spray, and the top and bottom tiers were simply decorated with piped white dots.  The middle tier was more intricately decorated with dark purple icing piped on to it.  I sourced a beautiful lacy ribbon that matched the bridesmaids's dresses and wrapped it around it each tier to finish it off.\r\rThe cake itself was a 12\" round chocolate biscuit bottom tier, 8\" square lemon sponge with lemon buttercream, and 6\" round fruit cake.\r\rCloseup of the bride, groom and little doggy in the second photo.",
-    typical_price: 200.00,
+    typical_price: 500.00,
     special_occasion_id: SpecialOccasion.find_by_name("Weddings").id,
     running_order: 2100,
     available_for_purchase: true,
@@ -446,6 +446,15 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     created_at: "2012-11-18 0:00:00"
     })
     
+    FinishedProduct.create({product_name: "Robert and Aine\'s Wedding Cake",
+    description: "This 3 tier cake was for my cousin Robert and his fianc&#233;e Aine.  They had already bought a topper for the cake, and wanted a simple white iced cake.  I gave the icing a nice pearly finis, and finished off the cake set-up with a navy satin ribbon to match the bridesmaids' dresses.  I also iced a fruit cake that the bride\'s mother had made, to match the main wedding cake.\r\rThe cake itself is Red Velvet cake, filled with white chocolate ganache, covered in white chocolate ganache and sugarpaste.  Yummy!  The tiers are 6\", 8\" and 10\".",
+    typical_price: 240.00,
+    special_occasion_id: SpecialOccasion.find_by_name("Weddings").id,
+    running_order: 2200,
+    available_for_purchase: true,
+    visible: true,
+    created_at: "2010-12-29 0:00:00"
+    })
 
 
   Image.destroy_all
@@ -543,6 +552,10 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
 
   Image.create({file_name: "colm_and_lisannes_wedding_cake_2.jpg", 
+      finished_product: true, base_product: false,
+    	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
+
+  Image.create({file_name: "robert_and_aines_wedding_cake.jpg", 
       finished_product: true, base_product: false,
     	uploaded_by: User.find_by_login("julian_arnold@hotmail.com").id})
 
@@ -664,6 +677,10 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	image_id: Image.find_by_file_name("colm_and_lisannes_wedding_cake_2.jpg").id,
     	running_order: 2100})
 
+  FinishedProductImage.create({
+    	finished_product_id: FinishedProduct.find_by_product_name("Robert and Aine\'s Wedding Cake").id,
+    	image_id: Image.find_by_file_name("robert_and_aines_wedding_cake.jpg").id,
+    	running_order: 2200})
    	
   
   Customer.destroy_all
