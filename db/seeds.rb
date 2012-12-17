@@ -386,17 +386,17 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     created_at: "2011-02-12 0:00:00"
     })
     
-    FinishedProduct.create({product_name: "Peter and Michelle's Wedding Cake",
+    FinishedProduct.create({product_name: "Peter and Michelle\'s Wedding Cake",
     description: "I made this wedding cake for my cousin Peter and his bride, Michelle.  The wedding colours were purple and silver, and they wanted hearts and little flowers on the cake.  I cut out hearts from gumpaste and painted them with edible silver paint.  I also cut out some purple hearts, and put them on wires to make them \"burst\" out of the top of the cake.  The flower stems on the sides of the cakes were piped with royal icing and I did some brush embroidery on the leaves.  I then painted the stems and leaves with the edible silver paint too.  It's lovely to make a wedding cake and be a guest at the reception to see the reaction to it – everyone loved it, and it was gobbled up pretty fast!\r\r.The cake itself was a 12\" chocolate biscuit cake, 10\" white chocolate and lime sponge, and 8\" fruit cake.  I have a lovely silver cake stand with cutout hearts, and put some purple material behind it to bring out the detail of the hearts.",
     typical_price: 320.00,
     special_occasion_id: SpecialOccasion.find_by_name("Weddings").id,
     running_order: 1600,
     available_for_purchase: true,
     visible: true,
-    created_at: "2011-02-12 0:00:00"
+    created_at: "2012-05-01 0:00:00"
     })
     
-    FinishedProduct.create({product_name: "Carl and Elaine's Wedding Cake",
+    FinishedProduct.create({product_name: "Carl and Elaine\'s Wedding Cake",
     description: "This wedding cake was for my friends Carl and Elaine.  They wanted to be able to keep the cake topper after the wedding, so I handmade it from modelling clay, which will last forever.  Elaine sent me pictures of her wedding dress, and described what her bouquet would look like and what style of suit Carl would be wearing so that I could get the models to look as close to the real thing as possible.\r\rThe cake itself was made up of 3 tiers. The bottom tier was chocolate biscuit cake, the middle one was red velvet with white chocolate ganache filling, and the top one was fruit cake.  It was great to be a guest at the wedding, and be able to see the reactions to the cake.\r\rBelow is a closeup pic of the little bride and groom.",
     typical_price: 320.00,
     special_occasion_id: SpecialOccasion.find_by_name("Weddings").id,
@@ -406,7 +406,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     created_at: "2011-02-12 0:00:00"
     })
 
-    FinishedProduct.create({product_name: "Damien and Sinead's Wedding Cake",
+    FinishedProduct.create({product_name: "Damien and Sinead\'s Wedding Cake",
     description: "I made this cake for Sinead and Damien's wedding in Galway.  They wanted a fairly simple design on their cake – just dark blue ribbon to match the bridesmaid's dress, and flowers to match Sinead's bouquet.  Sinead showed me pictures of the bouquet she had chosen, so I handmade ivory and white roses and tiny blue flowers for the top of the cake.\r\rAs we were guests at the wedding, I actually got to taste some of the cake... and it was lovely, if I say so myself!\r\rThe cake was made up of 3 tiers – 8\", 10\" and 12\". The bottom two tiers were vanilla sponge with vanilla buttercream, and the top tier was chocolate sponge with chocolate buttercream.  The whole cake was covered in white sugarpaste.  Included is a picture showing the flower detail on top of the cake.",
     typical_price: 300.00,
     special_occasion_id: SpecialOccasion.find_by_name("Weddings").id,
@@ -579,22 +579,22 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     	running_order: 1500})
     	
   FinishedProductImage.create({
-    	finished_product_id: FinishedProduct.find_by_product_name("Peter and Michelle's Wedding Cake").id,
+    	finished_product_id: FinishedProduct.find_by_product_name("Peter and Michelle\'s Wedding Cake").id,
     	image_id: Image.find_by_file_name("peter_michelle_wedding_cake_1280x960.jpg").id,
     	running_order: 1600})
     	
   FinishedProductImage.create({
-    	finished_product_id: FinishedProduct.find_by_product_name("Carl and Elaine's Wedding Cake").id,
+    	finished_product_id: FinishedProduct.find_by_product_name("Carl and Elaine\'s Wedding Cake").id,
     	image_id: Image.find_by_file_name("carl_and_elaines_wedding_cake.jpg").id,
     	running_order: 1700})
     	
   FinishedProductImage.create({
-    	finished_product_id: FinishedProduct.find_by_product_name("Damien and Sinead's Wedding Cake").id,
+    	finished_product_id: FinishedProduct.find_by_product_name("Damien and Sinead\'s Wedding Cake").id,
     	image_id: Image.find_by_file_name("carl_and_elaines_wedding_cake.jpg").id,
     	running_order: 1800})
     	
   FinishedProductImage.create({
-    	finished_product_id: FinishedProduct.find_by_product_name("Damien and Sinead's Wedding Cake").id,
+    	finished_product_id: FinishedProduct.find_by_product_name("Damien and Sinead\'s Wedding Cake").id,
     	image_id: Image.find_by_file_name("carl_and_elaines_wedding_cake_2.jpg").id,
     	running_order: 1800})
 
