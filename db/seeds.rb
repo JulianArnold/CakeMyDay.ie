@@ -647,15 +647,21 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
 
   
   ProductPrice.destroy_all
-  ProductPrice.create({
-        start_at: "2012-11-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.first.id,
-        currency_id: GeneralSetting.first.default_currency_id,
-        price: 69.99,
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
+  ############################
+  ## THIS IS TEMPORARY CODE ##
+  ############################
+  Product.all.each do |product|
+    ProductPrice.create({
+          start_at: "2012-11-01".to_date,
+          finish_at: "2099-12-31".to_date,
+          product_id: product.id,
+          currency_id: GeneralSetting.first.default_currency_id,
+          price: 69.99,
+          created_by: User.find_by_login("ger.arnold@gmail.com").id,
+          updated_by: nil
+          })
+  end
+
 
   PayPalStatus.destroy_all
   PayPalStatus.create({name: "Paid", description: "The transaction has been confirmed as paid.", pending_authorisation: false, paid_sale: true, charged_back: false})
@@ -667,7 +673,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
 
 
   ShoppingCart.destroy_all
-  ShoppingCart.create({customer_id: Customer.first.id,  pay_pal_status_id: PayPalStatus.find_by_name("Paid").id, session_id: "abcdefg", shopping_cart_status_id: ShoppingCartStatus.find_by_name("Paid").id})
+  ShoppingCart.create({customer_id: Customer.first.id,  pay_pal_status_id: PayPalStatus.find_by_name("Paid").id, shopping_cart_status_id: ShoppingCartStatus.find_by_name("Paid").id})
   
   Cake.destroy_all
   Cake.create({shopping_cart_id: ShoppingCart.first.id, cake_required_at: "2013-04-23 15:00:00", production_quotum_id: ProductionQuotum.first(conditions: ["start_date <= ? and finish_date >= ?", "2013-04-23".to_date, "2013-04-23".to_date]).id, special_occasion: "Birthday", name_to_appear_on_cake: "Dan", general_description_from_customer: "A birthday cake for Dan", confectioners_notes: "", based_on_finished_product_id: nil})

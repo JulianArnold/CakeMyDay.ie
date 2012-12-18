@@ -27,9 +27,9 @@ class Product < ActiveRecord::Base
   has_many    :product_prices
   has_one     :current_price,
               :class_name => "ProductPrice",
-              :foreign_key => "product_price_id",
+              :foreign_key => "product_id",
               :order => "start_at ASC",
-              :conditions => ["start_at >= :today and (finish_at IS NULL or finish_at <= :today)", {:today => Time.now.to_date}]
+              :conditions => ["start_at <= :today and (finish_at IS NULL or finish_at >= :today)", {:today => Time.now.to_date}]
   has_many    :shopping_cart_items
   belongs_to  :special_occasion
   belongs_to  :creator,

@@ -65,9 +65,9 @@ class StoreController < ApplicationController
     @product_categories = ProductCategory.all(order: "running_order")
   end
 
+# This is what to expect into 'add_this_to_the_cart
 
-  #Parameters: {"cake"=>{"product_0"=>"4539", "product_1"=>"4540", "product_2"=>"4541", "product_3"=>"4542", "product_4"=>"4543", "product_5"=>"4544", "product_6"=>"4545", "product_7"=>"4546", "product_8"=>"4547", "commit"=>"Add to Cart", "method"=>:post}
-
+   #Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "cake"=>{"cake_required_at(3i)"=>"1", "cake_required_at(2i)"=>"1", "cake_required_at(1i)"=>"2013", "cake_required_at(4i)"=>"20", "cake_required_at(5i)"=>"00", "special_occasion"=>"", "name_to_appear_on_cake"=>"", "general_description_from_customer"=>""}, "product"=>{"0"=>{":id"=>"4643"}, "1"=>{":id"=>"4715"}, "2"=>{":id"=>"4716"}, "3"=>{":id"=>"4717"}, "4"=>{":id"=>"4723"}, "5"=>{":id"=>"4724"}, "6"=>{":id"=>"4725"}, "7"=>{":id"=>"4726"}, "8"=>{":id"=>"4727"}, "9"=>{":id"=>"4728"}, "10"=>{":id"=>"4729"}, "11"=>{":id"=>"4730"}, "12"=>{":id"=>"4731"}}, "category_268"=>"White", "product_counter"=>"13", "commit"=>"Add to Cart", "method"=>:post}
 
   def add_this_to_the_cart
     cart = current_cart # By the time Ruby gets here, we have a cart.
