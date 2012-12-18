@@ -65,30 +65,62 @@ class StoreController < ApplicationController
     @product_categories = ProductCategory.all(order: "running_order")
   end
 
-# This is what to expect into 'add_this_to_the_cart
-
-   #Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "cake"=>{"cake_required_at(3i)"=>"1", "cake_required_at(2i)"=>"1", "cake_required_at(1i)"=>"2013", "cake_required_at(4i)"=>"20", "cake_required_at(5i)"=>"00", "special_occasion"=>"", "name_to_appear_on_cake"=>"", "general_description_from_customer"=>""}, "product"=>{"0"=>{":id"=>"4643"}, "1"=>{":id"=>"4715"}, "2"=>{":id"=>"4716"}, "3"=>{":id"=>"4717"}, "4"=>{":id"=>"4723"}, "5"=>{":id"=>"4724"}, "6"=>{":id"=>"4725"}, "7"=>{":id"=>"4726"}, "8"=>{":id"=>"4727"}, "9"=>{":id"=>"4728"}, "10"=>{":id"=>"4729"}, "11"=>{":id"=>"4730"}, "12"=>{":id"=>"4731"}}, "category_268"=>"White", "product_counter"=>"13", "commit"=>"Add to Cart", "method"=>:post}
-
+  # Parameters: {"product"=>{"0"=>{":id"=>"5008", ":choice"=>"Chocolate biscuit cake", ":description"=>""}, "1"=>{":id"=>"5083", ":choice"=>"Vanilla buttercream"}, "2"=>{":id"=>"5084", ":description"=>"Covering nice!"}, "3"=>{":id"=>"5085", ":description"=>"", ":quantity"=>"1", ":choice"=>"Rose"}, "4"=>{":id"=>"5091"}, "5"=>{":quantity"=>"1", ":description"=>"sdf", ":id"=>"5092"}, "6"=>{":quantity"=>"2", ":description"=>"asdf", ":id"=>"5093"}, "7"=>{":description"=>"asdf", ":id"=>"5094"}, "8"=>{":description"=>"asdf", ":id"=>"5095"}, "9"=>{":quantity"=>"3", ":description"=>"asdf", ":id"=>"5096"}, "10"=>{":quantity"=>"4", ":description"=>"asdf", ":id"=>"5097"}, "11"=>{":description"=>"asdf", ":id"=>"5098"}, "12"=>{":quantity"=>"5", ":description"=>"asdf", ":id"=>"5099"}, "13"=>{":description"=>"asdf"}}, "category_288"=>"White", "commit"=>"Add to Cart", "method"=>:post}
   def add_this_to_the_cart
     cart = current_cart # By the time Ruby gets here, we have a cart.
-    @cake = cart.cakes.new
-    # now, populate the item with data
-    # item.shopping_cart_id gets set by the cart.cakes.new line.
-    # :based_on_finished_product_id, :cake_required_at, :confectioners_notes, :general_description_from_customer, :name_to_appear_on_cake, :production_quotum_id, :special_occasion, :weekday
-=begin    
-    @cake stuff:
-    t.integer  "shopping_cart_id"
-    t.datetime "cake_required_at"
-    t.integer  "production_quotum_id"
-    t.string   "special_occasion"
-    t.string   "name_to_appear_on_cake"
-    t.text     "general_description_from_customer"
-    t.text     "confectioners_notes"
-    t.integer  "weekday"
-    t.integer  "based_on_finished_product_id"
-=end
+
+    # First thing is to build the cake
+    # ================================
+    # Cake is the intermediate level object between a shopping_cart and a collection of
+    # individual shopping_cart_items
+    #
+    # cake => {"based_on_finished_product_id"=>"371", "cake_required_at(3i)"=>"1", "cake_required_at(2i)"=>"1", "cake_required_at(1i)"=>"2013",
+    #          "cake_required_at(4i)"=>"20", "cake_required_at(5i)"=>"00", "special_occasion"=>"Birthday", 
+    #          "name_to_appear_on_cake"=>"Happy birthday Billy", "general_description_from_customer"=>"A cake in the shape of the space shuttle"},
+    @cake = cart.cakes.new(params[:cake])
+    # shopping_cart_id gets set by the cart.cakes.new line.
+    #@cake.production_quotum_id - will be set by a before_validation callback
+    #@cake.weekday              - will be set by a before_validation callback
+    cake_okay = @cake.valid? # should be FALSE as production_quotum hasn't been completd.
 
 
+    # Next, the difficult part; stepping through the params[:product] stuff for every possible product
+    # ================================================================================================
+    # First thing is to pick up the counter we created in the ERB execution of the HTML FORM
+    product_counter = params[:product_counter].to_i # e.g., 13
+    
+    # Next, I will step through the params[:product] looking for products from (say) 0..13.
+    product_looper = 0
+    while product_looper <= product_counter do
+      if params[:product] and params[:product][(product_looper.to_s)]
+        the_param = params[:product][(product_looper.to_s)] # so I don't have to keep doing that conversion
+        item = @cake.shopping_cart_items.new
+        puts "======" + the_param.inspect
+        if the_param and the_param["id"] and the_param["id"].to_i > 0
+          p = Product.find(the_param["id"].to_i)
+          puts "=======          product(#{the_param["id"].to_s}) " + p.name
+        end
+      end # of "if params[:product] and params[:product][(product_looper.to_s).to_sym]"
+      product_looper += 1
+    end
+    
+    
+    # Before we finish, test that everything went ok, and if it is, then go ahead and save everything.
+    # ================================================================================================
+    # if cake_okay and ...
+    # @cake.save
+    # 
+    
+    
+    # Finally, redirect the user to some page
+    # =======================================
+    #
+    
+    
+    # TEMPORARY: conclusion
+    render :text => "@cake valid?: #{cake_okay.to_s}<br/>@cake errors: #{@cake.errors.inspect}<br/>Params: #{params[:cake]}<br/>#{"=" * 50}<br/>" +
+    "Product Counter: #{product_counter.to_s}"
+    
   end
 
   def view_cart

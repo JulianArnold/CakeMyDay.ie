@@ -9,6 +9,7 @@
     <% if @cake.based_on_finished_product_id.to_i > 0 %>
       <p><span class="form-label-wide">You have chosen to base your cake on:</span>
         <%= @cake.finished_product.product_name %>
+        <%= c.hidden_field :based_on_finished_product_id, :value => @cake.finished_product.id %>
       </p>
     <% end %>
     
@@ -45,37 +46,63 @@
           <div style="background-color: <%= cycle("white","inherit") %>;">
           <% product_description = sanitize(product.name + " (" + number_to_currency(product.current_price.price, :unit => "&euro;", :precision => 2) + ")") %>
           <% if category.one_choice_only == true %>
-            <%= radio_button_tag ("product[" + product_counter.to_s + "][:id]").to_sym, product.id %>
-            <%= label_tag ("product[" + product_counter.to_s + "][:id]_" + product.id.to_s).to_sym, product_description %>
+          <!--<<<< Radio Buttons >>>>-->
+          
+            <%= radio_button_tag ("product[" + product_counter.to_s + "]").to_sym, product.id %>
+            <%= label_tag ("product[" + product_counter.to_s + "]_" + product.id.to_s).to_sym, product_description %>
+
+            <!--<<<< Extra fields >>>>-->
+            <% if product.allow_user_to_choose_quantity == true or product.allow_user_to_enter_description == true or product.options_list_id.to_i > 0 %><br /><% end %>
+            <% if product.allow_user_to_choose_quantity == true %>
+              <span style="padding-left:20px;">
+                <%= label_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][quantity]").to_sym, "How many?" %>
+                <%= text_field_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][quantity]").to_sym, 1, :size => "4x1" %>
+              </span>
+            <% end %>
+            <% if product.allow_user_to_enter_description == true %>
+              <span style="padding-left:20px;">
+                <%= label_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][description]").to_sym, "Describe:" %>
+                <%= text_field_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][description]").to_sym, "", :size => "20x1" %>
+              </span>
+            <% end %>
+            <% if product.options_list_id.to_i > 0 %>
+              <span style="padding-left:20px;">
+                <% temp_list = "<option>" + product.options_list.options.split(", ").join("</option><option>") + "</option>" %>
+                <%= label_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][choice]").to_sym, "Choose:" %>
+                <%= select_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][choice]").to_sym, temp_list.html_safe %>
+              </span>
+            <% end %>
+            <%# don't increment the product_counter %>
           <% else %>
-            <%= check_box_tag ("product[" + product_counter.to_s + "][:id]").to_sym, product.id %>
-            <%= label_tag ("product[" + product_counter.to_s + "][:id]").to_sym, product_description %>
+          <!--<<<< Check Boxes >>>>-->
+          
+            <%= check_box_tag ("product[" + product_counter.to_s + "][id]").to_sym, product.id %>
+            <%= label_tag ("product[" + product_counter.to_s + "][id]").to_sym, product_description %>
+            <% if product.allow_user_to_choose_quantity == true or product.allow_user_to_enter_description == true or product.options_list_id.to_i > 0 %><br /><% end %>
+            <% if product.allow_user_to_choose_quantity == true %>
+              <span style="padding-left:20px;">
+                <%= label_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][quantity]").to_sym, "How many?" %>
+                <%= text_field_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][quantity]").to_sym, 1, :size => "4x1" %>
+              </span>
+            <% end %>
+            <% if product.allow_user_to_enter_description == true %>
+              <span style="padding-left:20px;">
+                <%= label_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][description]").to_sym, "Describe:" %>
+                <%= text_field_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][description]").to_sym, "", :size => "20x1" %>
+              </span>
+            <% end %>
+            <% if product.options_list_id.to_i > 0 %>
+              <span style="padding-left:20px;">
+                <% temp_list = "<option>" + product.options_list.options.split(", ").join("</option><option>") + "</option>" %>
+                <%= label_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][choice]").to_sym, "Choose:" %>
+                <%= select_tag ("product[" + product_counter.to_s + "][#{product.id.to_s.to_sym}][choice]").to_sym, temp_list.html_safe %>
+              </span>
+            <% end %>
             <% product_counter += 1 %>
           <% end %>
           
-          <% if product.allow_user_to_choose_quantity == true or product.allow_user_to_enter_description == true or product.options_list_id.to_i > 0 %><br /><% end %>
           
-          <% if product.allow_user_to_choose_quantity == true %>
-            <span style="padding-left:20px;">
-              <%= label_tag ("product[" + product_counter.to_s + "][:quantity]").to_sym, "How many?" %>
-              <%= text_field_tag ("product[" + product_counter.to_s + "][:quantity]").to_sym, 1, :size => "4x1" %>
-            </span>
-          <% end %>
-          <% if product.allow_user_to_enter_description == true %>
-            <span style="padding-left:20px;">
-              <%= label_tag ("product[" + product_counter.to_s + "][:description]").to_sym, "Describe:" %>
-              <%= text_field_tag ("product[" + product_counter.to_s + "][:description]").to_sym, "", :size => "20x1" %>
-            </span>
-          <% end %>
-          <% if product.options_list_id.to_i > 0 %>
-            <span style="padding-left:20px;">
-              <% temp_list = "<option>" + product.options_list.options.split(", ").join("</option><option>") + "</option>" %>
-              <%= label_tag ("product[" + product_counter.to_s + "][:choice]").to_sym, "Choose:" %>
-              <%= select_tag ("product[" + product_counter.to_s + "][:choice]").to_sym, temp_list.html_safe %>
-            </span>
-          <% end %>
           </div>
-          
         <% end %>
         <% if category.one_choice_only == true %>
           <% product_counter += 1 %>
@@ -86,8 +113,10 @@
           <span class="form-label-wide">
             <%= label_tag ("category_" + category.id.to_s).to_sym, category.options_list.visible_label %>
           </span>
-          <span class="required-field">*</span><% temp_list = "<option>" + category.options_list.options.split(", ").join("</option><option>") + "</option>" %>
+          <span class="required-field">*</span>
+          <% temp_list = "<option>" + category.options_list.options.split(", ").join("</option><option>") + "</option>" %>
           <%= select_tag ("category_" + category.id.to_s).to_sym, temp_list.html_safe %>
+        </p>
       <% end %>
       
     </fieldset>
