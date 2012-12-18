@@ -182,11 +182,11 @@ fieldset {
 }
 
 .fp-photo-2 {
+  display: inline-block;
   padding: 20px;
   border: 1px solid #ec008c;
   background-color: #f9d4e4;
   margin-bottom: 20px;
-  height: 400px;
 }
 
 #google-search-result {

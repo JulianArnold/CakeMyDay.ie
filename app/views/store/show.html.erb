@@ -19,7 +19,7 @@
 <% if @finished_product.finished_product_images.count > 1 %>
   <h2>More Pics...</h2>
   <% @finished_product.finished_product_images.each do |i| %>
-    <div class="fp-photo-2"><%= image_tag(i.image.full_file_path, :width => "600") %></div>
+    <span><%= image_tag(i.image.full_file_path, :width => "600", :class => "fp-photo-2") %></span>
   <% end %>
   <p><%= link_to "Return to the home page", root_url(:show => @finished_product.special_occasion.name) %></p>
 <% end %>
