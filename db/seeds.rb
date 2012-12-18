@@ -191,17 +191,18 @@ if Rails.env.development?
   Product.create(:name => 'Lamborghini car 10" length', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 7300, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => 'Aston Martin DB5 (Bond car) 10" length', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 7400, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => 'Truck or bus 10" length', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("shaped cake cores").id, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 1, :running_order => 7500, :special_occasion_id => nil, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 1', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7600, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 2', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7700, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 3', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7800, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 4', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7900, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 5', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 8000, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 6', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 8100, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 7', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8200, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 8', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8300, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 9', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8400, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 10', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8500, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
-  Product.create(:name => 'Wedding cake 11', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8600, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+  # Wedding cakes have been commented out by Dan 16/12/12
+#  Product.create(:name => 'Wedding cake 1', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7600, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 2', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7700, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 3', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7800, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 4', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 7900, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 5', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 8000, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 6', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 3, :running_order => 8100, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 7', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8200, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 8', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8300, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 9', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8400, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 10', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8500, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
+#  Product.create(:name => 'Wedding cake 11', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Cake Shape").id, :production_quota_value => 4, :running_order => 8600, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
   Product.create(:name => 'Filling', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => OptionsList.find_by_name("filling choices").id, :product_category_id => ProductCategory.find_by_name("The Cake Filling").id, :production_quota_value => 0, :running_order => 8700, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => 'Covering - please choose a colour', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("The Covering").id, :production_quota_value => 0, :running_order => 8800, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => 'Edible ribbon & bow - please choose a colour', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 8900, :special_occasion_id => nil, :created_by => User.first.id)
@@ -739,15 +740,21 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
 
   
   ProductPrice.destroy_all
-  ProductPrice.create({
-        start_at: "2012-11-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.first.id,
-        currency_id: GeneralSetting.first.default_currency_id,
-        price: 69.99,
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
+  ############################
+  ## THIS IS TEMPORARY CODE ##
+  ############################
+  Product.all.each do |product|
+    ProductPrice.create({
+          start_at: "2012-11-01".to_date,
+          finish_at: "2099-12-31".to_date,
+          product_id: product.id,
+          currency_id: GeneralSetting.first.default_currency_id,
+          price: 69.99,
+          created_by: User.find_by_login("ger.arnold@gmail.com").id,
+          updated_by: nil
+          })
+  end
+
 
   PayPalStatus.destroy_all
   PayPalStatus.create({name: "Paid", description: "The transaction has been confirmed as paid.", pending_authorisation: false, paid_sale: true, charged_back: false})
@@ -759,7 +766,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
 
 
   ShoppingCart.destroy_all
-  ShoppingCart.create({customer_id: Customer.first.id,  pay_pal_status_id: PayPalStatus.find_by_name("Paid").id, session_id: "abcdefg", shopping_cart_status_id: ShoppingCartStatus.find_by_name("Paid").id})
+  ShoppingCart.create({customer_id: Customer.first.id,  pay_pal_status_id: PayPalStatus.find_by_name("Paid").id, shopping_cart_status_id: ShoppingCartStatus.find_by_name("Paid").id})
   
   Cake.destroy_all
   Cake.create({shopping_cart_id: ShoppingCart.first.id, cake_required_at: "2013-04-23 15:00:00", production_quotum_id: ProductionQuotum.first(conditions: ["start_date <= ? and finish_date >= ?", "2013-04-23".to_date, "2013-04-23".to_date]).id, special_occasion: "Birthday", name_to_appear_on_cake: "Dan", general_description_from_customer: "A birthday cake for Dan", confectioners_notes: "", based_on_finished_product_id: nil})
@@ -769,6 +776,6 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
   ShoppingCartItem.create({cake_id: Cake.first.id, product_id: Product.first.id, product_options_list_choice: "", product_price_id: ProductPrice.first.id, quantity: 1, global_options_list_choice: "Purple", user_description: ""})
   
   puts "Completed OK"
-  # That's it so far!
+  # That's it!
   
 end

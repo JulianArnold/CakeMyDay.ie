@@ -43,12 +43,52 @@ class StoreController < ApplicationController
     render :search_results
   end
 
-  def add_to_cart
+  def design_my_cake # Gives users the HTML form to customise a new cake
+    # get or create the current shopping cart
+    @current_cart = current_cart
+    if !@current_cart # If there is no cart in existence already...
+      # create a new cart
+      @current_cart = ShoppingCart.new
+      if current_user and current_user.customer
+        @current_cart.customer_id = current_user.customer.id
+      end
+      @current_cart.shopping_cart_status_id = ShoppingCartStatus.first(:conditions => ["active_cart = ?", true]).id
+      @current_cart.pay_pal_status_id = 0
+      @current_cart.save
+      session[:shopping_cart_id] = @current_cart.id
+    end
     
+    # builds an empty @cake
+    @cake = @current_cart.cakes.new
+    @cake.cake_required_at = Time.now.gmtime.to_date + 2.weeks + 20.hours
+    @cake.based_on_finished_product_id = FinishedProduct.first.id
+    @product_categories = ProductCategory.all(order: "running_order")
   end
 
-  def design_cake
-    
+# This is what to expect into 'add_this_to_the_cart
+
+   #Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "cake"=>{"cake_required_at(3i)"=>"1", "cake_required_at(2i)"=>"1", "cake_required_at(1i)"=>"2013", "cake_required_at(4i)"=>"20", "cake_required_at(5i)"=>"00", "special_occasion"=>"", "name_to_appear_on_cake"=>"", "general_description_from_customer"=>""}, "product"=>{"0"=>{":id"=>"4643"}, "1"=>{":id"=>"4715"}, "2"=>{":id"=>"4716"}, "3"=>{":id"=>"4717"}, "4"=>{":id"=>"4723"}, "5"=>{":id"=>"4724"}, "6"=>{":id"=>"4725"}, "7"=>{":id"=>"4726"}, "8"=>{":id"=>"4727"}, "9"=>{":id"=>"4728"}, "10"=>{":id"=>"4729"}, "11"=>{":id"=>"4730"}, "12"=>{":id"=>"4731"}}, "category_268"=>"White", "product_counter"=>"13", "commit"=>"Add to Cart", "method"=>:post}
+
+  def add_this_to_the_cart
+    cart = current_cart # By the time Ruby gets here, we have a cart.
+    @cake = cart.cakes.new
+    # now, populate the item with data
+    # item.shopping_cart_id gets set by the cart.cakes.new line.
+    # :based_on_finished_product_id, :cake_required_at, :confectioners_notes, :general_description_from_customer, :name_to_appear_on_cake, :production_quotum_id, :special_occasion, :weekday
+=begin    
+    @cake stuff:
+    t.integer  "shopping_cart_id"
+    t.datetime "cake_required_at"
+    t.integer  "production_quotum_id"
+    t.string   "special_occasion"
+    t.string   "name_to_appear_on_cake"
+    t.text     "general_description_from_customer"
+    t.text     "confectioners_notes"
+    t.integer  "weekday"
+    t.integer  "based_on_finished_product_id"
+=end
+
+
   end
 
   def view_cart
