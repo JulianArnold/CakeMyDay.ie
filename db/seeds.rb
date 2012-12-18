@@ -738,7 +738,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         contact_phone_number: "087 1234567"
         })
 
-  
+
   ProductPrice.destroy_all
   ############################
   ## THIS IS TEMPORARY CODE ##
@@ -754,7 +754,16 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
           updated_by: nil
           })
   end
-
+  ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 8\" diameter, fruit cake").id,
+        currency_id: GeneralSetting.first.default_currency_id,
+        price: 120,
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+  
 
   PayPalStatus.destroy_all
   PayPalStatus.create({name: "Paid", description: "The transaction has been confirmed as paid.", pending_authorisation: false, paid_sale: true, charged_back: false})
