@@ -763,7 +763,898 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         created_by: User.find_by_login("ger.arnold@gmail.com").id,
         updated_by: nil
         })
-  
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Filling").id,
+        currency_id: GeneralSetting.first.default_currency_id,
+        price: 0,
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+  ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        price: 0,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 9\" diameter, fruit cake").id,
+        price: 135,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 10\" diameter, fruit cake").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 12\" diameter, fruit cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, fruit cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, fruit cake").id,
+        price: 135,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 10\" diameter, fruit cake").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, fruit cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 8\" diameter, chocolate biscuit cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 9\" diameter, chocolate biscuit cake").id,
+        price: 135,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 10\" diameter, chocolate biscuit cake").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 12\" diameter, chocolate biscuit cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, chocolate biscuit cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, chocolate biscuit cake").id,
+        price: 135,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 10\" diameter, chocolate biscuit cake").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, chocolate biscuit cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 8\" diameter, sponge cake").id,
+        price: 80,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 9\" diameter, sponge cake").id,
+        price: 90,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 10\" diameter, sponge cake").id,
+        price: 100,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 12\" diameter, sponge cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
+        price: 80,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, sponge cake").id,
+        price: 90,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 10\" diameter, sponge cake").id,
+        price: 100,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, sponge cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 8\" diameter, carrot cake").id,
+        price: 80,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 9\" diameter, carrot cake").id,
+        price: 90,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 10\" diameter, carrot cake").id,
+        price: 100,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 4\" high, 12\" diameter, carrot cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, carrot cake").id,
+        price: 80,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, carrot cake").id,
+        price: 90,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 10\" diameter, carrot cake").id,
+        price: 100,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, carrot cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 8\" diameter, fruit cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 9\" diameter, fruit cake").id,
+        price: 202.50,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 10\" diameter, fruit cake").id,
+        price: 225,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 12\" diameter, fruit cake").id,
+        price: 270,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 8\" diameter, fruit cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 9\" diameter, fruit cake").id,
+        price: 202.50,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 10\" diameter, fruit cake").id,
+        price: 225,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 12\" diameter, fruit cake").id,
+        price: 270,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 8\" diameter, chocolate biscuit cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 9\" diameter, chocolate biscuit cake").id,
+        price: 202.50,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 10\" diameter, chocolate biscuit cake").id,
+        price: 225,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 12\" diameter, chocolate biscuit cake").id,
+        price: 270,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 8\" diameter, chocolate biscuit cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 9\" diameter, chocolate biscuit cake").id,
+        price: 202.50,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 10\" diameter, chocolate biscuit cake").id,
+        price: 225,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 12\" diameter, chocolate biscuit cake").id,
+        price: 270,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 12\" diameter, chocolate biscuit cake").id,
+        price: 270,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 8\" diameter, sponge cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 9\" diameter, sponge cake").id,
+        price: 135,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 10\" diameter, sponge cake").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 12\" diameter, sponge cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 8\" diameter, sponge cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 9\" diameter, sponge cake").id,
+        price: 135,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 10\" diameter, sponge cake").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 12\" diameter, sponge cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 8\" diameter, carrot cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 9\" diameter, carrot cake").id,
+        price: 135,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 10\" diameter, carrot cake").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Square 6\" high, 12\" diameter, carrot cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 8\" diameter, carrot cake").id,
+        price: 120,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 9\" diameter, carrot cake").id,
+        price: 135,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 10\" diameter, carrot cake").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Circular 6\" high, 12\" diameter, carrot cake").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })        
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Guitar 12\"x6\" (small)").id,
+        price: 140,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Guitar 18\"x10\" (large)").id,
+        price: 200,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        }) 
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Bass Guitar 12\"x6\" (small)").id,
+        price: 140,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })        
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Bass Guitar 18\"x10\" (large)").id,
+        price: 200,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Drum 12\" (small)").id,
+        price: 160,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Drum 12\" (large)").id,
+        price: 190,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Drum 12\" (small)").id,
+        price: 100,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Drum 12\" (large)").id,
+        price: 130,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("1960s VW Beetle 10\" length").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("1960s VW Beetle 10\" length").id,
+        price: 190,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("BMW Mini Cooper 10\" length").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("BMW Mini Cooper 10\" length").id,
+        price: 190,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Lamborghini car 10\" length").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Lamborghini car 10\" length").id,
+        price: 190,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Aston Martin DB5 (Bond car) 10\" length").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Aston Martin DB5 (Bond car) 10\" length").id,
+        price: 190,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Truck or bus 10\" length").id,
+        price: 180,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Truck or bus 10\" length").id,
+        price: 210,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Edible ribbon & bow - please choose a colour").id,
+        price: 20,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("2D flowers - please choose a colour").id,
+        price: 10,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3D flowers - 2\" (each) - please choose a type").id,
+        price: 10,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("2D computer-printed edible image (cake sides)").id,
+        price: 10,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3D edible character / figure - 4\" tall").id,
+        price: 20,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3d inedible character / figure - 4\" tall").id,
+        price: 20,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3D person 4\" tall - simple version").id,
+        price: 25,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3D person 4\" tall - detailed version").id,
+        price: 40,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3D vehicle 4\" long").id,
+        price: 20,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3D vehicle 8\" long").id,
+        price: 30,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3D animal 4\" tall").id,
+        price: 20,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3D animal 6\" tall").id,
+        price: 25,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Bride & Groom topper").id,
+        price: 150,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("3D object - to your requirements").id,
+        price: 25,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id,
+        price: 10,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+
 
   PayPalStatus.destroy_all
   PayPalStatus.create({name: "Paid", description: "The transaction has been confirmed as paid.", pending_authorisation: false, paid_sale: true, charged_back: false})
