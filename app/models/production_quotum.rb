@@ -52,7 +52,6 @@ class ProductionQuotum < ActiveRecord::Base
             :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
             :conditions => ["weekday = 0 and shopping_cart_statuses.paid_cart = ?", true]
 
-
   def bookings
     return cakes = Cake.all(:include => ["shopping_cart", ["shopping_cart", "shopping_cart_status"]], :conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_status.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
   end

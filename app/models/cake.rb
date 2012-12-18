@@ -7,8 +7,9 @@
 # Rights in third party code acknowledged.
 
 class Cake < ActiveRecord::Base
-  attr_accessible :shopping_cart_id, :based_on_finished_product_id, :cake_required_at, :confectioners_notes, :general_description_from_customer, :name_to_appear_on_cake, :production_quotum_id, :special_occasion, :weekday
-
+  attr_accessible :shopping_cart_id, :based_on_finished_product_id, :cake_required_at, :confectioners_notes, :general_description_from_customer, :name_to_appear_on_cake, :special_occasion
+  # NOT attr_accessible :production_quotum_id, :weekday
+  
   belongs_to  :production_quotum
   belongs_to  :shopping_cart
   belongs_to  :finished_product,
@@ -21,12 +22,13 @@ class Cake < ActiveRecord::Base
   validates_numericality_of :based_on_finished_product_id, :allow_nil => true
   validates_presence_of :cake_required_at, :name_to_appear_on_cake, :special_occasion
 
-  before_save :log_the_weekday
-  before_save :set_production_quantum_id
+  before_validation :log_the_weekday
+  before_validation :set_production_quantum_id
 
   private
 
   def set_production_quantum_id
+    ProductionQuotum.auto_generate
     pq = ProductionQuotum.first(:conditions => ["start_date <= ? and finish_date >= ?", cake_required_at.to_date, cake_required_at.to_date])
     if pq
       self.production_quotum_id = pq.id
@@ -34,8 +36,7 @@ class Cake < ActiveRecord::Base
   end
 
   def log_the_weekday
-    self.weekday = cake_required_at.wday
+    self.weekday = cake_required_at.to_date.wday
   end
-
 
 end
