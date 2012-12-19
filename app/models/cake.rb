@@ -25,6 +25,10 @@ class Cake < ActiveRecord::Base
   before_validation :log_the_weekday
   before_validation :set_production_quantum_id
 
+  def total_value
+    shopping_cart_items.sum(:line_total)
+  end
+
   private
 
   def set_production_quantum_id

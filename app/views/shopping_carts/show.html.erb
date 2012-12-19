@@ -1,15 +1,26 @@
 <h1>Shopping Cart #<%= params[:id] %></h1>
 <table>
-  <tr><td>Customer:</td><td><%= link_to(@shopping_cart.customer.user.full_name, customer_url(@shopping_cart.customer_id), :title => "click to view the customer's details") %><br/>
-    <%= link_to(sanitize(@shopping_cart.customer.user.login), "mailto:" + @shopping_cart.customer.user.login) %></td></tr>
+  <tr><td>Customer:</td><td>
+    <% if @shopping_cart.customer and @shopping_cart.customer.user %>
+      <%= link_to(@shopping_cart.customer.user.full_name, customer_url(@shopping_cart.customer_id), :title => "click to view the customer's details") %><br/>
+      <%= link_to(sanitize(@shopping_cart.customer.user.login), "mailto:" + @shopping_cart.customer.user.login) %>
+    <% else %>
+    --
+    <% end %>
+    </td></tr>
   <tr><td>Shopping cart status:</td><td><%= @shopping_cart.shopping_cart_status.name %></td></tr>
-  <tr><td>PayPal status:</td><td><%= @shopping_cart.pay_pal_status.name %></td></tr>
+  <tr><td>PayPal status:</td><td>
+    <% if @shopping_cart.pay_pal_status_id.to_i > 0%>
+    <%= @shopping_cart.pay_pal_status.name %>
+    <% else %>
+    --
+    <% end %>
+  </td></tr>
 </table><br/>
 
 <h2>Items</h2>
 <table>
   <tr>
-    <th>Cake</th>
     <th>Product name</th>
     <th>Customer description</th>
     <th>Options</th>
@@ -25,12 +36,18 @@
       <tr>
         <td><%= link_to(item.product.name, product_url(item.product_id), :title => "click to view product") %></td>
         <td><%= item.user_description %></td>
-        <td><%= item.product_options_list_choice %></td>
+        <td><%= item.product_options_list_choice %><br/>
+            <%= item.global_options_list_choice %>
+        </td>
         <td style="text-align:right;"><%= sanitize(number_to_currency(item.unit_price, :unit => @general_setting.ccy, :precision => 2)) %></td>
         <td style="text-align:right;"><%= item.quantity %></td>
         <td style="text-align:right;"><%= sanitize(number_to_currency(item.line_total, :unit => @general_setting.ccy, :precision => 2)) %></td>
       </tr>
     <% end %>
+    <tr><td colspan=5>GRAND TOTAL FOR THIS CAKE:</td>
+        <td style="text-align:right;border-top: 1px solid black;border-bottom: 3px double black;">
+        <%= sanitize(number_to_currency(cake.shopping_cart_items.sum(:line_total), :unit => @general_setting.ccy, :precision => 2)) %></td>
+    </tr>
   <% end %>
 </table><br/>
 <%= link_to 'Back', shopping_carts_path %> | <%= link_to 'Edit', edit_shopping_cart_path(@shopping_cart) %>

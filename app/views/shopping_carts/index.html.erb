@@ -10,9 +10,17 @@
   <% @shopping_carts.each do |shopping_cart| %>
     <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
       <td><%= shopping_cart.id %></td>
+      <% if shopping_cart.customer and shopping_cart.customer.user %>
       <td><%= link_to(shopping_cart.customer.user.full_name, customer_url(shopping_cart.customer_id), :title => "click to view customer") %></td>
+      <% else %>
+      <td>--</td>
+      <% end %>
       <td><%= shopping_cart.shopping_cart_status.name %></td>
+      <% if shopping_cart.pay_pal_status_id.to_i > 0 %>
       <td><%= shopping_cart.pay_pal_status.name %></td>
+      <% else %>
+      <td>--</td>
+      <% end %>
       <td><%= link_to 'View', shopping_cart %>
           <%= link_to 'Edit', edit_shopping_cart_path(shopping_cart) %></td>
     </td>

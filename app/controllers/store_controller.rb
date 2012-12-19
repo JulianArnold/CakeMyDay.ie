@@ -66,6 +66,7 @@ class StoreController < ApplicationController
   end
 
   # Parameters: {"product"=>{"0"=>{":id"=>"5008", ":choice"=>"Chocolate biscuit cake", ":description"=>""}, "1"=>{":id"=>"5083", ":choice"=>"Vanilla buttercream"}, "2"=>{":id"=>"5084", ":description"=>"Covering nice!"}, "3"=>{":id"=>"5085", ":description"=>"", ":quantity"=>"1", ":choice"=>"Rose"}, "4"=>{":id"=>"5091"}, "5"=>{":quantity"=>"1", ":description"=>"sdf", ":id"=>"5092"}, "6"=>{":quantity"=>"2", ":description"=>"asdf", ":id"=>"5093"}, "7"=>{":description"=>"asdf", ":id"=>"5094"}, "8"=>{":description"=>"asdf", ":id"=>"5095"}, "9"=>{":quantity"=>"3", ":description"=>"asdf", ":id"=>"5096"}, "10"=>{":quantity"=>"4", ":description"=>"asdf", ":id"=>"5097"}, "11"=>{":description"=>"asdf", ":id"=>"5098"}, "12"=>{":quantity"=>"5", ":description"=>"asdf", ":id"=>"5099"}, "13"=>{":description"=>"asdf"}}, "category_288"=>"White", "commit"=>"Add to Cart", "method"=>:post}
+
   def add_this_to_the_cart
     cart = current_cart # By the time Ruby gets here, we have a cart.
 
@@ -78,11 +79,11 @@ class StoreController < ApplicationController
     #          "cake_required_at(4i)"=>"20", "cake_required_at(5i)"=>"00", "special_occasion"=>"Birthday", 
     #          "name_to_appear_on_cake"=>"Happy birthday Billy", "general_description_from_customer"=>"A cake in the shape of the space shuttle"},
     @cake = cart.cakes.new(params[:cake])
-    # shopping_cart_id gets set by the cart.cakes.new line.
-    #@cake.production_quotum_id - will be set by a before_validation callback
-    #@cake.weekday              - will be set by a before_validation callback
+    # @cake.shopping_cart_id     - gets set by the cart.cakes.new line.
+    # @cake.production_quotum_id - will be set by a before_validation callback
+    # @cake.weekday              - will be set by a before_validation callback
     cake_okay = @cake.valid? # should be FALSE as production_quotum hasn't been completd.
-
+    @cake.save
 
     # Next, the difficult part; stepping through the params[:product] stuff for every possible product
     # ================================================================================================
@@ -91,15 +92,58 @@ class StoreController < ApplicationController
     
     # Next, I will step through the params[:product] looking for products from (say) 0..13.
     product_looper = 0
-    while product_looper <= product_counter do
-      if params[:product] and params[:product][(product_looper.to_s)]
-        the_param = params[:product][(product_looper.to_s)] # so I don't have to keep doing that conversion
-        item = @cake.shopping_cart_items.new
-        puts "======" + the_param.inspect
-        if the_param and the_param["id"] and the_param["id"].to_i > 0
-          p = Product.find(the_param["id"].to_i)
-          puts "=======          product(#{the_param["id"].to_s}) " + p.name
+
+    # There are a finite number of options that the user can take in the HTML form,
+    # and product_counter knows how many.
+    while product_looper < product_counter do
+      # If the user has chosen to purchase product #-product_looper, there'll be a
+      # params[:product] for it.
+      
+      # the_param is just a handy way of not repeating myself:
+      the_param = ":#{product_looper.to_s}"
+      
+      if cake_okay and params[:product] and params[:product][the_param]
+        # So, the user has chosen to purchase params[:product][:product_looper]
+        
+        # let's create a line-item.
+        shopping_cart_item = @cake.shopping_cart_items.new
+
+        # Go find the product they have chosen
+        product = Product.find(params[:product][the_param].to_i)
+        if product
+          shopping_cart_item.product_id       = product.id
+          shopping_cart_item.unit_price       = product.current_price.price.to_f
+          shopping_cart_item.product_price_id = product.current_price.id
+          shopping_cart_item.quantity         = 1
+          # Next, let's see if there are any extra options for this product in the params.
+          if params[:product][product_looper.to_s][product.id.to_s]
+            
+            #puts "      == == Prod options  : " + params[:product][product_looper.to_s][product_number.to_s].inspect + " :"
+            if params[:product][product_looper.to_s][product.id.to_s]["description"]
+              shopping_cart_item.user_description = params[:product][product_looper.to_s][product.id.to_s]["description"]
+              #puts "         == Description   : " + params[:product][product_looper.to_s][product_number.to_s]["description"] + " :"
+            end
+            if params[:product][product_looper.to_s][product.id.to_s]["quantity"]
+              shopping_cart_item.quantity = params[:product][product_looper.to_s][product.id.to_s]["quantity"].to_i
+              #puts "         == Quantity      : " + params[:product][product_looper.to_s][product.id.to_s]["quantity"] + " :"
+            end
+            if params[:product][product_looper.to_s][product.id.to_s]["choice"]
+              shopping_cart_item.product_options_list_choice = params[:product][product_looper.to_s][product.id.to_s]["choice"]
+              #puts "         == Choice       : " + params[:product][product_looper.to_s][product.id.to_s]["choice"] + " :"
+            end
+          end
         end
+        
+        #puts "== == == == Chosen product: " + the_param.to_s + " :"
+        # Next, we'll look for the product number
+        #product_number = the_param.gsub(":","").to_i
+        #puts "   == == == Product ID    : " + product_number.to_s + " :"
+        shopping_cart_item.line_total       = shopping_cart_item.unit_price.to_f * shopping_cart_item.quantity
+        #t.string   "product_options_list_choice"
+#t.string   "global_options_list_choice"
+        #t.string   "user_description"
+        shopping_cart_item.save
+        
       end # of "if params[:product] and params[:product][(product_looper.to_s).to_sym]"
       product_looper += 1
     end
@@ -115,11 +159,9 @@ class StoreController < ApplicationController
     # Finally, redirect the user to some page
     # =======================================
     #
-    
+    redirect_to root_url, :notice => "You have successfully added a cake to your shopping cart.<br/>Thank you!"
     
     # TEMPORARY: conclusion
-    render :text => "@cake valid?: #{cake_okay.to_s}<br/>@cake errors: #{@cake.errors.inspect}<br/>Params: #{params[:cake]}<br/>#{"=" * 50}<br/>" +
-    "Product Counter: #{product_counter.to_s}"
     
   end
 
