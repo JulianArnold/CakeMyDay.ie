@@ -101,7 +101,7 @@ fieldset {
 
 #inner form { margin: 0 20px 0 0;}
 
-#site-nav, #site-nav a, #user-access, #user-access a, #user-access form {
+#site-nav, #site-nav a, #user-access, #user-access a, #user-access form, #view-cart-link a {
   font-weight: 100;
   display; inline;
   font-size: 12px;

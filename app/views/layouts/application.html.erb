@@ -33,7 +33,7 @@
           <%= submit_tag "Search", :name => nil %>
         <% end %>
 
-        <span style="padding-left:30px;">
+        <span id="view-cart-link" style="padding-left:20px;font-weight: bold;">
           <% if current_cart %>
           <%= link_to("View Cart - " + pluralize(current_cart.cakes.count.to_i, "cake"), "#", :onclick => "toggle_thing('your-cart');") %>
           <% else %>
