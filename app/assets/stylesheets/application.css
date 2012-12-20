@@ -50,11 +50,22 @@ fieldset {
   margin: 30px;
   
   /* graduated fill effect */
+  background-color: #f9d4e4;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9d4e4), to(#fdf4f7));
   background-image: -webkit-linear-gradient(top, #f9d4e4, #fdf4f7);
   background-image:    -moz-linear-gradient(top, #f9d4e4, #fdf4f7);
   background-image:     -ms-linear-gradient(top, #f9d4e4, #fdf4f7);
   background-image:      -o-linear-gradient(top, #f9d4e4, #fdf4f7);
+}
+
+.graduated-background {
+  background-color: #f9d4e4;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9d4e4), to(#fdf4f7));
+  background-image: -webkit-linear-gradient(top, #f9d4e4, #fdf4f7);
+  background-image:    -moz-linear-gradient(top, #f9d4e4, #fdf4f7);
+  background-image:     -ms-linear-gradient(top, #f9d4e4, #fdf4f7);
+  background-image:      -o-linear-gradient(top, #f9d4e4, #fdf4f7);
+  
 }
 
 #main-block {
@@ -129,10 +140,10 @@ fieldset {
   border: 2px solid #ec008c;
   border-top: 0px solid #ec008c;
   margin-top: -2px;
-  border-radius: 0 0 20px 20px ;
+  border-radius: 0 0 20px 20px;
 }
 
-#your-cart a { color: white; background-color:#9927af;}
+#your-cart a { color: white; background-color: #92278F;}
 
 #your-cart-2 {
   background-color: #f9d4ef; 
@@ -140,6 +151,24 @@ fieldset {
   padding: 10px;
   margin-top: 10px;
   border-radius: 15px;
+}
+
+.checkout-button-big {
+  background-color: #ec008c;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ec008c), to(#92278F));
+  background-image: -webkit-linear-gradient(top, #ec008c, #92278F); 
+  background-image:    -moz-linear-gradient(top, #ec008c, #92278F);
+  background-image:     -ms-linear-gradient(top, #ec008c, #92278F);
+  background-image:      -o-linear-gradient(top, #ec008c, #92278F);
+  
+  display: inline-block;
+  border: 1px solid #92278F;
+  font-size: 125%;
+  border-radius: 15px; 
+  margin-top:5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: white;
 }
 
 #flash-notice {

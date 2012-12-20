@@ -1661,6 +1661,45 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
   PayPalStatus.create({name: "Pending", description: "The transaction has been marked as pending by PayPal.", pending_authorisation: true, paid_sale: false, charged_back: false})
 
 
+  FinishedProductIngredient.destroy_all
+  fp  = FinishedProduct.find_by_product_name("Aston Martin DB5 Car Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Aston Martin DB5 (Bond car) 10\" length").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - vanilla",
+        quantity: 1,
+        user_description: "Include weapons on car"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Vanilla buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Light gray",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Silver"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D edible character / figure - 4\" tall").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Daniel Craig Bond"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "007 Backdrop"
+        })
+
+
   ProductionQuotum.auto_generate
 
 

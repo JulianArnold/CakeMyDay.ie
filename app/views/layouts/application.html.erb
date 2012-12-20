@@ -58,15 +58,19 @@
         </div>
       
         <div id="your-cart">
-          <% if current_cart %>
-            You have <%= pluralize(current_cart.cakes.count, "cake") %> in your cart.
-            <%= link_to "Empty Your Cart", current_cart, :method => :delete, :confirm => "Are you absolutely certain that you want to\rempty your shopping cart and all of the\rcakes you have created in it?" %>
-          <% else %>
-            Your cart is empty.
-          <% end %>
-          <%= link_to("Hide", "#", :onclick => "toggle_thing('your-cart');")%>
-          <div id="your-cart-2">
+          <div style="width:390px;display:inline-block;">
             <% if current_cart %>
+              You have <%= pluralize(current_cart.cakes.count, "cake") %> in your cart.
+              <%= link_to "Empty Your Cart", delete_cart_url, :confirm => "Are you absolutely certain that you want to\rempty your shopping cart and all of the\rcakes you have created in it?" %>
+            <% else %>
+              Your cart is empty.
+            <% end %>
+          </div>
+          <div style="width:50px;display:inline-block;text-align:right;">
+            <%= link_to("Close", "#", :onclick => "toggle_thing('your-cart');")%>
+          </div>
+          <% if current_cart %>
+            <div id="your-cart-2">
               <table>
                 <% current_cart.cakes.each do |cake| %>
                   <tr>
@@ -78,16 +82,14 @@
                   </tr>
                 <% end %>
                 <tr style="font-weight:700;">
-                  <td colspan=2>Total Cost (free delivery!)</td>
+                  <td colspan=2>Total Cost (FREE delivery*)</td>
                   <td style="text-align:right;"><%= sanitize(number_to_currency(15, :unit => @general_setting.ccy, :precision => 2)) %></td>
                 </tr>
               </table>
-              
-            <% else %>
-              Cart doesn't exist or can't be found
-            <% end %>
-            <h2 style="text-align:center;">Checkout Now</h2>
-          </div>
+              <div style="text-align:center;">
+              <%= link_to "Checkout Now", root_url, :class => "checkout-button-big" %></div>
+            </div>
+          <% end %>
         </div>
       </div>
 
