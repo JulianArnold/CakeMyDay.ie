@@ -47,8 +47,11 @@
           <% product_description = sanitize(product.name + " (" + number_to_currency(product.current_price.price, :unit => "&euro;", :precision => 2) + ")") %>
           <% if category.one_choice_only == true %>
           <!--<<<< Radio Buttons >>>>-->
-          
+            <% if category.products.count == 1 %>
+            <%= radio_button_tag ("product[:" + product_counter.to_s + "]"), product.id, true %>
+            <% else %>
             <%= radio_button_tag ("product[:" + product_counter.to_s + "]"), product.id %>
+            <% end %>
             <%= label_tag ("product[:" + product_counter.to_s + "]_" + product.id.to_s), product_description %>
 
             <!--<<<< Extra fields >>>>-->

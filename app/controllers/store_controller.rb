@@ -65,8 +65,6 @@ class StoreController < ApplicationController
     @product_categories = ProductCategory.all(order: "running_order")
   end
 
-  # Parameters: {"product"=>{"0"=>{":id"=>"5008", ":choice"=>"Chocolate biscuit cake", ":description"=>""}, "1"=>{":id"=>"5083", ":choice"=>"Vanilla buttercream"}, "2"=>{":id"=>"5084", ":description"=>"Covering nice!"}, "3"=>{":id"=>"5085", ":description"=>"", ":quantity"=>"1", ":choice"=>"Rose"}, "4"=>{":id"=>"5091"}, "5"=>{":quantity"=>"1", ":description"=>"sdf", ":id"=>"5092"}, "6"=>{":quantity"=>"2", ":description"=>"asdf", ":id"=>"5093"}, "7"=>{":description"=>"asdf", ":id"=>"5094"}, "8"=>{":description"=>"asdf", ":id"=>"5095"}, "9"=>{":quantity"=>"3", ":description"=>"asdf", ":id"=>"5096"}, "10"=>{":quantity"=>"4", ":description"=>"asdf", ":id"=>"5097"}, "11"=>{":description"=>"asdf", ":id"=>"5098"}, "12"=>{":quantity"=>"5", ":description"=>"asdf", ":id"=>"5099"}, "13"=>{":description"=>"asdf"}}, "category_288"=>"White", "commit"=>"Add to Cart", "method"=>:post}
-
   def add_this_to_the_cart
     cart = current_cart # By the time Ruby gets here, we have a cart.
 
@@ -114,34 +112,23 @@ class StoreController < ApplicationController
           shopping_cart_item.product_id       = product.id
           shopping_cart_item.unit_price       = product.current_price.price.to_f
           shopping_cart_item.product_price_id = product.current_price.id
-          shopping_cart_item.quantity         = 1
+          shopping_cart_item.quantity         = 1 # set up a default value
           # Next, let's see if there are any extra options for this product in the params.
           if params[:product][product_looper.to_s][product.id.to_s]
             
-            #puts "      == == Prod options  : " + params[:product][product_looper.to_s][product_number.to_s].inspect + " :"
             if params[:product][product_looper.to_s][product.id.to_s]["description"]
               shopping_cart_item.user_description = params[:product][product_looper.to_s][product.id.to_s]["description"]
-              #puts "         == Description   : " + params[:product][product_looper.to_s][product_number.to_s]["description"] + " :"
             end
             if params[:product][product_looper.to_s][product.id.to_s]["quantity"]
               shopping_cart_item.quantity = params[:product][product_looper.to_s][product.id.to_s]["quantity"].to_i
-              #puts "         == Quantity      : " + params[:product][product_looper.to_s][product.id.to_s]["quantity"] + " :"
             end
             if params[:product][product_looper.to_s][product.id.to_s]["choice"]
               shopping_cart_item.product_options_list_choice = params[:product][product_looper.to_s][product.id.to_s]["choice"]
-              #puts "         == Choice       : " + params[:product][product_looper.to_s][product.id.to_s]["choice"] + " :"
             end
           end
         end
         
-        #puts "== == == == Chosen product: " + the_param.to_s + " :"
-        # Next, we'll look for the product number
-        #product_number = the_param.gsub(":","").to_i
-        #puts "   == == == Product ID    : " + product_number.to_s + " :"
-        shopping_cart_item.line_total       = shopping_cart_item.unit_price.to_f * shopping_cart_item.quantity
-        #t.string   "product_options_list_choice"
-#t.string   "global_options_list_choice"
-        #t.string   "user_description"
+        shopping_cart_item.line_total = shopping_cart_item.unit_price.to_f * shopping_cart_item.quantity
         shopping_cart_item.save
         
       end # of "if params[:product] and params[:product][(product_looper.to_s).to_sym]"
@@ -149,24 +136,41 @@ class StoreController < ApplicationController
     end
     
     
-    # Before we finish, test that everything went ok, and if it is, then go ahead and save everything.
-    # ================================================================================================
+    # Before we finish, test that everything went ok, and if it did, then go ahead and save everything.
+    # =================================================================================================
     # if cake_okay and ...
     # @cake.save
     # 
     
     
-    # Finally, redirect the user to some page
-    # =======================================
+    # Finally, redirect the user to the "show_cake" page
+    # ==================================================
     #
-    redirect_to root_url, :notice => "You have successfully added a cake to your shopping cart.<br/>Thank you!"
-    
-    # TEMPORARY: conclusion
+    # From there, they can continue shopping (home page) or checkout_now.
+    #
+    render "show_cake", :notice => "You have successfully added a cake to your shopping cart.<br/>Thank you!"
     
   end
 
   def view_cart
     @cart = current_cart
+  end
+
+  def delete_cart
+    @cart = current_cart
+    if @cart and @cart.shopping_cart_status.active_cart == true
+      if @cart.cakes.count > 0
+        @cart.cakes.each do |cake|
+          cake.shopping_cart_items.destroy_all
+        end
+      end
+      @cart.cakes.destroy_all
+      @cart.destroy
+      flash[:notice] = "Your cart has been deleted."
+    else
+      flash[:notice] = "Sorry, I couldn't delete that cart as it has been processed."
+    end
+    redirect_to root_url
   end
 
   private

@@ -4,6 +4,7 @@ CakeMyDaySite::Application.routes.draw do
   match "store"                       => "store#index",                 :as => :store
   match "store/design_my_cake"        => "store#design_my_cake",        :as => :design_my_cake
   match "store/add_this_to_the_cart"  => "store#add_this_to_the_cart",  :as => :add_this_to_the_cart, :method => :post
+  match "store/delete_cart"           => "store#delete_cart",           :as => :delete_cart
   match "store/:product_name"         => "store#show",                  :as => :store_product
   match 'search'                      => 'store#search',                :as => :search, :method => :post
   

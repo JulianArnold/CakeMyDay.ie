@@ -1,0 +1,40 @@
+<h1>Your Cake</h1>
+<p>You have just added a cake creation to your shopping cart.  Here are the details:</p>
+
+<table>
+  <% if @cake.based_on_finished_product_id.to_i > 0 %>
+    <tr><td class="form-label">Based on template:</td><td><%= @cake.finished_product.product_name %></td></tr>
+  <% end %>
+  <tr><td>Cake needed for:</td><td><%= @cake.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td></tr>
+  <tr><td>The special occasion:</td><td><%= @cake.special_occasion %></td></tr>
+  <tr><td>What we should write on the cake:</td><td><%= @cake.name_to_appear_on_cake %></td></tr>
+  <tr><td>Your general description:</td><td><%= @cake.general_description_from_customer %></td></tr>
+</table><br/>
+
+<table>
+  <tr>
+    <th style="width: 40px;">Qty</th>
+    <th style="width:250px;">Description</th>
+    <th style="width:150px;">Options</th>
+    <th style="width:150px;">Your description</th>
+    <th style="width:100px;text-align:right;">Price Each</th>
+    <th style="width:100px;text-align:right;">Total</th>
+  </tr>
+  <% @cake.shopping_cart_items.each do |item| %>
+    <tr class="graduated-background">
+      <td><%= item.quantity %></td>
+      <td><%= item.product.name %></td>
+      <td><%= item.product_options_list_choice %><br/>
+          <%= item.global_options_list_choice %></td>
+      <td><%= item.user_description %></td>
+      <td style="text-align:right;"><%= sanitize(number_to_currency(item.unit_price, :unit => @general_setting.ccy, :precision => 2)) %></td>
+      <td style="text-align:right;"><%= sanitize(number_to_currency(item.line_total, :unit => @general_setting.ccy, :precision => 2)) %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td colspan="5">Grand Total (FREE delivery*):</td>
+    <td style="text-align:right;border-top:1px solid black;border-bottom:3px double black;"><%= sanitize(number_to_currency(15, :unit => @general_setting.ccy, :precision => 2)) %></td>
+  </tr>
+</table>
+
+<p>You can <%= link_to "continue shopping" %>, or you can go directly to <%= link_to "Checkout Now", root_url, :class => "checkout-button-big" %></p>
