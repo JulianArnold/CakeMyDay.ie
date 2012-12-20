@@ -1698,6 +1698,42 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         quantity: 1,
         user_description: "007 Backdrop"
         })
+  fp  = FinishedProduct.find_by_product_name("Shoe and a Box Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Square 4\" high, 12\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - chocolate",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Chocolate buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Dark pink",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Purple"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D flowers - 2\" (each) - please choose a type").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Purple & white"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D object - to your requirements").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Shoe"
+        })
 
 
   ProductionQuotum.auto_generate
