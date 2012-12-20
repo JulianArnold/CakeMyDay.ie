@@ -478,7 +478,6 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
     })
 
 
-
   Image.destroy_all
   # add new images below
   Image.create({file_name: "320x240_aston_martin_db5_car_birthday_cake.jpg", 

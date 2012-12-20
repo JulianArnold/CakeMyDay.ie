@@ -7,7 +7,9 @@
       <p><%= link_to("View details...", store_product_url(product_name: fp.product_name.gsub(" ","_").gsub(".","%2E")) ) %>
       <% if fp.available_for_purchase %>
         <span class="fp-price">Typical price: <%= sanitize number_to_currency(fp.typical_price, :unit => @general_setting.ccy, :precision => 2) %></span>
-        <%= render "add_to_cart", :locals => {:fp => fp} %>
+        <% if fp.can_be_bought %>
+          <%= render "add_to_cart", :locals => {:fp => fp} %>
+        <% end %>
       <% end %>
       </p>
     </td></tr>
