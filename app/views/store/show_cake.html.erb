@@ -1,15 +1,27 @@
 <h1>Your Cake</h1>
-<p>You have just added a cake creation to your shopping cart.  Here are the details:</p>
 
-<table>
-  <% if @cake.based_on_finished_product_id.to_i > 0 %>
-    <tr><td class="form-label">Based on template:</td><td><%= @cake.finished_product.product_name %></td></tr>
-  <% end %>
-  <tr><td>Cake needed for:</td><td><%= @cake.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td></tr>
-  <tr><td>The special occasion:</td><td><%= @cake.special_occasion %></td></tr>
-  <tr><td>What we should write on the cake:</td><td><%= @cake.name_to_appear_on_cake %></td></tr>
-  <tr><td>Your general description:</td><td><%= @cake.general_description_from_customer %></td></tr>
-</table><br/>
+<% if params[:action] == 'show_cake' %>
+<p>Here are the details of your cake creation.</p>
+<% else %>
+<p>You have just added a cake creation to your shopping cart.  Here are the details:</p>
+<% end %>
+
+<%= form_for @cake, url: update_cake_details_url(@cake.id) do |f| %>
+  <%= hidden_field_tag :id, @cake.id %>
+  <table>
+    <% if @cake.based_on_finished_product_id.to_i > 0 %>
+      <tr><td class="form-label">Based on template:</td><td><%= @cake.finished_product.product_name %></td></tr>
+    <% end %>
+    <tr><td>Cake needed for:</td>
+      <td><%= f.datetime_select :cake_required_at %></td>
+    </tr>
+    <tr><td>The special occasion:</td><td><%= f.text_field :special_occasion %></td></tr>
+    <tr><td>What we should write on the cake:</td><td><%= f.text_field :name_to_appear_on_cake %></td></tr>
+    <tr><td>Your general description:</td><td><%= f.text_area :general_description_from_customer, :size => "80x6" %></td></tr>
+  </table>
+  <%= f.submit "Update details" %>
+<% end %>
+<br/>
 
 <table>
   <tr>
@@ -37,4 +49,8 @@
   </tr>
 </table>
 
-<p>You can <%= link_to "continue shopping" %>, or you can go directly to <%= link_to "Checkout Now", root_url, :class => "checkout-button-big" %></p>
+<p>You can <%= link_to "continue shopping", root_url %>, or you can go directly to <%= link_to "Checkout Now", root_url, :class => "checkout-button-big" %></p>
+
+<script type="text/javascript" charset="utf-8">
+  toggle_thing('your-cart');
+</script>

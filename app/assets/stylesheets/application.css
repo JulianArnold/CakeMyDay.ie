@@ -153,6 +153,12 @@ fieldset {
   border-radius: 15px;
 }
 
+#your-cart-2 td > a {
+  background-color: #f9d4ef; 
+  color:#9927af;
+}
+
+
 .checkout-button-big {
   background-color: #ec008c;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ec008c), to(#92278F));

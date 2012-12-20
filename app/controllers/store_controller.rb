@@ -61,7 +61,10 @@ class StoreController < ApplicationController
     # builds an empty @cake
     @cake = @current_cart.cakes.new
     @cake.cake_required_at = Time.now.gmtime.to_date + 2.weeks + 20.hours
-    @cake.based_on_finished_product_id = FinishedProduct.first.id
+    if params[:fp] and params[:fp].to_i > 0
+      fp = FinishedProduct.find(params[:fp].to_i)
+      @cake.based_on_finished_product_id = fp.id if fp
+    end
     @product_categories = ProductCategory.all(order: "running_order")
   end
 
@@ -154,6 +157,23 @@ class StoreController < ApplicationController
 
   def view_cart
     @cart = current_cart
+  end
+
+  def show_cake
+    @cake = current_cart.cakes.find(params[:id])
+    render 'show_cake'
+  end
+
+  def update_cake_details
+    params[:cake].delete(:user_id) if params[:cake][:user_id]
+      
+    @cake = current_cart.cakes.find(params[:id])
+    if @cake and @cake.update_attributes(params[:cake])
+      flash[:notice] = "Your cake's details have been updated."
+    else
+      flash[:notice] = "Sorry, something went wrong and your changes weren't saved."
+    end
+    render 'show_cake'
   end
 
   def delete_cart

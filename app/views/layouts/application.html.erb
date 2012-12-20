@@ -74,8 +74,8 @@
               <table>
                 <% current_cart.cakes.each do |cake| %>
                   <tr>
-                    <td style="width: 250px;"><%= cake.special_occasion %></td>
-                    <td style="width:  50px;">Edit</td>
+                    <td style="width: 250px;"><%= link_to(cake.special_occasion, show_cake_url(:id => cake.id), :title => "click to view the details of this cake") %></td>
+                    <td style="width:  50px;"><%= link_to("Edit") %></td>
                     <td style="width: 80px;text-align:right;">
                       <%= sanitize(number_to_currency(cake.shopping_cart_items.sum(:line_total), :unit => @general_setting.ccy, :precision => 2)) %>
                     </td>

@@ -26,4 +26,12 @@ class FinishedProduct < ActiveRecord::Base
 		find(:all, :conditions => ['product_name LIKE ? or description LIKE ?', "%" + search_query + "%", "%" + search_query + "%"])
 	end
 	
+	def can_be_bought
+	  if available_for_purchase == true and finished_product_ingredients.count > 0
+	    return true
+    else
+      return false
+    end
+  end
+	
 end

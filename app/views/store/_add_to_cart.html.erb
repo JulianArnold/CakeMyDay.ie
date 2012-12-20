@@ -1,4 +1,3 @@
-<!-- expect the fp local variable here. -->
 <span class="add-to-cart">
-  <br/><%= button_to "Add to Cart" %>
+  <br/><%= button_to "Add to Cart", design_my_cake_url(:fp => @fp.id), :title => "click to buy a cake like this - you can customise it on the next page" %>
 </span>
