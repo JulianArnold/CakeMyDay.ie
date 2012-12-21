@@ -1740,14 +1740,14 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: ""
+        user_description: "Designer clutch handbag"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: ""
+        user_description: "No filling as it's chocolate biscuit cake"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Covering - please choose a colour").id,
