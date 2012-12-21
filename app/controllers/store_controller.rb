@@ -174,13 +174,23 @@ class StoreController < ApplicationController
     @cart = current_cart
   end
   
-  def show_cart # show one cart, live or not
-    @cart = 1 ##################################
+  def show_cart # show a user a specific cart, live or not, reqested by params[:cart_id]
+    if current_user and current_user.customer
+      @shopping_cart = current_user.customer.shopping_carts.find(params[:id].to_i)
+    else
+      @shopping_cart = current_cart
+    end
   end
 
   def show_cake
-    @cake = current_cart.cakes.find(params[:id])
+    if current_user and current_user.customer
+      @cake = Cake.find(:first, :include => "shopping_cart", :conditions => ["cakes.id = ? and shopping_carts.customer_id = ?", params[:id].to_i, current_user.customer.id])
+    else
+      @cake = current_cart.cakes.find(params[:id])
+    end
     render 'show_cake'
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_url, :notice => "Sorry, couldn't find that."
   end
 
   def update_cake_details # just the header details

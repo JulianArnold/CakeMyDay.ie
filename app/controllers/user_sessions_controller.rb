@@ -40,4 +40,5 @@ class UserSessionsController < ApplicationController
     flash[:notice] = "You are now logged out!"
     redirect_to root_url
   end
+  
 end

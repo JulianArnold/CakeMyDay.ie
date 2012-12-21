@@ -121,6 +121,7 @@ class ApplicationController < ActionController::Base
       destination = default
       session[:return_to] = nil
     end
+    x = current_cart # This line just triggers any current_cart to be tagged with the new user's ID.
     redirect_to(destination)
   end
 
