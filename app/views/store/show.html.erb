@@ -11,7 +11,7 @@
   <div class="fp-description"><%= sanitize @finished_product.description.gsub("\r","<br/>") %></div>
   <% if @finished_product.available_for_purchase %>
     <div class="fp-price"><br/>Typical price: <%= sanitize number_to_currency(@finished_product.typical_price, :unit => @general_setting.ccy, :precision => 2) %></div>
-    <% if  @finished_product.can_be_bought %>
+    <% if  @finished_product.can_be_bought %><% @fp = @finished_product %>
       <%= render "add_to_cart", :locals => {:fp => @finished_product} %>
     <% end %>
   <% end %>

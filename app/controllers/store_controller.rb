@@ -89,7 +89,13 @@ class StoreController < ApplicationController
     # cake => {"based_on_finished_product_id"=>"371", "cake_required_at(3i)"=>"1", "cake_required_at(2i)"=>"1", "cake_required_at(1i)"=>"2013",
     #          "cake_required_at(4i)"=>"20", "cake_required_at(5i)"=>"00", "special_occasion"=>"Birthday", 
     #          "name_to_appear_on_cake"=>"Happy birthday Billy", "general_description_from_customer"=>"A cake in the shape of the space shuttle"},
-    @cake = cart.cakes.new(params[:cake])
+    if @cake and @cake.id.to_i > 0
+      # We're here because we were rerouted from the 'edit' processor, 
+      # a method called 'update_cake_design'
+      @cake.assign_attributes(params[:cake])
+    else
+      @cake = cart.cakes.new(params[:cake])
+    end
     # @cake.shopping_cart_id     - gets set by the cart.cakes.new line.
     # @cake.production_quotum_id - will be set by a before_validation callback
     # @cake.weekday              - will be set by a before_validation callback
@@ -148,13 +154,18 @@ class StoreController < ApplicationController
       product_looper += 1
     end
     
-    
-    # Before we finish, test that everything went ok, and if it did, then go ahead and save everything.
-    # =================================================================================================
-    # if cake_okay and ...
-    # @cake.save
-    # 
-    
+    # Next task is to find any globally-assigned dropdown list values
+    # ===============================================================
+    #
+    # All (ingredient) products are attached to a category.  Some categories have a global variable that
+    # should be tagged onto whichever ingredient product is selected for a cake.
+    categories = ProductCategory.all
+    categories.each do |category|
+      if params[("category_" + category.id.to_s).to_sym]
+        puts "=== === === === Category #{category.id} = #{params[('category_'+category.id.to_s).to_sym].to_s} == =="
+        
+      end
+    end
     
     # Finally, redirect the user to the "show_cake" page
     # ==================================================
@@ -170,22 +181,30 @@ class StoreController < ApplicationController
     end
   end
 
-  def view_cart
-    @cart = current_cart
-  end
+  #def view_cart
+  #  @cart = current_cart
+  #end
   
-  def show_cart # show one cart, live or not
-    @cart = 1 ##################################
+  def show_cart # show a user a specific cart, live or not, reqested by params[:cart_id]
+    if current_user and current_user.customer
+      @shopping_cart = current_user.customer.shopping_carts.find(params[:id].to_i)
+    else
+      @shopping_cart = current_cart
+    end
   end
 
   def show_cake
-    @cake = current_cart.cakes.find(params[:id])
+    if current_user and current_user.customer
+      @cake = Cake.find(:first, :include => "shopping_cart", :conditions => ["cakes.id = ? and shopping_carts.customer_id = ?", params[:id].to_i, current_user.customer.id])
+    else
+      @cake = current_cart.cakes.find(params[:id])
+    end
     render 'show_cake'
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_url, :notice => "Sorry, couldn't find that."
   end
 
   def update_cake_details # just the header details
-    params[:cake].delete(:user_id) if params[:cake][:user_id]
-      
     @cake = current_cart.cakes.find(params[:id])
     if @cake and @cake.update_attributes(params[:cake])
       flash[:notice] = "Your cake's details have been updated."
@@ -196,7 +215,16 @@ class StoreController < ApplicationController
   end
 
   def update_cake_design # change the makeup of a cake design
-    #
+    # Verify that @cake would be valid if updated:
+    @cake = current_cart.cakes.find(params[:cake][:id])
+    # found the next method on Stack Overflow: http://stackoverflow.com/questions/6770350/rails-update-attributes-without-save
+    @cake.assign_attributes(params[:cake]) if @cake
+    if @cake and @cake.valid?
+      @cake.shopping_cart_items.destroy_all
+      add_this_to_the_cart
+    else
+      render :nothing => true
+    end
   end
 
   def delete_cart

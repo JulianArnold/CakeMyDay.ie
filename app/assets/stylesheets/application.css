@@ -7,7 +7,11 @@
 
 */
 
-/* Graduated fill effect code sourced from:
+/* 
+   Copyright © 2012, Julian Arnold and Daniel Laffan.  All rights reserved.
+   Rights to third-party IP acknowledged.
+   
+   Graduated fill effect code sourced from:
    http://css-tricks.com/css3-gradients/
    on 17 December 2012.
 */
@@ -183,6 +187,7 @@ input[type="submit"] {
   text-decoration: none;
   color: white;
   cursor: pointer;
+  box-shadow: 2px 2px 5px #f9d4e4;
 }
 
 #flash-notice {
