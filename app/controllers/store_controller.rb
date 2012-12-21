@@ -13,7 +13,7 @@ class StoreController < ApplicationController
 
   before_filter :get_variables, :except => 'search'
 
-  def index
+  def index # see all finished products
     
     if @special_occasions
       @special_occasion = SpecialOccasion.first(conditions: ["name = ? and visible_to_customers = ?", params[:show], true])
@@ -27,7 +27,7 @@ class StoreController < ApplicationController
     end
   end
 
-  def show
+  def show # see details on one finished product
     @finished_product = FinishedProduct.find_by_product_name(params[:product_name].gsub("_"," "))
     if @finished_product
       # go to the usual show.html.erb
@@ -37,7 +37,7 @@ class StoreController < ApplicationController
     end
   end
 
-  def search
+  def search # search finished products and (component) products
     @finished_products = FinishedProduct.search(params[:search_query])
     @products = Product.search(params[:search_query])
     render :search_results
@@ -172,6 +172,10 @@ class StoreController < ApplicationController
 
   def view_cart
     @cart = current_cart
+  end
+  
+  def show_cart # show one cart, live or not
+    @cart = 1 ##################################
   end
 
   def show_cake

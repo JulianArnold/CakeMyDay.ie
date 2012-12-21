@@ -58,6 +58,13 @@ fieldset {
   background-image:      -o-linear-gradient(top, #f9d4e4, #fdf4f7);
 }
 
+input[type="submit"] {
+   cursor: pointer;
+   /* 
+   Selector sourced from: http://stackoverflow.com/questions/195632/how-to-change-an-input-button-image-using-css
+   */
+}
+
 .graduated-background {
   background-color: #f9d4e4;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9d4e4), to(#fdf4f7));
@@ -175,6 +182,7 @@ fieldset {
   padding: 5px 10px;
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 
 #flash-notice {

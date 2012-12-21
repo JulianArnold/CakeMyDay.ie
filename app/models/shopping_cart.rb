@@ -26,4 +26,12 @@ class ShoppingCart < ActiveRecord::Base
   validates_numericality_of :customer_id, :allow_nil => true
   validates_numericality_of :pay_pal_status_id
   
+  def total_value
+    total = 0.0
+    cakes.each do |c|
+      total += c.shopping_cart_items.sum(:line_total)
+    end
+    return total
+  end
+  
 end

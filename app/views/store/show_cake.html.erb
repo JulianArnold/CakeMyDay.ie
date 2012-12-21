@@ -45,7 +45,7 @@
   <% end %>
   <tr>
     <td colspan="5">Grand Total (FREE delivery*):</td>
-    <td style="text-align:right;border-top:1px solid black;border-bottom:3px double black;"><%= sanitize(number_to_currency(15, :unit => @general_setting.ccy, :precision => 2)) %></td>
+    <td style="text-align:right;border-top:1px solid black;border-bottom:3px double black;"><%= sanitize(number_to_currency(@cake.total_value, :unit => @general_setting.ccy, :precision => 2)) %></td>
   </tr>
 </table>
 

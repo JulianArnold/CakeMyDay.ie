@@ -1,6 +1,6 @@
 <h1>Your Profile</h1>
 <table>
-  <tr><td>Email:</td><td><%= @user.login %></td></tr>
+  <tr><td class="form-label">Email:</td><td><%= @user.login %></td></tr>
   <tr><td>Name:</td><td><%= @user.full_name %></td></tr>
   <% if current_user.admin? %>
   <tr><td>Login count:</td><td><%= @user.login_count %></td></tr>
@@ -14,14 +14,43 @@
   <tr><td>User group:</td><td><%= @user.user_group.name %></td></tr>
   <% end %>
 </table><br/>
+
+<% if @user.customer %>
+  <h2>Customer Details</h2>
+  <table>
+    <tr><td class="form-label">Postal address:</td><td><%= @user.customer.postal_address %></td></tr>
+    <tr><td>Contact phone:</td><td><%= @user.customer.contact_phone_number %></td></tr>
+  </table><br/>
+<% end %>
+
+<% if @user.customer and @user.customer.shopping_carts.count > 0 %>
+  <h2>Your transaction history</h2>
+  <table>
+    <tr>
+      <th style="width:  90px;">Created</th>
+      <th style="width:  80px;">Status</th>
+      <th style="width:  80px;">No. of cakes</th>
+      <th style="width:  80px;text-align:right;">Total</th>
+      <th style="width: 150px;">Cakes</th>
+    </tr>
+    <% @user.customer.shopping_carts.each do |cart| %>
+      <tr class="graduated-background">
+        <td><%= cart.created_at.strftime("%d-%b-%Y") %></td>
+        <td><%= cart.shopping_cart_status.name %></td>
+        <td><%= cart.cakes.count %></td>
+        <td style="text-align:right;"><%= sanitize(number_to_currency(cart.total_value, :unit => @general_setting.ccy, :precision => 2)) %></td>
+        <td><% cart.cakes.each do |cake|%>
+          <%= cake.special_occasion %><br/><% end %>
+        </td>
+        <td><%= link_to "view", show_cart_url(:id => cart.id), :title => "click to view details of this cart" %></td>
+      </tr>
+    <% end %>
+  </table><br/>
+<% end %>
+
 <% if admin_user %>
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Back', users_path %>
 <% else %>
-<%= link_to "Back", root_url %>
+  <%= link_to "Back", root_url %>
 <% end %>
  | <%= link_to "Change your password", change_password_url %> | <%= link_to 'Edit', edit_user_path(@user) %>
-
-<% if @user.shopping_carts.count > 0 %>
-  <h2>Your transaction history</h2>
-
-<% end %>

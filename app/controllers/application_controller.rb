@@ -146,6 +146,11 @@ class ApplicationController < ActionController::Base
     if cart
       # store the cart's ID in the session
       session[:shopping_cart_id] = cart.id
+      # tag the cart with the user ID if someone's logged in.
+      if current_user and current_user.customer and cart.customer_id.to_i == 0
+        cart.customer_id = current_user.customer.id
+        cart.save
+      end
       # and then return the cart
       return cart
     else

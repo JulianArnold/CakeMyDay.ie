@@ -76,7 +76,7 @@
                   <tr>
                     <td style="width: 250px;"><%= link_to(cake.special_occasion, show_cake_url(:id => cake.id), :title => "click to view the details of this cake") %></td>
                     <td style="width:  50px;"><%= link_to("Edit", edit_my_cake_url(:cake_id => cake.id), :title => "Click to edit the design of your cake") %></td>
-                    <td style="width: 80px;text-align:right;">
+                    <td style="width:  80px;text-align:right;">
                       <%= sanitize(number_to_currency(cake.shopping_cart_items.sum(:line_total), :unit => @general_setting.ccy, :precision => 2)) %>
                     </td>
                     <td style="width: 10px;"><%= link_to(image_tag("x2.png"), delete_cake_url(:cake_id => cake.id), :confirm => "Are you certain you wish to delete that cake?", :title => "Click to delete this cake from your cart")%></td>
@@ -85,7 +85,7 @@
                 <% end %>
                 <tr style="font-weight:700;">
                   <td colspan=2>Total Cost (FREE delivery*)</td>
-                  <td style="text-align:right;"><%= sanitize(number_to_currency(15, :unit => @general_setting.ccy, :precision => 2)) %></td>
+                  <td style="text-align:right;"><%= sanitize(number_to_currency(current_cart.total_value.to_f, :unit => @general_setting.ccy, :precision => 2)) %></td>
                 </tr>
               </table>
               <div style="text-align:center;">
