@@ -15,7 +15,8 @@
 <% end %>
 
 <%= form_for(@cake, :url => destination) do |c| %>
-
+  <%= c.hidden_field :id %>
+  
   <fieldset>
     <% if @cake.based_on_finished_product_id.to_i > 0 %>
       <p><span class="form-label-wide">You have chosen to base your cake on:</span>
