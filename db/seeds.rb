@@ -1734,6 +1734,272 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         quantity: 1,
         user_description: "Shoe"
         })
+  fp  = FinishedProduct.find_by_product_name("Clutch Handbag Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Square 6\" high, 12\" diameter, chocolate biscuit cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Light pink",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Pink"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D object - to your requirements").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Clasp"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Label"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D object - to your requirements").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 11,
+        user_description: "Champagne Bottle Candles"
+        })
+  fp  = FinishedProduct.find_by_product_name("Dr. Who Tardis Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Square 6\" high, 12\" diameter, chocolate biscuit cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Tardis Police Box"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Light blue",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Tardis Blue"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 2,
+        user_description: "Emergency Number Signage"
+        })
+  fp  = FinishedProduct.find_by_product_name("New MINI Car Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Square 4\" high, 10\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - vanilla",
+        quantity: 1,
+        user_description: "New MINI Car"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Vanilla buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Dark blue",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Blue"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("2D computer-printed edible image (cake sides)").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 4,
+        user_description: "Alloy Spoked Wheels"
+        })
+  fp  = FinishedProduct.find_by_product_name("Lamborghini Car Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Square 4\" high, 10\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - vanilla",
+        quantity: 1,
+        user_description: "Include weapons on car"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Vanilla buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Red",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Red"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D edible character / figure - 4\" tall").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "The Stig in his classic pose"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 2,
+        user_description: "Lamboghini Badges"
+        })
+  fp  = FinishedProduct.find_by_product_name("Navy and White Birdcage Wedding Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 10\" diameter, chocolate biscuit cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "The base of the cake is chocolate biscuit cake"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "White chocolate and lime",
+        quantity: 3,
+        user_description: "Top and middle tiers of the cake"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Chocolate buttercream",
+        quantity: 2,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Dark blue",
+        product_options_list_choice: "",
+        quantity: 2,
+        user_description: "Dark blue"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Edible ribbon & bow - please choose a colour").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 3,
+        user_description: "A ribbon around each cake-base and one around the cake board"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D flowers - 2\" (each) - please choose a type").id,
+        global_options_list_choice: "Rose",
+        product_options_list_choice: "",
+        quantity: 3,
+        user_description: "Yellow roses"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D flowers - 2\" (each) - please choose a type").id,
+        global_options_list_choice: "Daisy",
+        product_options_list_choice: "",
+        quantity: 20,
+        user_description: "Hydrangias"
+        })
+  fp  = FinishedProduct.find_by_product_name("Drum Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "12\" Drum Cake"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Chocolate buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "White",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "White"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D object - to your requirements").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Drumsticks - 1 pair"
+        })
+  fp  = FinishedProduct.find_by_product_name("Peppa Pig Castle Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - chocolate",
+        quantity: 1,
+        user_description: "Chocolate fudge cake please!"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - chocolate",
+        quantity: 1,
+        user_description: "Chocolate fudge cake please!"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Chocolate buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "White",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "White"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D edible character / figure - 4\" tall").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 4,
+        user_description: "Peppa, George, Mummy Pig and Daddy Pig"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("2D flowers - please choose a colour").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 4,
+        user_description: "Edible 2D Flowers on the sides"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D object - to your requirements").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 4,
+        user_description: "4 towers made of ice-cream cones, cake filling and sugarpaste"
+        })
 
 
   ProductionQuotum.auto_generate
