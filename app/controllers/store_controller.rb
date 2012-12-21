@@ -43,7 +43,7 @@ class StoreController < ApplicationController
     render :search_results
   end
 
-  def design_my_cake # Gives users the HTML form to customise a new cake
+  def design_my_cake # Gives users the HTML form to customise a NEW CAKE
     # get or create the current shopping cart
     @current_cart = current_cart
     if !@current_cart # If there is no cart in existence already...
@@ -63,12 +63,22 @@ class StoreController < ApplicationController
     @cake.cake_required_at = Time.now.gmtime.to_date + 2.weeks + 20.hours
     if params[:fp] and params[:fp].to_i > 0
       fp = FinishedProduct.find(params[:fp].to_i)
-      @cake.based_on_finished_product_id = fp.id if fp
+      if fp
+        @cake.based_on_finished_product_id = fp.id
+      end
     end
-    @product_categories = ProductCategory.all(order: "running_order")
   end
 
-  def add_this_to_the_cart
+  def edit_my_cake # edit the shopping_cart_items for an existing cake
+    @cake = current_cart.cakes.find(params[:cake_id].to_i)
+    if @cake
+      render 'design_my_cake'
+    else
+      redirect_to root_url, :notice => "Sorry, you can't edit that cake"
+    end
+  end
+
+  def add_this_to_the_cart # create a cake
     cart = current_cart # By the time Ruby gets here, we have a cart.
 
     # First thing is to build the cake
@@ -151,8 +161,13 @@ class StoreController < ApplicationController
     #
     # From there, they can continue shopping (home page) or checkout_now.
     #
-    render "show_cake", :notice => "You have successfully added a cake to your shopping cart.<br/>Thank you!"
-    
+    if @cake.errors.messages.size > 0
+      # still some errors
+      render "design_my_cake", :notice => "Sorry, something went wrong. Some required fields were left out."
+    else
+      # everything's okay
+      render "show_cake", :notice => "You have successfully added a cake to your shopping cart.<br/>Thank you!"
+    end
   end
 
   def view_cart
@@ -164,7 +179,7 @@ class StoreController < ApplicationController
     render 'show_cake'
   end
 
-  def update_cake_details
+  def update_cake_details # just the header details
     params[:cake].delete(:user_id) if params[:cake][:user_id]
       
     @cake = current_cart.cakes.find(params[:id])
@@ -174,6 +189,10 @@ class StoreController < ApplicationController
       flash[:notice] = "Sorry, something went wrong and your changes weren't saved."
     end
     render 'show_cake'
+  end
+
+  def update_cake_design # change the makeup of a cake design
+    #
   end
 
   def delete_cart
@@ -193,10 +212,26 @@ class StoreController < ApplicationController
     redirect_to root_url
   end
 
+  def delete_cake
+    @cake = current_cart.cakes.find(params[:cake_id])
+    if @cake
+      @cake.destroy
+      if current_cart.cakes.count == 0
+        current_cart.destroy
+        flash[:notice] = "Your cart is now empty."
+      else
+        flash[:notice] = "That cake has been removed from your cart."
+      end
+    end
+    redirect_to root_url
+  end
+
   private
   
   def get_variables
     @special_occasions = SpecialOccasion.all(order: "running_order, name", conditions: ["visible_to_customers = ?", true])
+    @product_categories = ProductCategory.all(order: "running_order")
+    
   end
 
 end
