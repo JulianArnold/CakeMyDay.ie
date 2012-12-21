@@ -2000,6 +2000,208 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         quantity: 4,
         user_description: "4 towers made of ice-cream cones, cake filling and sugarpaste"
         })
+  fp  = FinishedProduct.find_by_product_name("Senan\'s Zoo Animals Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Square 4\" high, 10\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - lemon",
+        quantity: 1,
+        user_description: "Include animals on cake"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Lemon buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Dark green",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Jungle"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D edible character / figure - 4\" tall").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 5,
+        user_description: "Jungle animals"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("2D flowers - please choose a colour").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 5,
+        user_description: "Jungle leaves"
+        })
+  fp  = FinishedProduct.find_by_product_name("90th Birthday Cake - Tea and a Crossword Puzzle")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - vanilla",
+        quantity: 1,
+        user_description: "Include spectacles"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Vanilla buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Light blue",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Blue"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D person 4\" tall - detailed version").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Dad with a cup of tea"
+        })
+  fp  = FinishedProduct.find_by_product_name("Tatty Teddy Christening Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 6\" high, 8\" diameter, chocolate biscuit cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Include teddy on cake"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "White",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "White"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D animal 4\" tall").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "The 'tatty' Teddy"
+        })
+  fp  = FinishedProduct.find_by_product_name("Lucy\'s Christening Cake (Family Scene)")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - vanilla",
+        quantity: 1,
+        user_description: "Include family on cake"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - chocolate",
+        quantity: 1,
+        user_description: "Include family on 2nd tier too"
+        })        
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Vanilla buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "Light pink",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Pink base"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "White",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "White top tier"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D edible character / figure - 4\" tall").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 2,
+        user_description: "Mum & Dad"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("2D flowers - please choose a colour").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 2,
+        user_description: "Daisies on the cake"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D animal 4\" tall").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Family pet"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D animal 4\" tall").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Family pet"
+        })
+  fp  = FinishedProduct.find_by_product_name("Ray Foley - \"Take Me Out\" 30th Birthday Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, chocolate biscuit cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Include Ray as cupid"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "White",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Take me out colours included"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("3D person 4\" tall - detailed version").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "Ray Foley"
+        })
+  fp  = FinishedProduct.find_by_product_name("LimeTree Cafe Launch Cake")
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Sponge - lemon",
+        quantity: 1,
+        user_description: "Include logo on cake"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Filling").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "Lemon buttercream",
+        quantity: 1,
+        user_description: ""
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("Covering - please choose a colour").id,
+        global_options_list_choice: "White",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "White"
+        })
+      FinishedProductIngredient.create({finished_product_id: fp.id,
+        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id,
+        global_options_list_choice: "",
+        product_options_list_choice: "",
+        quantity: 1,
+        user_description: "LimeTree logo - hand painted"
+        })
 
 
   ProductionQuotum.auto_generate
