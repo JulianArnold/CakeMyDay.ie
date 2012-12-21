@@ -208,7 +208,7 @@ if Rails.env.development?
   Product.create(:name => 'Edible ribbon & bow - please choose a colour', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 8900, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => '2D flowers - please choose a colour', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9000, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => '3D flowers - 2" (each) - please choose a type', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => OptionsList.find_by_name("flower types").id, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9100, :special_occasion_id => nil, :created_by => User.first.id)
-  Product.create(:name => '2D computer-printed edible image (cake sides)', :description => 'A computer-printed edible image for the entire circumference of the cake.  You can supply the image.', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => false, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => '2D computer-printed edible image (cake sides)', :description => 'A computer-printed edible image for the entire circumference of the cake.  You can supply the image.', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9200, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => '3D edible character / figure - 4" tall', :description => 'Please use the text box to describe the character you require.', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9300, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => '3d inedible character / figure - 4" tall', :description => 'Please use the text box to describe your requirements.', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Side Decorations").id, :production_quota_value => 0, :running_order => 9400, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => '3D person 4" tall - simple version', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 9500, :special_occasion_id => nil, :created_by => User.first.id)
@@ -219,6 +219,7 @@ if Rails.env.development?
   Product.create(:name => '3D animal 6" tall', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10000, :special_occasion_id => nil, :created_by => User.first.id)
   Product.create(:name => 'Bride & Groom topper', :description => 'Highly representative depiction of the happy couple on their special day.  Typical height 6\".', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 1, :running_order => 10100, :special_occasion_id => SpecialOccasion.find_by_name("Weddings").id, :created_by => User.first.id)
   Product.create(:name => '3D object - to your requirements', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10200, :special_occasion_id => nil, :created_by => User.first.id)
+  Product.create(:name => 'Another 3D object - to your requirements', :description => 'pending', :allow_user_to_choose_quantity => true, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10250, :special_occasion_id => nil, :created_by => User.first.id)  
   Product.create(:name => '2D computer-printed image (cake top surface)', :description => 'pending', :allow_user_to_choose_quantity => false, :allow_user_to_enter_description => true, :options_list_id => nil, :product_category_id => ProductCategory.find_by_name("Over The Top").id, :production_quota_value => 0, :running_order => 10300, :special_occasion_id => nil, :created_by => User.first.id)
 
 
@@ -1647,6 +1648,15 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
    ProductPrice.create({
         start_at: "2012-12-01".to_date,
         finish_at: "2099-12-31".to_date,
+        product_id: Product.find_by_name("Another 3D object - to your requirements").id,
+        price: 25,
+        currency_id: GeneralSetting.first.default_currency_id,        
+        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+        updated_by: nil
+        })
+   ProductPrice.create({
+        start_at: "2012-12-01".to_date,
+        finish_at: "2099-12-31".to_date,
         product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id,
         price: 10,
         currency_id: GeneralSetting.first.default_currency_id,        
@@ -1740,7 +1750,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: "Designer clutch handbag"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Covering - please choose a colour").id,
@@ -1757,17 +1767,17 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         user_description: "Clasp"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id, ### ERROR - Duplicated below
+        product_id: Product.find_by_name("2D computer-printed edible image (cake sides)").id, ### ERROR - Duplicated below
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: "Label"
+        user_description: "Designer's Label"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("3D object - to your requirements").id,
+        product_id: Product.find_by_name("Another 3D object - to your requirements").id,
         global_options_list_choice: "",
         product_options_list_choice: "",
-        quantity: 11,
+        quantity: 1,
         user_description: "Champagne Bottle Candles"
         })
   fp  = FinishedProduct.find_by_product_name("Dr. Who Tardis Birthday Cake")
