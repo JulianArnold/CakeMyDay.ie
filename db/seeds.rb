@@ -1702,7 +1702,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Square 4\" high, 12\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - chocolate",
+        product_options_list_choice: "Chocolate",
         quantity: 1,
         user_description: ""
         })
@@ -1723,8 +1723,8 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("3D flowers - 2\" (each) - please choose a type").id,
         global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 1,
+        product_options_list_choice: "Carnation",
+        quantity: 2,
         user_description: "Purple & white"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
@@ -1745,7 +1745,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
         global_options_list_choice: "",
-        product_options_list_choice: "",
+        product_options_list_choice: "", ### ERROR - Choice missing
         quantity: 1,
         user_description: "No filling as it's chocolate biscuit cake"
         })
@@ -1764,7 +1764,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         user_description: "Clasp"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id,
+        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id, ### ERROR - Duplicated below
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
@@ -1783,12 +1783,12 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: "Tardis Police Box"
+        user_description: "Tardis Police Box" ### ERROR - User can't set this on-screen
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
         global_options_list_choice: "",
-        product_options_list_choice: "",
+        product_options_list_choice: "", ### ERROR - Choice missing
         quantity: 1,
         user_description: ""
         })
@@ -1800,7 +1800,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         user_description: "Tardis Blue"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id,
+        product_id: Product.find_by_name("2D computer-printed image (cake top surface)").id, ### ERROR try the sides one instead + need to change that Product so that user can enter a description
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 2,
