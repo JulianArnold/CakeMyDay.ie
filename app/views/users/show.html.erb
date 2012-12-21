@@ -20,3 +20,8 @@
 <%= link_to "Back", root_url %>
 <% end %>
  | <%= link_to "Change your password", change_password_url %> | <%= link_to 'Edit', edit_user_path(@user) %>
+
+<% if @user.shopping_carts.count > 0 %>
+  <h2>Your transaction history</h2>
+
+<% end %>
