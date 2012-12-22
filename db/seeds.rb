@@ -97,7 +97,7 @@ if Rails.env.development?
   OptionsList.create(:name => 'filling choices', :options => 'Vanilla buttercream, Orange buttercream, Lemon buttercream, Chocolate buttercream, Chocolate ganache, Italian meringue buttercream', :visible_label => 'Choose a flavour')
   OptionsList.create(:name => 'flower types', :options => 'Rose, Carnation, Daisy, Gerbera', :visible_label => 'Choose a type of flower')
   OptionsList.create(:name => 'shaped cake cores', :options => 'Chocolate biscuit cake, Sponge - vanilla, Sponge - lemon, Sponge - chocolate, Sponge - coffee, Sponge - white chocolate and lime, Sponge - red velvet', :visible_label => 'Choose the cake type')
-  OptionsList.create(:name => "outer colours", :options => "White, Light pink, Dark pink, Light blue, Dark blue, Red, Light Gren, Dark green, Light gray, Dark gray, Black", :visible_label => "Choose a colour")
+  OptionsList.create(:name => "outer colours", :options => "White, Light pink, Dark pink, Light blue, Dark blue, Red, Light green, Dark green, Light gray, Dark gray, Black", :visible_label => "Choose a colour")
   
 
   ProductCategory.destroy_all
