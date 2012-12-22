@@ -49,12 +49,26 @@ class ProductionQuotum < ActiveRecord::Base
   has_many  :sunday_bookings,
             :class_name => "Cake",
             :foreign_key => "production_quotum_id",
-            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
+            :include => ["shopping_cart",["shopping_cart","shopping_cart_statuses"]],
             :conditions => ["weekday = 0 and shopping_cart_statuses.paid_cart = ?", true]
 
   def bookings
-    return cakes = Cake.all(:include => ["shopping_cart", ["shopping_cart", "shopping_cart_status"]], :conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_status.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
+   # return cakes.find(:include => ["shopping_cart", ["shopping_cart", "shopping_cart_status"]], :conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_statuses.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
+    #return cakes = Cake.all(:include => ["shopping_cart", ["shopping_cart", "shopping_cart_status"]], :conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_statuses.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
   end
+  
+  def experimental_count
+    accumulator = 0.0
+    cakes.all.each do |cake|
+      if cake.shopping_cart.shopping_cart_status.paid_cart == true
+        cake.shopping_cart_items.each do |sci|
+          accumulator += sci.product.production_quota_value.to_f
+        end # of sci
+      end # of if
+    end # of cake
+    return accumulator
+  end
+  
   
   def self.auto_generate # creates new quotas automatically, 2 years ahead
     # auto-generates production quotas into the future

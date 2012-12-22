@@ -39,13 +39,14 @@
         <td><%= i.global_options_list_choice %></td>
         <td><%= i.user_description %></td>
         <td>
-          <%= link_to "edit", root_url %>
+          <%= link_to "edit", edit_finished_product_ingredient_url(:id => i.id) %>
           <%= link_to image_tag("x2.png"), finished_product_ingredient_destroy_url(:id => i.id), :confirm => "Are you certain you wish to delete this ingredient from this product?" %>
         </td>
       </tr>
     <% end %>
   </table>
 <% end %>
+<%= link_to "New ingredient", new_finished_product_ingredient_url(:id => @finished_product.id) %>
 
 <h2>Images</h2>
 <p>These are the images of finished products that are not yet assigned to a product. <br/><%= link_to("Click here", images_url) %> to create new images.</p>

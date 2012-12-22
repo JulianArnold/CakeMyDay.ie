@@ -2,7 +2,7 @@
   <% if current_user %>
     <%= link_to((h("Hi " + current_user.first_name)).titleize, user_url(:id => current_user.id), :title => "click to view your profile") %> | <%= link_to("Log out", logout_url, :title => "click to log out of your account") %>
   <% elsif params[:controller] != "user_sessions" %>
-    <%= form_for UserSession.new, :as => :user_session, :url => { :controller => "user_sessions", :action => "create" } do |f| %>
+    <%= form_for UserSession.new, :as => :user_session, :url => { :controller => "user_sessions", :action => "create"} do |f| %>
       <%= f.label :login, "Email" %> <%= f.text_field :login, :size => "20x1" %>
       <%= f.label :password %> <%= f.password_field :password, :size => "10x1" %>
       <%= f.submit "Sign in" %>

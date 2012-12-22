@@ -61,7 +61,7 @@
   </tr>
 </table>
 
-<p>You can <%= link_to "continue shopping", root_url %>, or you can go directly to <%= link_to "Checkout Now", root_url, :class => "checkout-button-big" %></p>
+<p>You can <%= link_to "continue shopping", root_url %>, or you can go directly to <%= link_to "Checkout Now", start_checkout_url, :class => "checkout-button-big" %></p>
 
 <p>If you want to, you can also <%= link_to "remove", delete_cake_url(:cake_id => @cake.id), :confirm => "Are you certain you wish to delete this cake from your shopping cart" %> this cake from your shopping cart.</p>
 

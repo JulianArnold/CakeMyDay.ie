@@ -68,11 +68,18 @@ class UsersController < ApplicationController
     # POST /users.json
     @user = User.new(params[:user])
     @user.user_group_id = UserGroup.find(:first, :conditions => ["name = ? and is_a_manager = ? and is_an_admin = ?", "Customers", false, false]).id
+    @user.active = true # might require email activation in the future
     
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        #format.json { render json: @user, status: :created, location: @user }
+        @user.customer.user_id = @user.id
+        @user.customer.save
+        if session[:checkout_started] and session[:checkout_started] == true
+          format.html { redirect_to start_checkout_url, notice: "Thanks for registering!"}
+        else
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
+          #format.json { render json: @user, status: :created, location: @user }
+        end
       else
         format.html { render action: "new" }
         #format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -121,10 +128,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def change_password
-    @user = current_user
-  end
-
   def destroy
     # DELETE /users/1
     # DELETE /users/1.json
@@ -135,6 +138,10 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       #format.json { head :no_content }
     end
+  end
+
+  def change_password
+    @user = current_user
   end
 
   private

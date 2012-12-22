@@ -1,0 +1,42 @@
+<table>
+  <tr><td>Created:</td><td><%= @shopping_cart.created_at.strftime("%d %B %Y") %></td></tr>
+  <tr><td>Cart status:</td><td><%= @shopping_cart.shopping_cart_status.name %></td></tr>
+  <tr><td>PayPal status:</td><td>
+    <% if @shopping_cart.pay_pal_status_id.to_i > 0%>
+    <%= @shopping_cart.pay_pal_status.name %>
+    <% else %>
+    --
+    <% end %>
+  </td></tr>
+</table><br/>
+
+<h2>Items</h2>
+<table>
+  <tr>
+    <th style="width:120px;">Needed for</th>
+    <th style="width:150px;">Special Occasion</th>
+    <th style="width:150px;">Inscription</th>
+    <th style="width:150px;">Template</th>
+    <th style="width: 80px;text-align:right;">Price</th>
+  </tr>
+  
+  <% @shopping_cart.cakes.each do |cake| %>
+    <tr class="graduated-background">
+      <td><%= cake.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
+      <td><%= cake.special_occasion %></td>
+      <td><%= cake.name_to_appear_on_cake %></td>
+      <td><% if cake.based_on_finished_product_id.to_i > 0 %>
+            <%= link_to(cake.finished_product.product_name, store_product_url(product_name: cake.finished_product.product_name.gsub(" ","_").gsub(".","%2E")), :title => "click to view this template product") %>
+          <% end %>
+      </td>
+      <td style="text-align:right;"><%= sanitize(number_to_currency(cake.total_value, :unit => @general_setting.ccy, :precision => 2)) %></td>
+    </tr>
+  <% end %>
+  
+  <tr class="graduated-background">
+    <td colspan=4>GRAND TOTAL:</td>
+    <td style="text-align:right;border-top: 1px solid black;border-bottom: 3px double black;">
+      <%= sanitize(number_to_currency(@shopping_cart.total_value, :unit => @general_setting.ccy, :precision => 2)) %>
+    </td>
+  </tr>
+</table><br/>

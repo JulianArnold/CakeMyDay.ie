@@ -120,19 +120,22 @@ class FinishedProductsController < ApplicationController
     end
   end
 
-  def finished_product_ingredient_destroy
-    fpi = FinishedProductIngredient.find(params[:id])
-    if fpi
-      fp = fpi.finished_product
-      fpi.destroy
-      redirect_to fp, :notice => "Ingredient deleted."
-    else
-      redirect_to root_url, :notice => "Sorry, something went wrong there.  Ingredient wasn't deleted."
-    end
+  def new_finished_product_ingredient
+    @fpi = FinishedProductIngredient.new
+    @fpi.finished_product_id = params[:id].to_i
+    
+    # come back to this later: restrict the list of products
+    @products = Product.all(:include => "product_category", order: "product_categories.running_order, products.running_order")
+    
+    render 'new_fpi'
   end
 
   def edit_finished_product_ingredient
     @fpi = FinishedProductIngredient.find(params[:id])
+    
+    # come back to this later: restrict the list of products
+    @products = Product.all(:include => "product_category", order: "product_categories.running_order, products.running_order")
+    
     if @fpi
       render 'edit_fpi'
     else
@@ -143,6 +146,8 @@ class FinishedProductsController < ApplicationController
   def update_finished_product_ingredient
     @fpi = FinishedProductIngredient.find(params[:id])
     if @fpi
+      @products = Product.all(:include => "product_category", order: "product_categories.running_order, products.running_order", :conditions => ["product_categories.one_choice_only <> ? and product.product_category_id = ?", true, @fpi.product.product_category_id.to_i])
+      
       if @fpi.update_attributes(params[:finished_product_ingredient])
         redirect_to @fpi.finished_product, :notice => "Edit was saved successfully"
       else
@@ -151,6 +156,28 @@ class FinishedProductsController < ApplicationController
       end
     else
       redirect_to root_url, :message => "Sorry, something went wrong"
+    end
+  end
+
+  def create_finished_product_ingredient
+    @fpi = FinishedProductIngredient.new(params[:finished_product_ingredient])
+    if @fpi.save
+      redirect_to @fpi.finished_product, :notice => "Item was added successfully"
+    else
+      @products = Product.all(:include => "product_category", order: "product_categories.running_order, products.running_order", :conditions => ["product_categories.one_choice_only <> ? and product.product_category_id = ?", true, @fpi.product.product_category_id.to_i])
+      # something didn't work out when saving...
+      render 'new_fpi'
+    end
+  end
+
+  def finished_product_ingredient_destroy
+    fpi = FinishedProductIngredient.find(params[:id])
+    if fpi
+      fp = fpi.finished_product
+      fpi.destroy
+      redirect_to fp, :notice => "Ingredient deleted."
+    else
+      redirect_to root_url, :notice => "Sorry, something went wrong there.  Ingredient wasn't deleted."
     end
   end
 

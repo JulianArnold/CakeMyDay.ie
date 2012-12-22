@@ -11,6 +11,11 @@ CakeMyDaySite::Application.routes.draw do
   match "store/update_cake_details"   => "store#update_cake_details",   :as => :update_cake_details
   match "store/show_cake"             => "store#show_cake",             :as => :show_cake
   match "store/show_cart"             => "store#show_cart",             :as => :show_cart
+  match "store/start_checkout"        => "store#start_checkout",        :as => :start_checkout
+  match "store/checkout_registration" => "store#checkout_registration", :as => :checkout_registration
+  match "store/checkout_process"      => "store#checkout_process",      :as => :checkout_process
+  match "store/buy_now"               => "store#buy_now",               :as => :buy_now
+  match "store/checkout_complete"     => "store#checkout_complete",     :as => :checkout_complete
   match "store/:product_name"         => "store#show",                  :as => :store_product
   match 'search'                      => 'store#search',                :as => :search, :method => :post
   
@@ -30,6 +35,10 @@ CakeMyDaySite::Application.routes.draw do
   # special routes for miscellaneous purposes
   match 'link_finished_product_image' => 'finished_products#link_image', :as => :link_finished_product_image
   match 'link_product_image' => 'products#link_image', :as => :link_product_image
+  match 'new_finished_product_ingredient' => 'finished_products#new_finished_product_ingredient', :as => :new_finished_product_ingredient
+  match 'edit_finished_product_ingredient' => 'finished_products#edit_finished_product_ingredient', :as => :edit_finished_product_ingredient
+  match 'create_finished_product_ingredient' => 'finished_products#create_finished_product_ingredient', :as => :create_finished_product_ingredient
+  match 'update_finished_product_ingredient' => 'finished_products#update_finished_product_ingredient', :as => :update_finished_product_ingredient
   match 'finished_product_ingredient_destroy' => 'finished_products#finished_product_ingredient_destroy', :as => :finished_product_ingredient_destroy
   
   resources :cakes

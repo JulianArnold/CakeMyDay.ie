@@ -15,7 +15,7 @@ class ShoppingCartsController < ApplicationController
   def index
     # GET /shopping_carts
     # GET /shopping_carts.json
-    @shopping_carts = ShoppingCart.all
+    @shopping_carts = ShoppingCart.all(order: "created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb

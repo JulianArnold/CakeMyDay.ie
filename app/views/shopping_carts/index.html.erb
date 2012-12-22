@@ -3,15 +3,19 @@
   <tr>
     <th style="width:  30px;">ID</th>
     <th style="width: 200px;">Customer</th>
+    <th style="width: 150px;">Email</th>
+    <th style="width: 100px;">Phone</th>
     <th style="width: 100px;">Shopping cart status</th>
     <th style="width:  70px;">PayPal</th>
     <td style="width:  90px;"></td>
   </tr>
   <% @shopping_carts.each do |shopping_cart| %>
-    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
       <td><%= shopping_cart.id %></td>
       <% if shopping_cart.customer and shopping_cart.customer.user %>
       <td><%= link_to(shopping_cart.customer.user.full_name, customer_url(shopping_cart.customer_id), :title => "click to view customer") %></td>
+      <td><%= link_to(shopping_cart.customer.user.login, "mailto:" + shopping_cart.customer.user.login, :title => "click to send email") %></td>
+      <td><%= shopping_cart.customer.contact_phone_number %></td>
       <% else %>
       <td>--</td>
       <% end %>

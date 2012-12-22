@@ -13,8 +13,8 @@
 # Rights in third party code acknowledged.
 
 class User < ActiveRecord::Base
-  attr_accessible :current_login_at, :current_login_ip, :failed_login_count, :first_name, :last_login_at, :last_login_ip, :last_name, :last_request_at, :login, :login_count, :user_group_id
-  # NOT attr_accessible :password, :active, :password_confirmation
+  attr_accessible :current_login_at, :current_login_ip, :failed_login_count, :first_name, :last_login_at, :last_login_ip, :last_name, :last_request_at, :login, :login_count, :user_group_id, :password, :password_confirmation, :customer_attributes
+  # NOT attr_accessible :active, :password_salt, etc.
  
   acts_as_authentic do |c|
     if Rails.env.production?
@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   
   belongs_to :user_group
   has_one   :customer
+  accepts_nested_attributes_for :customer
 
   validates_presence_of     :login, :first_name, :last_name, :user_group_id
   validates_numericality_of :user_group_id, :only_integer => true
