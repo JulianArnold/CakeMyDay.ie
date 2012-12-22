@@ -53,14 +53,19 @@
 
   <% product_counter = 0 %>
   <% @product_categories.each do |category| %>
+    <% remembered_global_options_choice = nil %>
     <h3><%= category.name %></h3>
     <fieldset>
       <p><%= category.description %></p>
-      <div style="max-height: 200px; overflow:auto;">
+      <div style="max-height: 250px; overflow:auto;">
         <% category.products.each do |product| %>
-          <% # detect pre-configured products for new cakes
+          <% # some large-scale ERB...
+            # detect pre-configured products for new cakes
             if @cake.finished_product and (params[:action] == 'design_my_cake' or params[:action] == 'add_this_to_the_cart')
               finished_product_ingredient = @cake.finished_product.finished_product_ingredients.find_by_product_id(product.id)
+              if finished_product_ingredient and finished_product_ingredient.global_options_list_choice.size > 0
+                remembered_global_options_choice = finished_product_ingredient.global_options_list_choice 
+              end
             else; finished_product_ingredient = nil
             end
             
@@ -201,7 +206,12 @@
             <%= label_tag ("category_" + category.id.to_s).to_sym, category.options_list.visible_label %>
           </span>
           <span class="required-field">*</span>
-          <% temp_list = "<option>" + category.options_list.options.split(", ").join("</option><option>") + "</option>" %>
+          <% 
+            temp_list = "<option>" + category.options_list.options.split(", ").join("</option><option>") + "</option>" 
+            if remembered_global_options_choice
+              temp_list.gsub("<option>" + remembered_global_options_choice,"<option selected=\"selected\">" + remembered_global_options_choice)
+            end
+          %>
           <%= select_tag ("category_" + category.id.to_s).to_sym, temp_list.html_safe %>
         </p>
       <% end %>

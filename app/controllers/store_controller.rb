@@ -163,9 +163,12 @@ class StoreController < ApplicationController
     categories.each do |category|
       if params[("category_" + category.id.to_s).to_sym]
         # We're here because the user supplied a choice 
-        
-        puts "=== === === === Category #{category.id} = #{params[('category_'+category.id.to_s).to_sym].to_s} == =="
-        
+        the_shopping_cart_item = @cake.shopping_cart_items.find(:first, :include => "product", :conditions => ["products.product_category_id = ?", category.id.to_i])
+        if the_shopping_cart_item
+          puts "made it in here"
+          the_shopping_cart_item.global_options_list_choice = params[("category_" + category.id.to_s).to_sym].to_s
+          the_shopping_cart_item.save
+        end
       end
     end
     

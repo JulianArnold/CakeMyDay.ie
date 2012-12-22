@@ -48,7 +48,7 @@
     <tr class="graduated-background">
       <td><%= item.quantity %></td>
       <td><%= item.product.name %></td>
-      <td><%= item.product_options_list_choice %><br/>
+      <td><%= item.product_options_list_choice %>
           <%= item.global_options_list_choice %></td>
       <td><%= item.user_description %></td>
       <td style="text-align:right;"><%= sanitize(number_to_currency(item.unit_price, :unit => @general_setting.ccy, :precision => 2)) %></td>
