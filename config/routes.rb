@@ -56,7 +56,6 @@ CakeMyDaySite::Application.routes.draw do
 #    end
 #  end
   resources :product_categories
-  resources :product_components
   resources :product_images
   resources :product_prices
   resources :production_quota

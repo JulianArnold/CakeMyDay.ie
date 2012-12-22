@@ -15,18 +15,18 @@
     <th style="width:  50px;text-align: center;">Sun</th>
   </tr>
   <% @production_quota.each do |production_quotum| %>
-    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
       <td><%= production_quotum.start_date %></td>
       <td><%= production_quotum.finish_date %></td>
       <td style="text-align: center;"><%= link_to production_quotum.maximum_cakes_allowed, edit_production_quotum_path(production_quotum), :title => "Click to edit the quota for this week" %></td>
-      <td style="text-align: center;"><%= link_to(production_quotum.monday_bookings.count + production_quotum.tuesday_bookings.count + production_quotum.wednesday_bookings.count + production_quotum.thursday_bookings.count + production_quotum.friday_bookings.count + production_quotum.saturday_bookings.count + production_quotum.sunday_bookings.count, production_quotum_path(production_quotum.id)) %></td>
-      <td style="text-align: center;"><%= production_quotum.monday_bookings.count %></td>
-      <td style="text-align: center;"><%= production_quotum.tuesday_bookings.count %></td>
-      <td style="text-align: center;"><%= production_quotum.wednesday_bookings.count %></td>
-      <td style="text-align: center;"><%= production_quotum.thursday_bookings.count %></td>
-      <td style="text-align: center;"><%= production_quotum.friday_bookings.count %></td>
-      <td style="text-align: center;"><%= production_quotum.saturday_bookings.count %></td>
-      <td style="text-align: center;"><%= production_quotum.sunday_bookings.count %></td>
+      <td style="text-align: center;"><%= link_to(production_quotum.bookings, production_quotum_path(production_quotum.id)) %></td>
+      <td style="text-align: center;"><%= production_quotum.monday_bookings %></td>
+      <td style="text-align: center;"><%= production_quotum.tuesday_bookings %></td>
+      <td style="text-align: center;"><%= production_quotum.wednesday_bookings %></td>
+      <td style="text-align: center;"><%= production_quotum.thursday_bookings %></td>
+      <td style="text-align: center;"><%= production_quotum.friday_bookings %></td>
+      <td style="text-align: center;"><%= production_quotum.saturday_bookings %></td>
+      <td style="text-align: center;"><%= production_quotum.sunday_bookings %></td>
     </td>
   <% end %>
 </table><br/>

@@ -1,8 +1,0 @@
-<h1>Product Component #<%= params[:id] %></h1>
-<table>
-  <tr><td>Product:</td><td><%= @product_component.product_id %> <%= @product_component.product.name %></td></tr>
-  <tr><td>Component product:</td><td><%= @product_component.component_product_id %></td></tr>
-  <tr><td>Quantity:</td><td><%= @product_component.quantity %></td></tr>
-  <tr><td>Running order:</td><td><%= @product_component.running_order %></td></tr>
-</table><br/>
-<%= link_to 'Back', product_components_path %> | <%= link_to 'Edit', edit_product_component_path(@product_component) %>

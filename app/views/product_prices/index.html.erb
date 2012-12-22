@@ -8,7 +8,7 @@
     <td style="width:  90px;"></td>
   </tr>
   <% @product_prices.each do |product_price| %>
-    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
       <td><%= product_price.product.name %></td>
       <td><%= product_price.start_at.strftime("%d-%b-%Y %H:%M") %></td>
       <td><%= product_price.finish_at.strftime("%d-%b-%Y %H:%M") %></td>

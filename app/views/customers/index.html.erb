@@ -7,7 +7,7 @@
     <th style="width: 100px;">Phone number</th>
   </tr>
   <% @customers.each do |customer| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;" class="graduated-background">
       <td><%= customer.user.full_name %></td>
       <td><%= link_to(customer.user.login, "mailto: " + customer.user.login, :title => "click to create an email") %></td>
       <td><%= sanitize customer.postal_address.gsub("\r","<br/>") %></td>

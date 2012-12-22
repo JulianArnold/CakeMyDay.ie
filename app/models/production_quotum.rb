@@ -28,15 +28,47 @@ class ProductionQuotum < ActiveRecord::Base
     accumulator = 0.0
     cakes.all.each do |cake|
       accumulator += cake.production_quota_value
-      #if cake.shopping_cart.shopping_cart_status.paid_cart == true
-      #  cake.shopping_cart_items.each do |sci|
-      #    accumulator += sci.product.production_quota_value.to_f
-      #  end # of sci
-      #end # of if
     end # of cake
     return accumulator
   end
   
+  def monday_bookings
+    return bookings_for_a_weekday(1)
+  end
+  
+  def tuesday_bookings
+    return bookings_for_a_weekday(2)
+  end
+
+  def wednesday_bookings
+    return bookings_for_a_weekday(3)
+  end
+
+  def thursday_bookings
+    return bookings_for_a_weekday(4)
+  end
+
+  def friday_bookings
+    return bookings_for_a_weekday(5)
+  end
+
+  def saturday_bookings
+    return bookings_for_a_weekday(6)
+  end
+
+  def sunday_bookings
+    return bookings_for_a_weekday(0)
+  end
+
+  def bookings_for_a_weekday(day_number)
+    accumulator = 0.0
+    cakes.all.each do |cake|
+      if cake.weekday == day_number # 1 = Monday, 6 = Saturday, 0 = Sunday
+        accumulator += cake.production_quota_value
+      end
+    end # of cake
+    return accumulator
+  end
   
   def self.auto_generate # creates new quotas automatically, 2 years ahead
     # auto-generates production quotas into the future
