@@ -2008,7 +2008,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - vanilla",
+        product_options_list_choice: "Vanilla",
         quantity: 1,
         user_description: ""
         })
@@ -2059,7 +2059,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - vanilla",
+        product_options_list_choice: "Vanilla",
         quantity: 1,
         user_description: ""
         })
@@ -2211,7 +2211,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - vanilla",
+        product_options_list_choice: "Vanilla",
         quantity: 1,
         user_description: ""
         })
@@ -2247,7 +2247,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - vanilla",
+        product_options_list_choice: "Vanilla",
         quantity: 1,
         user_description: ""
         })
@@ -2377,7 +2377,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 10\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - vanilla",
+        product_options_list_choice: "Vanilla",
         quantity: 1,
         user_description: ""
         })
