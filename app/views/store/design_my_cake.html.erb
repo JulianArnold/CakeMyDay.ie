@@ -209,7 +209,11 @@
           <% 
             temp_list = "<option>" + category.options_list.options.split(", ").join("</option><option>") + "</option>" 
             if remembered_global_options_choice
-              temp_list.gsub("<option>" + remembered_global_options_choice,"<option selected=\"selected\">" + remembered_global_options_choice)
+              puts "0 = = = = = = = = "
+              puts "1=" + temp_list + "=="
+              temp_list = temp_list.gsub("<option>#{remembered_global_options_choice}","<option selected=\"selected\">#{remembered_global_options_choice}")
+              puts "2=" + temp_list + "=="
+              puts "3=" + remembered_global_options_choice.to_s + ":"
             end
           %>
           <%= select_tag ("category_" + category.id.to_s).to_sym, temp_list.html_safe %>
