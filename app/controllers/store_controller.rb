@@ -162,6 +162,8 @@ class StoreController < ApplicationController
     categories = ProductCategory.all
     categories.each do |category|
       if params[("category_" + category.id.to_s).to_sym]
+        # We're here because the user supplied a choice 
+        
         puts "=== === === === Category #{category.id} = #{params[('category_'+category.id.to_s).to_sym].to_s} == =="
         
       end
