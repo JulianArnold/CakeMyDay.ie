@@ -51,6 +51,7 @@ class UsersController < ApplicationController
     # GET /users/new
     # GET /users/new.json
     @user = User.new
+    @user.build_customer
 
     respond_to do |format|
       format.html # new.html.erb

@@ -12,7 +12,7 @@
   
   <tr><td colspan=5><h2>Shown in the Main Nav Bar</h2></td></tr>
   <% @navbar_static_pages.each do |static_page| %>
-    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
       <td><%= static_page.main_heading %></td>
       <td><%= static_page.main_body %></td>
       <td><%= static_page.menu_label %></td>

@@ -17,7 +17,7 @@
       <td><%= link_to(shopping_cart.customer.user.login, "mailto:" + shopping_cart.customer.user.login, :title => "click to send email") %></td>
       <td><%= shopping_cart.customer.contact_phone_number %></td>
       <% else %>
-      <td>--</td>
+      <td>--</td><td>--</td><td>--</td>
       <% end %>
       <td><%= shopping_cart.shopping_cart_status.name %></td>
       <% if shopping_cart.pay_pal_status_id.to_i > 0 %>

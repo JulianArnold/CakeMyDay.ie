@@ -12,7 +12,7 @@
     <% if tracker != product.product_category_id %><% tracker = product.product_category.id %>
     <tr><td colspan=6><h2><%= product.product_category.name %></h2></td></tr>
     <% end %>
-    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
       <td><b><%= product.name %></b><br/>
           <%= product.description %></td>
       <td><%= product.production_quota_value %></td>
@@ -20,7 +20,7 @@
       <td><%= product.running_order %></td>
       <td><%= link_to 'View', product %> |
           <%= link_to 'Edit', edit_product_path(product) %></td>
-      <% if product.shopping_cart_items.count == 0 and product.product_components.count == 0 and product.product_images.count == 0 and product.product_prices.count == 0 %>
+      <% if product.shopping_cart_items.count == 0 and product.product_images.count == 0 and product.product_prices.count == 0 %>
         <%= render :partial => '/layouts/delete_button', :locals => {:label => "Product", :item => product} -%>
       <% end %>
     </td>

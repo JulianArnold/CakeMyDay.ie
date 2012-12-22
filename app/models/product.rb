@@ -22,7 +22,6 @@ class Product < ActiveRecord::Base
 
   belongs_to  :options_list
   belongs_to  :product_category
-  has_many    :product_components
   has_many    :product_images
   has_many    :product_prices
   has_one     :current_price,
