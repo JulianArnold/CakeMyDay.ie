@@ -97,7 +97,7 @@ if Rails.env.development?
   OptionsList.create(:name => 'filling choices', :options => 'Vanilla buttercream, Orange buttercream, Lemon buttercream, Chocolate buttercream, Chocolate ganache, Italian meringue buttercream', :visible_label => 'Choose a flavour')
   OptionsList.create(:name => 'flower types', :options => 'Rose, Carnation, Daisy, Gerbera', :visible_label => 'Choose a type of flower')
   OptionsList.create(:name => 'shaped cake cores', :options => 'Chocolate biscuit cake, Sponge - vanilla, Sponge - lemon, Sponge - chocolate, Sponge - coffee, Sponge - white chocolate and lime, Sponge - red velvet', :visible_label => 'Choose the cake type')
-  OptionsList.create(:name => "outer colours", :options => "White, Light pink, Dark pink, Light blue, Dark blue, Red, Light Gren, Dark green, Light gray, Dark gray, Black", :visible_label => "Choose a colour")
+  OptionsList.create(:name => "outer colours", :options => "White, Light pink, Dark pink, Light blue, Dark blue, Red, Light green, Dark green, Light gray, Dark gray, Black", :visible_label => "Choose a colour")
   
 
   ProductCategory.destroy_all
@@ -1786,7 +1786,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: "Tardis Police Box" ### ERROR - User can't set this on-screen
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Covering - please choose a colour").id,
@@ -1796,7 +1796,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         user_description: "Tardis Blue"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("2D computer-printed edible image (cake sides)").id, ### ERROR try the sides one instead + need to change that Product so that user can enter a description
+        product_id: Product.find_by_name("2D computer-printed edible image (cake sides)").id, 
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 2,
@@ -1808,7 +1808,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "Sponge - vanilla",
         quantity: 1,
-        user_description: "New MINI Car"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -1837,7 +1837,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "Sponge - vanilla",
         quantity: 1,
-        user_description: "Include weapons on car"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -1865,7 +1865,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 2,
-        user_description: "Lamboghini Badges"
+        user_description: "Lamborghini Badges"
         })
   fp  = FinishedProduct.find_by_product_name("Navy and White Birdcage Wedding Cake")
       FinishedProductIngredient.create({finished_product_id: fp.id,
@@ -1873,7 +1873,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: "The base of the cake is chocolate biscuit cake"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
@@ -1901,7 +1901,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 3,
-        user_description: "A ribbon around each cake-base and one around the cake board"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("3D flowers - 2\" (each) - please choose a type").id,
@@ -1910,20 +1910,13 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         quantity: 3,
         user_description: "Yellow roses"
         })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("3D flowers - 2\" (each) - please choose a type").id,
-        global_options_list_choice: "Daisy",
-        product_options_list_choice: "",
-        quantity: 20,
-        user_description: "Hydrangias"
-        })
   fp  = FinishedProduct.find_by_product_name("Drum Birthday Cake")
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "",
+        product_options_list_choice: "Sponge - vanilla",
         quantity: 1,
-        user_description: "12\" Drum Cake"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -1950,16 +1943,9 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - chocolate",
+        product_options_list_choice: "Chocolate",
         quantity: 1,
-        user_description: "Chocolate fudge cake please!"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "Sponge - chocolate",
-        quantity: 1,
-        user_description: "Chocolate fudge cake please!"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -1983,13 +1969,6 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         user_description: "Peppa, George, Mummy Pig and Daddy Pig"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("2D flowers - please choose a colour").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 4,
-        user_description: "Edible 2D Flowers on the sides"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("3D object - to your requirements").id,
         global_options_list_choice: "",
         product_options_list_choice: "",
@@ -2000,9 +1979,9 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Square 4\" high, 10\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - lemon",
+        product_options_list_choice: "Lemon",
         quantity: 1,
-        user_description: "Include animals on cake"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -2016,7 +1995,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "Dark green",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: "Jungle"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("3D edible character / figure - 4\" tall").id,
@@ -2025,20 +2004,13 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         quantity: 5,
         user_description: "Jungle animals"
         })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("2D flowers - please choose a colour").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 5,
-        user_description: "Jungle leaves"
-        })
   fp  = FinishedProduct.find_by_product_name("90th Birthday Cake - Tea and a Crossword Puzzle")
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, sponge cake").id,
         global_options_list_choice: "",
         product_options_list_choice: "Sponge - vanilla",
         quantity: 1,
-        user_description: "Include spectacles"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -2067,7 +2039,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: "Include teddy on cake"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Covering - please choose a colour").id,
@@ -2089,15 +2061,8 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "Sponge - vanilla",
         quantity: 1,
-        user_description: "Include family on cake"
+        user_description: ""
         })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "Sponge - chocolate",
-        quantity: 1,
-        user_description: "Include family on 2nd tier too"
-        })        
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
         global_options_list_choice: "",
@@ -2113,32 +2078,11 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         user_description: "Pink base"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Covering - please choose a colour").id,
-        global_options_list_choice: "White",
-        product_options_list_choice: "",
-        quantity: 1,
-        user_description: "White top tier"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("3D edible character / figure - 4\" tall").id,
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 2,
         user_description: "Mum & Dad"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("2D flowers - please choose a colour").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 2,
-        user_description: "Daisies on the cake"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("3D animal 4\" tall").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 1,
-        user_description: "Family pet"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("3D animal 4\" tall").id,
@@ -2153,7 +2097,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: "Include Ray as cupid"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Covering - please choose a colour").id,
@@ -2175,7 +2119,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "Sponge - lemon",
         quantity: 1,
-        user_description: "Include logo on cake"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -2200,26 +2144,12 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         })
   fp  = FinishedProduct.find_by_product_name("Peter and Michelle\'s Wedding Cake")
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, chocolate biscuit cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 1,
-        user_description: "Wedding cake, bottom tier"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 10\" diameter, sponge cake").id,
         global_options_list_choice: "",
         product_options_list_choice: "White chocolate and lime",
         quantity: 1,
-        user_description: "Wedding cake, middle tier"
+        user_description: ""
         })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, fruit cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 1,
-        user_description: "Wedding cake, top tier"
-        })        
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
         global_options_list_choice: "",
@@ -2243,26 +2173,12 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         })
   fp  = FinishedProduct.find_by_product_name("Carl and Elaine\'s Wedding Cake")
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, chocolate biscuit cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 1,
-        user_description: "Wedding cake, bottom tier"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 10\" diameter, sponge cake").id,
         global_options_list_choice: "",
         product_options_list_choice: "Red velvet",
         quantity: 1,
-        user_description: "Wedding cake, middle tier"
+        user_description: ""
         })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, fruit cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 1,
-        user_description: "Wedding cake, top tier"
-        })        
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
         global_options_list_choice: "",
@@ -2297,21 +2213,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "Sponge - vanilla",
         quantity: 1,
-        user_description: "Wedding cake, bottom tier"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 10\" diameter, sponge cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "Sponge - vanilla",
-        quantity: 1,
-        user_description: "Wedding cake, middle tier"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "Sponge - chocolate",
-        quantity: 1,
-        user_description: "Wedding cake, top tier"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -2347,7 +2249,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "Sponge - vanilla",
         quantity: 1,
-        user_description: "First Holy Communion Cake"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -2381,9 +2283,9 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 9\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - chocolate",
+        product_options_list_choice: "Chocolate",
         quantity: 1,
-        user_description: "Include four grandchildren"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -2415,26 +2317,12 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         })
   fp  = FinishedProduct.find_by_product_name("Colm and Lisanne\'s Wedding Cake")
       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 12\" diameter, chocolate biscuit cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 1,
-        user_description: "Wedding cake, round bottom tier"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Square 4\" high, 8\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - lemon",
+        product_options_list_choice: "Lemon",
         quantity: 1,
-        user_description: "Wedding cake, square middle tier"
+        user_description: ""
         })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, fruit cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "",
-        quantity: 1,
-        user_description: "Wedding cake, round top tier"
-        })        
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
         global_options_list_choice: "",
@@ -2469,22 +2357,8 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "Red velvet",
         quantity: 1,
-        user_description: "Wedding cake, bottom tier"
+        user_description: ""
         })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "Red velvet",
-        quantity: 1,
-        user_description: "Wedding cake, middle tier"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "Red velvet",
-        quantity: 1,
-        user_description: "Wedding cake, top tier (6\")"
-        })        
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
         global_options_list_choice: "",
@@ -2505,7 +2379,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "",
         product_options_list_choice: "Sponge - vanilla",
         quantity: 1,
-        user_description: "Include converse booties"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
@@ -2539,28 +2413,14 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 6\" high, 10\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - lemon",
+        product_options_list_choice: "Lemon",
         quantity: 1,
-        user_description: "Noah's Ark for twins"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Circular 6\" high, 8\" diameter, sponge cake").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "Sponge - chocolate",
-        quantity: 1,
-        user_description: "Top tier"
+        user_description: ""
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Filling").id,
         global_options_list_choice: "",
         product_options_list_choice: "Lemon buttercream",
-        quantity: 1,
-        user_description: ""
-        })
-       FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Filling").id,
-        global_options_list_choice: "",
-        product_options_list_choice: "Chocolate buttercream",
         quantity: 1,
         user_description: ""
         })
@@ -2570,13 +2430,6 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         product_options_list_choice: "",
         quantity: 1,
         user_description: "Yellow"
-        })
-      FinishedProductIngredient.create({finished_product_id: fp.id,
-        product_id: Product.find_by_name("Covering - please choose a colour").id,
-        global_options_list_choice: "Light blue",
-        product_options_list_choice: "",
-        quantity: 1,
-        user_description: "Light blue"
         })
      FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("3D animal 4\" tall").id,
