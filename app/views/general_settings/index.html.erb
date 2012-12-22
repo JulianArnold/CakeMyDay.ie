@@ -7,8 +7,6 @@
     <th style="width: 100px;">AWS bucket name</th>
     <th style="width: 100px;">RBN #</th>
     <th style="width: 100px;">Default CCY</th>
-    <th style="width:  40px;"></th>
-    <th style="width:  40px;"></th>
   </tr>
   <% @general_settings.each do |general_setting| %>
     <tr style="background-color: <%= cycle("inherit","inherit") %>;" class="graduated-background">
@@ -18,8 +16,7 @@
       <td><%= general_setting.aws_bucket_name %></td>
       <td><%= general_setting.rbn_number %></td>
       <td><%= general_setting.currency.iso_code %></td>
-      <td><%= link_to 'View', general_setting %></td>
-      <td><%= link_to 'Edit', edit_general_setting_path(general_setting) %></td>
+      <td><%= link_to 'View', general_setting %> | <%= link_to 'Edit', edit_general_setting_path(general_setting) %></td>
     </td>
   <% end %>
 </table><br/>

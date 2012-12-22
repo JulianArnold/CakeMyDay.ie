@@ -44,6 +44,18 @@
       <span class="form-field"><%= f.collection_select :user_group_id, @user_groups, :id, :name, :prompt => "Select..." %></span>
     </div>
   <% end %>
+  
+  <%= f.fields_for :customer do |c| %>
+    <div class="field">
+      <span class="form-label"><%= c.label :postal_address %></span>
+      <span class="form-field"><%= c.text_area :postal_address, :size => "40x4" %></span><br/>
+    </div>
+    <div class="field">
+      <span class="form-label"><%= c.label :contact_phone_number %></span>
+      <span class="form-field"><%= c.text_field :contact_phone_number %></span><br/>
+    </div>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %> or <%= link_to "Change your password", change_password_url %>
   </div>

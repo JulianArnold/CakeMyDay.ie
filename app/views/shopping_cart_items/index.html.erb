@@ -11,7 +11,7 @@
     <td style="width:  90px;"></td>
   </tr>
   <% @shopping_cart_items.each do |shopping_cart_item| %>
-    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
       <td><%= shopping_cart_item.cake_id %></td>
       <td><%= shopping_cart_item.product.name %></td>
       <td><%= shopping_cart_item.quantity %></td>

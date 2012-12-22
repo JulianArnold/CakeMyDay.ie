@@ -12,28 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :default_value_for_weekly_production_quota %><br />
-    <%= f.number_field :default_value_for_weekly_production_quota %>
+    <span class="form-label-wide"><%= f.label :default_value_for_weekly_production_quota %></span>
+    <span class="form-field"><%= f.number_field :default_value_for_weekly_production_quota %></span>
   </div>
   <div class="field">
-    <%= f.label :customer_service_email_address %><br />
-    <%= f.text_field :customer_service_email_address %>
+    <span class="form-label-wide"><%= f.label :customer_service_email_address %></span>
+    <span class="form-field"><%= f.text_field :customer_service_email_address %></span>
   </div>
   <div class="field">
-    <%= f.label :customer_service_phone_number %><br />
-    <%= f.text_field :customer_service_phone_number %>
+    <span class="form-label-wide"><%= f.label :customer_service_phone_number %></span>
+    <span class="form-field"><%= f.text_field :customer_service_phone_number %></span>
   </div>
   <div class="field">
-    AWS bucket name (can't be edited)<br />
-    <%= @general_setting.aws_bucket_name %>
+    <span class="form-label-wide">AWS bucket name (can't be edited)</span>
+    <span class="form-field"><%= @general_setting.aws_bucket_name %></span>
   </div>
   <div class="field">
-    <%= f.label :rbn_number %><br />
-    <%= f.text_field :rbn_number %>
+    <span class="form-label-wide"><%= f.label :rbn_number, "RBN Number" %></span>
+    <span class="form-field"><%= f.text_field :rbn_number %></span>
   </div>
   <div class="field">
-    Default Currency (Can't be changed)<br />
-    <%= @general_setting.currency.iso_code %>
+    <span class="form-label-wide">Default Currency (Can't be changed)</span>
+    <span class="form-field"><%= @general_setting.currency.iso_code %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

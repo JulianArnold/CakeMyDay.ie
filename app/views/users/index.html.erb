@@ -12,7 +12,7 @@
     <% if tracker != user.user_group_id %>
     <tr><td colspan=6><h2><%= user.user_group.name %></h2></td></tr><% tracker = user.user_group_id %>
     <% end %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;" class="graduated-background">
       <td><%= user.login %></td>
       <td><%= user.full_name %></td>
       <td><%= user.login_count %></td>

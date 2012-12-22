@@ -293,7 +293,6 @@ class StoreController < ApplicationController
         @shopping_cart = current_cart
         user = User.find(current_user.id)
         @shopping_cart.customer_id = user.customer.id
-        @shopping_cart.save
         # The view will check that each cake fits in the production schedule
         # (managed by production_quota), and will warn (but NOT stop)
         # the user from placing an order.

@@ -23,6 +23,7 @@
   <h2>Your transaction history</h2>
   <table>
     <tr>
+      <th style="width:  40px;">ID</th>
       <th style="width:  90px;">Created</th>
       <th style="width:  80px;">Status</th>
       <th style="width:  80px;">No. of cakes</th>
@@ -31,6 +32,7 @@
     </tr>
     <% @user.customer.shopping_carts.each do |cart| %>
       <tr class="graduated-background">
+        <td><%= cart.id %></td>
         <td><%= cart.created_at.strftime("%d-%b-%Y") %></td>
         <td><%= cart.shopping_cart_status.name %></td>
         <td><%= cart.cakes.count %></td>

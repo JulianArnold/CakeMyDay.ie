@@ -8,7 +8,7 @@
     <td style="width:  40px;"></td>
   </tr>
   <% @special_occasions.each do |special_occasion| %>
-    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
       <td><%= special_occasion.name %></td>
       <td><%= special_occasion.running_order %></td>
       <td><%= sanitize tick_or_cross special_occasion.visible_to_customers %></td>
