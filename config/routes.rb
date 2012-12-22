@@ -30,6 +30,7 @@ CakeMyDaySite::Application.routes.draw do
   # special routes for miscellaneous purposes
   match 'link_finished_product_image' => 'finished_products#link_image', :as => :link_finished_product_image
   match 'link_product_image' => 'products#link_image', :as => :link_product_image
+  match 'finished_product_ingredient_destroy' => 'finished_products#finished_product_ingredient_destroy', :as => :finished_product_ingredient_destroy
   
   resources :cakes
   resources :currencies

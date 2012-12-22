@@ -120,6 +120,40 @@ class FinishedProductsController < ApplicationController
     end
   end
 
+  def finished_product_ingredient_destroy
+    fpi = FinishedProductIngredient.find(params[:id])
+    if fpi
+      fp = fpi.finished_product
+      fpi.destroy
+      redirect_to fp, :notice => "Ingredient deleted."
+    else
+      redirect_to root_url, :notice => "Sorry, something went wrong there.  Ingredient wasn't deleted."
+    end
+  end
+
+  def edit_finished_product_ingredient
+    @fpi = FinishedProductIngredient.find(params[:id])
+    if @fpi
+      render 'edit_fpi'
+    else
+      redirect_to root_url, :notice => "Sorry, something went wrong"
+    end
+  end
+
+  def update_finished_product_ingredient
+    @fpi = FinishedProductIngredient.find(params[:id])
+    if @fpi
+      if @fpi.update_attributes(params[:finished_product_ingredient])
+        redirect_to @fpi.finished_product, :notice => "Edit was saved successfully"
+      else
+        # something didn't work out when saving...
+        render 'edit_fpi'
+      end
+    else
+      redirect_to root_url, :message => "Sorry, something went wrong"
+    end
+  end
+
   private
   
   def get_variables
