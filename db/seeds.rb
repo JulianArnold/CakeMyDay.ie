@@ -741,19 +741,19 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
 
   ProductPrice.destroy_all
   ############################
-  ## THIS IS TEMPORARY CODE ##
+  ## THIS IS TEMPORARY CODE ##     REMOVED BY DAN: No longer needed
   ############################
-  Product.all.each do |product|
-    ProductPrice.create({
-          start_at: "2012-11-01".to_date,
-          finish_at: "2099-12-31".to_date,
-          product_id: product.id,
-          currency_id: GeneralSetting.first.default_currency_id,
-          price: 69.99,
-          created_by: User.find_by_login("ger.arnold@gmail.com").id,
-          updated_by: nil
-          })
-  end
+  #Product.all.each do |product|
+  #  ProductPrice.create({
+  #        start_at: "2012-11-01".to_date,
+  #        finish_at: "2099-12-31".to_date,
+  #        product_id: product.id,
+  #        currency_id: GeneralSetting.first.default_currency_id,
+  #        price: 69.99,
+  #        created_by: User.find_by_login("ger.arnold@gmail.com").id,
+  #        updated_by: nil
+  #        })
+  #end
   ProductPrice.create({
         start_at: "2012-12-01".to_date,
         finish_at: "2099-12-31".to_date,
@@ -1204,15 +1204,15 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         created_by: User.find_by_login("ger.arnold@gmail.com").id,
         updated_by: nil
         })
-   ProductPrice.create({
-        start_at: "2012-12-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.find_by_name("Circular 6\" high, 12\" diameter, chocolate biscuit cake").id,
-        price: 270,
-        currency_id: GeneralSetting.first.default_currency_id,        
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
+   #ProductPrice.create({ #################### DUPLICATE OF ABOVE
+  #      start_at: "2012-12-01".to_date,
+  #      finish_at: "2099-12-31".to_date,
+  #      product_id: Product.find_by_name("Circular 6\" high, 12\" diameter, chocolate biscuit cake").id,
+  #      price: 270,
+  #      currency_id: GeneralSetting.first.default_currency_id,        
+  #      created_by: User.find_by_login("ger.arnold@gmail.com").id,
+  #      updated_by: nil
+  #      })
    ProductPrice.create({
         start_at: "2012-12-01".to_date,
         finish_at: "2099-12-31".to_date,
@@ -1411,33 +1411,24 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         created_by: User.find_by_login("ger.arnold@gmail.com").id,
         updated_by: nil
         })
-   ProductPrice.create({
-        start_at: "2012-12-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.find_by_name("Drum 12\" (small)").id,
-        price: 100,
-        currency_id: GeneralSetting.first.default_currency_id,        
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
-   ProductPrice.create({
-        start_at: "2012-12-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.find_by_name("Drum 12\" (large)").id,
-        price: 130,
-        currency_id: GeneralSetting.first.default_currency_id,        
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
-   ProductPrice.create({
-        start_at: "2012-12-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.find_by_name("1960s VW Beetle 10\" length").id,
-        price: 190,
-        currency_id: GeneralSetting.first.default_currency_id,        
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
+   #ProductPrice.create({  ##################### DUPLICATE OF ABOVE
+  #      start_at: "2012-12-01".to_date,
+  #      finish_at: "2099-12-31".to_date,
+  #      product_id: Product.find_by_name("Drum 12\" (small)").id,
+  #      price: 100,
+  #      currency_id: GeneralSetting.first.default_currency_id,        
+  #      created_by: User.find_by_login("ger.arnold@gmail.com").id,
+  #      updated_by: nil
+  #      })
+   #ProductPrice.create({ ####################### DUPLICATE OF ABOVE
+  #      start_at: "2012-12-01".to_date,
+  #      finish_at: "2099-12-31".to_date,
+  #      product_id: Product.find_by_name("Drum 12\" (large)").id,
+  #      price: 130,
+  #      currency_id: GeneralSetting.first.default_currency_id,        
+  #      created_by: User.find_by_login("ger.arnold@gmail.com").id,
+  #      updated_by: nil
+  #      })
    ProductPrice.create({
         start_at: "2012-12-01".to_date,
         finish_at: "2099-12-31".to_date,
@@ -1447,15 +1438,24 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         created_by: User.find_by_login("ger.arnold@gmail.com").id,
         updated_by: nil
         })
-   ProductPrice.create({
-        start_at: "2012-12-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.find_by_name("BMW Mini Cooper 10\" length").id,
-        price: 190,
-        currency_id: GeneralSetting.first.default_currency_id,        
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
+   #ProductPrice.create({
+  #      start_at: "2012-12-01".to_date,
+  #      finish_at: "2099-12-31".to_date,
+  #      product_id: Product.find_by_name("1960s VW Beetle 10\" length").id,
+  #      price: 190,
+  #      currency_id: GeneralSetting.first.default_currency_id,        
+  #      created_by: User.find_by_login("ger.arnold@gmail.com").id,
+  #      updated_by: nil
+  #      })
+  # ProductPrice.create({
+  #      start_at: "2012-12-01".to_date,
+  #      finish_at: "2099-12-31".to_date,
+  #      product_id: Product.find_by_name("BMW Mini Cooper 10\" length").id,
+  #      price: 190,
+  #      currency_id: GeneralSetting.first.default_currency_id,        
+  #      created_by: User.find_by_login("ger.arnold@gmail.com").id,
+  #      updated_by: nil
+  #      })
    ProductPrice.create({
         start_at: "2012-12-01".to_date,
         finish_at: "2099-12-31".to_date,
@@ -1474,24 +1474,15 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         created_by: User.find_by_login("ger.arnold@gmail.com").id,
         updated_by: nil
         })
-   ProductPrice.create({
-        start_at: "2012-12-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.find_by_name("Lamborghini car 10\" length").id,
-        price: 190,
-        currency_id: GeneralSetting.first.default_currency_id,        
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
-   ProductPrice.create({
-        start_at: "2012-12-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.find_by_name("Aston Martin DB5 (Bond car) 10\" length").id,
-        price: 190,
-        currency_id: GeneralSetting.first.default_currency_id,        
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
+   #ProductPrice.create({
+  #      start_at: "2012-12-01".to_date,
+  #      finish_at: "2099-12-31".to_date,
+  #      product_id: Product.find_by_name("Lamborghini car 10\" length").id,
+  #      price: 190,
+  #      currency_id: GeneralSetting.first.default_currency_id,        
+  #      created_by: User.find_by_login("ger.arnold@gmail.com").id,
+  #      updated_by: nil
+  #      })
    ProductPrice.create({
         start_at: "2012-12-01".to_date,
         finish_at: "2099-12-31".to_date,
@@ -1501,6 +1492,15 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         created_by: User.find_by_login("ger.arnold@gmail.com").id,
         updated_by: nil
         })
+   #ProductPrice.create({
+  #      start_at: "2012-12-01".to_date,
+  #      finish_at: "2099-12-31".to_date,
+  #      product_id: Product.find_by_name("Aston Martin DB5 (Bond car) 10\" length").id,
+  #      price: 190,
+  #      currency_id: GeneralSetting.first.default_currency_id,        
+  #      created_by: User.find_by_login("ger.arnold@gmail.com").id,
+  #      updated_by: nil
+  #      })
    ProductPrice.create({
         start_at: "2012-12-01".to_date,
         finish_at: "2099-12-31".to_date,
@@ -1510,15 +1510,15 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         created_by: User.find_by_login("ger.arnold@gmail.com").id,
         updated_by: nil
         })
-   ProductPrice.create({
-        start_at: "2012-12-01".to_date,
-        finish_at: "2099-12-31".to_date,
-        product_id: Product.find_by_name("Truck or bus 10\" length").id,
-        price: 210,
-        currency_id: GeneralSetting.first.default_currency_id,        
-        created_by: User.find_by_login("ger.arnold@gmail.com").id,
-        updated_by: nil
-        })
+   #ProductPrice.create({
+  #      start_at: "2012-12-01".to_date,
+  #      finish_at: "2099-12-31".to_date,
+  #      product_id: Product.find_by_name("Truck or bus 10\" length").id,
+  #      price: 210,
+  #      currency_id: GeneralSetting.first.default_currency_id,        
+  #      created_by: User.find_by_login("ger.arnold@gmail.com").id,
+  #      updated_by: nil
+  #      })
    ProductPrice.create({
         start_at: "2012-12-01".to_date,
         finish_at: "2099-12-31".to_date,
