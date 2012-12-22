@@ -1995,7 +1995,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
         global_options_list_choice: "Dark green",
         product_options_list_choice: "",
         quantity: 1,
-        user_description: ""
+        user_description: "Dark green"
         })
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("3D edible character / figure - 4\" tall").id,
@@ -2117,7 +2117,7 @@ FinishedProduct.create({product_name: "Lucy\'s Christening Cake (Family Scene)",
       FinishedProductIngredient.create({finished_product_id: fp.id,
         product_id: Product.find_by_name("Circular 4\" high, 8\" diameter, sponge cake").id,
         global_options_list_choice: "",
-        product_options_list_choice: "Sponge - lemon",
+        product_options_list_choice: "Lemon",
         quantity: 1,
         user_description: ""
         })
