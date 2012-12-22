@@ -14,7 +14,7 @@
         <tr><td class="form-label">Based on template:</td><td><%= @cake.finished_product.product_name %></td></tr>
       <% end %>
       <tr><td>Cake needed for:</td>
-        <td><%= f.datetime_select :cake_required_at %></td>
+        <td><%= f.datetime_select :cake_required_at, :order => [:day, :month, :year] %></td>
       </tr>
       <tr><td>The special occasion:</td><td><%= f.text_field :special_occasion %></td></tr>
       <tr><td>What we should write on the cake:</td><td><%= f.text_field :name_to_appear_on_cake %></td></tr>
@@ -48,7 +48,7 @@
     <tr class="graduated-background">
       <td><%= item.quantity %></td>
       <td><%= item.product.name %></td>
-      <td><%= item.product_options_list_choice %><br/>
+      <td><%= item.product_options_list_choice %>
           <%= item.global_options_list_choice %></td>
       <td><%= item.user_description %></td>
       <td style="text-align:right;"><%= sanitize(number_to_currency(item.unit_price, :unit => @general_setting.ccy, :precision => 2)) %></td>
@@ -61,7 +61,7 @@
   </tr>
 </table>
 
-<p>You can <%= link_to "continue shopping", root_url %>, or you can go directly to <%= link_to "Checkout Now", root_url, :class => "checkout-button-big" %></p>
+<p>You can <%= link_to "continue shopping", root_url %>, or you can go directly to <%= link_to "Checkout Now", start_checkout_url, :class => "checkout-button-big" %></p>
 
 <p>If you want to, you can also <%= link_to "remove", delete_cake_url(:cake_id => @cake.id), :confirm => "Are you certain you wish to delete this cake from your shopping cart" %> this cake from your shopping cart.</p>
 

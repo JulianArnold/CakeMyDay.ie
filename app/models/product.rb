@@ -63,4 +63,8 @@ class Product < ActiveRecord::Base
     end
   end
   
+  def category_and_name
+    product_category.name + " / " + name
+  end
+  
 end

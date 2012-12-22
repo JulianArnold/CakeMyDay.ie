@@ -10,14 +10,14 @@
     <td style="width:  90px;"></td>
   </tr>
   <% @cakes.each do |cake| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;" class="graduated-background">
       <td><%= link_to(cake.shopping_cart_id, cake.shopping_cart, :title => "click to view cart") %></td>
       <td><%= link_to(cake.shopping_cart.customer.user.full_name, cake.shopping_cart.customer, :title => "click to view the customer")%>
       <td><%= link_to(cake.cake_required_at.strftime("%d-%b-%Y %H:%M"), cake.production_quotum, :title => "click to view production quota") %></td>
       <td><%= cake.special_occasion %></td>
       <td><%= cake.name_to_appear_on_cake %></td>
       <td>
-        <% if cake.based_on_finished_product_id %><%= cake.based_on_finished_product.product_name %><% end %>
+        <% if cake.based_on_finished_product_id %><%= cake.finished_product.product_name %><% end %>
       </td>
       <td><%= link_to 'View', cake %> | 
           <%= link_to 'Edit', edit_cake_path(cake) %></td>

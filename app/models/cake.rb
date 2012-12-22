@@ -27,6 +27,24 @@ class Cake < ActiveRecord::Base
   def total_value
     shopping_cart_items.sum(:line_total)
   end
+  
+  def production_quota_value
+    counter = 0.0
+    if shopping_cart.shopping_cart_status.paid_cart == true
+      shopping_cart_items.each do |sci|
+        counter += sci.product.production_quota_value.to_f
+      end
+    end
+    return counter
+  end
+  
+  def future_production_quota_value
+    counter = 0.0
+    shopping_cart_items.each do |sci|
+      counter += sci.product.production_quota_value.to_f
+    end
+    return counter
+  end
 
   private
 

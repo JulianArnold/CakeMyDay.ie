@@ -10,7 +10,7 @@
     <td style="width:  80px;"></td>
   </tr>
   <% @images.each do |image| %>
-    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
       <td><%= image_tag(image.full_file_path, width: "60") %></td>
       <td><%= image.file_name %></td>
       <td><%= image.file_size %></td>

@@ -20,7 +20,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #ddd;
+  background-color: #edd;
   color: #333;
 }
 
@@ -80,8 +80,10 @@ input[type="submit"] {
 }
 
 #main-block {
+  /*
   width: 85%;
-  min-width: 1150px;
+  min-width: 1150px; */
+  width: 1050px;
   margin: 0 auto;
   padding: 0 15px;
   background-color: #fdf4f7;
@@ -92,7 +94,8 @@ input[type="submit"] {
 #header-dark-strip {
   height: 40px;
   width: 100%;
-  min-width: 1150px;
+  /*min-width: 1150px;*/
+  min-width: 1050px;
   background-color: #92278F;
   border-bottom: 2px solid #ec008c;
 	color: #fdf4f7;
@@ -106,7 +109,8 @@ input[type="submit"] {
 }
 
 #inner, #inner a {
-  width: 90%;
+  /*width: 90%;*/
+  width: 1075px;
   margin: 0 auto;
   padding: 10px 0px;
   font-size: 20px;
@@ -130,7 +134,7 @@ input[type="submit"] {
   vertical-align: middle;
 }
 
-#site-nav, #user-access { padding-left: 20px}
+#site-nav, #user-access { padding-left: 10px}
 
 #page-header {
   padding: 0; margin: 0;

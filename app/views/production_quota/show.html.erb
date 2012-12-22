@@ -2,7 +2,7 @@
 
 <p>Maximum cakes allowed: <%= @production_quotum.maximum_cakes_allowed %></p>
 
-<% if @production_quotum.shopping_carts.count > 0 %>
+<% if @production_quotum.cakes.count > 0 %>
   <table>
     <tr>
       <th style="width: 140px;">Required at</th>
@@ -12,88 +12,21 @@
       <th style="width: 100px;">Name on cake</th>
       <th style="width: 100px;">Cart Status</th>
     </tr>
-    <% @production_quotum.monday_bookings.each do |cart| %>
-      <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
-        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
-        <td><%= cart.customer.user.login %></td>
-        <td><%= cart.special_occasion %></td>
-        <td><%= cart.general_description_from_customer %></td>
-        <td><%= cart.name_to_appear_on_cake %></td>
-        <td><%= cart.shopping_cart_status.name %></td>
-        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
-      </tr>
+    <% for weekday_counter in 0..6 do %>
+      <% @production_quotum.cakes.each do |cake| %>
+        <% if cake.weekday == weekday_counter %>
+          <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
+            <td><%= cake.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
+            <td><%= cake.shopping_cart.customer.user.login %></td>
+            <td><%= cake.special_occasion %></td>
+            <td><%= cake.general_description_from_customer %></td>
+            <td><%= cake.name_to_appear_on_cake %></td>
+            <td><%= cake.shopping_cart.shopping_cart_status.name %></td>
+            <td><%= link_to("view", shopping_cart_url(cake.shopping_cart.id))%></td>
+          </tr>
+        <% end %>
+      <% end %>
     <% end %>
-    <% @production_quotum.tuesday_bookings.each do |cart| %>
-      <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
-        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
-        <td><%= cart.customer.user.login %></td>
-        <td><%= cart.special_occasion %></td>
-        <td><%= cart.general_description_from_customer %></td>
-        <td><%= cart.name_to_appear_on_cake %></td>
-        <td><%= cart.shopping_cart_status.name %></td>
-        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
-      </tr>
-    <% end %>
-    
-    <% @production_quotum.wednesday_bookings.each do |cart| %>
-      <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
-        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
-        <td><%= cart.customer.user.login %></td>
-        <td><%= cart.special_occasion %></td>
-        <td><%= cart.general_description_from_customer %></td>
-        <td><%= cart.name_to_appear_on_cake %></td>
-        <td><%= cart.shopping_cart_status.name %></td>
-        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
-      </tr>
-    <% end %>
-    
-    <% @production_quotum.thursday_bookings.each do |cart| %>
-      <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
-        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
-        <td><%= cart.customer.user.login %></td>
-        <td><%= cart.special_occasion %></td>
-        <td><%= cart.general_description_from_customer %></td>
-        <td><%= cart.name_to_appear_on_cake %></td>
-        <td><%= cart.shopping_cart_status.name %></td>
-        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
-      </tr>
-    <% end %>
-    
-    <% @production_quotum.friday_bookings.each do |cart| %>
-      <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
-        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
-        <td><%= cart.customer.user.login %></td>
-        <td><%= cart.special_occasion %></td>
-        <td><%= cart.general_description_from_customer %></td>
-        <td><%= cart.name_to_appear_on_cake %></td>
-        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
-      </tr>
-    <% end %>
-    
-    <% @production_quotum.saturday_bookings.each do |cart| %>
-      <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
-        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
-        <td><%= cart.customer.user.login %></td>
-        <td><%= cart.special_occasion %></td>
-        <td><%= cart.general_description_from_customer %></td>
-        <td><%= cart.name_to_appear_on_cake %></td>
-        <td><%= cart.shopping_cart_status.name %></td>
-        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
-      </tr>
-    <% end %>
-    
-    <% @production_quotum.sunday_bookings.each do |cart| %>
-      <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
-        <td><%= cart.cake_required_at.strftime("%d-%b-%Y %H:%M") %></td>
-        <td><%= cart.customer.user.login %></td>
-        <td><%= cart.special_occasion %></td>
-        <td><%= cart.general_description_from_customer %></td>
-        <td><%= cart.name_to_appear_on_cake %></td>
-        <td><%= cart.shopping_cart_status.name %></td>
-        <td><%= link_to("view", shopping_cart_url(cart.id))%></td>
-      </tr>
-    <% end %>
-    
   </table><br/>
 <% end %>
 

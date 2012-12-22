@@ -11,7 +11,7 @@
     <th style="width:  40px;"></th>
   </tr>
   <% @general_settings.each do |general_setting| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;" class="graduated-background">
       <td><%= general_setting.default_value_for_weekly_production_quota %></td>
       <td><%= general_setting.customer_service_email_address %></td>
       <td><%= general_setting.customer_service_phone_number %></td>

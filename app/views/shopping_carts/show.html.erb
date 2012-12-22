@@ -10,7 +10,7 @@
     </td></tr>
   <tr><td>Shopping cart status:</td><td><%= @shopping_cart.shopping_cart_status.name %></td></tr>
   <tr><td>PayPal status:</td><td>
-    <% if @shopping_cart.pay_pal_status_id.to_i > 0%>
+    <% if @shopping_cart.pay_pal_status_id.to_i > 0 %>
     <%= @shopping_cart.pay_pal_status.name %>
     <% else %>
     --
@@ -18,7 +18,7 @@
   </td></tr>
 </table><br/>
 
-<h2>Items</h2>
+<h2>Cakes</h2>
 <table>
   <tr>
     <th>Product name</th>
@@ -31,9 +31,18 @@
   
   <% @shopping_cart.cakes.each do |cake| %>
     <tr><td colspan=4><h2>Cake #<%= cake.id %></h2></td></tr>
-    <tr><td colspan=4>Cake info goes here</td></tr>
+    <tr class="graduated-background"><td>Required at:</td><td colspan=5><%= cake.cake_required_at %></td></tr>
+    <tr class="graduated-background"><td>Special occasion:</td><td colspan=5><%= cake.special_occasion %></td></tr>
+    <tr class="graduated-background"><td>Name to appear on cake:</td><td colspan=5><%= cake.name_to_appear_on_cake %></td></tr>
+    <tr class="graduated-background"><td>Customer's description:</td><td colspan=5><%= cake.general_description_from_customer %></td></tr>
+    <tr class="graduated-background"><td>Confectioner's notes:</td><td colspan=5><%= cake.confectioners_notes %></td></tr>
+    <% if cake.based_on_finished_product_id.to_i > 0 %>
+      <tr class="graduated-background"><td>Based on:</td><td colspan=5><%= cake.based_on_finished_product_id %></td></tr>
+    <% end %>
+    <tr class="graduated-background"><td>This week's workload:</td><td colspan=5><%= link_to(cake.production_quotum.bookings, cake.production_quotum, :title => "click to see the week's bookings") %></td></tr>
+    <tr><td>&nbsp;</td></tr>
     <% cake.shopping_cart_items.each do |item| %>
-      <tr>
+      <tr class="graduated-background">
         <td><%= link_to(item.product.name, product_url(item.product_id), :title => "click to view product") %></td>
         <td><%= item.user_description %></td>
         <td><%= item.product_options_list_choice %><br/>
@@ -44,9 +53,10 @@
         <td style="text-align:right;"><%= sanitize(number_to_currency(item.line_total, :unit => @general_setting.ccy, :precision => 2)) %></td>
       </tr>
     <% end %>
-    <tr><td colspan=5>GRAND TOTAL FOR THIS CAKE:</td>
-        <td style="text-align:right;border-top: 1px solid black;border-bottom: 3px double black;">
-        <%= sanitize(number_to_currency(cake.shopping_cart_items.sum(:line_total), :unit => @general_setting.ccy, :precision => 2)) %></td>
+    <tr class="graduated-background">
+      <td colspan=5>GRAND TOTAL FOR THIS CAKE:</td>
+      <td style="text-align:right;border-top: 1px solid black;border-bottom: 3px double black;">
+      <%= sanitize(number_to_currency(cake.total_value, :unit => @general_setting.ccy, :precision => 2)) %></td>
     </tr>
   <% end %>
 </table><br/>

@@ -19,6 +19,35 @@
 </table><br/>
 <p><%= link_to 'Back', finished_products_path %> | <%= link_to 'Edit', edit_finished_product_path(@finished_product) %></p>
 
+<% if @finished_product.finished_product_ingredients.count > 0 %>
+  <h2>Ingredients</h2>
+  <table>
+    <tr>
+      <th style="width: 120px;">Category</th>
+      <th style="width: 200px;">Ingredient</th>
+      <th style="width:  40px;">Qty</th>
+      <th style="width: 100px;">Option choice</th>
+      <th style="width: 100px;">Global choice</th>
+      <th style="width: 100px;">Description</th>
+    </tr>
+    <% @finished_product.finished_product_ingredients.each do |i| %>
+      <tr class="graduated-background">
+        <td><%= i.product.product_category.name %></td>
+        <td><%= i.product.name %></td>
+        <td><%= i.quantity %></td>
+        <td><%= i.product_options_list_choice %></td>
+        <td><%= i.global_options_list_choice %></td>
+        <td><%= i.user_description %></td>
+        <td>
+          <%= link_to "edit", edit_finished_product_ingredient_url(:id => i.id) %>
+          <%= link_to image_tag("x2.png"), finished_product_ingredient_destroy_url(:id => i.id), :confirm => "Are you certain you wish to delete this ingredient from this product?" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<%= link_to "New ingredient", new_finished_product_ingredient_url(:id => @finished_product.id) %>
+
 <h2>Images</h2>
 <p>These are the images of finished products that are not yet assigned to a product. <br/><%= link_to("Click here", images_url) %> to create new images.</p>
 <% if @unallocated_images.count > 0 %>

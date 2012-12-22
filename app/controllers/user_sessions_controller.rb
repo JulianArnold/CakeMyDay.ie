@@ -28,7 +28,12 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Welcome back!"
-      redirect_back_or_default my_account_url
+      user = User.find_by_login(@user_session.login)
+      if user and (user.user_group.is_a_manager or user.user_group.is_an_admin)
+        redirect_back_or_default shopping_carts_url
+      else
+        redirect_back_or_default my_account_url
+      end
     else
       render :action => :new
     end

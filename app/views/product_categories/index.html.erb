@@ -10,7 +10,7 @@
     <td style="width:  90px;"></td>
   </tr>
   <% @product_categories.each do |product_category| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;" class="graduated-background">
       <td><%= product_category.name %></td>
       <td><%= product_category.description %></td>
       <td><%= sanitize tick_or_cross product_category.one_choice_only %></td>

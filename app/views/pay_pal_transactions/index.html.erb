@@ -12,7 +12,7 @@
     <th style="width:  40px;"></th>
   </tr>
   <% @pay_pal_transactions.each do |pay_pal_transaction| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;" class="graduated-background">
       <td><%= pay_pal_transaction.paypal_transaction_id %></td>
       <td><%= pay_pal_transaction.shopping_cart_id %></td>
       <td><%= pay_pal_transaction.result_code %></td>

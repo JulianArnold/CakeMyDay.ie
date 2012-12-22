@@ -11,7 +11,7 @@
     <th style="width:  40px;"></th>
   </tr>
   <% @pay_pal_statuses.each do |pay_pal_status| %>
-    <tr style="background-color: <%= cycle("inherit","inherit") %>;">
+    <tr style="background-color: <%= cycle("inherit","inherit") %>;" class="graduated-background">
       <td><%= pay_pal_status.name %></td>
       <td><%= pay_pal_status.description %></td>
       <td><%= sanitize tick_or_cross pay_pal_status.pending_authorisation %></td>

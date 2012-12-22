@@ -1,11 +1,12 @@
 <h1>Finished Products</h1>
 <table>
   <tr>
-    <th style="width: 100px;">Product details</th>
-    <th style="width:  70px;text-align:right;">Typical<br />price</th>
-    <th style="width:  70px;text-align:right;">Running order</th>
-    <th style="width:  80px;">For sale?</th>
-    <th style="width:  80px;">Visible?</th>
+    <th style="width: 150px;">Product details</th>
+    <th style="width:  50px;text-align:right;">Typical<br />price</th>
+    <th style="width:  50px;text-align:right;">Running order</th>
+    <th style="width:  70px;text-align:center;">Ingredients</th>
+    <th style="width:  30px;">For sale?</th>
+    <th style="width:  40px;">Visible?</th>
     <td style="width:  90px;"></td>
   </tr>
   <% tracker = nil -%>
@@ -21,7 +22,7 @@
       <% tracker = finished_product.special_occasion_id.to_i %>
     <% end %>
     
-    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;">
+    <tr style="background-color: <%= cycle("#f9d4e4","inherit") %>;" class="graduated-background">
       <td>
           <h3><%= finished_product.product_name %></h3>
           <%= truncate finished_product.description, :length => 230 %><br/>
@@ -31,6 +32,7 @@
       </td>
       <td style="text-align:right;"><%= sanitize number_to_currency(finished_product.typical_price, :unit => @general_setting.ccy, :precision => 2) %></td>
       <td style="text-align:right;"><%= finished_product.running_order %></td>
+      <td style="text-align:center;"><%= finished_product.finished_product_ingredients.count %></td>
       <td><%= sanitize tick_or_cross finished_product.available_for_purchase %></td>
       <td><%= sanitize tick_or_cross finished_product.visible %></td>
       <td><%= link_to 'Show', finished_product %> | <%= link_to 'Edit', edit_finished_product_path(finished_product) %></td>

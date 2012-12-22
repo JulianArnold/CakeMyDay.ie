@@ -163,9 +163,12 @@ class StoreController < ApplicationController
     categories.each do |category|
       if params[("category_" + category.id.to_s).to_sym]
         # We're here because the user supplied a choice 
-        
-        puts "=== === === === Category #{category.id} = #{params[('category_'+category.id.to_s).to_sym].to_s} == =="
-        
+        the_shopping_cart_item = @cake.shopping_cart_items.find(:first, :include => "product", :conditions => ["products.product_category_id = ?", category.id.to_i])
+        if the_shopping_cart_item
+          puts "made it in here"
+          the_shopping_cart_item.global_options_list_choice = params[("category_" + category.id.to_s).to_sym].to_s
+          the_shopping_cart_item.save
+        end
       end
     end
     
@@ -183,10 +186,6 @@ class StoreController < ApplicationController
     end
   end
 
-  #def view_cart
-  #  @cart = current_cart
-  #end
-  
   def show_cart # show a user a specific cart, live or not, reqested by params[:cart_id]
     if current_user and current_user.customer
       @shopping_cart = current_user.customer.shopping_carts.find(params[:id].to_i)
@@ -195,7 +194,7 @@ class StoreController < ApplicationController
     end
   end
 
-  def show_cake
+  def show_cake # shows an individual cake
     if current_user and current_user.customer
       @cake = Cake.find(:first, :include => "shopping_cart", :conditions => ["cakes.id = ? and shopping_carts.customer_id = ?", params[:id].to_i, current_user.customer.id])
     else
@@ -260,6 +259,74 @@ class StoreController < ApplicationController
     redirect_to root_url
   end
 
+  def start_checkout # beginning of the checkout process
+    if current_user
+      if current_user.customer
+        redirect_to checkout_process_url
+      else
+        redirect_to root_url, :notice => "You're not a customer, so you can't go through checkout."
+      end
+    else
+      session[:checkout_started] = true
+      redirect_to checkout_registration_url
+    end
+  end
+  
+  def checkout_registration
+    if current_user and current_user.customer # logged in as a customer
+      redirect_to checkout_process_url
+    elsif current_user # logged in, not a customer (i.e., a manager or admin)
+      redirect_to root_url, :notice => "You're not a cusotmer, so you can't go through checkout."
+    else
+      @user = User.new
+      @user.build_customer
+      @user_session = UserSession.new
+      # this session variable is used in ApplicationController.redirect_back_or_default
+      session[:return_to] = checkout_registration_url
+      # render "checkout_registration.html.erb" - just so you know where you're headed
+    end
+  end
+  
+  def checkout_process
+    if current_user and current_user.customer
+      if current_cart
+        @shopping_cart = current_cart
+        user = User.find(current_user.id)
+        @shopping_cart.customer_id = user.customer.id
+        @shopping_cart.save
+        # The view will check that each cake fits in the production schedule
+        # (managed by production_quota), and will warn (but NOT stop)
+        # the user from placing an order.
+        
+      else
+        session[:checkout_started] = nil
+        redirect_to root_url, :notice => "Sorry, your cart is empty"
+      end
+    else
+      redirect_to checkout_registration_url
+    end
+  end
+  
+  def buy_now
+    cart = ShoppingCart.find(current_cart.id)
+    cart.shopping_cart_status_id = ShoppingCartStatus.first(:conditions => ["paid_cart = ?", true], order: "running_order").id
+    cart.save
+    session.delete(:checkout_started)
+    session.delete(:shopping_cart_id)
+    redirect_to checkout_complete_url(:id => cart.id)
+  end
+  
+  def checkout_complete
+    session.delete(:checkout_started)
+    
+    @shopping_cart = ShoppingCart.find(params[:id])
+    if @shopping_cart
+      # render "order.confirmation.html.erb" - just so you know...
+    else
+      redirect_to root_url, :notice => "Sorry, couldn't find that transaction!"
+    end
+  end
+  
   private
   
   def get_variables
