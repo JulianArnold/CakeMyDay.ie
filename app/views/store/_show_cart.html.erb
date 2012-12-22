@@ -18,6 +18,9 @@
     <th style="width:150px;">Inscription</th>
     <th style="width:150px;">Template</th>
     <th style="width: 80px;text-align:right;">Price</th>
+    <% if params[:action] == 'checkout_process' %>
+    <th style="width:100px;">Can we make it?</th>
+    <% end %>
   </tr>
   
   <% @shopping_cart.cakes.each do |cake| %>
@@ -30,6 +33,16 @@
           <% end %>
       </td>
       <td style="text-align:right;"><%= sanitize(number_to_currency(cake.total_value, :unit => @general_setting.ccy, :precision => 2)) %></td>
+      <% if params[:action] == 'checkout_process' %>
+      <td><% # figure out if we have time to make the cake in that week
+          if (cake.production_quotum.bookings + cake.future_production_quota_value) <= cake.production_quotum.maximum_cakes_allowed.to_f
+            answer = "Yes, we can"
+          else
+            answer = "A busy week... please get in touch"
+          end
+          %><%= answer %>
+      </td>
+      <% end %>
     </tr>
   <% end %>
   

@@ -14,57 +14,25 @@ class ProductionQuotum < ActiveRecord::Base
   validates_uniqueness_of :start_date
 
   has_many  :cakes
-
+  
+=begin
   has_many  :monday_bookings,
             :class_name => "Cake",
             :foreign_key => "production_quotum_id",
             :include => ["shopping_cart", ["shopping_cart","shopping_cart_status"]],
             :conditions => ["weekday = 1 and shopping_cart_statuses.paid_cart = ?", true]
-            
-  has_many  :tuesday_bookings,
-            :class_name => "Cake",
-            :foreign_key => "production_quotum_id",
-            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
-            :conditions => ["weekday = 2 and shopping_cart_statuses.paid_cart = ?", true]
-  has_many  :wednesday_bookings,
-            :class_name => "Cake",
-            :foreign_key => "production_quotum_id",
-            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
-            :conditions => ["weekday = 3 and shopping_cart_statuses.paid_cart = ?", true]
-  has_many  :thursday_bookings,
-            :class_name => "Cake",
-            :foreign_key => "production_quotum_id",
-            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
-            :conditions => ["weekday = 4 and shopping_cart_statuses.paid_cart = ?", true]
-  has_many  :friday_bookings,
-            :class_name => "Cake",
-            :foreign_key => "production_quotum_id",
-            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
-            :conditions => ["weekday = 5 and shopping_cart_statuses.paid_cart = ?", true]
-  has_many  :saturday_bookings,
-            :class_name => "Cake",
-            :foreign_key => "production_quotum_id",
-            :include => ["shopping_cart",["shopping_cart","shopping_cart_status"]],
-            :conditions => ["weekday = 6 and shopping_cart_statuses.paid_cart = ?", true]
-  has_many  :sunday_bookings,
-            :class_name => "Cake",
-            :foreign_key => "production_quotum_id",
-            :include => ["shopping_cart",["shopping_cart","shopping_cart_statuses"]],
-            :conditions => ["weekday = 0 and shopping_cart_statuses.paid_cart = ?", true]
+=end
 
-  def bookings
-   # return cakes.find(:include => ["shopping_cart", ["shopping_cart", "shopping_cart_status"]], :conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_statuses.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
-    #return cakes = Cake.all(:include => ["shopping_cart", ["shopping_cart", "shopping_cart_status"]], :conditions => ["cake_required_at BETWEEN :start and :finish and shopping_cart_statuses.active_cart <> :t_or_f" , {:start => start_date, finish: finish_date, t_or_f: true}], :order => "cake_required_at ASC")
-  end
   
-  def experimental_count
+  def bookings
     accumulator = 0.0
     cakes.all.each do |cake|
-      if cake.shopping_cart.shopping_cart_status.paid_cart == true
-        cake.shopping_cart_items.each do |sci|
-          accumulator += sci.product.production_quota_value.to_f
-        end # of sci
-      end # of if
+      accumulator += cake.production_quota_value
+      #if cake.shopping_cart.shopping_cart_status.paid_cart == true
+      #  cake.shopping_cart_items.each do |sci|
+      #    accumulator += sci.product.production_quota_value.to_f
+      #  end # of sci
+      #end # of if
     end # of cake
     return accumulator
   end

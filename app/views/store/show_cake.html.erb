@@ -14,7 +14,7 @@
         <tr><td class="form-label">Based on template:</td><td><%= @cake.finished_product.product_name %></td></tr>
       <% end %>
       <tr><td>Cake needed for:</td>
-        <td><%= f.datetime_select :cake_required_at %></td>
+        <td><%= f.datetime_select :cake_required_at, :order => [:day, :month, :year] %></td>
       </tr>
       <tr><td>The special occasion:</td><td><%= f.text_field :special_occasion %></td></tr>
       <tr><td>What we should write on the cake:</td><td><%= f.text_field :name_to_appear_on_cake %></td></tr>
