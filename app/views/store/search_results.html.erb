@@ -2,17 +2,19 @@
 <% if @finished_products.count + @products.count > 0 %>
 
   <% if @finished_products.count > 0 %>
-    <p>We found <%= @finished_products.count %> example cakes for you:</p>
+    <h2>We found <%= @finished_products.count %> example cakes for you:</h2>
     <% @finished_products.each do |fp|; @fp = fp %>
       <%= render :partial => "show_product_strip" %>
     <% end %>
   <% end %>
   
   <% if @products.count > 0 %>
-    <p>We found <%= @products.count %> ingredients for you:</p>
-    <% @products.each do |p| %>
-      <p><%= p.name %></p>
-    <% end %>
+    <h2>We found <%= @products.count %> ingredients for you:</h2>
+    <ul>
+      <% @products.each do |p| %>
+        <li><%= p.name %></li>
+      <% end %>
+    </ul>
   <% end %>
 
 <% else %>
