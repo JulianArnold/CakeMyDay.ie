@@ -21,7 +21,8 @@ class ProductsController < ApplicationController
   def index
     # GET /products
     # GET /products.json
-    @products = Product.all(:include => :product_category, :order => "product_categories.running_order, products.running_order")
+    @products = Product.paginate(:include => :product_category, :order => "product_categories.running_order, products.running_order",
+                                 :per_page => 15, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

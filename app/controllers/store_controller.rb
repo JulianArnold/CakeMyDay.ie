@@ -20,9 +20,9 @@ class StoreController < ApplicationController
     end
     
     if @special_occasion
-      @finished_products = @special_occasion.finished_products.all(order: "running_order, created_at DESC")
+      @finished_products = @special_occasion.finished_products.paginate(order: "running_order, created_at DESC", :page => params[:page], :per_page => 7)
     else # params[:show] == "latest" or !params[:show] or params[:show] not known
-      @finished_products = FinishedProduct.all(order: "running_order, created_at DESC")
+      @finished_products = FinishedProduct.paginate(order: "running_order, created_at DESC", :page => params[:page], :per_page => 7)
       @finished_product = nil
     end
   end

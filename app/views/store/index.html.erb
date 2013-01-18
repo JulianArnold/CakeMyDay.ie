@@ -8,6 +8,8 @@
   <% end %>
 </div>
 
+<p><%= will_paginate @finished_products %></p>
+
 <% @finished_products.each do |fp| %><% @fp = fp %>
   <%= render :partial => "show_product_strip" %>
 <% end %>

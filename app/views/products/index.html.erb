@@ -1,11 +1,13 @@
 <h1>Products</h1>
+</span>
 <table>
+  <caption style="text-align:right;"><%= will_paginate @products %></caption>
   <tr>
-    <th style="width: 300px;">Name</th>
+    <th style="width: 400px;">Name</th>
     <th style="width:  90px;">Production quota value</th>
     <th style="width: 100px;">Special occasion</th>
     <th style="width:  60px;">Running order</th>
-    <td style="width:  80px;"></td>
+    <th colspan=2 style="width:  80px;">Actions</td>
   </tr>
   <% tracker = 0 %>
   <% @products.each do |product| %>
@@ -28,3 +30,4 @@
 </table><br/>
 
 <%= link_to 'New', new_product_path %>
+<p><%= will_paginate @products %></p>
