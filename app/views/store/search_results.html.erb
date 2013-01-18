@@ -3,8 +3,8 @@
 
   <% if @finished_products.count > 0 %>
     <p>We found <%= @finished_products.count %> example cakes for you:</p>
-    <% @finished_products.each do |fp| %>
-      <%= render :partial => "show_product_strip", :locals => {:fp => fp} %>
+    <% @finished_products.each do |fp|; @fp = fp %>
+      <%= render :partial => "show_product_strip" %>
     <% end %>
   <% end %>
   
