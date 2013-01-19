@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-if !Rails.env.development?
+if Rails.env.development?
   
   
   UserGroup.destroy_all
