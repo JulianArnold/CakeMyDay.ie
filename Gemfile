@@ -4,9 +4,15 @@ gem 'rails', '3.2.10'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-if !Rails.env.production?
+
+group :development do
   gem 'sqlite3'
 end
+
+group :production do
+  gem 'pg'
+end
+
 gem 'authlogic'
 gem 'will_paginate', '~> 3.0.0'
 
