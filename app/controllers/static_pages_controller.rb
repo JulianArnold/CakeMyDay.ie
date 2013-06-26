@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
   before_filter :manager_required, :except => 'display'
   
   def display
-    @static_page = StaticPage.first(:conditions => ["menu_label LIKE ?", "%" + params[:page].gsub('_',' ') + "%" ])
+    @static_page = StaticPage.first(:conditions => ["lower(menu_label) LIKE ?", "%" + params[:page].downcase.gsub('_',' ') + "%" ])
     if @static_page
       # nothing special here
     else
