@@ -129,7 +129,7 @@ input[type="submit"] {
 
 #site-nav, #site-nav a, #user-access, #user-access a, #user-access form, #view-cart-link a {
   font-weight: 100;
-  display; inline;
+  display: inline;
   font-size: 12px;
   vertical-align: middle;
 }
