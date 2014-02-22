@@ -102,14 +102,10 @@ class UsersController < ApplicationController
     # First, handle the password change
     if params[:user][:current_password]
       @user.reset_password(params[:user][:current_password], params[:user][:password], params[:user][:password_confirmation])
-      if @user.errors.count == 0
-        respond_to do |format|
-          format.html { redirect_to @user, notice: 'Your password was successfully updated.' }
-        end
+      if @user.errors.count == 0 && @user.save
+          redirect_to @user, notice: 'Your password was successfully updated.'
       else
-        respond_to do |format|
-          format.html { render action: "change_password" }
-        end
+          render action: "change_password"
       end
     else
       # dump the password parameters
